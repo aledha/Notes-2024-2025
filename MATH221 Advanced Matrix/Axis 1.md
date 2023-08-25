@@ -61,3 +61,57 @@ Generalising: Suppose $x(0) = \sum\limits_{i}^{}\beta _{i} x_{i}$, where $Ax_{i}
 wether $x(t)\to 0$ as $t\to \infty$ depends on whether $\mathbb{R}(\lambda _{i})<0$ for all $\beta _{i}≠0$,
 i.e., whether $x(0)$ is in subspace spanned by all eigen vectors with $\mathbb{R}(\lambda _{i})<0$
 -called invariant subspace
+
+#### Multiple matrices
+Take the model problem
+$$Mx''(t)+Kx(t)=0$$
+example M: mass, k: stiffness, x(t) position
+We want to turn this into an eigenproblem. Plug in $x(t)=e^{\lambda t}x(0)$
+$$\lambda ^{2}Mx(0)+Kx(0)=0$$
+and $x(0)$ is a generalized eigenvector, $\lambda ^{2}$ is a generalized eigenvalue
+The usual definition of eigenvalues is $det(K-\lambda I)=0$ if $\lambda$ eigenvalue of $K$.
+Becomes $det(K+\lambda 'M)=0$ where $\lambda ' =\lambda ^{2}$.
+
+All ideas for one matrix generalize:
+Jordan form to Wierestrass form
+Schur form to Generalized Schur.
+
+Why not find evals of $M^{-1}K$?
+What if $M$ singular?
+Arises in "differential algebraic egns".
+ODEs with linear constraints.
+
+## Nonlinear eigenproblems
+Adding yet another matrix
+$$Mx''(t)+D x'(t)+Kx(t)=0$$
+How to change into eigenvalue problem? Plug in $x(t) =e^{\lambda t}x(0)$, get
+$$\lambda ^{2}Mx(0)+\lambda Dx(0)+Kx(0)=0$$
+Will reduce to linear problem of twice the size.
+
+Not all eigenproblems have to be square. 
+
+
+Sometimes we can get **singular eigenproblems** 
+$$x'(t)=Ax(t)+Bu(t)$$
+where $A \in \mathbb{R}^{n \times n}$ and $B \in \mathbb{R}^{n \times m}$, $m<n$
+Problem: what subspace can $x(t)$ lie in and be controlled by $u(t)$?
+
+We then get a rectangular eigenproblem
+### Rectangular eigenproblem
+Instead of the Jordan form, we use the Kronecker form
+
+### Partial solution
+Find subset of evals and evecs 
+- invariant subspace
+- low rank approximation
+	- only the largest singular values
+can be much cheaper
+
+### Updating solutions
+Given a solution for $A$, cheaply update if $A$ changes a "little":
+* A few entries
+* A few rows and columns
+* Add a few rows and columns
+* Add a low rank matrix to A
+
+We are **not** going to talk about tensors
