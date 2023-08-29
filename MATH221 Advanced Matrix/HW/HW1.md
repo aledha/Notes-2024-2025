@@ -16,12 +16,28 @@ A matrix is strictly upper triangular if it is upper triangular with zero diagon
 
 ```
 $$A=\begin{bmatrix}0 & a_{12}  & \dots  & a_{1n} \\ \vdots & \ddots & \ddots  & \vdots\\ \vdots &   & \ddots  & a_{n-1,n}\\ 0 &  \dots & \dots  & 0\end{bmatrix}$$
-$$A^{2}=\begin{bmatrix}a_{1} & a_{2} & \dots & a_{n}\end{bmatrix}\begin{bmatrix}b_{1}^{T} \\   \vdots  \\ b_{n}^{T}\end{bmatrix}=a_{1}b_{1}^{T}+a_{2}b_{2}^{T}+\dots+a_{n}b_{n}^{T}$$
-$$a^{T}_{j}=\begin{bmatrix}a_{1j} & \dots & a_{j-1,j} & 0 & \dots & 0\end{bmatrix}, \qquad b_{j}^{T}=\begin{bmatrix}0 & \dots & 0 & a_{j,j+1} & \dots & a_{jn}\end{bmatrix}$$
-$$a_{j}b_{j}^{T}=\begin{bmatrix}a_{1j} \\ \vdots \\ a_{j-1,j} \\ 0 \\ \vdots \\ 0\end{bmatrix}\begin{bmatrix}0 & \dots & 0 & a_{j,j+1} & \dots & a_{jn}\end{bmatrix}$$
-We see that the first $j$ columns and the last $n-j$ rows in the resulting matrix will be zero. $a_{j}b_{j}^{T}$ can therefore be written as a concatenation between submatrices:  $\begin{bmatrix}0 & B \\ 0 & 0\end{bmatrix}$ where $B \in \mathbb{R}^{(j-1) \times (n-j-1)}$
+Denote the $k$-th column vector and the $k$-th row vector as
+$$c^{T}_{k}=\begin{bmatrix}a_{1k} & \dots & a_{k-1,k} & 0 & \dots & 0\end{bmatrix}, \qquad r_{k}^{T}=\begin{bmatrix}0 & \dots & 0 & a_{k,k+1} & \dots & a_{kn}\end{bmatrix}.$$
+Then the square $A$ can be written as
+$$A^{2}=\begin{bmatrix}c_{1}  & \dots & c_{n}\end{bmatrix}\begin{bmatrix}r_{1}^{T} \\   \vdots  \\ r_{n}^{T}\end{bmatrix}=c_{1}r_{1}^{T}+c_{2}r_{2}^{T}+\dots+c_{n}r_{n}^{T}=\sum\limits_{k=1}^{n}c_{k}r_{k}^{T}$$
+Let's take a closer look at the summation matrices,
+$$c_{k}r_{k}^{T}=\begin{bmatrix}a_{1k} \\ \vdots \\ a_{k-1,k} \\ 0 \\ \vdots \\ 0\end{bmatrix}\begin{bmatrix}0 & \dots & 0 & a_{k,k+1} & \dots & a_{kn}\end{bmatrix},$$
+and realise that 
+$$(c_{k}r_{k}^{T})_{ij}=\begin{cases}
+0 & \quad\text{for }i\ge k ,\\
+0  & \quad\text{for }j\le k, \\
+a_{ik}a_{kj} & \quad\text{else. }
+\end{cases}$$
 
+This matrix is zero along both the main diagonal and the 1-diagonal, and the only nonzero entry on the 2-diagonal is when $i=k-1, j=k+1$.
 
+The resulting matrix $A^{2}=\sum_{k=1}^{n} c_{k}r_{k}^{T}$ is therefore zero along the main and 1-diagonal.
+$$A \cdot A^{2}= \sum\limits_{k=1}^{n}c_{k}(r_{k}')^{T},$$
+where $c_{k}$ remains the same but $r_{k}'$ is the row vector of $A^{2}$ and $r'_{kj}=0\quad\text{for }j\le k+1$. 
+Then $(c_{k}(r'_{k})^{T})_{ij}=0 \quad\text{for }i\ge k \text{ or }j\le k+1$. 
+$c_{k}(r'_{k})^{T}$ is zero on the main diagonal, 1-diagonal and 2-diagonal, and therefore the same holds for $A^{3}$.
+
+Repeating this until $A^{n}$ yields that $A^{n}=0$ on the main diagonal until the $n$-diagonal, meaning that $A^{n}=0$.
 
 ```ad-question
 title: Q10
