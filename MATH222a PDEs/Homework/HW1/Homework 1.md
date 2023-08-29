@@ -28,11 +28,25 @@ z(s)&= z_{0}
 
 
 ![[Pasted image 20230828185154.png]]
+$F$ can be written as
+$$\begin{align*}
+F(x,u,Du)&=  x^{1}u_{x^{1}}+x^{2}u_{x^{2}}-2u=0\\
+F(x,z,p) &= x^{1}(s)p_{1}(s)+x^{2}(s)p_{2}(s)-2z(s)=0\tag{2.1}
+\end{align*}$$
+Characteristic equations:
+$$\begin{align*}
+\dot{x}^{j}(s)&= \partial_{p_{j}}F(x(s),z(s),p(s))\\
+	\dot{z}(s)&= \sum\limits_{j}^{}\partial_{p_{j}}F(x(s),z(s),p(s))p_{j}(s)\\
+			\dot{p}_{j}(s)&= - \partial_{x^{j}}F(x(s),z(s),p(s))-\partial_{z}F(x(s),z(s),p(s)) p_{j}(s)
+\end{align*}$$
+$$\dot{x}^{1}(s)=x^{1}(s)\text{, }\qquad \dot{x}^{2}(s)=x^{2}(s)$$
+$$\dot{z}(s)=x^{1}(s)p_{1}(s)+x^{2}(s)p_{2}(s)\stackrel{(2.1)}{=}2z(s)$$
+The B.C. read $u(x^{1},1)=g(x^{1})$.
+$x^{1}(s)=x_{0}^{1}e^{s}$ 
+
 
 ![[Pasted image 20230828185207.png]]
 
 ![[Pasted image 20230828185219.png]]
 
-![[Pasted image 20230828185233.png]]
-
-![[Pasted image 20230828185245.png]]
+get new prob 3
