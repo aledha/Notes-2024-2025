@@ -49,7 +49,7 @@ Given a point $(x^{1},x^{2})$, we need to find $x_{0}\text{, }s$ such that $x^{1
 Finally,
 $$u(x)=g\left(\frac{x^{1}}{x^{2}}\right)e^{2\text{ ln}x^{2}}=g\left(\frac{x^{1}}{x^{2}}\right)(x^{2})^{2},$$
 where $x^{2}>0$.
-Let us that the PDE holds,
+Let us check that the PDE holds,
 $$\begin{align*}
 &\quad x^{1}\partial_{x^{1}}\left(g \left(\frac{x^{1}}{x^{2}} \right) (x^{2})^{2} \right)+ x^{2}\partial_{x^{2}}\left(g \left(\frac{x^{1}}{x^{2}} \right) (x^{2})^{2} \right),\\
 	 &= x^{1} \cdot \frac{1}{x^{2}}g'\left( \frac{x^{1}}{x^{2}}\right)(x^{2})^{2}+x^{2} \cdot \left[\left(-\frac{x^{1}}{(x^{2})^{2}}\right)g'\left( \frac{x^{1}}{x^{2}}\right)(x^{2})^{2}+ 2g \left(\frac{x^{1}}{x^{2}} \right)x^{2}  \right],\\
