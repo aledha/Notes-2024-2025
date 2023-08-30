@@ -42,10 +42,34 @@ $$\begin{align*}
 $$\dot{x}^{1}(s)=x^{1}(s)\text{, }\qquad \dot{x}^{2}(s)=x^{2}(s)$$
 $$\dot{z}(s)=x^{1}(s)p_{1}(s)+x^{2}(s)p_{2}(s)\stackrel{(2.1)}{=}2z(s)$$
 The B.C. read $u(x^{1},1)=g(x^{1})$.
-$x^{1}(s)=x_{0}^{1}e^{s}$ 
+$x^{1}(s)=x_{0}e^{s}\text{, }\qquad x^{2}(s)=1\cdot e^{s}\text{, }\qquad z(s)=g(x_{0})e^{2s}$
 
+Given a point $(x^{1},x^{2})$, we need to find $x_{0}\text{, }s$ such that $x^{1}(s)=x^{1}\text{ and }x^{2}(s)=x^{2}$. We see that $s=\text{ ln }x^{2}$, and therefore $x_{0}=\frac{x^{1}}{x^{2}}$.
+
+Finally,
+$$u(x)=g\left(\frac{x^{1}}{x^{2}}\right)e^{2\text{ ln}x^{2}}=g\left(\frac{x^{1}}{x^{2}}\right)(x^{2})^{2},$$
+where $x^{2}>0$.
+Let us that the PDE holds,
+$$\begin{align*}
+&\quad x^{1}\partial_{x^{1}}\left(g \left(\frac{x^{1}}{x^{2}} \right) (x^{2})^{2} \right)+ x^{2}\partial_{x^{2}}\left(g \left(\frac{x^{1}}{x^{2}} \right) (x^{2})^{2} \right),\\
+	 &= x^{1} \cdot \frac{1}{x^{2}}g'\left( \frac{x^{1}}{x^{2}}\right)(x^{2})^{2}+x^{2} \cdot \left[\left(-\frac{x^{1}}{(x^{2})^{2}}\right)g'\left( \frac{x^{1}}{x^{2}}\right)(x^{2})^{2}+ 2g \left(\frac{x^{1}}{x^{2}} \right)x^{2}  \right],\\
+&= x^{1}x^{2}g'\left( \frac{x^{1}}{x^{2}}\right)-x^{1}x^{2}g'\left( \frac{x^{1}}{x^{2}}\right)+2g\left( \frac{x^{1}}{x^{2}}\right) (x^{2})^{2}=2u.
+\end{align*}$$
+We can also see that the boundary condition holds, $u(x^{1},1)=g \left(\frac{x^{1}}{1} \right) 1^{2}=g(x^{1})$.
 
 ![[Pasted image 20230828185207.png]]
+$F$ can be written as
+$$\begin{align*}
+F(x,u(x),Du)&= x^{1}u_{x^{1}}+2x^{2}u_{x^{2}}+u_{x^{3}}-3u=0\\
+F(x,z,p)&= x^{1}p_{1}+2x^{2}p_{2}+p_{3}-3z
+\end{align*}$$
+Using the characteristic equations,
+$$\dot{x}^{1}=x^{1}\text{, }\quad \dot{x}^{2}=2x^{2}\text{, }\quad \dot{x}^{3}=1$$
+$$\dot{z}=x_{1}p_{1}+2x^{2}p_{2}+ p_{3}=3z$$
+Solving these ODEs yields
+$$x^{1}(s)=x^{1}_{0}e^{s}\text{, }\quad x^{2}(s)=x_{0}^{2}e^{2s}\text{, }\quad x^{3}(s)=s$$
+
+
 
 ![[Pasted image 20230828185219.png]]
 
