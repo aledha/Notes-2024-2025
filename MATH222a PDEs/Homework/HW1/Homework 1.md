@@ -1,9 +1,11 @@
 ![[Pasted image 20230827163029.png]]
 First, we denote 
-$$F(x,u(x),Du(x))=\partial_{t}u(x)+t \partial_{x}u(x) -f(x,t)=0$$
+$$\begin{align*}
+F(x,t,u(x),Du(x))&= \partial_{t}u(x)+t \partial_{x}u(x) -f(x,t)&= 0\\
+F(x,t,z,p)&= p_{t}+tp_{x}-f&= 0
+\end{align*}$$
 Now, consider the curve $\gamma =\{x(s): s \in I\}$. Let
-$$z(s)=u(x(s)),\qquad p_{j}(s)=\partial_{j}u(x(s)).$$
-$$F(x,z,p)=p_{2}+x^{2}p_{1}-f$$
+$$z(s)=u(t(s)\text{, }x(s)),\qquad p_{j}(s)=\partial_{j}u(t(s),x(s)).$$
 The characteristic equations read
 $$\begin{align*}
 \dot{x}^{j}(s)&= \partial_{p_{j}}F(x(s),z(s),p(s))\\
@@ -11,20 +13,16 @@ $$\begin{align*}
 			\dot{p}_{j}(s)&= - \partial_{x^{j}}F(x(s),z(s),p(s))-\partial_{z}F(x(s),z(s),p(s)) p_{j}(s)
 \end{align*}$$
 In our case,
-$$\begin{align*}
-\dot{x}^{1}(s)&= x^{2}\\
-\dot{x}^{2}(s)&= 1\\
-	\dot{z}(s) &= p_{1}x^{2}+p_{2}=f
-\end{align*}$$
-$$\begin{align*}
-\int_{x^{1}_{0}}^{x^{1}}\text{ d}x^{1}&= \int_{0}^{s}x^{2}(s)\text{ d}s\\
-x^{1}(s)&= x_{0}^{1}+x^{2}(s)-x_{0}^{2}
-\end{align*}$$
-$${x}^{2}(s)=x_{0}^{2}+s$$
-$$\begin{align*}
-\int_{z_{0}}^{z}\text{ d}z&= \int_{0}^{s}f(x(s)) \text{ d}s\\
-z(s)&= z_{0}
-\end{align*}$$
+
+$$u_{t}+tu_{x}=f, \qquad u(0,x)=u_{0}(x)$$
+$$\dot{t}(s)=1\text{, }\qquad \dot{x}(s)=t, \qquad \dot{z}(s)=p_{t}+tp_{x}=f$$
+Solving the ODEs for t and x yields 
+$t(s)=s, \qquad x(s)=x_{0}+ \frac{1}{2}s^{2}$.
+
+Now, given a $(t,x) \in R^{2}$, we should be able to find $x_{0}\text{, }s$ such that $t(s)=t,\quad  x(s)=x$. 
+This results in $s=t, \quad x_{0}=x- \frac{1}{2}t^{2}$
+
+
 
 
 ![[Pasted image 20230828185154.png]]
@@ -86,10 +84,19 @@ $$u(x)=g(x^{1}e^{-x^{3}}\text{, }x^{2}e^{-2x^{3}})\cdot e^{3x^{3}}$$
 $$F(x,z,p)=zp_{1}+p_{2}-1$$
 $$\dot{x}^{1}=z, \quad \dot{x}^{2}=1\text{, }\quad \dot{z}=zp_{1}+p_{2}=1$$
 Solving these,
-$z(s)=s+z_{0}, \quad x^{2}(s)=s+x^{2}_{0}, \quad x^{1}(s)= \frac{1}{2}s^{2}+x^{1}_{0}$.
+$x^{1}= ,\qquad x^{2}(s)=s+x_{0}$.
 $$\begin{cases}
 x^{1}(s)= \frac{1}{2}s^{2}+x_{0}^{1}=x^{1} \\
 x^{2}(s)=s+x_{0}^{2}=x^{2}
 \end{cases}$$
 
-get new prob 3
+![[Pasted image 20230831130335.png]]
+
+$$J(s, x,t):=\text{ det}D_{x}\mathbf{x}(s,x,t)$$
+$$\frac{\text{d}}{\text{d}s}D_{x}\mathbf{x}(s,x,t)$$
+
+
+
+
+
+![[Pasted image 20230831130344.png]]
