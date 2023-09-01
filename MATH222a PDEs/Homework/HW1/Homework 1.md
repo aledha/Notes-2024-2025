@@ -84,18 +84,44 @@ $$u(x)=g(x^{1}e^{-x^{3}}\text{, }x^{2}e^{-2x^{3}})\cdot e^{3x^{3}}$$
 $$F(x,z,p)=zp_{1}+p_{2}-1$$
 $$\dot{x}^{1}=z, \quad \dot{x}^{2}=1\text{, }\quad \dot{z}=zp_{1}+p_{2}=1$$
 Solving these,
-$x^{1}= ,\qquad x^{2}(s)=s+x_{0}$.
+$x^{1}(s)= z_{0}s+ \frac{1}{2}s^{2}+ x_{0},\qquad x^{2}(s)=s+x_{0}, \qquad z(s)=z_{0}+s$.
 $$\begin{cases}
-x^{1}(s)= \frac{1}{2}s^{2}+x_{0}^{1}=x^{1} \\
-x^{2}(s)=s+x_{0}^{2}=x^{2}
+x^{1}(s)= z_{0}s+\frac{1}{2}s^{2}+x_{0} & =x^{1} \\
+x^{2}(s)=s+x_{0} & =x^{2}
 \end{cases}$$
+Here, $z_{0}=u(x_{0},x_{0})=\frac{1}{2}x_{0}$, so the equations become
+$$\begin{cases}
+\frac{1}{2}x_{0}s+\frac{1}{2}s^{2}+x_{0} & =x^{1} \\
+s+x_{0} & =x^{2}
+\end{cases}$$
+$$\begin{align*}
+\frac{1}{2}(x^{2}-s)s+ \frac{1}{2}s^{2}+x^{2}-s&= x^{1}\\
+\frac{1}{2}x^{2}s+x^{2}-s &= x^{1}\\
+s&= \frac{x^{1}-x^{2}}{\frac{1}{2}x^{2}-1}
+\end{align*}$$
+And $$x_{0}=x^{2}- \frac{x^{1}-x^{2}}{\frac{1}{2}x^{2}-1}=\frac{x^{2}(\frac{1}{2}x^{2}-1)-(x^{1}-x^{2})}{\frac{1}{2}x^{2}-1}= \frac{\frac{1}{2}(x^{2})^{2}-x^{1}}{\frac{1}{2}x^{2}-1}$$
+Then,
+$$\begin{align*}
+u(x^{1},x^{2})=z_{0}+s&= \frac{1}{2}\frac{\frac{1}{2}(x^{2})^{2}-x^{1}}{\frac{1}{2}x^{2}-1}+\frac{x^{1}-x^{2}}{\frac{1}{2}x^{2}-1}\\
+&= \frac{\frac{1}{4}(x^{2})^{2}- \frac{1}{2}x^{1}+x^{1}-x^{2}}{\frac{1}{2}x^{2}-1}\\
+&= \frac{\frac{1}{4}(x^{2})^{2}-x^{2}+ \frac{1}{2}x^{1}}{\frac{1}{2}x^{2}-1}\\
+u(x^{1},x^{2})&=  \frac{\frac{1}{2}(x^{2})^{2}-2x^{2}+x^{1}}{x^{2}-2}
+\end{align*}$$
+First, let's check the boundary condition, $u(x_{1},x_{1})= \frac{1}{2}x_{1}$.
+$$u(x^{1},x^{1})=\frac{\frac{1}{2}(x^{1})^{2}-x^{1}}{x^{1}-2}= \frac{1}{2}x^{1}$$
+Let's check that the PDE holds
+$$u_{x^{1}}= \frac{1}{x^{2}-2}, \qquad u_{x^{2}}=\frac{-x^{1}+ \frac{1}{2}(x^{2})^{2}-2x^{2}+4}{(x^{2}-2)^{2}}$$
+$$\begin{align*}
+uu_{x^{1}}+u_{x^{2}}&= \frac{\frac{1}{2}(x^{2})^{2}-2x^{2}+x^{1}}{x^{2}-2} \cdot \frac{1}{x^{2}-2}+\frac{-x^{1}+ \frac{1}{2}(x^{2})^{2}-2x^{2}+4}{(x^{2}-2)^{2}}\\
+&= \frac{(x^{2})^{2}-4x^{2}+4}{(x^{2}-2)^{2}}=1,
+\end{align*}$$
+which holds!
+
 
 ![[Pasted image 20230831130335.png]]
 
-$$J(s, x,t):=\text{ det}D_{x}\mathbf{x}(s,x,t)$$
-$$\frac{\text{d}}{\text{d}s}D_{x}\mathbf{x}(s,x,t)$$
-
-
+$$J(s, x,t):=\text{ det}D_{x}\mathbf{x}(s,x,t)=\left\lvert \begin{bmatrix}\partial_{x_{1}}x_{1} & \dots  & \partial_{x_{n}}x_{1} \\ \vdots &   & \vdots \\ \partial_{x_{1}}x_{n} & \dots & \partial_{x_{n}}x_{n} \end{bmatrix} \right\rvert$$
+$$\dot{\mathbf{x}}(s)=\mathbf{b}(\mathbf{x}) \quad\Leftrightarrow\quad \begin{bmatrix}\dot{x}_{1} \\ \vdots \\ \dot{x}_d\end{bmatrix} =\begin{bmatrix}\mathbf{b}(\mathbf{x})_{1} \\ \vdots  \\ \mathbf{b}(\mathbf{x})_d\end{bmatrix}$$
 
 
 
