@@ -37,12 +37,28 @@ where $c_{k}$ remains the same but $r_{k}'$ is the row vector of $A^{2}$ and $r'
 Then $(c_{k}(r'_{k})^{T})_{ij}=0 \quad\text{for }i\ge k \text{ or }j\le k+1$. 
 $c_{k}(r'_{k})^{T}$ is zero on the main diagonal, 1-diagonal and 2-diagonal, and therefore the same holds for $A^{3}$.
 
-Repeating this until $A^{n}$ yields that $A^{n}=0$ on the main diagonal until the $n$-diagonal, meaning that $A^{n}=0$.
+Repeating this until $n$ times yields that $A^{n}=0$ on the main diagonal until the $n$-diagonal, meaning that $A^{n}=0$.
 
 ```ad-question
 title: Q10
 Show that, barring overflow or underflow, $fl(\sum_{i=1}^{d} x_iy_i) = \sum_{i=1}^{d} x_iy_i(1 + \delta _i)$, where $|\delta _{i}|\le d \epsilon$. Use this to prove the following fact. Let $A^{m×n}$ and $B^{n×p}$ be matrices, and compute their product in the usual way. Barring overflow or underflow show that $|fl(A · B) − A · B| ≤ n · ε · |A| · |B|$. Here the absolute value of a matrix $|A|$ means the matrix with entries $(|A|)_{ij} = |a_{ij}|$, and the inequality is meant componentwise.
 ```
+Will use the roundoff error model 
+$$\text{fl}(a \odot b)=(a \odot b)(1+\delta ), \qquad \lvert \delta  \rvert\le \epsilon .$$
+For now, I will use $\beta$ instead of $\delta$.
+$$\begin{align*}
+\text{fl}\left(\sum\limits_{i=1}^{d}x_{i}y_{i}\right)&= \left(x_{1}y_{1} + \text{fl}\left(\sum\limits_{i=2}^{d}x_{i}y_{i}\right)\right)(1+\beta _{1})\qquad\text{for }\lvert \beta _{1} \rvert\le \epsilon \\
+	&= x_{1}y_{1}(1+\beta _{1})+ (1+\beta _{1})\left(x_{2}y_{2}+ \text{fl} \left(\sum\limits_{i=3}^{d}x_{i}y_{i}\right)\right)(1+\beta _{2})\\
+&\vdots\\
+	 &= \sum\limits_{i=1}^{d}x_{i}y_{i} \prod_{k=1}^{i}(1+\beta_{k}) \qquad\text{for }\lvert \beta _{1} \rvert,\dots, \lvert \beta _{i} \rvert\le \epsilon \\
+\end{align*}$$
+We can bound the product
+$$\begin{align*}
+(1-\epsilon )^{i}&\le \prod_{k=1}^{i}1+\beta _{k}&\le (1+\epsilon )^{i},\\
+1- i \epsilon + \mathcal{O}(\epsilon ^{2})&\le \prod_{k=1}^{i}1+\beta _{k}&\le 1+i \epsilon +\mathcal{O}(\epsilon ^{2}).
+\end{align*}$$
+Ignoring the small $\mathcal{O}(\epsilon ^{2})$, we can rewrite $\prod_{k=1 }^{i}1+ \beta _{k}=1+\delta _{i}\quad\text{for }\lvert \delta _{i} \rvert\le i \epsilon \le d \epsilon$. Then,
+$$\text{fl}\left(\sum\limits_{i=1}^{d}x_{i}y_{i}\right)=\sum\limits_{i=1 }^{d}x_{i}y_{i}(1+\delta _{i})\quad \quad\text{for }\lvert \delta _{i} \rvert\le d \epsilon. $$
 
 
 ```ad-question
