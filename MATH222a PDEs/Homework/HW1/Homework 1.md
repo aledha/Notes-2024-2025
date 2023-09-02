@@ -121,8 +121,24 @@ which holds!
 ![[Pasted image 20230831130335.png]]
 
 $$J(s, x,t):=\text{ det}D_{x}\mathbf{x}(s,x,t)=\left\lvert \begin{bmatrix}\partial_{x_{1}}x_{1} & \dots  & \partial_{x_{n}}x_{1} \\ \vdots &   & \vdots \\ \partial_{x_{1}}x_{n} & \dots & \partial_{x_{n}}x_{n} \end{bmatrix} \right\rvert$$
-$$\dot{\mathbf{x}}(s)=\mathbf{b}(\mathbf{x}) \quad\Leftrightarrow\quad \begin{bmatrix}\dot{x}_{1} \\ \vdots \\ \dot{x}_d\end{bmatrix} =\begin{bmatrix}\mathbf{b}(\mathbf{x})_{1} \\ \vdots  \\ \mathbf{b}(\mathbf{x})_d\end{bmatrix}$$
+
+$$\begin{align*}
+D_{x}\dot{\mathbf{x}}(s)&= D_{x}\mathbf{b}(\mathbf{x}(s,x,t))\\
+	\frac{\text{d}}{\text{d}s}D_{x}\mathbf{x}(s,x,t)&= D_{\mathbf{x}}\mathbf{b}(x) \cdot (D_{x}\mathbf{x})\\
+\end{align*}$$
+Using $\frac{\text{d}}{\text{d}s}\text{ det}A=\text{ det}A \text{ tr }\left( A^{-1} \frac{\text{d}A}{\text{d}s}\right)$   
+$$\begin{align*}
+\frac{\text{d}}{\text{d}s}\text{ det }D_{x}\mathbf{x}&= \text{ det}D_{x}\mathbf{x} \text{ tr }\left((D_{x}\mathbf{x})^{-1}\frac{\text{d}D_{x}\mathbf{x}}{\text{d}s}\right)\\
+J_{s}&= J \cdot \text{tr }((D_{x}\mathbf{x})^{-1}D_{\mathbf{x}}\mathbf{b}(x)(D_{x}\mathbf{x}))\\
+J_{s}&= J \text{ tr }(D_\mathbf{x}\mathbf{b})\\
+J_{s}&= J(\text{div }\mathbf{b}(\mathbf{x}))
+\end{align*}$$
 
 
 
 ![[Pasted image 20230831130344.png]]
+
+$$\dot{x}=b, \qquad \dot{z}=p_{t}=-\text{ div}(z \mathbf{b}), \qquad \dot{t}=1$$
+$t$ is linear, so $t=s$.
+
+$$z(s)=z_{0}-\int_{0}^{s}\text{ div}(z(s)b)$$
