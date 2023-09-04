@@ -2,7 +2,6 @@ Linear PDE:
 $\mathcal{Fe}[u]=0$  where $\mathcal{Fe}$ is linear in $u$.
 $$\mathcal{Fe}[\alpha u+\beta v]=\alpha \mathcal{Fe}[u]+\beta \mathcal{Fe}[v] \quad\forall\quad \alpha ,\beta \in \mathbb{R}$$
 
-
 Multi-index notation:
 $\alpha \in \mathbb{Z}^{n}_{\ge 0}$   $\alpha =(\alpha _{1},\dots,\alpha _{n})$
 $n=d$, then
