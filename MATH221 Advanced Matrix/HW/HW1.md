@@ -59,6 +59,16 @@ $$\begin{align*}
 \end{align*}$$
 Ignoring the small $\mathcal{O}(\epsilon ^{2})$, we can rewrite $\prod_{k=1 }^{i}1+ \beta _{k}=1+\delta _{i}\quad\text{for }\lvert \delta _{i} \rvert\le i \epsilon \le d \epsilon$. Then,
 $$\text{fl}\left(\sum\limits_{i=1}^{d}x_{i}y_{i}\right)=\sum\limits_{i=1 }^{d}x_{i}y_{i}(1+\delta _{i})\quad \quad\text{for }\lvert \delta _{i} \rvert\le d \epsilon. $$
+Now that we have shown this inequality, 
+$$\begin{align*}
+\text{fl}(A \cdot B)_{ij}&= \text{fl}\left(\sum\limits_{k=1}^{n}a_{ik}b_{kj}\right)= \sum\limits_{k=1}^{n}a_{ik}b_{kj}(1+ \delta _{i}), \qquad \lvert \delta _{i} \rvert\le n \epsilon 
+\\
+(\lvert \text{fl}(A \cdot B)-A \cdot B \rvert)_{ij}&= \left\lvert \sum\limits_{k=1}^{n}a_{ik}b_{kj}(1+\delta _{i})-a_{ik}b_{kj} \right\rvert\\
+&= \left\lvert \sum\limits_{k=1}^{n}a_{ik}b_{kj}\delta_{i}\right\rvert\le n \epsilon \left\lvert \sum\limits_{k=1}^{n}a_{ik}b_{kj} \right\rvert\\
+			&\le n \epsilon \sum\limits_{k=1}^{n} \lvert a_{ik} \rvert \lvert b_{kj} \rvert =(n \epsilon \lvert A \rvert \cdot \lvert B \rvert)_{ij}\\
+	\lvert \text{fl}(A \cdot B)-A \cdot B \rvert&\le n \epsilon \lvert A \rvert \cdot \lvert B \rvert
+\end{align*}$$
+
 
 
 ```ad-question
