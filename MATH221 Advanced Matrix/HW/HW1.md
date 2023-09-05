@@ -9,6 +9,8 @@ The rank of a matrix is the dimension of the space spanned by its columns. Show 
 ```
 
 If $\text{rank}(A)=1=\text{dim}(\text{col}(A))$, then each column are linearly dependant of each other. Column number $j$ can therefore be written as a scalar $b_{j}$ multiplied with a vector $a$, i.e., $A=\begin{bmatrix}ab_{1}|ab_{2}|\dots|ab_{n}\end{bmatrix}=ab^{T}$. 
+<div style="page-break-after: always;"></div>
+
 
 ```ad-question
 title: Q4
@@ -38,6 +40,8 @@ Then $(c_{k}(r'_{k})^{T})_{ij}=0 \quad\text{for }i\ge k \text{ or }j\le k+1$.
 $c_{k}(r'_{k})^{T}$ is zero on the main diagonal, 1-diagonal and 2-diagonal, and therefore the same holds for $A^{3}$.
 
 Repeating this until $n$ times yields that $A^{n}=0$ on the main diagonal until the $n$-diagonal, meaning that $A^{n}=0$.
+<div style="page-break-after: always;"></div>
+
 
 ```ad-question
 title: Q10
@@ -68,11 +72,46 @@ $$\begin{align*}
 			&\le n \epsilon \sum\limits_{k=1}^{n} \lvert a_{ik} \rvert \lvert b_{kj} \rvert =(n \epsilon \lvert A \rvert \cdot \lvert B \rvert)_{ij}\\
 	\lvert \text{fl}(A \cdot B)-A \cdot B \rvert&\le n \epsilon \lvert A \rvert \cdot \lvert B \rvert
 \end{align*}$$
+which is what we wanted to show.
 
-
+<div style="page-break-after: always;"></div>
 
 ```ad-question
 title: Q11
 Let $L$ be a lower triangular matrix and solve $Lx = b$ by forward substitution. Show that barring overflow or underflow, the computed solution $\hat x$ satisfies $(L + δL)\hat x = b$, where $|δl_{ij} | ≤ nε|l_{ij} |$, where $ε$ is the machine precision. This means that forward substitution is backward stable. Argue that backward substitution for solving upper triangular systems satisfies the same bound.
 
 ```
+Forward substitution:
+$$x_{1}=\frac{b_{1}}{l_{11}},\qquad x_{i}= \frac{1}{l_{ii}}\left(b_{i}-\sum_{j=1}^{i-1}l_{ij}x_{j}\right)$$
+The actual computed solution becomes
+$$\begin{align*}
+\hat x_{i}&= \text{fl}\left(\frac{1}{l_{ii}}\left(b_{i}-\sum_{j=1}^{i-1}l_{ij}\hat x_{j}\right)\right)\\
+	&= \frac{1}{l_{ii}}\cdot \text{fl}\left(b_{i}-\sum_{j=1}^{i-1}l_{ij}\hat x_{j}\right)(1+\alpha_i  ) \quad \quad\text{for }\lvert \alpha_i   \rvert\le \epsilon \\
+&= \frac{1}{l_{ii}} \cdot \left(b_{i}-\text{fl}\left(\sum\limits_{j=1}^{i-1}l_{ij}\hat x_{j} \right) \right)(1+\alpha_i )(1+\beta_i )\quad \quad\text{for }\lvert \alpha_i  \rvert,\lvert \beta_i  \rvert\le \epsilon \\
+	&= \frac{1}{l_{ii}} \cdot \left(b_{i}-\underbrace{\sum\limits_{j=1}^{i-1}l_{ij}\hat x_{j}(1+\delta _{ij})}_\text{from last question} \right)(1+\alpha _{i})(1+\beta _{i}) \quad \quad\text{for }\begin{cases}
+\lvert \alpha_i  \rvert,\lvert \beta_i  \rvert\le \epsilon\\
+\lvert \delta _{ij} \rvert\le(i-1)\epsilon \le n \epsilon
+\end{cases}
+\end{align*}$$
+
+This is the exact solution of the linear system $\tilde{L}\hat x=b$, where
+$$\tilde{L}_{ij}=\begin{cases}
+\frac{l_{ii}}{(1+\alpha _{i})(1+\beta _{i})} & \quad\text{for }i=j \\
+l_{ij}(1+\delta _{ij}) & \quad\text{for }i>j \\
+0 & \quad \text{else}
+\end{cases}$$
+The first case can be bounded as
+$$\lvert l_{ii} \rvert(1-n \epsilon )\le\frac{\lvert l_{ii} \rvert}{(1+\alpha _{i})(1+\beta _{i})} \le \lvert l_{ii} \rvert(1+n \epsilon ),$$
+since $\lvert \alpha _{i} \rvert, \lvert \beta _{i} \rvert\le \epsilon$ and we assume $n>>1$.  The expression can therefore be rewritten as $\frac{ l_{ii}}{(1+\alpha _{i})(1+\beta _{i})}=l_{ii}(1+\delta _{ii}) \quad\text{for }\lvert \delta _{ii} \rvert\le n \epsilon$..
+
+Then 
+$$\tilde{L}_{ij}=\begin{cases}
+l_{ij}(1+\delta _{ij})  & \quad\text{for }i\ge j, \\
+0  & \quad \text{else},
+\end{cases}$$
+where $\lvert \delta _{ij} \rvert\le n \epsilon$. Forward substitution is backwards stable.
+
+
+Backwards substitution:
+$$x_{n}=\frac{b_{n}}{l_{nn}}, \qquad x_{i}= \frac{1}{l_{i}}\left(b_{i}-\sum\limits_{j=i+1}^{n}l_{ij}x_{j} \right)$$
+I would argue that since forwards substitution is backwards stable, then backwards substitution must also be backwards stable. By symmetry, the error analysis would be nearly identical.
