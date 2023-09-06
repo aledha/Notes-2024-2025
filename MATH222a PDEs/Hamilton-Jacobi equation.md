@@ -12,6 +12,7 @@ $$\begin{align*}
 	& \underbrace{\dot{x}^{j}=\partial_{p_{j}}H(x,p)\qquad \dot{p}_{j}=-\partial_{x^{j}}H(x,p)}_\text{Hamilton's equations}
 \end{align*}$$
 We get local existence in time and uniqueness from the method of characteristics.
+Usually in Hamilton's equations, one uses $q$ instead of $x$.
 
 ```ad-question
 Are we guaranteed global existance in general?
@@ -43,7 +44,7 @@ Can we still formulate a notion of a good weak solution that is both **global** 
 
 
 **How the HJE comes from classical mechanics**
-1. We can represent classical mechanics as an optimization problem (calculus of variations)
+1. We can represent classical mechanics as an optimization problem (Lagrangian formulation $\to$ calculus of variations)
 2. We can transfer the optimization problem to the Hamilton-Jacobi equation
 3. HJE gives rise to Hamilton's mechanics
 
@@ -59,6 +60,9 @@ where
 $$L(x,v)=\underbrace{K}_{\text{Kinetic energy}}-\underbrace{P}_\text{Potential energy}= \frac{1}{2}\lvert v \rvert^{2}-V(x)$$
 The **action principle** allows us to transfer the ODE to an optimization problem. The principle says that the trajectory of the system follows the trajectory of the ***minimal*** $\mathcal{S}$, i.e. where $\nabla \mathcal{S}(\chi )=0$. (Think of a ball rolling down a hill. It would prefer to roll straight down, without taking any detours which decreases its mechanical energy.)
 
+So far:
+$\ddot x_{*}=-\nabla V(x_{*}) \quad\Leftrightarrow\quad x_{*}(s)$ minimizes $S(x_{*})$.
+
 Using *calculus of variations* (def: a field of mathematical analysis that uses variations, which are small changes in functions and functionals, to find maxima and minima of functionals).
 	We look at a compactly supported function $\phi$ which is zero on the boundary, i.e. $\phi (0)=0=\phi (t)$
 $$\begin{align*}
@@ -67,6 +71,8 @@ $$\begin{align*}
 \int_{0}^{t}(\dot x+h \dot \phi ) \dot \phi \bigg|_{h=0}-\phi ^{j} \cdot \nabla V(x+h \phi )\bigg|_{h=0} \text{ d}s&=  0\\
 \int_{0}^{t}\dot x \dot \phi -\phi ^{j}\nabla V(x) \text{ d}s&= 0
 \end{align*}$$
+#ask why $\phi ^{j}$? if $j$ is supposed to be there, why did it disappear?
+
 Taking advantage of $\phi$ being zero on the boundary, we can use integration by parts on the first term:
 $\int_{0}^{t} \dot x \dot \phi \text{ d}s= \phi \dot x \bigg|_{0}^{t}-\int_{0}^{t}\ddot x \phi \text{ d}s=\int_{0}^{t}-\ddot x \phi \text{ d}s$. The equation becomes
 $$\begin{align*}
@@ -76,3 +82,4 @@ $$\begin{align*}
 A solution $x$ for the equation above is called a *weak solution*. We can see that if $x$ satisfies Newtons 2nd ($\ddot x=-\nabla V(x)$), the equation is trivially satisfied. Any "strong" solution is also a weak solution.
 
 
+Hamiltons idea: keep track of $\mathcal{S}(x_{*})$
