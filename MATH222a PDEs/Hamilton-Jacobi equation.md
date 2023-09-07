@@ -63,6 +63,7 @@ The **action principle** allows us to transfer the ODE to an optimization proble
 So far:
 $\ddot x_{*}=-\nabla V(x_{*}) \quad\Leftrightarrow\quad x_{*}(s)$ minimizes $S(x_{*})$.
 
+## Sideline: Calculus of variations
 Using *calculus of variations* (def: a field of mathematical analysis that uses variations, which are small changes in functions and functionals, to find maxima and minima of functionals).
 	We look at a compactly supported function $\phi$ which is zero on the boundary, i.e. $\phi (0)=0=\phi (t)$
 $$\begin{align*}
@@ -83,3 +84,34 @@ A solution $x$ for the equation above is called a *weak solution*. We can see th
 
 
 Hamiltons idea: keep track of $\mathcal{S}(x_{*})$
+
+
+## Lagrangian mechanics (optimization) to the Hamilton-Jacobi equation
+Now, we have a function $\chi _{*}(t)=x$, such that $\chi _{*}^{(t,x)}$ that is a minimiser of $\mathcal{S}$.
+Then our solution is $u(t,x)=\mathcal{S}$  evaluated at $\chi _{*}$, i.e.,
+$$\begin{align*}
+u(t,x)&= \int_{0}^{t}L(\chi _{*}^{(t,x)}(s),\dot \chi _{*}^{(t,x)}(s))\text{ d}s\\
+&= \inf_\limits{\chi \in \mathcal{A}(t,x)}\left\{\int_{0}^{t}L(\chi (s), \dot \chi (s)) \text{ d}s\right\}, 
+\end{align*}$$
+where $\mathcal{A}(t,x)=\{\chi \in C^{2}([0,t]\to \mathbb{R}^{d}), \chi (t)=x \},$  i.e. all differentiable curves in $\mathbb{R}^{d}$, that is $x$ at time $t$.
+
+The idea for deriving the PDE (HJE) that $u$ solves is to use dynamical programming, since we have optimal substructure.
+$$u(t,x)=\inf_\limits{\chi \in \mathcal{A}(t,x)}\left\{ \int_{t-h}^{t}L(\chi ,\dot \chi )\text{ d}s +u(t-h,\chi (t-h))\right\}$$
+If we are given an minimal curve up to $t-h$, the remaining curve in $(t-h,t)$ must also be minimal.
+Moving $u(t,x)$ to the other side and performing Taylor expansion:
+$$\begin{align*}
+0&= \inf_\limits{\chi \in \mathcal{A}(t,x)}\left\{ \int_{t-h}^{t}L(\chi ,\dot \chi )\text{ d}s +u(t-h,\chi (t-h))-u(t,x)\right\}
+\end{align*}$$
+We have $\int_{0}^{t}L(\chi ,\dot \chi ) \text{ d}s=h \cdot L(x, \dot \chi (t))+\mathcal{O}(h)$,
+$u(t-h,\chi (t-h))=-h \partial_{t}u(t,x)-h \sum_{j}^{} \dot \chi ^{j}(t)\partial_{x^{j}}u(t,x)+\mathcal{O}(h)$ 
+
+Then the expression reads
+$$\begin{align*}
+0&= \inf_\limits{\chi \in \mathcal{A}(t,x)} \left\{h \left[L(x,\dot \chi(t))- \partial_{t}u(t,x)-\sum\limits_{j}^{}\dot \chi^{j} (t)\partial_{x^{j}}u(t,x) \right]+\mathcal{O}(h) \right\}\\
+&= h \left[L(x,v)- \partial_{t}u(t,x)-\sum_{j}^{}v^{j}\partial_{x^{j}}u(t,x) \right]+\mathcal{O}(h)\\
+&= h \left[L(x,v)- \partial_{t}u(t,x)-v \cdot Du(t,x) \right]+\mathcal{O}(h)
+\end{align*}$$
+Where $v=\dot \chi (t)$ is the minimiser.
+Taking $h\to 0$ gives us back the **Hamilton-Jacobi equation**!
+$$\partial_{t}u(t,x)+H(x,Du)=0,$$
+where $H(x,p)=-\inf\limits_{v \in \mathbb{R}^{d} } \{L(x,v)-v \cdot p \}$ 

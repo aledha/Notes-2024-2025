@@ -1,5 +1,8 @@
 By: Alexander Hatle
 ![[Pasted image 20230906123534.png]]
+We have that $v=\dot \chi (t)$ is the minimiser of
+$$\inf_{{\nu }\in \mathbb{R}^{d}}\{L(x,\mathbf{\nu} )-\mathbf{\nu} \cdot Du(t,x) \}$$
+
 
 
 <div style="page-break-after: always; visibility: hidden"> \pagebreak </div>
