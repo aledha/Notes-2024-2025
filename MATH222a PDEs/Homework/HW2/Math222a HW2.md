@@ -11,16 +11,25 @@ Where $\gamma$ is from Definition 2.8 about $C^{k}$ boundary. Now, the boundary 
 <div style="page-break-after: always; visibility: hidden"> \pagebreak </div>
 
 ![[Pasted image 20230906123624.png]]
-$$\inf_{\mathbf w \in \mathcal{A(t,x)}}\int_{0}^{t}L(\mathbf w(s), \mathbf{ \dot w}(s))\text{ d}s$$
+We will use calculus of variations to 
 $$\begin{align*}
-\frac{\text{d}}{\text{d}h}\int_{0}^{t}L\left(\mathbf w(s)+h \phi (s), \frac{\text{d}}{\text{d}s}(\mathbf w(s)+h \phi (s))\right) \text{ d}s\bigg|_{h=0}&= 0\\
-\int_{0}^{t} \phi (s)
+\frac{\text{d}}{\text{d}h}\int_{0}^{t}L\left(\mathbf w(s)+h \phi (s), \dot {\mathbf w}(s)+h \dot \phi (s)\right) \text{ d}s\bigg|_{h=0}&= 0\quad\forall\quad \phi \in C^{2}_{c}((0,t)\to \mathbb{R}^{d})\\
+\int_{0}^{t} \sum_{j}^{}\left[\phi^{j} (s)\cdot \partial_{\mathbf w^{j}}L(\mathbf w(s),\dot{\mathbf w}(s)) +\dot \phi^{j} (s)\partial_{\dot{\mathbf w}^{j}}L(\mathbf w(s),\dot{\mathbf w}(s)) \text{ d}s \right] &= 0
 \end{align*}$$
-
-
+We denote the minimiser as $\mathbf x(s)$
+$$\int_{0}^{t}\phi D_{x}L+\dot \phi D_{v}L \text{ d}s=0.$$
+Integration by parts on the second term gives $\int_{0}^{t}\dot \phi D_{v}L \text{ d}s=\left[\phi D_{v}L \right]_{0}^{t}-\int_{0}^{t}\phi \frac{\text{d}}{\text{d}s}(D_{v}L)\text{ d}s$, where the compact support of $\phi$ suggests that the first term on RHS is zero.
+Then the expression reads
+$$\begin{align*}
+\int_{0}^{t}\left[\phi(s) D_{x}L(\mathbf x(s), \dot {\mathbf x}(s))- \phi(s) \frac{\text{d}}{\text{d}s}D_{v}L(\mathbf x(s), \dot {\mathbf x}(s)) \right] \text{ d}s&= 0\\
+\int_{0}^{1}\phi (s)\underbrace{\left[D_{x}L(\mathbf x(s), \dot {\mathbf x}(s))-\frac{\text{d}}{\text{d}s}L(\mathbf x(s), \dot {\mathbf x}(s)) \right]}_\text{Euler-Lagrange}\text{ d}s=0\quad\forall\quad \phi \in C^{2}_{c}((0,t)\to \mathbb{R}^{d})
+\end{align*}$$
+A minimiser must solve this equation above for each $\phi,$ then it must also solve the Euler-Lagrange equation.
 <div style="page-break-after: always; visibility: hidden"> \pagebreak </div>
 
 ![[Pasted image 20230906123635.png]]
+Picking up from the last calculation, but allowing $\phi (0)≠0$, the integration by parts becomes
+$\int_{0}^{t}\dot \phi D_{v}L \text{ d}s=\left[\phi D_{v}L \right]_{0}^{t}-\int_{0}^{t}\phi \frac{\text{d}}{\text{d}s}(D_{v}L)\text{ d}s=-\phi (0)D_{v}L(\mathbf x(0),\dot {\mathbf x}(0))-\int_{0}^{t}\phi \frac{\text{d}}{\text{d}s}(D_{v}L)\text{ d}s$
 
 
 <div style="page-break-after: always; visibility: hidden"> \pagebreak </div>
