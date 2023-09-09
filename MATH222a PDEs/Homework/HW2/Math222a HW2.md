@@ -1,11 +1,15 @@
 By: Alexander Hatle
 ![[Pasted image 20230906123534.png]]
-Let's do a change of variables such that we end up in the flat case. We define
+We define
 $$\begin{align*}
-\tilde{x}^{i}&= x^{i} \quad\text{for }i=1,\dots,d-1,\\
-	\tilde{x}^{d}&= x^{d}-\gamma (x^{1},\dots,x^{d-1}),
+\tilde{x}^{i}&=\Phi (x^{i}) =x^{i} \quad\text{for }i=1,\dots,d-1,\\
+	\tilde{x}^{d}&=\Phi (x^{d})= x^{d}-\gamma (x^{1},\dots,x^{d-1}),
 \end{align*}$$
-Where $\gamma$ is from Definition 2.8 about $C^{k}$ boundary. Now, the boundary is on the hyperplane $\tilde x^{d}=0$.
+Where $\gamma$ is from Definition 2.8 about $C^{k}$ boundary. 
+We know that $\Phi (\Gamma)$ is flat a neighbourhood near $\Phi (x_{0})$.
+Then, 
+$$\tilde F(\tilde x,\tilde u(\tilde x), D_{\tilde x}\tilde u (\tilde x))=F(x,z,p)=0,$$
+where $x = \Phi ^{-1}(\tilde x),\quad  z = \tilde u (\tilde x),\quad  p_{j}= \sum_{k}^{}\partial_{x^{j}}\tilde x^{k}(\Phi ^{-1}(\tilde x))\partial_{\tilde x^{k}}\tilde u(\tilde x)$.
 
 
 <div style="page-break-after: always; visibility: hidden"> \pagebreak </div>
@@ -22,19 +26,30 @@ Integration by parts on the second term gives $\int_{0}^{t}\dot \phi D_{v}L \tex
 Then the expression reads
 $$\begin{align*}
 \int_{0}^{t}\left[\phi(s) D_{x}L(\mathbf x(s), \dot {\mathbf x}(s))- \phi(s) \frac{\text{d}}{\text{d}s}D_{v}L(\mathbf x(s), \dot {\mathbf x}(s)) \right] \text{ d}s&= 0\\
-\int_{0}^{1}\phi (s)\underbrace{\left[D_{x}L(\mathbf x(s), \dot {\mathbf x}(s))-\frac{\text{d}}{\text{d}s}L(\mathbf x(s), \dot {\mathbf x}(s)) \right]}_\text{Euler-Lagrange}\text{ d}s=0\quad\forall\quad \phi \in C^{2}_{c}((0,t)\to \mathbb{R}^{d})
+\int_{0}^{1}\phi (s)\underbrace{\left[D_{x}L(\mathbf x(s), \dot {\mathbf x}(s))-\frac{\text{d}}{\text{d}s}D_{v}L(\mathbf x(s), \dot {\mathbf x}(s)) \right]}_\text{Euler-Lagrange}\text{ d}s&= 0\quad\forall\quad \phi \in C^{2}_{c}((0,t)\to \mathbb{R}^{d})
 \end{align*}$$
-A minimiser must solve this equation above for each $\phi,$ then it must also solve the Euler-Lagrange equation.
+A minimiser must solve this equation above for each $\phi,$ then it must also solve the Euler-Lagrange equation. $\square$
 <div style="page-break-after: always; visibility: hidden"> \pagebreak </div>
 
 ![[Pasted image 20230906123635.png]]
 Picking up from the last calculation, but allowing $\phi (0)≠0$, the integration by parts becomes
 $\int_{0}^{t}\dot \phi D_{v}L \text{ d}s=\left[\phi D_{v}L \right]_{0}^{t}-\int_{0}^{t}\phi \frac{\text{d}}{\text{d}s}(D_{v}L)\text{ d}s=-\phi (0)D_{v}L(\mathbf x(0),\dot {\mathbf x}(0))-\int_{0}^{t}\phi \frac{\text{d}}{\text{d}s}(D_{v}L)\text{ d}s$
 
-
+Putting this back and doing the same operations as in a), we get
+$$\int_{0}^{1}\phi (s)\left[D_{x}L(\mathbf x(s), \dot {\mathbf x}(s))-\frac{\text{d}}{\text{d}s}D_{v}L(\mathbf x(s), \dot {\mathbf x}(s)) \right]\text{ d}s-\phi (0)D_{v}L(\mathbf x(0),\dot {\mathbf x}(0))=0,$$
+$\forall\quad \phi \in C^{2}((0,t)\to \mathbb{R}^{d}:\phi (t)=0)$.
+But for the solution $\mathbf x$, the integral must be zero by a). Therefore $\phi (0) D_{v}L(\mathbf x(0),\dot {\mathbf x}(0))=0,$ and since $\phi(0)$ can be nonzero, then
+$$D_{v}L(\mathbf x(0),\dot {\mathbf x}(0))=0.\quad \square$$
 <div style="page-break-after: always; visibility: hidden"> \pagebreak </div>
 
 ![[Pasted image 20230906123645.png]]
+
+$$\begin{align*}
+\frac{\text{d}}{\text{d}h}\int_{0}^{t}L(\mathbf w(s)+h\phi (s), \dot {\mathbf w}(s)+h \dot \phi (s)) \text{ d}s+g(\mathbf w(0)+h \phi (0))\bigg|_{h=0}&= 0\\
+		\int_{0}^{t} \sum_{j}^{}\phi ^{j}(s)\partial_{x^{i}}L(\mathbf w(s),\dot {\mathbf w}(s))+\dot \phi ^{j}(s)\partial_{v^{i}}L(\mathbf w(s),\dot {\mathbf w}(s)) \text{ d}s+ \sum_{j}^{}\phi ^{j}(0)\partial_{x^{j}}g(\mathbf w(0))  &=0 \\
+\int _{0}^{t}\phi D_{x}L+\dot \phi D_{v}L \text{ d}s+\phi (0)\cdot D_{x}g(\mathbf w(0))=0
+\end{align*}$$
+
 
 <div style="page-break-after: always; visibility: hidden"> \pagebreak </div>
 
@@ -70,3 +85,24 @@ Now, we have shown that $f$ is contained between these two lines. Then, it is ea
 
 ![[Pasted image 20230906123723.png]]
 
+We will first show the "if" part. 
+$$\lim_{h \to 0^{\pm}} \frac{f(x+h)-f(x)}{h}$$
+Setting $y=x+h$,
+$$\lim_{h \to 0^{\pm} } \frac{f(y)-f(x)}{h}\ge \lim_{h \to 0^{\pm} }\frac{m \cdot (y-x)+f(x)-f(x)}{h}=m$$
+
+
+We consider three points, $x-h<x<x+h$. We denote $y^{+}=x+h,y^{-}=x-h$.
+Let us assume that $m$ belongs to the subdifferential of $f$ at $x$. Then,
+$f(y)\ge m(y-x)+f(x) \quad\forall\quad y \in \mathbb{R}$
+$$\begin{align*}
+f(y^{+})&\ge m h+f(x)\\
+f(y^{-})&\ge m(-h)+f(x)
+\end{align*}$$
+$$\frac{f(x)-f(y^{-})}{h}\le m\le \frac{f(y^{+})-f(x)}{h}$$
+Now we can use the convexity of $f$, namely 
+$$f(x)\le \frac{1}{2}f(y^{-}) + \frac{1}{2}f(y^{+}) \quad\implies\quad 2f(x)-f(y^{+})\le f(y^{-}).$$
+Inserting this into the previous inequality gives
+$$\frac{f(y^{+})-f(x)}{h}\le m \le \frac{f(y^{+})-f(x)}{h},$$
+which implies that $m=\frac{f(y^{+})-f(x)}{h}=\frac{f(x+h)-f(x)}{h}$.
+Since this must hold for all $y$, it must also hold for $h\to 0,$ i.e.,
+$$m=\lim_{h \to 0} \frac{f(x+h)-f(x)}{h}=f'(x)$$
