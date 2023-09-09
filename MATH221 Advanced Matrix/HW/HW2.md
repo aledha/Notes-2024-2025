@@ -3,3 +3,6 @@
 - From Chapter 3: 9
 - Extra Credit: From Chapter 1: 20
 
+![[Pasted image 20230909122524.png]]
+Conditions for norms:
+
