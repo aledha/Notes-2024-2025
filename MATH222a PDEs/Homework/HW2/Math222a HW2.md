@@ -10,16 +10,16 @@ We know that $\Phi (\Gamma)$ is flat a neighbourhood near $\Phi (x_{0})$.
 Then, 
 $$\tilde F(\tilde x,\tilde u(\tilde x), D_{\tilde x}\tilde u (\tilde x))=F(x,z,p)=0,$$
 where $x = \Phi ^{-1}(\tilde x),\quad  z = \tilde u (\tilde x),\quad  p_{j}= \sum_{k}^{}\partial_{x^{j}}\tilde x^{k}(\Phi ^{-1}(\tilde x))\partial_{\tilde x^{k}}\tilde u(\tilde x)$.
-
+I'm not sure how to proceed
 <div style="page-break-after: always; visibility: hidden"> \pagebreak </div>
 
 ![[Pasted image 20230906123624.png]]
-We will use calculus of variations to 
+We will use calculus of variations to show this. 
 $$\begin{align*}
 \frac{\text{d}}{\text{d}h}\int_{0}^{t}L\left(\mathbf w(s)+h \phi (s), \dot {\mathbf w}(s)+h \dot \phi (s)\right) \text{ d}s\bigg|_{h=0}&= 0\quad\forall\quad \phi \in C^{2}_{c}((0,t)\to \mathbb{R}^{d})\\
 \int_{0}^{t} \sum_{j}^{}\left[\phi^{j} (s)\cdot \partial_{\mathbf w^{j}}L(\mathbf w(s),\dot{\mathbf w}(s)) +\dot \phi^{j} (s)\partial_{\dot{\mathbf w}^{j}}L(\mathbf w(s),\dot{\mathbf w}(s)) \text{ d}s \right] &= 0
 \end{align*}$$
-We denote the minimiser as $\mathbf x(s)$
+This simplifies to
 $$\int_{0}^{t}\phi D_{x}L+\dot \phi D_{v}L \text{ d}s=0.$$
 Integration by parts on the second term gives $\int_{0}^{t}\dot \phi D_{v}L \text{ d}s=\left[\phi D_{v}L \right]_{0}^{t}-\int_{0}^{t}\phi \frac{\text{d}}{\text{d}s}(D_{v}L)\text{ d}s$, where the compact support of $\phi$ suggests that the first term on RHS is zero.
 Then the expression reads
@@ -48,8 +48,7 @@ $$\begin{align*}
 		\int_{0}^{t} \sum_{j}^{}\phi ^{j}(s)\partial_{x^{i}}L(\mathbf w(s),\dot {\mathbf w}(s))+\dot \phi ^{j}(s)\partial_{v^{i}}L(\mathbf w(s),\dot {\mathbf w}(s)) \text{ d}s+ \sum_{j}^{}\phi ^{j}(0)\partial_{x^{j}}g(\mathbf w(0))  &=0 \\
 \int _{0}^{t}\phi D_{x}L+\dot \phi D_{v}L \text{ d}s+\phi (0)\cdot D_{x}g(\mathbf w(0))=0
 \end{align*}$$
-
-
+I'm not sure how to proceed.
 <div style="page-break-after: always; visibility: hidden"> \pagebreak </div>
 
 ![[Pasted image 20230906123657.png]]
