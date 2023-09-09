@@ -11,7 +11,6 @@ Then,
 $$\tilde F(\tilde x,\tilde u(\tilde x), D_{\tilde x}\tilde u (\tilde x))=F(x,z,p)=0,$$
 where $x = \Phi ^{-1}(\tilde x),\quad  z = \tilde u (\tilde x),\quad  p_{j}= \sum_{k}^{}\partial_{x^{j}}\tilde x^{k}(\Phi ^{-1}(\tilde x))\partial_{\tilde x^{k}}\tilde u(\tilde x)$.
 
-
 <div style="page-break-after: always; visibility: hidden"> \pagebreak </div>
 
 ![[Pasted image 20230906123624.png]]
