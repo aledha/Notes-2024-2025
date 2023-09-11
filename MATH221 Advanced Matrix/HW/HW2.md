@@ -112,8 +112,38 @@ Now we have shown that $\lVert xy^{H} \rVert_{F}=\lVert xy^{H} \rVert_{2}=\lVert
 ![[Pasted image 20230910190721.png]]
 ![[Pasted image 20230910190748.png]]
 
-## 1.7.10
+## 1.7.5
+Using the equivalent definition of a matrix norm:
+$$\lVert A \rVert_{\infty}= \max_{\lVert x \rVert_{\infty}=1}\lVert Ax \rVert_{\infty}=\max_{\lVert x \rVert_{\infty}=1} \left[\max_{i} \left(\sum_{j=1}^{n} \lvert a_{ij}x_{j} \rvert\right) \right].$$
+With the restriction that $\lVert x \rVert_{\infty}=1$, the summand is maximised when $x_{j}=\pm 1$. The norm becomes
+$$\lVert A \rVert_{\infty}=\max_{i}\sum_{j=1}^{n} \lvert a_{ij} \rvert,$$
+which is what we wanted to show.
 
+## 1.7.6
+$$\lVert A^{T} \rVert_{1}= $$
+
+## 1.7.8
+Hint: if $X,Y \in \mathbb{R}^{n \times n} \quad\implies\quad XY \text{ and } YX$ have the same eigenvalues.
+I will assume that the matrix is complex and that it is supposed to say $\lVert A \rVert_{2}=\lVert A^{*} \rVert_{2}$
+$$\lVert A \rVert_{2}= \sqrt{\lambda _{\text{max}}(A^{*}A)}, \qquad \lVert A^{*}\rVert_{2}= \sqrt{\lambda _{\text{max}}((A^{*})^{*}A^{*})}=\sqrt{\lambda _{\text{max}}(AA^{*})}$$
+Since 
+
+
+
+
+## 1.7.10
+$$\lVert x \rVert_{2}=\sqrt{\sum_{i=1}^{n}\lvert x_{i} \rvert^{2}}\le \sqrt{\left(\sum_{i=1}^{n}\lvert x_{i} \rvert\right)\left(\sum_{i=1}^{n}\lvert x_{i} \rvert\right)}\le \lVert x \rVert_{1}$$
+$$\lVert x \rVert_{1}=\sum_{i=1}^{n}\lvert x_{i} \rvert \cdot 1 \stackrel{C.S.}{\le }\sqrt{\sum_{i=1}^{n}\lvert x_{i} \rvert^{2}} \sqrt{\sum_{i=1}^{n}1^{2}}= \sqrt{n}\lVert x \rVert_{2}$$
+$$\lVert Ax \rVert_{2}\le  \lVert Ax \rVert_{1} \le \lVert A \rVert_{1}\lVert x \rVert_{1} \le \lVert A \rVert_{1} \sqrt{n} \lVert x \rVert_{2}$$
+$$\frac{\lVert Ax \rVert_{2}}{\lVert x \rVert_{2}} \le \sqrt{n} \lVert A \rVert_{1} \quad\implies\quad n^{-\frac{1}{2}}\lVert A \rVert_{2} \le \lVert A_{1} \rVert$$
+
+For the other inequality 
+$$\lVert Ax \rVert_{1}\le \sqrt{n}\lVert Ax \rVert_{2} \le \sqrt{n} \lVert A \rVert_{2}\lVert x \rVert_{2}$$
+$$\lVert Ax \rVert_{1}\le \sqrt{n}\lVert A \rVert_{2}\lVert x \rVert_{1}$$
+$$\lVert A \rVert_{1}\le \sqrt{n} \lVert A \rVert_{2}$$
+
+Combining both inequalities gives
+$$ n^{- \frac{1}{2}}\lVert A \rVert_{2}\le \lVert A \rVert_{1} \le n^{\frac{1}{2}}\lVert A \rVert_{2}.$$
 
 ## 1.7.2
 First, for the operator norm:
