@@ -141,3 +141,9 @@ z(s)&= z_{0}-\int_{0}^{s}\text{ div}\Big(z\big(\tau \big)\cdot b\big(\mathbf{x}(
 &= z_{0}-\int_{0}^{s}z(\tau )(\partial_{x^{1}}b(\mathbf{x}(\tau ))_{1}+ \dots + \partial_{x^{d}}b(\mathbf{x}(\tau ))_{d})\text{ d}\tau 
 \end{align*}$$
 I'm kinda stuck here.
+
+```ad-note
+title: Solution
+![[Pasted image 20230912154843.png]]
+![[Pasted image 20230912154853.png]]
+```
