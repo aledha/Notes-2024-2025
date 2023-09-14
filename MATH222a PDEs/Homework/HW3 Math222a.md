@@ -30,18 +30,36 @@ With the restriction that $q>1 \quad\implies\quad \alpha \in (0,\infty)$.
 ![[Pasted image 20230912152500.png]]
 First, note that 
 $$H(p)= \frac{1}{2}\sum_{i,j=1}^{d}a^{ij}p_{i}p_{j}+ \sum_{i=1}^{d}b^{i}p_{i}= \frac{1}{2}p^{T}Ap+ p^{T}b$$
+Since $A$ is positive definite, the first term is convex. The second term is also convex.
+Another result of $A$ being positive definite is that 
+$$\lim_{\lVert p \rVert \to \infty} \frac{1}{2 \lVert p \rVert} p^{T}Ap \to \infty,$$
+because the quadratic is always positive. Therefore
+$$\lim_{\lVert p \rVert \to \infty} \frac{H(p)}{\lVert p \rVert}\to \infty,$$
+since the quadratic term will dominate the linear term.
 
-
-$$H^{*}(v)= \sup_{p \in \mathbb{R}^{d}}\left\{ v \cdot p - H(p) \right\}$$
-
-$$(Ap)_{i}=\sum_{j=1}^{d}a_{ij}p_{j}$$
-
+Now that we know that the transform exists, let's compute it.
+$$\begin{align*}
+H^{*}(v)&=  \sup_{p \in \mathbb{R}^{d}}\left\{ p^{T}v - H(p) \right\}\\
+	&= \sup_{p \in \mathbb{R}^{d}} \left\{ p^{T}(v-b)- \frac{1}{2}p^{T}Ap \right\}
+\end{align*}$$
+Differentiating with respect to $p$ and setting the expression equal to zero,
+$$D_{p}\left(p^{T}(v-b)- \frac{1}{2}p^{T}Ap \right)=v-b- \frac{1}{2}(A+A^{T})p=0 \quad \stackrel{A \text{ sym.}}{\implies}\quad p=A^{-1}(v-b)^.$$
+Putting this back into our expression,
+$$\begin{align*}
+H^{*}(v)&= (v-b)^{T}A^{-T}(v-b)- \frac{1}{2}(v-b)^{T}A^{-T}AA^{-1}(v-b)\\
+H^{*}(v)&= (v-b)^{T}A^{-1}(v-b) - \frac{1}{2}(v-b)^{T}A^{-1}(v-b)\\
+H^{*}(v)&= \frac{1}{2} (v-b)^{T}A^{-1}(v-b)
+\end{align*}$$
 
 ![[Pasted image 20230912152506.png]]
+#ask what does it mean that $p \in \partial_{}f(v)$ and $v \in f^{*}(p)$? 
+
 
 ![[Pasted image 20230912152515.png]]
 
+
+
 ![[Pasted image 20230912152525.png]]
+#ask  am I supposed to show that the $y \in \mathbb{R}^{d}$ that minimises the expression has to be in $B_{Rt}(x)$?
 
 ![[Pasted image 20230912152533.png]]
-
