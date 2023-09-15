@@ -52,7 +52,10 @@ H^{*}(v)&= \frac{1}{2} (v-b)^{T}A^{-1}(v-b)
 \end{align*}$$
 
 ![[Pasted image 20230912152506.png]]
-#ask what does it mean that $p \in \partial_{}f(v)$ and $v \in f^{*}(p)$? 
+#ask what does it mean that $v \in f^{*}(p)$? 
+
+$$p \in \partial_{}f(v)\quad\Leftrightarrow\quad f(y)\ge p \cdot (y-v)+f(v) \quad\forall\quad y \in \mathbb{R}$$
+
 
 
 ![[Pasted image 20230912152515.png]]
@@ -60,6 +63,46 @@ H^{*}(v)&= \frac{1}{2} (v-b)^{T}A^{-1}(v-b)
 
 
 ![[Pasted image 20230912152525.png]]
-#ask  am I supposed to show that the $y \in \mathbb{R}^{d}$ that minimises the expression has to be in $B_{Rt}(x)$?
+First, we denote
+$$f(y):= tL \left(\frac{x-y}{t} \right)+g(y)$$
+Suppose that $y^{*}$ minimises $f$. Then,
+$$D_{y}f(y^{*})=0.$$
+Computing the value of $D_{y}f$,
+$$D_{y}f(y)=t \cdot \left(- \frac{1}{t}\right)DL \left(\frac{x-y}{t} \right)+ Dg(y)$$
+$$DL \left(\frac{x-y^{*}}{t} \right)=Dg(y^{*})$$
+Since $L(v)=   v \cdot p- H(p) \quad\implies\quad DL(v)=p \text{ and }DH(p)=v$ 
+
+Calling $Dg(y^{*})=p$ and $\frac{x-y^{*}}{t}=v$, we get
+$$\begin{align*}
+\frac{x-y^{*}}{t}&= DH(Dg(y^{*}))\\
+\lvert x-y^{*} \rvert&= t \lvert DH(Dg(y^{*})) \rvert\\
+\lvert x-y^{*} \rvert &\le tR, 
+\end{align*}$$
+where $R=\sup_{y \in \mathbb{R}^{d}}\lvert DH(Dg(y)) \rvert$. 
+
+As per the claim, any $y$ that minimises the equation above must be an element of the ball with radius $Rt$ centered at $x$, i.e. $y \in B_{Rt}(x)\quad  \square$.
 
 ![[Pasted image 20230912152533.png]]
+The Hamiltonian is $H(p)=\lvert p \rvert^{2}$. Then, the Legendre transform is
+$$\begin{align*}
+L(v)&=  \sup_{p \in \mathbb{R}^{d}}\{v \cdot p -H(p) \}\\
+&= \sup_{p \in \mathbb{R}^{d}} \{v \cdot p-\lvert p \rvert^{2} \}
+\end{align*}$$
+Differentiation with respect to $p$,
+$$D_{p}(v \cdot p- \lvert p \rvert^{2})=v -2p=0 \quad\implies\quad p = \frac{1}{2}v.$$
+Putting this back,
+$$\begin{align*}
+L(v)&=  v \cdot \frac{1}{2}v- \left\lvert \frac{1}{2}v \right\rvert^{2}\\
+&= \frac{\lvert v \rvert^{2}}{4}
+\end{align*}$$
+The Hopf-Lax formula reads
+$$\begin{align*}
+u(t,x)&= \min_{y \in \mathbb{R}^{d}}\left\{ tL\left( \frac{x-y}{t}\right)+g(y) \right\}\\
+		&= \min_{y \in \mathbb{R}^{d}}\left\{ t \frac{\lvert x-y \rvert^{2}}{4 \lvert t \rvert^{2}} + g(y)\right\}\\
+	&= \min_{y \in \mathbb{R}^{d}} \left\{ \frac{\lvert x-y \rvert^{2}}{4t}+g(y) \right\}
+\end{align*}$$
+Here, $g(y)=\begin{cases}0  & \quad\text{for }y \in E \\ \infty  & \quad\text{for }y \notin E \end{cases}$ . 
+So, if $x \in E$, then the minimum is achieved at $y=x$, such that $g(x)=0$ and the $x-y$ term vanishes.
+If $x\notin E$, then the minimum is achieved when $y \in E$, and the $x-y$ term is minimised. 
+$\lvert x-y \rvert$ must therefore be the minimum distance between $x$ and the set $E$, i.e., $\lvert x-y \rvert=\text{dist}(x,E)$. The result becomes
+$$u(t,x)= \frac{\text{dist(x,E)}^{2}}{4t}.$$
