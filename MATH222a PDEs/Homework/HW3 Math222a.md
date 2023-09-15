@@ -50,11 +50,31 @@ H^{*}(v)&= (v-b)^{T}A^{-T}(v-b)- \frac{1}{2}(v-b)^{T}A^{-T}AA^{-1}(v-b)\\
 H^{*}(v)&= (v-b)^{T}A^{-1}(v-b) - \frac{1}{2}(v-b)^{T}A^{-1}(v-b)\\
 H^{*}(v)&= \frac{1}{2} (v-b)^{T}A^{-1}(v-b)
 \end{align*}$$
-
+![[Pasted image 20230906123723.png]]
 ![[Pasted image 20230912152506.png]]
 #ask what does it mean that $v \in f^{*}(p)$? 
 
-$$p \in \partial_{}f(v)\quad\Leftrightarrow\quad f(y)\ge p \cdot (y-v)+f(v) \quad\forall\quad y \in \mathbb{R}$$
+$$p \in \partial_{}f(v)\quad\Leftrightarrow\quad f(w)\ge p \cdot (w-v)+f(v) \quad\forall\quad w \in \mathbb{R}$$
+
+$$v \in \partial_{}f^{*}(p)\quad\Leftrightarrow\quad f^{*}(w)\ge v \cdot (w-p)+f^{*}(p) \quad\forall\quad w \in \mathbb{R}$$
+Since $f$ is convex, we have
+$$f(tx +(1-t)y) \le tf(x)+(1-t)f(y) \quad\forall\quad x,y \in \mathbb{R}, \quad t \in (0,1).$$
+First, assume that
+$$\begin{align*}
+pv&= f(v)+f^{*}(p)\\
+f^{*}(p)&= pv-f(v) \quad \qquad \left(= \sup_{x \in \mathbb{R}^{d}} \{px-f(x) \} \right)\\
+f^{*}(p)& \ge px-f(x) \quad\forall\quad x \in \mathbb{R}\\
+f(x) & \ge px-f^{*}(p) -f(v) +f(v)\\
+f(x)& \ge px -pv +f(v)\\
+f(x)& \ge p(x-v)+f(v) \quad\forall\quad x \in \mathbb{R}
+\end{align*}$$
+The other way:
+$$\begin{align*}
+f(x) &\ge  p(x-v)+f(v) \quad\forall\quad x \in \mathbb{R}\\
+	f(v) &\ge p(x-v)+f(x) \quad\forall\quad x \in \mathbb{R}\\
+f(v) &= \sup_{x \in \mathbb{R}}
+\end{align*}$$
+
 
 
 
