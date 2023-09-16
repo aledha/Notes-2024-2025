@@ -5,7 +5,7 @@ $$\begin{align*}
 f^{*}(p)&=  \sup_{v \in \mathbb{R}}\left\{ p \cdot v-f(v) \right\}\\
 	&= \sup_{v \in \mathbb{R}} \left\{ p \cdot v - \frac{1}{q}\lvert v \rvert^{q} \right\}
 \end{align*}$$
-Note that, if $p \le 0$, then $f^{*}(p)=0$.
+Note that if $p \le 0$, then $f^{*}(p)=0$.
 
 Let's compute what $f^{*}(p)$ is for $p>0$.
 We see immediately that $v \ge 0$, since any negative $v$ would result in both terms being $<0$. Then we can remove the absolute value,
@@ -19,13 +19,11 @@ f^{*}(p)&= pp^{\frac{1}{q-1}}- \frac{1}{q} (p^{\frac{1}{q-1}})^{q}\\
 &= \frac{q-1}{q}p^{\frac{q}{q-1}}\\
 f^{*}(p)&= \frac{1}{\alpha }p^{\alpha },
 \end{align*}$$
-where $\alpha = \frac{q}{q-1}$. Covering all the cases, our final result is
+where $\alpha = \frac{q}{q-1}$. If $q>1$, our final result is 
 $$f^{*}(p)=\begin{cases}
 \frac{1}{\alpha }p^{\alpha } & \quad\text{for }p>0, \\
 0 & \quad\text{else}.
 \end{cases}$$
-With the restriction that $q>1 \quad\implies\quad \alpha \in (0,\infty)$.
-
 
 ![[Pasted image 20230912152500.png]]
 First, note that 
@@ -37,7 +35,7 @@ because the quadratic is always positive. Therefore
 $$\lim_{\lVert p \rVert \to \infty} \frac{H(p)}{\lVert p \rVert}\to \infty,$$
 since the quadratic term will dominate the linear term.
 
-Now that we know that the transform exists, let's compute it.
+Now that we know that the transform is well-defined, let's compute it.
 $$\begin{align*}
 H^{*}(v)&=  \sup_{p \in \mathbb{R}^{d}}\left\{ p^{T}v - H(p) \right\}\\
 	&= \sup_{p \in \mathbb{R}^{d}} \left\{ p^{T}(v-b)- \frac{1}{2}p^{T}Ap \right\}
@@ -48,39 +46,64 @@ Putting this back into our expression,
 $$\begin{align*}
 H^{*}(v)&= (v-b)^{T}A^{-T}(v-b)- \frac{1}{2}(v-b)^{T}A^{-T}AA^{-1}(v-b)\\
 H^{*}(v)&= (v-b)^{T}A^{-1}(v-b) - \frac{1}{2}(v-b)^{T}A^{-1}(v-b)\\
-H^{*}(v)&= \frac{1}{2} (v-b)^{T}A^{-1}(v-b)
+H^{*}(v)&= \frac{1}{2} (v-b)^{T}A^{-1}(v-b).
 \end{align*}$$
-![[Pasted image 20230906123723.png]]
 ![[Pasted image 20230912152506.png]]
-#ask what does it mean that $v \in f^{*}(p)$? 
+I assume that it is supposed to say $v \in \partial_{}f^{*}(p)$, not $v \in f^{*}(p)$.
+We want to show that
+$$p \in \partial_{}f(v) \quad\Leftrightarrow\quad f(w)\ge p \cdot (w-v)+f(v) \quad\forall\quad w \in \mathbb{R}\tag{1}$$
+if and only if
+$$v \in \partial_{}f^{*}(p) \quad\Leftrightarrow\quad f^{*}(w)\ge v \cdot (w-p)+f^{*}(p) \quad\forall\quad w \in \mathbb{R}\tag{2}$$
 
-$$p \in \partial_{}f(v)\quad\Leftrightarrow\quad f(w)\ge p \cdot (w-v)+f(v) \quad\forall\quad w \in \mathbb{R}$$
+if and only if
+$$pv=f(v)+f^{*}(p).\tag{3}$$
 
-$$v \in \partial_{}f^{*}(p)\quad\Leftrightarrow\quad f^{*}(w)\ge v \cdot (w-p)+f^{*}(p) \quad\forall\quad w \in \mathbb{R}$$
-Since $f$ is convex, we have
-$$f(tx +(1-t)y) \le tf(x)+(1-t)f(y) \quad\forall\quad x,y \in \mathbb{R}, \quad t \in (0,1).$$
-First, assume that
+We will start by showing $(3)\quad\Leftrightarrow\quad (1)$.
+Use the definition of the Legendre transform 
 $$\begin{align*}
-pv&= f(v)+f^{*}(p)\\
-f^{*}(p)&= pv-f(v) \quad \qquad \left(= \sup_{x \in \mathbb{R}^{d}} \{px-f(x) \} \right)\\
-f^{*}(p)& \ge px-f(x) \quad\forall\quad x \in \mathbb{R}\\
-f(x) & \ge px-f^{*}(p) -f(v) +f(v)\\
-f(x)& \ge px -pv +f(v)\\
-f(x)& \ge p(x-v)+f(v) \quad\forall\quad x \in \mathbb{R}
+f^{*}(p)&= \sup_{v \in \mathbb{R}}\{p \cdot v -f(v) \}\\
+\Leftrightarrow\quad f^{*}(p) &\ge p \cdot w-f(w) \quad\forall\quad w \in \mathbb{R}. 
 \end{align*}$$
-The other way:
+Assume $(3)$, i.e.,
 $$\begin{align*}
-f(x) &\ge  p(x-v)+f(v) \quad\forall\quad x \in \mathbb{R}\\
-	f(v) &\ge p(x-v)+f(x) \quad\forall\quad x \in \mathbb{R}\\
-f(v) &= \sup_{x \in \mathbb{R}}
+pv &= f(v)+f^{*}(p)\\
+\Leftrightarrow\quad pv &\ge f(v)+pw-f(w) \quad\forall\quad w \in \mathbb{R}\\
+\Leftrightarrow\quad f(w) &\ge p \cdot (w-v)+f(v) \quad\forall\quad w \in \mathbb{R}\\
+	\quad\Leftrightarrow\quad p &\in \partial_{}f(v).
 \end{align*}$$
+We have now showed that $(3)\quad\Leftrightarrow\quad (1)$.
 
-
-
+Now we only need to show $(3) \quad\Leftrightarrow\quad (2)$.
+Similarly, we will use the definition of the Legendre transform,
+$$\begin{align*}
+f(v)&= \sup_{p \in \mathbb{R}} \{p \cdot v -f^{*}(p) \}\\
+\quad\Leftrightarrow\quad f(v)&\ge w \cdot v-f^{*}(w)\quad\forall\quad w \in \mathbb{R} 
+\end{align*}$$
+Assume $(3)$,
+$$\begin{align*}
+pv &= f(v)+f^{*}(p)\\
+\quad\Leftrightarrow\quad pv &\ge wv-f^{*}(w)+f^{*}(p) \quad\forall\quad w \in \mathbb{R}\\
+\quad\Leftrightarrow\quad f^{*}(w) &\ge v(w-p)+f^{*}(p)\\
+\quad\Leftrightarrow\quad v &\in \partial_{}f^{*}(p)
+\end{align*}$$
+So $(1)\quad\Leftrightarrow\quad (2)\quad\Leftrightarrow\quad (3)\qquad \square$.
 
 ![[Pasted image 20230912152515.png]]
+Problem 3.(c) from HW#02 states that
+$$f \text{ differantiable on }\mathbb{R}\quad\Leftrightarrow\quad \partial_{}f(x) \text{ consists of exactly one element}\quad\forall\quad x \in \mathbb{R}.$$
+Problem 1.(c) in this HW states that
+$$p \in \partial_{}f(v) \quad\Leftrightarrow\quad pv=f(v)+f^{*}(p).$$
+In other words, we need to show that $p$ is the only element in $\partial_{}f(v)\quad\forall\quad v \in \mathbb{R}.$ 
 
+Since $f$ is convex and $\lim_{\lvert v \rvert \to \infty} \frac{f(v)}{\lvert v \rvert}=+\infty$, the Legendre transform is well-defined, as well as the transform of $f^{*}(p)$,
+$$(f^{*}(p))^{*}=f(v)=\sup_{p \in \mathbb{R}}\{pv-f^{*}(p) \}.$$
+Let's analyse the function (of $p$) inside the curly brackets. It consists of a linear term $vp$, which is both convex and concave. If we assume that $f^{*}$ is **strictly** convex, then $-f^{*}$ is strictly concave. A concave function plus a strictly concave function results in a strictly concave function.
 
+A strictly concave function has either one unique maximiser or no maximisers. We already know that the transform is well-defined, so the function in the brackets must have a maximiser.
+
+$f^{*}$ is strictly convex if and only if there exists exactly one $p \in \mathbb{R}$ such that
+$$f(v)=pv-f^{*}(p),$$
+for every $v \in \mathbb{R}$ (since $v$ was arbitrary). This is the case if and only if there exists exactly one $p \in \partial_{}f(v)\quad\forall\quad v \in \mathbb{R}$. This is the case if and only if $f$ is differentiable on $\mathbb{R}$.  
 
 ![[Pasted image 20230912152525.png]]
 First, we denote

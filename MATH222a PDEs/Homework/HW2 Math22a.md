@@ -82,7 +82,6 @@ Now, we have shown that $f$ is contained between these two lines. Then, it is ea
 <div style="page-break-after: always; visibility: hidden"> \pagebreak </div>
 
 ![[Pasted image 20230906123723.png]]
-
 We will first show the "if" part. 
 $$\lim_{h \to 0^{\pm}} \frac{f(x+h)-f(x)}{h}$$
 Setting $y=x+h$,
