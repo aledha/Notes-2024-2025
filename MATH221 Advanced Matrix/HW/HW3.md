@@ -11,4 +11,20 @@
 ![[Pasted image 20230915180413.png]]
 
 
+
+
 ![[Pasted image 20230915180432.png]]
+
+
+# Solve $LX=B$
+Where $L \in \mathbb{R}^{n \times n}$ is nonsingular and lower triangular, $B \in \mathbb{R}^{n \times n}$, and $X \in \mathbb{R}^{n \times n}$ is unknown.
+- Write down the simplest algorithm you can, and count the flops.
+
+$$\begin{bmatrix}l_{11} & 0  & 0 \\ \vdots & \ddots & 0 \\ l_{n1} & \dots & l_{nn}\end{bmatrix}\begin{bmatrix}x_{11} & \dots &  x_{1n} \\ \vdots &   & \vdots \\ x_{1n} & \dots & x_{nn}\end{bmatrix}=\begin{bmatrix}b_{11} & \dots &  b_{1n} \\ \vdots &   & \vdots \\ b_{1n} & \dots & b_{nn}\end{bmatrix}$$
+Forward substitution:
+for i=1 to n:
+	$x_{i1}= \frac{b_{i1}}{l_{i1}}$
+	for j=2 to n:
+		$x_{ij}= \frac{b_{ij}- \sum_{k=1}^{i-1}l_{ik}x_{kj} }{l_{ij}}$
+
+Firstly, we have $n$ divisions in the first for-loop. In the second loop
