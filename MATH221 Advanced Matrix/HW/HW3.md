@@ -31,7 +31,7 @@ Analogous to the blocked matrix-multiplication algorithm presented in class, wri
 
 ```
 As the blocked matrix-multiply algorithm, divide L, X and B into $b \times b$ sized blocks.
-``` c
+```matlab
 for j=1:n/b do
 	for i=1:n/b do
 		initialize S as a b x b zero matrix
@@ -40,6 +40,7 @@ for j=1:n/b do
 			Read L[i, k] into cache 
 			S = S + L[i,k] * X[k,j]
 		end for
+		Read L[i, i] into cache
 		Read B[i,j] into cache
 		Solve L[i, i] * X[i,j] = B[i,j] - S
 		Write X[i,j] into main memory
@@ -47,11 +48,14 @@ for j=1:n/b do
 end for
 ```
 
-Reading X and L: $$\frac{n}{b} \cdot \sum_{i=1}^{{\frac{n}{b}}-1}ib^{2}=nb \cdot \frac{\left(\frac{n}{b}-1\right) \frac{n}{b}}{2}=\frac{n^{2}( \frac{n}{b}-1)}{2}=\frac{n^{3}}{2b}- \frac{n^{2}}{2}$$ Reading B: $\left(\frac{n}{b} \right)^{2} \cdot b^{2}=n^{2}$ words moved.
+Reading X and L: $$\frac{n}{b} \cdot \sum_{i=1}^{{\frac{n}{b}}-1}ib^{2}=nb \cdot \frac{\left(\frac{n}{b}-1\right) \frac{n}{b}}{2}=\frac{n^{2}( \frac{n}{b}-1)}{2}=\frac{n^{3}}{2b}- \frac{n^{2}}{2}$$ Reading $L[i,i]$ and B: $\left(\frac{n}{b} \right)^{2} \cdot b^{2}=n^{2}$ words moved.
 Writing X: $\left(\frac{n}{b}\right)^{2} \cdot b^{2}=n^{2}$ words moved
 
 Total words moved is
-$$2 \cdot \left(\frac{n^{3}}{2b}- \frac{n^{2}}{2} \right)+2n^{2}= \frac{n^{3}}{b}+n^{2}.$$
+$$2 \cdot \left(\frac{n^{3}}{2b}- \frac{n^{2}}{2} \right)+3n^{2}= \frac{n^{3}}{b}+2n^{2}.$$
+We can minimize this by maximising $b$. Calling the cache size for $M$, we cannot set $b$ higher than $2b^{2}=M \quad\implies\quad b=\sqrt{\frac{M}{2}}$. Then, in the Big-Oh sense, this algorithm moves
+$$\mathcal{O}\left(\frac{n^{3}}{\sqrt{M}}\right)$$
+words, which is the same as matrix multiply.
 
 ```ad-question
 Does it satisfy the same backward error analysis as the simple algorithm (as in Q. 1.11)?
