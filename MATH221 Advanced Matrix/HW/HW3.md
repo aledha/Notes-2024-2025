@@ -6,6 +6,7 @@ $$\begin{align*}
 Ax&= y-uv^{T}x \\
 x&= A^{-1}y-A^{-1}u \underbrace{v^{T}x}_{=:z}
 \end{align*}$$
+$z$ is a scalar, and solving for $z$ yields
 $$\begin{align*}
 z&=  v^{T}x=v^{T}A^{-1}y-v^{T}A^{-1}uz\\
 (1+v^{T}A^{-1}u)z&= v^{T}A^{-1}y\\
@@ -33,7 +34,6 @@ $$\begin{align*}
 \text{ det}(A+VU^{T})&=\text{ det}(A(I+A^{-1}VU^{T}))\\
 &= \text{ det}(A) \cdot \text{ det}(I+A^{-1}VU^{T})≠0
 \end{align*}$$
-
 
 A matrix A is the inverse of a matrix B if and only if $AB=BA=I$.
 So we want to show that this expression
@@ -82,7 +82,8 @@ where $T=I+V^{T}A^{-1}U$.
 
 If $A+UV^{T}$ is nonsingular, then $T$ must be nonsingular, since it is used in the above formula.
 
-If $T=I+V^{T}A^{-1}U$ is nonsingular
+<div style="page-break-after: always;"></div>
+
 
 ![[Pasted image 20230915180432.png]]
 From the list of errata:
@@ -106,6 +107,8 @@ We can denote $Ad=c \text{ and }Ae=u$, then our solver can be built as
 
 The third step is just several sequential $\mathcal{O}(n^{2})$ operations.
 
+<div style="page-break-after: always;"></div>
+
 # Solving $LX=B$
 Where $L \in \mathbb{R}^{n \times n}$ is nonsingular and lower triangular, $B \in \mathbb{R}^{n \times n}$, and $X \in \mathbb{R}^{n \times n}$ is unknown.
 ```ad-question
@@ -122,6 +125,7 @@ for $j=1$ to $n$
 In the sum we have $i-1$ multiplications and $i-2$ additions. After the sum we have one additional addition and a division. So the line in the second for loop as $i-1+i-2+1+1=2i-1$ flops. The second for-loop has therefore $\sum_{i=2}^{n}2i-1=n^{2}-1$ flops. 
 
 Accounting for the first for-loop and the division, he total number of flops is $$n(1+n^{2}-1)=n^{3}.$$
+<div style="page-break-after: always;"></div>
 
 ```ad-question
 Analogous to the blocked matrix-multiplication algorithm presented in class, write down a blocked version of this algorithm, and analyze the number of words moved; can you make it move as few words as matrix-multiply (in the Big-Oh sense)?
@@ -131,22 +135,25 @@ As the blocked matrix-multiply algorithm, divide L, X and B into $b \times b$ si
 ```matlab
 for j=1:n/b do
 	for i=1:n/b do
-		initialize S as a b x b zero matrix
+		S = B[i, j]
 		for k=1:i-1 do
 			Read X[k,j] into cache
 			Read L[i, k] into cache 
-			S = S + L[i,k] * X[k,j]
+			S = S - L[i,k] * X[k,j]
 		end for
 		Read L[i, i] into cache
 		Read B[i,j] into cache
-		Solve L[i, i] * X[i,j] = B[i,j] - S
+		Solve L[i, i] * X[i,j] = S 
 		Write X[i,j] into main memory
 	end for
 end for
 ```
+Where line 11 solves the system with the algorithm described in the last question.
 
-Reading X and L: $$\frac{n}{b} \cdot \sum_{i=1}^{{\frac{n}{b}}-1}ib^{2}=nb \cdot \frac{\left(\frac{n}{b}-1\right) \frac{n}{b}}{2}=\frac{n^{2}( \frac{n}{b}-1)}{2}=\frac{n^{3}}{2b}- \frac{n^{2}}{2}$$ Reading $L[i,i]$ and B: $\left(\frac{n}{b} \right)^{2} \cdot b^{2}=n^{2}$ words moved.
-Writing X: $\left(\frac{n}{b}\right)^{2} \cdot b^{2}=n^{2}$ words moved
+Number of words moved:
+* Reading X and L: $$\frac{n}{b} \cdot \sum_{i=1}^{{\frac{n}{b}}-1}ib^{2}=nb \cdot \frac{\left(\frac{n}{b}-1\right) \frac{n}{b}}{2}=\frac{n^{2}( \frac{n}{b}-1)}{2}=\frac{n^{3}}{2b}- \frac{n^{2}}{2}$$
+* Reading $L[i,i]$ and B: $\left(\frac{n}{b} \right)^{2} \cdot b^{2}=n^{2}$ words moved.
+* Writing X: $\left(\frac{n}{b}\right)^{2} \cdot b^{2}=n^{2}$ words moved
 
 Total words moved is
 $$2 \cdot \left(\frac{n^{3}}{2b}- \frac{n^{2}}{2} \right)+3n^{2}= \frac{n^{3}}{b}+2n^{2}.$$
@@ -154,11 +161,37 @@ We can minimise this by maximising $b$. Calling the cache size for $M$, we canno
 $$\mathcal{O}\left(\frac{n^{3}}{\sqrt{M}}\right)$$
 words, which is the same as matrix multiply.
 
+<div style="page-break-after: always;"></div>
+
 ```ad-question
 Does it satisfy the same backward error analysis as the simple algorithm (as in Q. 1.11)?
 
 ```
 
+The pseudocode above does the same operations as the following algorithm
+for $j=1$ to $n$
+	$x_{1j}= \frac{b_{1j}}{l_{11}}$
+	for $i=2$ to $n$
+		$x_{ij}= \frac{b_{ij}- \sum_{k=1}^{i-1}l_{ik}x_{kj} }{l_{ii}}$
+
+The computed solution is
+$$\begin{align*}
+\hat x_{ij}&=  \text{fl}\left(\frac{b_{ij}-\sum_{k=1}^{i-1}l_{ik}x_{kj}}{l_{ii}}\right) \\
+&= \frac{\left(b_{ij}-\sum_{k=1}^{i-1}l_{ik}x_{kj}(1+\delta _{ijk})\right)(1+\delta' _{ij})}{l_{ii}}(1+\delta _{ij})\\
+&\text{where }\lvert \delta _{ijk} \rvert,\lvert \delta '_{ij} \rvert,\lvert \delta _{ij} \rvert<\epsilon  \\
+&= \frac{b_{ij}-\sum_{k=1}^{i-1}\hat l_{ik}x_{kj} }{\hat l_{ii}},
+\end{align*}$$
+where
+$$\begin{align*}
+	\hat l_{ik}&= l_{ik}(1+\delta _{ijk})=l_{ik}+\delta l_{ik} \quad\text{for }\lvert \delta l_{ik} \rvert<n \epsilon \\
+\hat l_{ii}&= \frac{l_{ii}}{(1+ \delta '_{ij})(1+ \delta _{ij})}=l_{ii}+\delta l_{ii} \quad\text{for }\lvert \delta l_{ii} \rvert<n \epsilon 
+\end{align*}$$
+Then,
+$$(L+\delta L)\hat X=B,$$
+which satisfies the same backward error as the simple algorithm.
+
+
+<div style="page-break-after: always;"></div>
 
 ```ad-question
 Analogous to the recursive matrix-multiplication algorithm presented in class, write down a recursive version of this algorithm, and analyze the number of words moved; can you make it move as few words as matrix-multiply (in the Big-Oh sense)?
@@ -167,7 +200,6 @@ Analogous to the recursive matrix-multiplication algorithm presented in class, w
 
 We divide each matrix into four submatrices,
 $$L=\begin{bmatrix}L_{11} & 0 \\ L_{21} & L_{22}\end{bmatrix},\quad X=\begin{bmatrix}X_{11} & X_{12} \\ X_{21} & X_{22}\end{bmatrix}, \quad B=\begin{bmatrix}B_{11} & B_{12} \\ B_{21} & B_{22}\end{bmatrix}.$$
-Note that $L_{11},L_{22}$ are also lower triangular.
 ```matlab
 def solve(L, B, n):
 	if n=1:
@@ -188,26 +220,20 @@ b &\le \sqrt{\frac{4}{11}M}
 \end{align*}$$
 We assume that $n$ can be written as $n=2^{m}$. The recurrence expression can then be rewritten as
 $$\begin{align*}
-W(m)&= 4\cdot W(m-1)+11 \cdot \left(\frac{2^{m}}{2}\right)^{2}\\
-W(m)&= 4W(m-1)+ \frac{11}{4}2^{2m}
+w(m)&= 4\cdot w(m-1)+11 \cdot \left(\frac{2^{m}}{2}\right)^{2}\\
+w(m)&= 4w(m-1)+ \frac{11}{4}2^{2m}
 \end{align*}$$
-Divide both sides by $4^{m}$ and call $V(m)=W(m)/4^{m}$.
+Divide both sides by $4^{m}$ and call $v(m)=w(m)/4^{m}$.
 $$\begin{align*}
-\frac{W(m)}{4^{m}}&=  \frac{4W(m-1)}{4^{m}}+ \frac{11}{4} \frac{2^{2m}}{4^{m}}\\
-V(m)&= V(m-1)+ \frac{11}{4}
+v(m)&= \frac{w(m)}{4^{m}}=  \frac{4w(m-1)}{4^{m}}+ \frac{11}{4} \frac{2^{2m}}{4^{m}}\\
+v(m)&= v(m-1)+ \frac{11}{4}
 \end{align*}$$
-Let $m_{0}=\text{ log}_{2}\sqrt{\frac{4}{11}M}$. Then,
-$$V(m_{0})=\frac{W(m_{0})}{4^{m_{0}}}=\frac{M}{4^{\text{ log}_{2}\sqrt{4M/11}}}= \frac{11}{4}$$
-Then, 
-
-```ad-question
-Does it satisfy the same backward error analysis as the simple algorithm (as in Q. 1.11)?
-
-```
-
-
-```ad-question
-(Extra credit) Show that you can't communicate fewer words to solve LX=B than in matrix-multiply, namely Omega(n^3/sqrt(M)). 
-Hint: Show that any routine for solving LX=B can be used to do matrix-multiplication (of slightly smaller matrices), so the lower bound for matrix-multiplication applies (perhaps with a smaller constant, all hidden in the Big-Omega notation).
-
-```
+Let the base case be $m_{0}=\text{ log}_{2}\sqrt{\frac{4}{11}M}$. Then,
+$$v(m_{0})=\frac{w(m_{0})}{4^{m_{0}}}=\frac{M}{4^{\text{ log}_{2}\sqrt{4M/11}}}= \frac{11}{4}$$
+$$v(m)=\sum_{m_{0}}^{m} \frac{11}{4}=\left(m-\text{ log}_{2}\sqrt{\frac{4}{11}M}\right) \frac{11}{4}$$
+$$\begin{align*}
+W(n)&= w(\text{log}_{2}n)=4^{\text{log}_{2}n}v(\text{log}_{2}n)\\
+&=\frac{11}{4} n^{2}\left(\text{log}_{2}n-\text{log}_{2} \sqrt{\frac{4}{11}M}\right)\\
+&= \frac{11}{4}n^{2}\text{log}_{2}\left(\frac{n}{\sqrt{4M/11}}\right),
+\end{align*}$$
+which surely must be wrong.
