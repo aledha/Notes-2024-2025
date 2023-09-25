@@ -1,3 +1,4 @@
+
 ![[Pasted image 20230918170036.png]]
 ![[Pasted image 20230921155232.png|600]]
 Let 
@@ -17,9 +18,9 @@ $$\begin{align*}
 which is the what we started with. $u$ is a distribution.
 
 ![[Pasted image 20230918170043.png]]
+![[Pasted image 20230924180451.png]]
+![[Pasted image 20230924180501.png]]
 
-
-$$\left\langle u \text{ , } \varphi  \right\rangle=\sum_{j=0}^{\infty}\partial_{x}^{j}\varphi \left(\frac{1}{j} \right)$$
 
 
 
@@ -38,9 +39,9 @@ $$\begin{align*}
 &= \int_\mathbb{R} \varphi (x)(\mathbb 1_{(0,1)}(x)-\delta _{1}(x)) \text{ d}x\\
 &= \left\langle \mathbb 1_{(0,1)}-\delta _{1} \text{ , } \varphi  \right\rangle
 \end{align*}$$
-Hence, the distributional derivative is
+Hence, the distributional derivative agrees with
 $$u(x)=\mathbb 1_{(0,1)}(x)-\delta _{1}(x),$$
-which is locally integrable on $\mathbb{R}\backslash \{0 \}$.
+on $\mathbb{R}\backslash \{1 \}$.
 
 ![[Pasted image 20230918170053.png]]
 For all $\varphi \in C^{\infty}_{c}(\mathbb{R}),$ we have
@@ -54,19 +55,13 @@ Since $-1<\alpha <0$,  $\lim_{x \to 0}x^{-\alpha }=0$. This, in combination with
 $$\begin{align*}
 \left\langle \partial_{x}\lvert x \rvert^{-\alpha } \text{ , } \varphi  \right\rangle&=- \int_{-\infty}^{\infty}\alpha \lvert x \rvert^{-\alpha -1}\varphi (x)\text{ d}x\
 \end{align*}$$
-These integrals contain the singularity $x^{-\alpha -1}$, so we must write this as
-$$\begin{align*}
-\left\langle \partial_{x}\lvert x \rvert^{-\alpha } \text{ , } \varphi  \right\rangle&=\lim_{\epsilon  \to 0^{+}}- \bigg(\int_{\epsilon }^{\infty}\alpha \lvert x \rvert^{-\alpha -1}\varphi (x)\text{ d}x+\int_{-\infty}^{-\epsilon }\alpha \lvert x \rvert^{-\alpha -1}\varphi (x)\text{ d}x \\
-&\qquad \qquad \quad +\int_{-\epsilon}^{\epsilon} \alpha \lvert x \rvert^{-\alpha-1}\varphi (x)\text{ d}x \bigg)
-\end{align*}$$
-Let us inspect the last term
-$$\int_{-\epsilon }^{\epsilon } \alpha \lvert x \rvert^{-\alpha -1}\varphi (x) \text{ d}x$$
-$$\mathbb 1$$
+So the dist. derivative agrees with $-\alpha \lvert x \rvert^{-\alpha -1}$ in the open set $(-\infty,1)\cup(1,\infty)$.
 
-$$\begin{align*}
-&= \int_\mathbb{R}-\alpha \lvert x \rvert^{-\alpha -1}\varphi (x) \text{ d}x \\
-&= \left\langle -\alpha \lvert \cdot  \rvert^{-\alpha -1} \text{ , } \varphi  \right\rangle
-\end{align*}$$
+**Professor meant to ask about $0<\alpha <1$**
+![[Pasted image 20230924181843.png]]
+![[Pasted image 20230924181852.png]]
+
+
 ![[Pasted image 20230918170102.png]]
 $$\begin{align*}
 \left\langle Du \text{ , } \varphi  \right\rangle&= \int \partial_{x^{1}}\frac{x^{1}}{(x^{1})^{2}+(x^{2})^{2}}\varphi (x^{1},x^{2})\text{ d}A\\
@@ -75,14 +70,42 @@ $$\begin{align*}
 
 \end{align*}$$
 
+```ad-note
+title: Solution
+![[Pasted image 20230924182348.png]]
+![[Pasted image 20230924182358.png]]
+
+```
+
+
 ![[Pasted image 20230918170109.png]]
 $$\begin{align*}
 \left\langle \text{p.v.} \frac{\mathbb 1_{(0,\infty)} }{x}\text{ , } \varphi  \right\rangle&= -\int_{-\infty}^{\infty} \mathbb 1_{(0,\infty)}\text{log}\lvert x \rvert\varphi  '(x) \text{ d}x\\
 &= -\int_{0}^{\infty} \text{log}x \cdot (\varphi(x)-\varphi (0))' \text{ d}x\\
 &= -\left[\text{log}x (\varphi (x)-\varphi (0)) \right]_{0}^{\infty}+\int_{0}^{\infty} \frac{1}{x}(\varphi (x)-\varphi (0)) \text{ d}x
 \end{align*}$$
+```ad-note
+title: Solution
+collapse: closed
+![[Pasted image 20230924183338.png]]
+![[Pasted image 20230924183350.png]]
+
+```
+
+
+
+
 
 ![[Pasted image 20230918170115.png]]
+```ad-note
+title: Solution
+collapse: closed
+![[Pasted image 20230924183855.png]]
+![[Pasted image 20230924183910.png]]
+![[Pasted image 20230924183918.png]]
+![[Pasted image 20230924183928.png]]
+
+```
 
 
 ![[Pasted image 20230918170122.png]]
