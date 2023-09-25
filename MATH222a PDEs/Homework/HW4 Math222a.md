@@ -109,10 +109,41 @@ collapse: closed
 
 
 ![[Pasted image 20230918170122.png]]
+```ad-note
+title: Solution
+collapse: closed
+![[Pasted image 20230924192740.png]]
+![[Pasted image 20230924192746.png]]
+
+```
+
 
 ![[Pasted image 20230918170128.png]]
+```ad-note
+title: Solution
+collapse: closed
+![[Pasted image 20230924193632.png]]
+
+```
 
 
 ![[Pasted image 20230918170133.png]]
+```ad-note
+title: Solution
+collapse: closed
+![[Pasted image 20230924193752.png]]
+![[Pasted image 20230924193802.png]]
+
+```
+
+
 
 ![[Pasted image 20230918170138.png]]
+
+```ad-note
+title: Solution
+collapse: closed
+![[Pasted image 20230924194153.png]]
+![[Pasted image 20230924194200.png]]
+
+```
