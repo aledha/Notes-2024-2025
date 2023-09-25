@@ -142,8 +142,10 @@ z(s)&= z_{0}-\int_{0}^{s}\text{ div}\Big(z\big(\tau \big)\cdot b\big(\mathbf{x}(
 \end{align*}$$
 I'm kinda stuck here.
 
+
 ```ad-note
 title: Solution
+collapse: closed
 ![[Pasted image 20230912154843.png]]
 ![[Pasted image 20230912154853.png]]
 ```

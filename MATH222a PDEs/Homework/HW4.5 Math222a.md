@@ -49,6 +49,27 @@ $$\begin{align*}
 
 
 ![[Pasted image 20230924194700.png]]
+$$\mathcal{P}u=\sum_{\lvert \alpha  \rvert \le k}^{}a_\alpha (x)D^{\alpha }u$$
+Here, $k=1, \quad a_{\alpha }(x)=1 \quad \alpha =(1,1,1)$. Also, it's adjoint is
+$$\mathcal{P'}v=\sum_{\lvert \alpha  \rvert \le k}^{}(-1)^{\lvert \alpha  \rvert}D^{\alpha }(a_{\alpha }v)$$
+$$\left\langle \mathcal{P}u \text{ , } v \right\rangle=\left\langle u \text{ , } P'v \right\rangle$$
+
+Since we have a constant coefficient, $\mathcal{P}$ is translationally invariant, i.e.,
+$$\begin{align*}
+\mathcal{P}u(x-y)&= \sum_{}^{}D^{\alpha }u(x-y)\\
+&= (\mathcal{P}u)(x-y)
+\end{align*}$$
+We know that in 1D, 
+$$\partial_{x}(H(x)+C)=\delta _{0}$$
+It follows that
+$$\partial_{x^{1}}\partial_{x^{2}}\partial_{x^{3}}(H(x^{1})+C_{1})(H(x^{2})+C_{2})(H(x^{3})+C_{3})=\delta _{0}(x^{1})\delta _{0}(x^{2})\delta _{0}(x^{3})=\delta _{0}(x)$$
+Propose that
+$$E=(H(x^{1})+C_{1})(H(x^{2})+C_{2})(H(x^{3})+C_{3})$$
+Since $E$ can only be supported on the first octant, we need that $C_{1}=C_{2}=C_{3}=0$ and therefore
+$$E_{0}=H(x^{1})H(x^{2})H(x^{3})$$
+
+
+![[Pasted image 20230925103307.png|500]]
 
 
 ![[Pasted image 20230924194707.png]]
