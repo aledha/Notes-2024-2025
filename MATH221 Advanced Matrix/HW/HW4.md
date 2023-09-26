@@ -2,6 +2,42 @@
 
 ![[Pasted image 20230923122332.png]]
 ![[Pasted image 20230923122740.png|600]]
+1. Denote $\alpha(i)$ such that $P_{i,\alpha (i)}=1$, which is the only nonzero element in the $i$-th row. Then,
+$$(PX)_{ij}=\sum_{k=1}^{n}P_{ik}X_{kj}=P_{i,\alpha (i)}X_{\alpha (i),j}=X_{\alpha(i),j},$$
+which happens to each $i$. In other words, row number $i$ gets permuted to row $\alpha (i)$. If $\alpha (i)≠i$, then another row must get permuted to row $i$, for example $\alpha (k)=i$. This can be seen by the fact that in the permutation matrix, each row and column has exactly one nonzero entry. $PX$ is the same as $X$ but with its rows permuted.
+
+$XP$ is very similar. Define $\beta (i)$ such that $P_{\beta (j),j}=1$ and all other entries in column $j$ be zero. Then,
+$$(XP)_{ij}=\sum_{k=1}^{n}X_{i,k}P_{k,j}=X_{i,\beta(j)}$$
+Column number $j$ gets permuted to column number $\beta (j)$. With the same reasoning as before, $XP$ is the same as $X$ but with its columns permuted.
+
+2. Define $\alpha (i)$ as the previous proof.
+$$(PP^{T})_{ij}=\sum_{k=1}^{n}P_{ik}P_{jk}$$
+The first factor is zero if $k≠\alpha (i)$, while the second factor is zero if $k≠\alpha (j)$. Therefore,
+$$\begin{align*}
+(PP^{T})_{ij}&= \begin{cases}
+1  & \quad\text{for }\alpha (i)=\alpha (j), \\
+0  & \quad\text{else},
+\end{cases}\\
+&= \begin{cases}
+1  & \quad\text{for }i=j,\\
+0 & \quad\text{else},
+\end{cases}\\
+&= \delta _{ij}=I_{ij}.
+\end{align*}$$
+In conclusion,
+$$PP^{T}=I \quad\Leftrightarrow\quad P^{T}=P^{-1}.$$
+
+3. Since $P$ is orthogonal,
+$$\begin{align*}
+ PP^{T}&=I\\
+\text{ det}(PP^{T})&= \text{ det}(I)\\
+ \text{ det}(P)\text{ det}(P^{T})&=1\\
+\text{ det}(P)^{2}&= 1\\
+\text{ det}(P)&= \pm 1
+\end{align*}$$
+where I have used the fact that $\text{ det}(AB)=\text{ det}(A)\text{ det}(B)$ and $\text{ det}(A^{T})=\text{ det}(A)$.
+
+4. By the definition, $P_{2}$ is the identity matrix with its rows permuted. As showed in 1), $P_{1}P_{2}$ is the same as $P_{2}$ with its rows permuted. So $P_{1}P_{2}$ is still the identity matrix with its columns permuted, and is therefore a permutation matrix.
 
 
 ![[Pasted image 20230923122341.png]]
