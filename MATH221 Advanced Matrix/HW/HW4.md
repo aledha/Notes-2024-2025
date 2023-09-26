@@ -1,5 +1,6 @@
 ![[Pasted image 20230923122318.png]]
 
+
 ![[Pasted image 20230923122332.png]]
 ![[Pasted image 20230923122740.png|600]]
 1. Denote $\alpha(i)$ such that $P_{i,\alpha (i)}=1$, which is the only nonzero element in the $i$-th row. Then,
@@ -54,6 +55,7 @@ $N$ must be symmetric. Since $N$ is both unit lower triangular and symmetric, it
 $$M^{-1}L=I \quad\implies\quad L=M.$$
 
 ![[Pasted image 20230923122401.png]]
+
 
 ![[Pasted image 20230923122436.png]]
 Firstly, let's compute the norm of $Y$,
