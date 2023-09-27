@@ -1,6 +1,5 @@
 ![[Pasted image 20230923122318.png]]
 
-
 ![[Pasted image 20230923122332.png]]
 ![[Pasted image 20230923122740.png|600]]
 1. Denote $\alpha(i)$ such that $P_{i,\alpha (i)}=1$, which is the only nonzero element in the $i$-th row. Then,
@@ -104,8 +103,9 @@ $$\kappa _{F}(Y)=\lVert Y \rVert_{F}\lVert Y^{-1} \rVert_{F}=2n+\lVert Z \rVert_
 
 ```ad-question
  Analyze the cost of recursive LU (RLU) presented in lecture, deriving and solving recurrences for A(n) = number of arithmetic operations and W(n) = number of words moved.
+ 
+ ```
 
-```
 ![[Pasted image 20230926170809.png|600]]
 A12 and L11 is m/2 x m/2, then U12 is m/2 by m/2
 
@@ -117,9 +117,12 @@ For each recursion, we have the following contributions:
 	Line 7: $A(n,m/2)$
 	Line 8: $(m/2)^3$ 
 	Line 9: $(n-m/2)m/2$ from the subtraction, $\left(n-\frac{m}{2}\right)\frac{m}{2}\cdot (\frac{m}{2}+ (\frac{m}{2}-1))$ from standard matrix multiplication
-		Total for line 9 is $((n-m/2)m/2)(1+m/2+m/2-1)=$$\frac{nm^{2}}{2}- \frac{m^{3}}{4}$  
+		Total for line 9 is $((n-m/2)m/2)(1+m/2+m/2-1)=\frac{nm^{2}}{2}- \frac{m^{3}}{4}$  
 	Line 10: $A(n-m/2,m/2)$
 
-$\left(n- \frac{m}{2} \times \frac{m}{2}\right)\times()$
 Combining all of these,
-$$A(n,m)=A\left(n,\frac{m}{2}\right)+A\left(n- \frac{m}{2},\frac{m}{2}\right)$$
+$$\begin{align*}
+A(n,m)&= A\left(n,\frac{m}{2}\right)+A\left(n- \frac{m}{2},\frac{m}{2}\right) +\frac{m^{3}}{8}+\frac{nm^{2}}{2}- \frac{m^{3}}{4}\\
+A(n,m)&=A\left(n, \frac{m}{2}\right)+A\left(n- \frac{m}{2}, \frac{m}{2}\right)+\frac{nm^{2}}{2} +\frac{m^{3}}{4}\\
+&= A\left(n, \frac{m}{4}\right)+A\left(n- \frac{m}{4}, \frac{m}{4}\right) +A
+\end{align*}$$
