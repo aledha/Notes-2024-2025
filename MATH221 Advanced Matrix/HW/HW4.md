@@ -57,6 +57,28 @@ $$M^{-1}L=I \quad\implies\quad L=M.$$
 ![[Pasted image 20230923122401.png]]
 
 
+We let
+$$A=\begin{bmatrix}1.001 & 2 \\ 2 & 4\end{bmatrix}, b=\begin{bmatrix}2.001 \\ 4\end{bmatrix}$$
+Let's first find the exact solution.
+$$\begin{cases}
+1.001x_{1}+2x_{2}= 2 \\
+2x_{1}+4x_{2}=4.001
+\end{cases}$$
+$$\begin{align*}
+2x_{1}+4\left(1- \frac{1.001}{2}x_{1}\right)&= 4.001\\
+(2-2\cdot 1.001)x_{1}&= 4.001 -4\\
+x_{1}&= \frac{0.001}{-0.002}=-0.5
+\end{align*}$$
+$$x_{2}=1-1.001 \cdot (-0.5)=1.5005$$
+Okay, let's do Cramer's rule.
+$$\begin{align*}
+\text{ det}&= 1.001 \cdot 4-2\cdot 2=0.004\\
+x_{1}&= (4 \cdot 2-2 \cdot 4.001)/0.004=-0.5\\
+x_{2}&= (-2\cdot 2+1.001\cdot 4.001)/0.004=1.25
+\end{align*}$$
+
+
+
 ![[Pasted image 20230923122436.png]]
 Firstly, let's compute the norm of $Y$,
 $$\begin{align*}
@@ -84,3 +106,20 @@ $$\kappa _{F}(Y)=\lVert Y \rVert_{F}\lVert Y^{-1} \rVert_{F}=2n+\lVert Z \rVert_
  Analyze the cost of recursive LU (RLU) presented in lecture, deriving and solving recurrences for A(n) = number of arithmetic operations and W(n) = number of words moved.
 
 ```
+![[Pasted image 20230926170809.png|600]]
+A12 and L11 is m/2 x m/2, then U12 is m/2 by m/2
+
+L21, each entry is scalar mult (m/2 mults, m/2-1 adds) 
+There are (n-m/2)(m/2) entries, so we have
+(n-m/2)(m/2)m/2(m/2-1) operations
+
+For each recursion, we have the following contributions:
+	Line 7: $A(n,m/2)$
+	Line 8: $(m/2)^3$ 
+	Line 9: $(n-m/2)m/2$ from the subtraction, $\left(n-\frac{m}{2}\right)\frac{m}{2}\cdot (\frac{m}{2}+ (\frac{m}{2}-1))$ from standard matrix multiplication
+		Total for line 9 is $((n-m/2)m/2)(1+m/2+m/2-1)=$$\frac{nm^{2}}{2}- \frac{m^{3}}{4}$  
+	Line 10: $A(n-m/2,m/2)$
+
+$\left(n- \frac{m}{2} \times \frac{m}{2}\right)\times()$
+Combining all of these,
+$$A(n,m)=A\left(n,\frac{m}{2}\right)+A\left(n- \frac{m}{2},\frac{m}{2}\right)$$
