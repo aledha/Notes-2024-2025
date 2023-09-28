@@ -1,4 +1,9 @@
 ![[Pasted image 20230923122318.png]]
+Factorizing A into $PLU$ uses $\frac{2}{3}n^{3}+\mathcal{O}(n^{2})$ flops, while both forward and back substitution for matrices uses $n^{3}$ flops (HW3). The first algorithm requires $\frac{5}{3}n^{3}+\mathcal{O}(n^{2})$ flops.
+
+Computing the inverse using Gaussian elimination requires $2n^{3}+\mathcal{O}(n^{2})$, while standard matrix multiplication requires $n^{2}(2n-1)$, resulting in $4n^{3}+\mathcal{O}(n^{2})$ flops.
+
+We see that the the first algorithm requires asymptotically fewer flops than the second.
 
 ![[Pasted image 20230923122332.png]]
 ![[Pasted image 20230923122740.png|600]]
@@ -53,31 +58,6 @@ $$(M^{-1}LD)^{T}=D(M^{-1}L)^{T}=M^{-1}LD$$
 $N$ must be symmetric. Since $N$ is both unit lower triangular and symmetric, it must be the identity.
 $$M^{-1}L=I \quad\implies\quad L=M.$$
 
-![[Pasted image 20230923122401.png]]
-
-
-We let
-$$A=\begin{bmatrix}1.001 & 2 \\ 2 & 4\end{bmatrix}, b=\begin{bmatrix}2.001 \\ 4\end{bmatrix}$$
-Let's first find the exact solution.
-$$\begin{cases}
-1.001x_{1}+2x_{2}= 2 \\
-2x_{1}+4x_{2}=4.001
-\end{cases}$$
-$$\begin{align*}
-2x_{1}+4\left(1- \frac{1.001}{2}x_{1}\right)&= 4.001\\
-(2-2\cdot 1.001)x_{1}&= 4.001 -4\\
-x_{1}&= \frac{0.001}{-0.002}=-0.5
-\end{align*}$$
-$$x_{2}=1-1.001 \cdot (-0.5)=1.5005$$
-Okay, let's do Cramer's rule.
-$$\begin{align*}
-\text{ det}&= 1.001 \cdot 4-2\cdot 2=0.004\\
-x_{1}&= (4 \cdot 2-2 \cdot 4.001)/0.004=-0.5\\
-x_{2}&= (-2\cdot 2+1.001\cdot 4.001)/0.004=1.25
-\end{align*}$$
-
-
-
 ![[Pasted image 20230923122436.png]]
 Firstly, let's compute the norm of $Y$,
 $$\begin{align*}
@@ -107,12 +87,6 @@ $$\kappa _{F}(Y)=\lVert Y \rVert_{F}\lVert Y^{-1} \rVert_{F}=2n+\lVert Z \rVert_
  ```
 
 ![[Pasted image 20230926170809.png|600]]
-A12 and L11 is m/2 x m/2, then U12 is m/2 by m/2
-
-L21, each entry is scalar mult (m/2 mults, m/2-1 adds) 
-There are (n-m/2)(m/2) entries, so we have
-(n-m/2)(m/2)m/2(m/2-1) operations
-
 For each recursion, we have the following contributions:
 	Line 7: $A(n,m/2)$
 	Line 8: $(m/2)^3$ 
@@ -123,6 +97,24 @@ For each recursion, we have the following contributions:
 Combining all of these,
 $$\begin{align*}
 A(n,m)&= A\left(n,\frac{m}{2}\right)+A\left(n- \frac{m}{2},\frac{m}{2}\right) +\frac{m^{3}}{8}+\frac{nm^{2}}{2}- \frac{m^{3}}{4}\\
-A(n,m)&=A\left(n, \frac{m}{2}\right)+A\left(n- \frac{m}{2}, \frac{m}{2}\right)+\frac{nm^{2}}{2} +\frac{m^{3}}{4}\\
-&= A\left(n, \frac{m}{4}\right)+A\left(n- \frac{m}{4}, \frac{m}{4}\right) +A
+A(n,m)&=A\left(n, \frac{m}{2}\right)+A\left(n- \frac{m}{2}, \frac{m}{2}\right)+\frac{nm^{2}}{2} -\frac{m^{3}}{8}\\
+A(n,m)&=A\left(n, \frac{m}{2}\right)+A\left(n- \frac{m}{2}, \frac{m}{2}\right)+m^{2}\left(\frac{n}{2} -\frac{m}{8}\right)\\
 \end{align*}$$
+
+Let's assume that we start with $m=n$. In the recurrence tree, for a given depth $i$, we have $2^{i}$ calls. Each of them has the same argument for $m= \frac{m}{2i}$, while they have different arguments for $n \in \{ \frac{m}{2^{i}},2 \frac{m}{2^{i}},3\frac{m}{2^{i}},\dots,m \}$.
+
+Thus, if we assume that $n=m=2^{k}$
+$$A(n)= \sum_{i=1}^{k} \sum_{j=1}^{2^{i}}A^{*}\left(j \frac{n}{2^{i}}, \frac{n}{2^{i}}\right),$$
+Where $A^{*}$ is $A(n,m)$ without the recurrence terms, i.e., $A^{*}(n,m)= m^{2}\left( \frac{n}{2}- \frac{m}{8}\right)$. Then
+$$\begin{align*}
+A(n)&= \sum_{i=1}^{\text{log}_{2}n}\sum_{j=1}^{2^{i}} \left( \frac{n}{2^{i}}\right)^{2} \left(\frac{1}{2} \frac{j n}{2^{i}}-  \frac{1}{8} \frac{n}{2^{i}}\right)\\
+&= \sum_{i=1}^{\text{log}_{2}n} \left(\frac{n}{2^{i}} \right)^{3}\sum_{j=1}^{2^{i}} \left(\frac{j}{2}- \frac{1}{8} \right)\\
+&= \sum_{i=1}^{\text{log}_{2}n} \left(\frac{n}{2^{i}} \right)^{3} \left[\frac{1}{4}2^{i}\left(2^{i}+1 \right)- \frac{1}{8}2^{i} \right]\\
+	&= \sum_{i=1}^{\text{log}_{2}n} \frac{n^{3}}{2^{2i}} \left(\frac{1}{4} 2^{i}+ \frac{1}{8} \right)\\
+&= \frac{n^{3}}{4}\sum_{i=1}^{\text{log}_{2}n}(2^{-i}+ \frac{1}{2}2^{-2i})\\
+&= \frac{n^{3}}{4} \cdot \left[2^{-1} \frac{1- 2^{-\text{log}_{2}n}}{1-2^{-1}}+ \frac{1}{2}2^{-2} \frac{1-2^{-2\text{log}_{2}n}}{1-2^{-2}} \right]\\
+&= \frac{n^{3}}{4} \cdot \left[1- n^{-1}+   \frac{5}{3}- \frac{5}{3}n^{-2} \right]\\
+&= \frac{2n^{3}}{3}+\mathcal{O}(n^{2})
+\end{align*}$$
+
+
