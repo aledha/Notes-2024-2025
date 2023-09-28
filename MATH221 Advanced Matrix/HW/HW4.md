@@ -5,6 +5,9 @@ Computing the inverse using Gaussian elimination requires $2n^{3}+\mathcal{O}(n^
 
 We see that the the first algorithm requires asymptotically fewer flops than the second.
 
+<div style="page-break-after: always;"></div>
+
+
 ![[Pasted image 20230923122332.png]]
 ![[Pasted image 20230923122740.png|600]]
 1. Denote $\alpha(i)$ such that $P_{i,\alpha (i)}=1$, which is the only nonzero element in the $i$-th row. Then,
@@ -44,6 +47,8 @@ where I have used the fact that $\text{ det}(AB)=\text{ det}(A)\text{ det}(B)$ a
 
 4. By the definition, $P_{2}$ is the identity matrix with its rows permuted. As showed in 1), $P_{1}P_{2}$ is the same as $P_{2}$ with its rows permuted. So $P_{1}P_{2}$ is still the identity matrix with its columns permuted, and is therefore a permutation matrix.
 
+<div style="page-break-after: always;"></div>
+
 
 ![[Pasted image 20230923122341.png]]
 
@@ -55,8 +60,10 @@ M^{-1}AM^{-T}&= M^{-1}LD= DL^{T}M^{-T}\\
 \end{align*}$$
 The inverse of a lower unit triangular matrix is lower unit triangular, and the product of two unit lower triangular matrix is unit lower triangular. Therefore, $M^{-1}L$ is unit lower triangular. Since
 $$(M^{-1}LD)^{T}=D(M^{-1}L)^{T}=M^{-1}LD$$
-$N$ must be symmetric. Since $N$ is both unit lower triangular and symmetric, it must be the identity.
+$M^{-1}L$ must be symmetric. Since $M^{-1}L$ is both unit lower triangular and symmetric, it must be the identity.
 $$M^{-1}L=I \quad\implies\quad L=M.$$
+
+<div style="page-break-after: always;"></div>
 
 ![[Pasted image 20230923122436.png]]
 Firstly, let's compute the norm of $Y$,
@@ -80,6 +87,8 @@ Since we take absolute value in the Frobenius norm,
 $$\lVert Y^{-1} \rVert_{F}=\lVert Y \rVert_{F}=\sqrt{2n+\lVert Z \rVert_{F}^{2}}.$$
 The condition number becomes
 $$\kappa _{F}(Y)=\lVert Y \rVert_{F}\lVert Y^{-1} \rVert_{F}=2n+\lVert Z \rVert_{F}^{2}.$$
+
+<div style="page-break-after: always;"></div>
 
 ```ad-question
  Analyze the cost of recursive LU (RLU) presented in lecture, deriving and solving recurrences for A(n) = number of arithmetic operations and W(n) = number of words moved.
