@@ -11,6 +11,9 @@ $$\sum_{m \in \mathbb Z^{n}}^{}\hat f(m)=\sum_{m \in \mathbb Z^{n}}^{}\int f(x) 
 Since $f$ is bounded and continuous, the integrand is also bounded, and we can apply Fubini's theorem
 $$\sum_{m \in \mathbb Z^{n}}^{}\hat f(m)=\int \sum_{m \in \mathbb Z^{n}}^{}f(x) e^{-2\pi ix \cdot m}\text{ d}x$$
 
+We let $g(x)=\sum_{n=-\infty}^{\infty}e^{2\pi inx}f(x-n)$ and
+$$h(x)=\int_{0}^{1}g'(x)\text{ d}x=\int_{0}^{1}\sum_{n=-\infty}^{\infty}e^{2\pi inx}(2\pi i nf(x-n)-f'(x-n))\text{ d}x$$.
+
 $$\int_\mathbb{R}  \sum_{n=-\infty }^{\infty}\left\lvert2\pi ine^{2\pi inx}f(x-n)-e^{2\pi inx}f'(x-n)  \right\rvert\text{ d}x \le \int_\mathbb{R} \sum_{n=-\infty}^{\infty}2\pi \lvert n \rvert \frac{C}{(1+\lvert x -n\rvert)^{1+\delta }}$$
 
 
@@ -22,7 +25,7 @@ $$\begin{align*}
 \end{align*}$$
 
 ![[Pasted image 20230906123326.png]]
-
+$$\hat f(\xi )=\int_{\mathbb{R}} f(x) e^{-2\pi i x \cdot \xi }\text{ d}x $$
 ![[Pasted image 20230906123356.png]]
 
 ![[Pasted image 20230906123451.png]]
