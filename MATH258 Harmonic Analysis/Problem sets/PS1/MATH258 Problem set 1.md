@@ -1,5 +1,5 @@
 How Alexander Hatle
-![[Pasted image 20230917195556.png]]
+![[Pasted image 20230917195556.png|800]]
 Assume a function $f$ on $\mathbb{R}^{n}$ satisfies $\lvert f(x) \rvert \le \frac{C}{(1+\lvert x \rvert)^{n+\delta  }}$ and $\lvert \hat f(\xi  ) \rvert \le \frac{C}{(1+\lvert \xi  \rvert)^{n+\delta }}$ with constants $C,\delta >0$. Assume further that $f$ and $\hat f$ are both continous. Prove the Poisson summation formula
 $$\begin{align*}
 \sum_{k \in \mathbb Z^{n}} f(k)&= \sum_{m \in \mathbb Z^{n}}\hat f(m)\\
@@ -24,10 +24,16 @@ $$\begin{align*}
 &= 2\pi n
 \end{align*}$$
 
-![[Pasted image 20230906123326.png]]
-$$\hat f(\xi )=\int_{\mathbb{R}} f(x) e^{-2\pi i x \cdot \xi }\text{ d}x $$
-![[Pasted image 20230906123356.png]]
+![[Pasted image 20230906123326.png|800]]
+We can let 
+$$f_{m}=f*g_{m},$$
+where $g_{m}=m^{n}e^{-\pi m^{2}\lVert x \rVert^{2}}$ is the Gaussian. Since $f$ and $g_{m}$ are both $L^{1}(\mathbb{R}^{n})$, their convolution $f_{m}$ is also $L^{1}(\mathbb{R}^{n})$.
 
-![[Pasted image 20230906123451.png]]
+$$\hat f_{m}(\xi )=\hat f(\xi )\int g_{m}(x) e^{-2\pi ix \cdot \xi } \text{ d}x$$
 
-![[Pasted image 20230906123425.png]]
+
+![[Pasted image 20230906123356.png|800]]
+
+![[Pasted image 20230906123451.png|800]]
+
+![[Pasted image 20230906123425.png|800]]
