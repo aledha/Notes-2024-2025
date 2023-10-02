@@ -1,27 +1,27 @@
 How Alexander Hatle
 ![[Pasted image 20230917195556.png|800]]
-Assume a function $f$ on $\mathbb{R}^{n}$ satisfies $\lvert f(x) \rvert \le \frac{C}{(1+\lvert x \rvert)^{n+\delta  }}$ and $\lvert \hat f(\xi  ) \rvert \le \frac{C}{(1+\lvert \xi  \rvert)^{n+\delta }}$ with constants $C,\delta >0$. Assume further that $f$ and $\hat f$ are both continous. Prove the Poisson summation formula
+We let
+$$g(y)=\sum_{k \in \mathbb Z^{n}}^{}f(y+k).$$
+Each element can be written as
+$$g_{j}(x)=\sum_{k \in \mathbb Z}^{}f_{j}(x+k),$$
+where $x \in \mathbb{R}$. Since $g$ has period 1, we take its Fourier series
+$$g_{j}(x)=\sum_{n \in \mathbb Z}^{}c_{j}(n)e^{2\pi inx}$$
+Where
 $$\begin{align*}
-\sum_{k \in \mathbb Z^{n}} f(k)&= \sum_{m \in \mathbb Z^{n}}\hat f(m)\\
-&= \sum_{m \in \mathbb Z^{n}} \int f(x) e^{-2\pi ix \cdot m } \text{ d}x
+c_{j}(n)&= \int_{0}^{1}g_{j}(x)e^{-2\pi inx} \text{ d}x\\
+&= \int_{0}^{1}\sum_{k \in \mathbb Z}f_{j}(x+k)e^{-2\pi inx} \text{ d}x
 \end{align*}$$
-Let $f(x)=f_{1}(x)+\dots +f_{s}(x)$ such that each $f_{i}$ is compactly supported in a subset $K_{i}$. Then
-
-$$\sum_{m \in \mathbb Z^{n}}^{}\hat f(m)=\sum_{m \in \mathbb Z^{n}}^{}\int f(x) e^{-2\pi i x \cdot m}\text{ d}x$$
-Since $f$ is bounded and continuous, the integrand is also bounded, and we can apply Fubini's theorem
-$$\sum_{m \in \mathbb Z^{n}}^{}\hat f(m)=\int \sum_{m \in \mathbb Z^{n}}^{}f(x) e^{-2\pi ix \cdot m}\text{ d}x$$
-
-We let $g(x)=\sum_{n=-\infty}^{\infty}e^{2\pi inx}f(x-n)$ and
-$$h(x)=\int_{0}^{1}g'(x)\text{ d}x=\int_{0}^{1}\sum_{n=-\infty}^{\infty}e^{2\pi inx}(2\pi i nf(x-n)-f'(x-n))\text{ d}x$$.
-
-$$\int_\mathbb{R}  \sum_{n=-\infty }^{\infty}\left\lvert2\pi ine^{2\pi inx}f(x-n)-e^{2\pi inx}f'(x-n)  \right\rvert\text{ d}x \le \int_\mathbb{R} \sum_{n=-\infty}^{\infty}2\pi \lvert n \rvert \frac{C}{(1+\lvert x -n\rvert)^{1+\delta }}$$
-
-
-$$\int_\mathbb{R}  \sum_{n=-\infty }^{\infty}\left\lvert2\pi ine^{2\pi inx}f(x-n)  \right\rvert\text{ d}x \le \int_\mathbb{R} \sum_{n=-\infty}^{\infty}2\pi \lvert n \rvert \frac{C}{(1+\lvert x -n\rvert)^{1+\delta }}$$
-
+We can use Fubinis theorem as the integral is bounded (else $\hat f$ wouldn't exist), #ask is this allowed?
 $$\begin{align*}
-\lvert 2\pi ine^{2\pi inx} \rvert&= \lvert 2\pi i n(\text{cos}(2\pi nx)+i \text{sin}(2 \pi n x)) \rvert= \lvert 2\pi i n \text{cos}(2\pi n x)-2\pi n\text{sin}(2\pi n x) \rvert\\
-&= 2\pi n
+c_{j}(n)&= \sum_{k \in \mathbb Z}^{}\int_{0}^{1}f_{j}(x+k)e^{-2\pi inx}\text{ d}x\\
+&= \int_{0}^{1}\left(\dots+f_{j}(x-1)+f_{j}(x)+f_{j}(x+1)+\dots \right)e^{-2\pi inx}\text{ d}x\\
+&= \int_{-\infty}^{\infty}f_{j}(x)e^{-2\pi inx}\text{ d}x=\hat f_{j}(n),
+\end{align*}$$
+where I have used that $e^{-2\pi inx_{j}}$ has period 1. So far, we have that
+$$\begin{align*}
+g_{j}(x)&= \sum_{k \in \mathbb Z}^{}f_{j}(x+k)=\sum_{n \in \mathbb Z}^{}\hat f_{j}(n)e^{-2\pi inx}\\
+	g_{j}(0)&= \sum_{k \in \mathbb Z}f_{j}(k)=\sum_{m \in \mathbb Z}^{}\hat f_{j}(m)\\
+	&\quad \text{ }\sum_{k \in \mathbb Z^{n}}^{}f(k)=\sum_{m \in \mathbb Z^{n}}^{}\hat f(m).
 \end{align*}$$
 
 ![[Pasted image 20230906123326.png|800]]
