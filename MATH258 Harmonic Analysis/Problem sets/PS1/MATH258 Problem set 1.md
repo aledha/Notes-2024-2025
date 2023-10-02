@@ -37,3 +37,10 @@ $$\hat f_{m}(\xi )=\hat f(\xi )\int g_{m}(x) e^{-2\pi ix \cdot \xi } \text{ d}x$
 ![[Pasted image 20230906123451.png|800]]
 
 ![[Pasted image 20230906123425.png|800]]
+Let $P(x)$ be a trigonometric polynomial of degree $N$ on $\mathbb T$. Prove that
+$$\lVert P' \rVert_{\infty}\le N \lVert P \rVert_{\infty}$$
+
+$$\begin{align*}
+P(x)&= \sum_{n=-N}^{N}c_{n}e^{2\pi inx}\\
+	P'(x)&= \sum_{n=-N}^{N}c_{n}2\pi ine^{2\pi inx}
+\end{align*}$$
