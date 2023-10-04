@@ -1,4 +1,4 @@
-Alexander Hatle
+ Alexander Hatle
 
 ```ad-question
 Question 1, Part 1: Consider an n by m matrix A in Compressed Sparse Row (CSR) data format: if A has nnz nonzero entries then
@@ -22,6 +22,11 @@ Question 1, Part 2: Now suppose that A is stored in Compressed Sparse Column (CS
 
 ![[Pasted image 20231001155810.png|800]]
 Hint for Part 1: To show A is nonsingular, we need to show that if the column vector x is nonzero, so is x'\*A. Suppose x(i) is the largest component of x in absolute value. What can you say about the i-th component of x'\*A?
+
+$$A \text{ nonsingular}\quad\Leftrightarrow\quad x^{T}A≠0 \quad\text{for }x≠0$$
+Suppose that $\lvert x_{i} \rvert \ge \lvert x_{j} \rvert$ for $j≠1,$
+$$(x^{T}A)_{i}=\sum_{k=1}^{n}x_{k}a_{ki}$$
+
 
 ![[Pasted image 20231001155835.png|800]]
 
