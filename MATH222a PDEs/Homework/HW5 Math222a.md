@@ -40,10 +40,25 @@ v(x) &\le -\int_{\partial B_{r}(x)}\nu (y) \cdot D_{y} \tilde E_{0}(x-y)v(y) \te
 		&\le -\int_{\partial B_{r}(x)}\frac{y-x}{r} \cdot \left(-\frac{x-y}{r}E'_{0}(r) \right)v(y) \text{ d}S(y)\\
 &\le \int_{\partial B_{r}(x)}-E_{0}'(r)v(y) \text{ d}S(y)
 \end{align*}$$
-Since $E'_{0}(r)= -\frac{1}{\lvert \partial B_{r}(x) \rvert}$, we have what we wanted to show,
-$$v(x) \le \frac{1}{\lvert \partial B_{r}(x) \rvert}\int_{\partial B_{r}(x))}v(y)\text{ d}S(y).$$
+Since $E'_{0}(r)= -\frac{1}{\lvert \partial B_{r}(x) \rvert}$, we have
+$$v(x) \le \frac{1}{\lvert \partial B_{r}(x) \rvert}\int_{\partial B_{r}(x)}v(y)\text{ d}S(y).$$
+Using this inequality,
+$$\int_{B_{r}(x)}v(y) \text{ d}y=\int_{0}^{r}\int_{\partial B_{r'}(x)} v(y) \text{ d}S(y) \text{ d}r'\ge v(x)\int_{0}^{r}\int_{\partial B_{r'}(x)} \text{ d}S(y),$$
+and our final result is
+$$v(x) \le \frac{1}{\lvert B_{r}(x) \rvert}\int_{B_{r}(x)}v(y) \text{ d}y.$$
 ![[Pasted image 20231001160346.png|800]]
-page 63-64.
+This proof is very similar to the one in the lecture notes, the only difference is replacing the equality in the mean-value property with the inequality we just proved.
 
+Suppose that $v$ attains a maximum at a point $x_{0}\in U$, i.e. $v(x_{0})=\max_{\overline{U}}v$. 
+Then,
+$$V=\{x \in U:v(x)=\max_{\overline{U}}v \}$$
+is nonempty closed subset of $U$. 
+
+Using the inequality we proved in the last problem, and for any $x_{0}\in V$ (i.e. $v(x_{0})=\max_{\overline{U}}v$), we have
+$$\begin{align*}
+v(x_{0}) &\le \frac{1}{\lvert B_{r}(x_{0}) \rvert} \int_{B_{r}(x)}v(y) \text{ d}y\\
+0 &\le \frac{1}{\lvert  B_{r}(x_{0}) \rvert} \int_{B_{r}(x)}(v-\max_{\overline{U}}v) \text{ d}y.
+\end{align*}$$
+Clearly, $v-\max_{\overline{U}}v\le 0$. As the integral must be nonnegative, it follows that $v=\max_{\overline{U}}v$ in $B_{r}(x)$, meaning that $B_{r}(x)\subset V$.
 
 ![[Pasted image 20231001160423.png|800]]
