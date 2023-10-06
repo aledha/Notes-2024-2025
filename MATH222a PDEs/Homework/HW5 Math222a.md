@@ -54,11 +54,15 @@ Then,
 $$V=\{x \in U:v(x)=\max_{\overline{U}}v \}$$
 is nonempty closed subset of $U$. 
 
-Using the inequality we proved in the last problem, and for any $x_{0}\in V$ (i.e. $v(x_{0})=\max_{\overline{U}}v$), we have
+Now we want to show that $V$ is open as well. Using the inequality we proved in the last problem, and for any $x_{0}\in V$ (i.e. $v(x_{0})=\max_{\overline{U}}v$), we have
 $$\begin{align*}
 v(x_{0}) &\le \frac{1}{\lvert B_{r}(x_{0}) \rvert} \int_{B_{r}(x)}v(y) \text{ d}y\\
 0 &\le \frac{1}{\lvert  B_{r}(x_{0}) \rvert} \int_{B_{r}(x)}(v-\max_{\overline{U}}v) \text{ d}y.
 \end{align*}$$
-Clearly, $v-\max_{\overline{U}}v\le 0$. As the integral must be nonnegative, it follows that $v=\max_{\overline{U}}v$ in $B_{r}(x)$, meaning that $B_{r}(x)\subset V$.
+Clearly, $v-\max_{\overline{U}}v\le 0$. As the integral must be nonnegative, it follows that $v=\max_{\overline{U}}v$ in $B_{r}(x)$, meaning that $B_{r}(x)\subseteq V$. Then $V$ is both open and closed subset of $U$, and since it is also nonempty, it must be the whole space, $V=U$, we have the following result. 
+If $x_{0} \in U$ satisfies
+$$v(x_{0})=\max_{\overline{U}}v,$$
+then $v$ must be constant in $U$.
+
 
 ![[Pasted image 20231001160423.png|800]]
