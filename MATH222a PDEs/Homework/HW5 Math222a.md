@@ -46,10 +46,11 @@ Using this inequality,
 $$\int_{B_{r}(x)}v(y) \text{ d}y=\int_{0}^{r}\int_{\partial B_{r'}(x)} v(y) \text{ d}S(y) \text{ d}r'\ge v(x)\int_{0}^{r}\int_{\partial B_{r'}(x)} \text{ d}S(y),$$
 and our final result is
 $$v(x) \le \frac{1}{\lvert B_{r}(x) \rvert}\int_{B_{r}(x)}v(y) \text{ d}y.$$
+Which holds for all $\overline{B_{r}(x)} \subseteq U$. 
 ![[Pasted image 20231001160346.png|800]]
-This proof is very similar to the one in the lecture notes, the only difference is replacing the equality in the mean-value property with the inequality we just proved.
+This proof is very similar to the one in the lecture notes, the only difference is replacing the equality in the mean-value property with the inequality we just proved. 
 
-Suppose that $v$ attains a maximum at a point $x_{0}\in U$, i.e. $v(x_{0})=\max_{\overline{U}}v$. 
+Let's assume that $v \in C^{2}(U) \cap C(\overline{U})$. Suppose that $v$ attains a maximum at a point $x_{0}\in U$, i.e. $v(x_{0})=\max_{\overline{U}}v$. 
 Then,
 $$V=\{x \in U:v(x)=\max_{\overline{U}}v \}$$
 is nonempty closed subset of $U$. 
@@ -59,10 +60,35 @@ $$\begin{align*}
 v(x_{0}) &\le \frac{1}{\lvert B_{r}(x_{0}) \rvert} \int_{B_{r}(x)}v(y) \text{ d}y\\
 0 &\le \frac{1}{\lvert  B_{r}(x_{0}) \rvert} \int_{B_{r}(x)}(v-\max_{\overline{U}}v) \text{ d}y.
 \end{align*}$$
-Clearly, $v-\max_{\overline{U}}v\le 0$. As the integral must be nonnegative, it follows that $v=\max_{\overline{U}}v$ in $B_{r}(x)$, meaning that $B_{r}(x)\subseteq V$. Then $V$ is both open and closed subset of $U$, and since it is also nonempty, it must be the whole space, $V=U$, we have the following result. 
+Clearly, $v-\max_{\overline{U}}v\le 0$. As the integral must be nonnegative, it follows that $v=\max_{\overline{U}}v$ in $B_{r}(x)$, meaning that $B_{r}(x)\subseteq V$. Then $V$ is both open and closed subset of $U$, and since it is also nonempty, it must be the whole space, $V=U$. Thus we have the **strong maximum principle**
 If $x_{0} \in U$ satisfies
 $$v(x_{0})=\max_{\overline{U}}v,$$
 then $v$ must be constant in $U$.
 
+From this, we want to show the **weak maximum principle**
+$$\max_{\overline{U}}v=\max_{\partial U}v.$$
+If we first assume that there exists some $x_{0} \in U$ such that $v(x_{0})=\max_{\overline{U}}v$, then $v$ must be constant in $U$, and since $v \in C(\overline{U})$, it must be constant in $\overline{U}$ and the weak principle holds.
+
+If there does not exists some $x_{0}\in U$ such that $v(x_{0})=\max_{\overline{U}}v$, the weak maximum principle holds trivially.
+
 
 ![[Pasted image 20231001160423.png|800]]
+
+The weak maximum principle applies for both $v$ and $h$, so both functions attain their maximal value on $\partial U$. Let's inspect the subset $B_{r}(x)$ where $\overline{B_{r}(x)} \subseteq U$, and use the previously proven
+$$\begin{align*}
+v(x) &\le \frac{1}{\lvert B_{r}(x) \rvert}\int_{B_{r}(x)}v(y) \text{ d}y\\
+&\le \max_{\overline{B_{r}(x)}}v\\
+	&\le \max_{\overline{U}}v
+\end{align*}$$
+
+
+Let us look at 
+$$h(x)-v(x)=\frac{1}{\lvert B_{r}(x) \rvert}\int_{B_{r}(x)}h(y) \text{ d}y-v(x)$$
+
+
+$$h(x)=\frac{1}{\lvert B_{r}(x) \rvert}\int_{B_{r}(x)}h(y) \text{ d}y$$
+
+
+$$\begin{align*}
+	\max_{\partial U}v=\max_{\overline{U}}v
+\end{align*}$$
