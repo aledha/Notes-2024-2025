@@ -21,7 +21,16 @@ Since this is zero, it implies that $u$ must be a polynomial of degree at most $
 ![[Pasted image 20231001160239.png|800]]
 
 $$-\Delta v=f\le0$$
-$$\int_{B_{r}(x)}v \text{ d}y=\int_{0}^{r}\int $$
+Lemma 4.9:
+Let $\tilde E_{0}$ be a fundamental solution for $-\Delta$ at 0. Then 
+$$\begin{align*}
+v(x)&= \int_{B_{r}(x)}\tilde E_{0}(x-y)(-\Delta v)(y)\text{ d}y-\int_{\partial B_{r}(x)}\nu (y) \cdot D_{y} \tilde E_{0}(x-y)v(y) \text{ d}S(y)\\
+&+\int_{\partial B_{r}(x)}\tilde E_{0}(x-y)\nu (y) \cdot Dv(y) \text{ d}S(y)
+\end{align*}$$
+
+
+
+$$\int_{B_{r}(x)}v \text{ d}y=\int_{B_{r}(x)}$$
 
 ![[Pasted image 20231005160105.png]]
 ![[Pasted image 20231001160346.png|800]]
