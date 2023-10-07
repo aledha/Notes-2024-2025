@@ -12,11 +12,58 @@ Suppose that $\lvert \alpha  \rvert=\lfloor q \rfloor+1$. Then we have that $\lv
 Since this is zero, it implies that $u$ must be a polynomial of degree at most $\lfloor q \rfloor$. 
 
 ![[Pasted image 20231001160132.png|800]]
+As the hint suggests,
+$$\begin{align*}
+\frac{\text{d}^{2}}{\text{d}^{2}x} \left(\frac{1}{2}\lvert x\rvert\right) &= \frac{\text{d}}{\text{d}x}\begin{cases}
+\frac{1}{2}  &  \quad\text{for }x>0 \\
+- \frac{1}{2}  &  \quad\text{for }x<0
+\end{cases}\\
+&= \delta _{0}(x)
+\end{align*}$$
+Any fundamental solution $\tilde E$ has the property that $\frac{\text{d}^{2}}{\text{d}^{2}x}(\tilde E-E)=0$.
 
+Then, a general fundamental solution, $\tilde E$, for $P$ is given by
+$$\begin{align*}
+\tilde E&= E+c_{1}x+c_{0}\\
+	\tilde E&= \frac{1}{2}\lvert x \rvert+c_{1}x+c_{0},
+\end{align*}$$
+for $c_{0},c_{1}\in \mathbb{R}$.
 ![[Pasted image 20231001160212.png|800]]
-
+$$\begin{align*}
+u(x)&= u*\delta _{0}(x)\\
+&= \mathbb 1_{(0,1)}u*E''(x)\\
+&= (\delta _{0}-\delta _{1})u*E'(x)+\mathbb 1_{(0,1)}u'*E'(x)\\
+&= (\delta _{0}-\delta _{1})u*E'(x)+(\delta _{0}-\delta _{1})u'*E(x)+\mathbb 1_{(0,1)}u''*E(x)
+\end{align*}$$
+The first term is 
+$$\begin{align*}
+\int_\mathbb{R}((\delta _{0}-\delta _{1})u)(y)E'(x-y)\text{ d}y&=  \int_\mathbb{R} (\delta _{0}u)(y)E'(x-y)-(\delta _{1}u)(y)E'(x-y) \text{ d}y\\
+&= u(0)E'(x)-u(1)E'(x-1).
+\end{align*}$$
+The second term is similar,
+$$\int_\mathbb{R} ((\delta _{0}-\delta _{1})u')(y)E(x-y)\text{ d}y=u'(0)E(x)-u'(1)E(x-1).$$
+Finally, the third term is
+$$\int_\mathbb{R} (\mathbb 1_{(0,1)}u'')(y)E(x-y)\text{ d}y=\int_{0}^{1}u''(y)E(x-y)\text{ d}y$$
+Our representation formula for $u$ is
+$$u(x)=u(0)E'(x)-u(1)E'(x-1)+u'(0)E(x)-u'(1)E(x-1)+\int_{0}^{1}u''(y)E(x-y)\text{ d}y.$$
 
 ![[Pasted image 20231001160224.png|800]]
+(Feel free to skip, couldn't crack this one)
+Since $E= \frac{1}{2}\lvert x \rvert+c_{1}x+c_{0},$ 
+$E'(x)= \frac{1}{2}\text{sgn}x+c_{1}$.
+Picking $c_{1}=\frac{1}{2}$ yields that $E(x-1)=- \frac{1}{2}+ \frac{1}{2}=0$ for $x \in (0,1)$, and the $u'(1)$ term vanishes.
+$E(x-1)= \frac{1}{2}\lvert x-1 \rvert+ \frac{1}{2}x+c_{0}= \frac{1}{2}(1-x)+ \frac{1}{2}x+c_{0}$.  For this term to be 0, we need to pick $c_{0}=-1$.
+$$E(x)=\frac{1}{2}\lvert x \rvert+ \frac{1}{2}x-1$$
+$$\begin{align*}
+u(x)&= u(0)E'(x)+u(0)E(x)+\int_{0}^{1}u''(y) \left(\frac{1}{2}\lvert x-y \rvert+ \frac{1}{2}(x-y)-1 \right)\text{ d}y\\
+&= u(0)E'(x)+u'(0)E(x)+\int_{0}^{x}u''(y) \left[x-y-1 \right] \text{ d}y+\int_{x}^{1}-u''(y)\text{ d}y\\
+&= u(0)E'(x)+u'(0)E(x)+\int_{0}^{x}u''(y)(x-y)\text{ d}y-\int_{0}^{1}u''(y) \text{ d}y
+\end{align*}$$
+$$\begin{align*}
+&\quad \int_{0}^{1}u''(y)\left(\frac{1}{2}\lvert x-y \rvert +c_{1}(x-y)+c_{0} \right)\text{ d}y\\
+&= c_{0}(u'(1)-u'(0))+\int_{0}^{1}u''(y) \left(\frac{1}{2}\lvert x-y \rvert+c_{1}(x-y) \right)\text{ d}y\\
+&= c_{0}(u'(1)-u'(0))+\int_{0}^{x}u''(y) \left(\frac{1}{2}+c_{1} \right)(x-y) \text{ d}y+\int_{x}^{1}u''(y)\left(- \frac{1}{2}+c_{1} \right)(x-y)\text{ d}y
+\end{align*}$$
 
 ![[Pasted image 20231001160239.png|800]]
 Lemma 4.9:
@@ -73,22 +120,17 @@ If there does not exists some $x_{0}\in U$ such that $v(x_{0})=\max_{\overline{U
 
 
 ![[Pasted image 20231001160423.png|800]]
+Suppose that there exists some $x^{*} \in U$ such that 
+$$\max_{x \in \overline{U}} (v(x)-h(x))=v(x^{*})-h(x^{*})$$
+Then for small $r$,
+$$v(x^{*})-h(x^{*})\le \frac{1}{\lvert B_{r}(x^{*}) \rvert}\int_{B_{r}(x^{*})}v(y)-h(y) \text{ d}y$$
+Since $v(x^{*})-h(x^{*})$ is maximal, $v(x^{*})-h(x^{*})\ge v(y)-h(y)$. 
 
-The weak maximum principle applies for both $v$ and $h$, so both functions attain their maximal value on $\partial U$. Let's inspect the subset $B_{r}(x)$ where $\overline{B_{r}(x)} \subseteq U$, and use the previously proven
-$$\begin{align*}
-v(x) &\le \frac{1}{\lvert B_{r}(x) \rvert}\int_{B_{r}(x)}v(y) \text{ d}y\\
-&\le \max_{\overline{B_{r}(x)}}v\\
-	&\le \max_{\overline{U}}v
-\end{align*}$$
+The only way that the inequality holds is if $v(x^{*})-h(x^{*})=v(y)-h(y)\quad\text{for }y \in B_{r}(x^{*})$.
 
+It follows (for example by setting each $y \in B_{r}(x^{*})$ to be the new $x^{*}$ and repeat the same argument) that if there exists some $x^{*}\in U$ that attains the maximum, then each $y \in \overline{U}$ attains that maximum. 
 
-Let us look at 
-$$h(x)-v(x)=\frac{1}{\lvert B_{r}(x) \rvert}\int_{B_{r}(x)}h(y) \text{ d}y-v(x)$$
-
-
-$$h(x)=\frac{1}{\lvert B_{r}(x) \rvert}\int_{B_{r}(x)}h(y) \text{ d}y$$
-
-
-$$\begin{align*}
-	\max_{\partial U}v=\max_{\overline{U}}v
-\end{align*}$$
+Now assume that that maximum is positive, $v(x^{*})-h(x^{*})>0$ for some $x^{*}\in U$. 
+This is a contradiction since the same maximum must be achieved on the boundary, but there $v=h$. 
+Therefore,
+$$\max_{x \in \overline{U}}v(x)-h(x)\le0\quad\implies\quad v(x)\le h(x) \quad\text{in }U$$
