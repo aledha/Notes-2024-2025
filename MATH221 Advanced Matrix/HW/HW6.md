@@ -5,9 +5,12 @@
 ![[Pasted image 20231009094350.png|800]]
 From this formulation, we can equivalently write up the equations
 $$\begin{align*}
-Ir+Ax&= b\\
+r+Ax&= b\\
 A^{T}r&= 0
 \end{align*}$$
+Since $Ax-b=-r$,
+$$A^{T}(Ax-b)=0$$
+
 
 ![[Pasted image 20231009094407.png|800]]
 
