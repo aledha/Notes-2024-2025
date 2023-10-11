@@ -11,9 +11,9 @@ $$\begin{align*}
 &= \lim_{e  \to 0} \frac{2e^{T}A^{T}(Ax^{*}-b)+e^{T}A^{T}Ae}{\lVert e \rVert_{2}}
 
 \end{align*}$$
-The first term goes to zero
+The second term goes to zero
 $$\frac{e^{T}A^{T}Ae}{\lVert e \rVert_{2}} \le \frac{\lVert A \rVert_{2}^2\lVert e \rVert_{2}^{2}}{\lVert e \rVert_{2}}\stackrel{e\to0}{\to}0.$$
-Since the whole expression equals zero, we must then have that the second term is also zero,
+Since the whole expression should equal zero, we must then have that the first term is also zero,
 $$\lim_{e \to 0} \frac{2e^{T}A^{T}(Ax^{*}-b)}{\lVert e \rVert_{2}}=0$$
 Denoting $r=b-Ax$, we must therefore have that 
 $$A^{T}r=0$$
