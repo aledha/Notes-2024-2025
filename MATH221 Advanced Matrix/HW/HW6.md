@@ -40,6 +40,8 @@ $$\kappa(Z)= \frac{\sigma _{1}}{\sigma _{n}}$$
 
 ![[Pasted image 20231009094421.png|800]]
 
+
+
 ![[Pasted image 20231009094446.png|800]]
 We want to minimize the following expression
 $$\lVert D(Ax-b) \rVert_{2}=\lVert \tilde Ax-\tilde b \rVert_{2},$$
