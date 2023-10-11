@@ -55,8 +55,24 @@ With the same reasoning as before, we arrive at the matrix equations
 $$\begin{bmatrix}I & E A \\  A^{T}E & 0 \end{bmatrix}\begin{bmatrix}r \\ x\end{bmatrix}=\begin{bmatrix}E b \\ 0\end{bmatrix}$$
 
 ![[Pasted image 20231009094510.png|800]]
+$$A=\begin{bmatrix} * &   &   &  \\ u_{2}v_{1}  & *  \\ \vdots & \ddots & * \\ u_{n-1}v_{1} & \ddots &  \ddots & *  \\ u_{n}v_{1} & \dots  & \dots & u_{n}v_{n-1} & * \end{bmatrix}$$
+Let's consider the Givens rotation
+$$R(n,n-1)=\left[\begin{array}{c|cc}I   \\ \hline       &  c & -s \\     &   s & c\end{array} \right],$$
+where $c$ and $s$ are chosen such that 
+$$\begin{bmatrix}c & -s \\ s & c\end{bmatrix}\begin{bmatrix}u_{n-1}v_{1}  \\ u_{n}v_{1}\end{bmatrix}=\begin{bmatrix}\sqrt{(u_{n-1}v_{1})^{2}+(u_{n}v_{1})^{2}} \\ 0\end{bmatrix},$$
+which simplifies to
+$$\begin{bmatrix}c & -s \\ s & c\end{bmatrix}\begin{bmatrix}u_{n-1} \\ u_{n}\end{bmatrix}=\begin{bmatrix}\sqrt{u_{n-1}^{2}+u_{n}^{2}} \\ 0\end{bmatrix}$$
+https://math.mit.edu/~plamen/18.335/Solns2.pdf
+
 
 ![[Pasted image 20231009094533.png|800]]
+We have that $\text{rank}(A)=m$ and that $\text{rank}(A)+\text{dim}(\text{ker}(A))=n$. Then the kernel is $(n-m)$-dimensional.
+Let $x^{*}$ minimize $\lVert Ax-b \rVert_{2}$.
+For any $y \in \text{ker}(A)$, we have that $x^{*}+y$ is a solution, as it minimises $\lVert Ax-b \rVert_{2}$.  
+The solution is therefore $(n-m)$-dimensional.
+
+A natural way to make the solution unique is to impose an additional condition
+
 
 ![[Pasted image 20231009094546.png|800]]
 errata: The question says A is m-by-n, so the vectors u(i) in Part 1 should be of length m, not n, and the loop in Part 2 should be "for i=1:min(m-1,n)", not "for i=1:m".(RuoChen Liang)
