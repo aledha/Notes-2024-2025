@@ -8,7 +8,7 @@ r_{ji}&= q_{j}^{T}q_{i}=q_{j}^{T}\left(a_{i}-\sum_{k=1}^{j-1}r_{ki}q_{k}\right)\
 At this point, $\{q_{k} \}_{k \le j}$ forms a sequence of orthogonal vectors, resulting in that $q^{T}_{j}\sum_{k=1}^{j-1}r_{ki}q_{k}=0$, and the two formulas are equivalent.
 ![[Pasted image 20231009120333.png|800]]
 ![[Pasted image 20231009094350.png|800]]
-Let's suppose that $x^{*}$ minimizes $\lVert Ax-b \rVert_{2}$. Then, the gradient of $(Ax-b)^{T}(Ax-b)$ must be zero at this point.
+Let's suppose that $x^{*}$ minimizes $\lVert Ax-b \rVert_{2}$, which also minimizes $\lVert Ax-b \rVert_{2}^{2}$. Then, the gradient of $(Ax-b)^{T}(Ax-b)$ must be zero at this point.
 $$\begin{align*}
 0&= \lim_{e  \to 0}\frac{(A(x^{*}+e)-b)^{T}(A(x^{*}+e)-b)- (Ax^{*}-b)^{T}(Ax^{*}-b)}{\lVert e \rVert_{2}}\\
 &= \lim_{e  \to 0} \frac{((Ax^{*}-b)^{T}+(Ae)^{T})((Ax^{*}-b) +Ae)- (Ax^{*}-b)^{T}(Ax^{*}-b)}{\lVert e \rVert_{2}}\\
@@ -27,8 +27,7 @@ And by our definition of $r=b-Ax^{*}$, we get that $r+Ax=b$ and end up with the 
 $$\begin{bmatrix}I & A \\ A^{T} & 0 \end{bmatrix}\begin{bmatrix}r \\ x\end{bmatrix}=\begin{bmatrix}b \\ 0\end{bmatrix}.$$
 
 ![[Pasted image 20231009094407.png|800]]
-$$A=U \Sigma V^{T}$$
-What is the condition number of the coefficient matrix, in terms of the singular values of A? Hint: Use the SVD of A
+We are interested in the singular values of $Z$.
 $$\begin{align*}
 Z&= \begin{bmatrix}I & A \\ A^{T} & 0\end{bmatrix}\\
 &= \begin{bmatrix}I & U \Sigma V^{T} \\ V \Sigma ^{T}U^{T} & 0\end{bmatrix}\\
@@ -40,7 +39,11 @@ Z&= \begin{bmatrix}I & A \\ A^{T} & 0\end{bmatrix}\\
 \Sigma ^{T} & 0 \end{bmatrix} \begin{bmatrix}U^{T} & 0\\
 0 & V^{T}\end{bmatrix}
 \end{align*}$$
-
+The matrices on the left and right are clearly unitary, so the singular values of $Z$ must be the same as the singular values of $X=\begin{bmatrix}I_{m} & \Sigma  \\ \Sigma ^{T} & 0\end{bmatrix}$.
+$$XX^{T}=\begin{bmatrix}I_{m} & \Sigma  \\ \Sigma ^{T} & 0\end{bmatrix}\begin{bmatrix}I_{m} & \Sigma  \\ \Sigma ^{T} & 0\end{bmatrix}=\begin{bmatrix}I_{m}+\Sigma \Sigma ^{T} & \Sigma  \\ \Sigma ^{T} & \Sigma^{T} \Sigma\end{bmatrix}$$
+I feel like I should be able to find the singular values of $X$, but I'm having trouble. 
+Only thing I could think of was using Geshgorins circle theorem, but that would only get me the bound 
+$$\sigma _{\min}(A)^{2}-\sigma _\text{max}(A)\le \sigma(Z)^{2} \le 1+\sigma _\text{max}(A)^{2}+\sigma _\text{max}(A) $$
 $$\kappa(Z)= \frac{\sigma _{1}}{\sigma _{n}}$$
 
 ![[Pasted image 20231009094421.png|800]]
@@ -107,8 +110,27 @@ Let $x^{*}$ minimize $\lVert Ax-b \rVert_{2}$.
 For any $y \in \text{ker}(A)$, we have that $x^{*}+y$ is a solution, as it minimises $\lVert Ax-b \rVert_{2}$.  
 The solution is therefore $(n-m)$-dimensional.
 
-A natural way to make the solution unique is to impose an additional condition
-
+A natural way to make the solution unique is to impose a restriction on $x$,
+$$\min_{x}\lVert Ax-b \rVert_{2}^{2}+\lVert x \rVert_{2}^{2}$$
+with the same strategy as in 3.3.1, the gradient of the above equation at a solution $x^{*}$ must equal zero,
+$$\begin{align*}
+0&=  \lim_{e  \to 0}\frac{(A(x^{*}+e)-b)^{T}(A(x^{*}+e)-b)+(x^{*}+e)^{T}(x^{*}+e)- (Ax^{*}-b)^{T}(Ax^{*}-b)-(x^{*})^{T}x^{*}}{\lVert e \rVert_{2}}\\
+&= \lim_{e  \to 0} \frac{2e^{T}A^{T}(Ax^{*}-b)+e^{T}A^{T}Ae+2e^{T}x^{*}+e^{T}e}{\lVert e \rVert_{2}}
+\end{align*}$$
+We see that the second and third terms goes to zero as $e$ goes to zero, so then $x^{*}$ must satisfy
+$$\lim_{e \to 0} \frac{2e^{T}A^{T}(Ax^{*}-b)+2e^{T}x^{*}}{\lVert e \rVert_{2}}=\lim_{e \to 0}\frac{2e^{T}(A^{T}(Ax^{*}-b)+x^{*})}{\lVert e \rVert_{2}}=0.$$
+In consequence, we must have $A^{T}(Ax^{*}-b)+x^{*}=0$. Denoting $r=b-Ax$, we can set up the linear system
+$$\begin{bmatrix}I & A \\ -A^{T} & I \end{bmatrix}\begin{bmatrix}r \\ x\end{bmatrix}=\begin{bmatrix}b \\ 0\end{bmatrix}.$$
+With the normal equation
+$$(A^{T}A+I)x^{*}=A^{T}b$$
+Given the SVD of $A$, we can end up with an exact solution,
+$$\begin{align*}
+(V \Sigma^{T} U^{T}U \Sigma V^{T}+I_{n})x^{*}&= V \Sigma U^{T}b\\
+(V \Sigma ^{T}\Sigma V^{T}+VV^{T})x^{*}&= V \Sigma U^{T}b\\
+	V(\Sigma ^{T}\Sigma +I_{n})V^{T}x^{*}&= V \Sigma U^{T}b\\
+x^{*}&= V(\Sigma ^{T}\Sigma +I_{n})^{-1}\Sigma U^{T}b\\
+	x^{*}&= \sum_{i=1}^{m} \frac{\sigma _{i}}{\sigma _{i}^{2}+1}v_{i}u_{i}^{T}b
+\end{align*}$$
 
 ![[Pasted image 20231009094546.png|800]]
 errata: The question says A is m-by-n, so the vectors u(i) in Part 1 should be of length m, not n, and the loop in Part 2 should be "for i=1:min(m-1,n)", not "for i=1:m".(RuoChen Liang)
