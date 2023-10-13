@@ -16,10 +16,23 @@ u(x)&= -\int_{\partial U}\nu (y)\cdot D_{y}G(x,y)u(y) \text{ d}S(y)\\
 &= \int_{0}^{\infty}\partial_{y^{2}}G(x,y)u(y)\text{ d}y^{1}+\int_{0}^{\infty}\partial_{y^{1}}G(x,y)u(y)\text{ d}y^{2}
 \end{align*}$$
 ![[Pasted image 20231005214154.png]]
+Using this fundamental solution, let's compute $\partial _{y^{1}}G(x,y)$.
 $$\begin{align*}
 \partial_{y^{1}}G(x,y)&= \partial_{y^{1}} \lvert y-x \rvert E_{0}'(\lvert y-x \rvert)+\partial_{y^{1}} \lvert y-x^{*} \rvert E_{0}'(\lvert y-x^{*} \rvert)\\
-&-\partial_{y^{1}} \lvert y-\overline{x} \rvert E_{0}'(\lvert y-\overline{x} \rvert)-\partial_{y^{1}} \lvert y-\hat x \rvert E_{0}'(\lvert y-\hat x \rvert)
+&-\partial_{y^{1}} \lvert y-\overline{x} \rvert E_{0}'(\lvert y-\overline{x} \rvert)-\partial_{y^{1}} \lvert y-\hat x \rvert E_{0}'(\lvert y-\hat x \rvert)\\
+&= \frac{y^{1}-x^{1}}{\lvert y-x \rvert}\left(- \frac{1}{2 \pi \lvert y-x \rvert} \right) + \frac{y^{1}+x^{1}}{\lvert y-x^{*} \rvert}\left(- \frac{1}{2 \pi \lvert y-x^{*} \rvert} \right)\\
+&-\frac{y^{1}-x^{1}}{\lvert y-\overline{x} \rvert}\left(- \frac{1}{2 \pi \lvert y-\overline{x} \rvert} \right)-\frac{y^{1}+x^{1}}{\lvert y-\hat x \rvert}\left(- \frac{1}{2 \pi \lvert y-\hat x \rvert} \right)\\
+&= \frac{1}{2\pi }\left( -\frac{y^{1}-x^{1}}{\lvert y-x \rvert^{2}} -\frac{y^{1}+x^{1}}{\lvert y-x^{*} \rvert^{2}} +\frac{y^{1}-x^{1}}{\lvert y-\overline{x} \rvert^{2}} +\frac{y^{1}+x^{1}}{\lvert y-\hat x \rvert^{2}}  \right)
 \end{align*}$$
+Here, we set $y_{1}=0$, and get that 
+$$\begin{align*}
+\lvert y-x \rvert&= \lvert y-\hat x \rvert=\sqrt{(x^{1})^{2}+(y^{2}-x^{2})^{2}},\\
+	\lvert y-x^{*} \rvert&= \lvert y-\overline{x} \rvert= \sqrt{(x^{1})^{2}+(y^{2}+x^{2})^{2}}.
+\end{align*}$$
+$$\partial y^{1} G(x,y)= \frac{1}{2\pi }\left( \frac{2x^{1}}{(x^{1})^{2}+(y^{2}-x^{2})^{2}}- \frac{2x^{1}}{(x^{1})^{2}+(y^{2}+x^{2})^{2}} \right)$$
+I propose, by the symmetry of the problem, that 
+$$\partial y^{2} G(x,y)= \frac{1}{2\pi }\left( \frac{2x^{2}}{(x^{2})^{2}+(y^{1}-x^{1})^{2}}- \frac{2x^{2}}{(x^{2})^{2}+(y^{1}+x^{1})^{2}} \right)$$
+These expressions could probably be simplified further.
 
 ![[Pasted image 20231012132905.png|800]]
 As the hint suggests, let's consider the function
@@ -60,9 +73,28 @@ $$\begin{align*}
 p_{x}(z)-q_{y}(z)&= \partial _{x}(u(\overline{z}))-\partial _{y}(-v(\overline{z}))\\
 &= u_{x}(\overline{z})-v_{y}(\overline{z}),
 \end{align*}$$
-where I have used the chain rule.
+where I have used the chain rule. Since for $z \in U_{-}$ then $\overline{z}\in U_{+}$ and $p_{x}(z)-q_{y}(z)=u_{x}(\overline{z})-v_{y}(\overline{z})=0$. 
+The second expression is similar,
+$$\begin{align*}
+p_{y}(z)+q_{x}(z)&= \partial _{y}(u(\overline{z}))+\partial _{x}(-v(\overline{z}))\\
+	&= -u_{y}(\overline{z})-v_{x}(\overline{z})=0.
+\end{align*}$$
+So far, we have shown that $g$ is holomorphic in $U_{-}$, and that the extension is holomorphic in $U$.
 
-
+To show that the extension is smooth, we need to show that $f$ and $g$ agrees on $\overline{U}\cap \{y=0 \}$. Since $f$ is real-valued here, we have that $v(x,0)=0$.
+$$f(x,0)=u(x,0)=u(x,-0)=g(x,0).$$
 ![[Pasted image 20231012132931.png|800]]
 
 https://mathweb.ucsd.edu/~jmckerna/Teaching/19-20/Spring/120B/l_22.pdf
+
+We have that $-\Delta u=0 \quad\text{on }U_{+}$.
+
+Let $U_{+}=\{(x,y)\in U:y>0 \}$. Let $u \in C(\overline{U_{+}})$ be harmonic in $U_+$ and vanishing on $\{y=0 \}$. Show that the extension
+$$u(x,y)=\begin{cases}
+u(x,y) & \quad\text{for }y\ge0 \\
+-u(x,-y) & \quad\text{for }y<0
+\end{cases}$$
+is a harmonic function on $U$.
+Hint: In both cases, simply check the PDE in the sense of distributions.
+
+$$u(x,y)=\int_{U_{+}}$$
