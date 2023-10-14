@@ -34,6 +34,8 @@ I propose, by the symmetry of the problem, that
 $$\partial y^{2} G(x,y)= \frac{1}{2\pi }\left( \frac{2x^{2}}{(x^{2})^{2}+(y^{1}-x^{1})^{2}}- \frac{2x^{2}}{(x^{2})^{2}+(y^{1}+x^{1})^{2}} \right)$$
 These expressions could probably be simplified further.
 
+<div style="page-break-after: always;"></div>
+
 ![[Pasted image 20231012132905.png|800]]
 As the hint suggests, let's consider the function
 $$h(x,y)=G(x,y)-E(x-y),$$
@@ -42,11 +44,13 @@ $$\Delta h(x,y)=\Delta G(x,y)-\Delta E(x-y)=0$$
 Let $\epsilon >0$ and denote $V_{\epsilon }(y)=\{U \}\backslash \overline{B_{\epsilon }(y)}$. For any fixed $y \in U$, we have that $G(\cdot ,y)$ is harmonic in $V_{\epsilon }(y)$. 
 For sufficiently small $\epsilon$, $V_{\epsilon }(y)$ is also connected.
 
-$$\max_{\overline{U}}h=\max_{\partial U}h$$
+If there exists $x_{0}\in V_{\epsilon }(y)$ such that $G(x_{0})=\min_{\overline{V_{\epsilon }(y)}}G$,
+then $G$ is constant.
+$G$ cannot be constant in $V_{\epsilon }(y)$ since we can take an arbitrarily small $\epsilon$, and it's not constant on $U$.
 
+There therefore does not exist a point in $V_{\epsilon }(y)$ that attains the minimum (which is 0 on $\partial U$), and $G(\cdot ,y)>0$ on $V_{\epsilon }(y)$.
 
-![[Pasted image 20231013125235.png]]
-
+<div style="page-break-after: always;"></div>
 
 ![[Pasted image 20231012132915.png|800]]
 $$(\partial_{x}+i \partial _{y})f=0 \quad \text{in }U_{+}$$
@@ -83,18 +87,3 @@ So far, we have shown that $g$ is holomorphic in $U_{-}$, and that the extension
 
 To show that the extension is smooth, we need to show that $f$ and $g$ agrees on $\overline{U}\cap \{y=0 \}$. Since $f$ is real-valued here, we have that $v(x,0)=0$.
 $$f(x,0)=u(x,0)=u(x,-0)=g(x,0).$$
-![[Pasted image 20231012132931.png|800]]
-
-https://mathweb.ucsd.edu/~jmckerna/Teaching/19-20/Spring/120B/l_22.pdf
-
-We have that $-\Delta u=0 \quad\text{on }U_{+}$.
-
-Let $U_{+}=\{(x,y)\in U:y>0 \}$. Let $u \in C(\overline{U_{+}})$ be harmonic in $U_+$ and vanishing on $\{y=0 \}$. Show that the extension
-$$u(x,y)=\begin{cases}
-u(x,y) & \quad\text{for }y\ge0 \\
--u(x,-y) & \quad\text{for }y<0
-\end{cases}$$
-is a harmonic function on $U$.
-Hint: In both cases, simply check the PDE in the sense of distributions.
-
-$$u(x,y)=\int_{U_{+}}$$
