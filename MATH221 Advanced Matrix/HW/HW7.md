@@ -17,12 +17,23 @@ $$AA^{+}A=U \Sigma V^{T}V \Sigma ^{-1}U^{T}U \Sigma V^{T}=U \Sigma V^{T}=A$$
 $$A^{+}AA^{+}=V \Sigma^{-1} U^{T}U \Sigma V^{T}V \Sigma ^{-1}U^{T}$$
 
 ![[Pasted image 20231015233530.png|800]]
+
 $$\begin{align*}
 H&= \begin{bmatrix}0 & A^{T} \\ A & 0\end{bmatrix}=\begin{bmatrix}0 & V \Sigma^{T } U^{T} \\ U \Sigma V^{T} & 0\end{bmatrix}\\
-&= \begin{bmatrix}V & U\end{bmatrix}\begin{bmatrix}0 & \Sigma^{T} U^{T}\\
+&= \begin{bmatrix}V  & 0\\
+0& U\end{bmatrix}\begin{bmatrix}0 & \Sigma^{T} U^{T}\\
 \Sigma V^{T}  & 0\end{bmatrix}\\
-&= \begin{bmatrix}V & U\end{bmatrix} \begin{bmatrix}0 & \Sigma ^{T}\\
-\Sigma  & 0\end{bmatrix}\begin{bmatrix}V^{T} & U^{T}\end{bmatrix}
+&= \begin{bmatrix}V &0\\
+0 &  U\end{bmatrix} \begin{bmatrix}0 & \Sigma ^{T}\\
+\Sigma  & 0\end{bmatrix}\begin{bmatrix}V^{T} &0\\
+0 &  U^{T}\end{bmatrix}\\
+&= :C \begin{bmatrix}0 & \Sigma ^{T}\\
+\Sigma  & 0\end{bmatrix}C^{T}
 \end{align*}$$
+Note that $C$ is unitary, 
+$$\begin{bmatrix}V & 0 \\ 0 & U\end{bmatrix}\begin{bmatrix}V^{T} & 0 \\ 0 & U^{T}\end{bmatrix}=\begin{bmatrix}I & 0 \\ 0 & I\end{bmatrix},$$
+and therefore $H$ and 
 
-In lecture, we discussed how to solve the ridge regression problem using both a version of the normal equations, and the SVD. In practice, one may want to solve the same ridge regression problem for several values of the parameter lambda, to choose the best one. The SVD makes it quite cheap to do this, but requires an expensive SVD first. The normal equations require an additional O(n^3) work for each lambda, for Cholesky, which can be much cheaper than initially forming A^T$*$A for O(m$*$n^2) if m >> n, but it is not backward stable. Show how to use QR to solve ridge regression for an additional cost of O(n^3) per lambda. Hint: use Givens rotations to update R.
+
+
+In lecture, we discussed how to solve the ridge regression problem using both a version of the normal equations, and the SVD. In practice, one may want to solve the same ridge regression problem for several values of the parameter lambda, to choose the best one. The SVD makes it quite cheap to do this, but requires an expensive SVD first. The normal equations require an additional O(n^3) work for each lambda, for Cholesky, which can be much cheaper than initially forming A^T$*$A for O(m$*$n^2) if m >> n, but it is not backward stable. Show how to use QR to solve ridge regression for an additional cost of O(n^3) per lambda. Hint: use Givens rotations to update R. 
