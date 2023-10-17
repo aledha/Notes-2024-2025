@@ -8,6 +8,7 @@ $$\lVert A X -I\rVert= \left\lVert \begin{bmatrix}U_{1} & U_{2}\end{bmatrix}\beg
 
 ![[Pasted image 20231015233458.png|800]]
 
+
 ![[Pasted image 20231015233512.png|800]]
 Let 
 $$A=\begin{bmatrix}U_{1} & U_{2}\end{bmatrix}\begin{bmatrix}\Sigma _{1} & 0 \\ 0 & \Sigma _{2}\end{bmatrix}\begin{bmatrix}V_{1} \\ V_{2}\end{bmatrix}$$
