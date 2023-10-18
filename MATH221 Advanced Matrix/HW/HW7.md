@@ -2,20 +2,55 @@ Questions 3.11, 3.12, 3.13, 3.14
 
 ![[Pasted image 20231015233438.png|800]]
 Let 
-$$A=\begin{bmatrix}U_{1} & U_{2}\end{bmatrix}\begin{bmatrix}\Sigma _{1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}V_{1}  &  V_{2}\end{bmatrix}^{T}$$
-$A^{+}=V_{1} \Sigma_{1} ^{-1}U_{1}^{T}$ 
-$$\lVert A X -I\rVert= \left\lVert \begin{bmatrix}U_{1} & U_{2}\end{bmatrix}\begin{bmatrix}\Sigma _{1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}V_{1}  &  V_{2} \end{bmatrix} \right\rVert$$
-
+$$A=\begin{bmatrix}U_{1} & U_{2}\end{bmatrix}\begin{bmatrix}\Sigma _{1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}V_{1}    &  V_{2}\end{bmatrix}^{T},$$
+where $U_{1}\in \mathbb{R}^{m \times r},V_{1} \in \mathbb{R}^{n \times r}$,  $\Sigma _{1}\in \mathbb{R}^{r \times r},$ and $\text{rank}(A)=r$.
+Using the fact that multiplying with an orthogonal matrix does not change the norm,
+$$\begin{align*}
+\lVert A X -I\rVert_{F}&=  \left\lVert U\Sigma V^{T} X-I\right\rVert_{F}\\
+&= \left\lVert \Sigma V^{T} X-U^{T} \right\rVert_{F}.
+\end{align*}$$
+Let's denote $Y=V^{T}X$,
+$$\begin{align*}
+\lVert AX-I \rVert_{F}&= \left\lVert \Sigma Y-U^{T} \right\rVert_{F}\\
+&= \left\lVert \begin{bmatrix}\Sigma_{1} & 0\\
+0 & 0 \end{bmatrix}\begin{bmatrix}Y_{1}\\
+Y_{2}\end{bmatrix} -\begin{bmatrix}U_{1}^{T}\\
+U_{2}^{T}\end{bmatrix} \right\rVert_{F}\\
+			&= \lVert \Sigma _{1}Y_{1}-U_{1}^{T} \rVert_{F}+\lVert -U_{2}^{T} \rVert_{F},
+\end{align*}$$
+which is minimized by $Y_{1}=\Sigma _{1}^{-1}U_{1}^{T}$.
+$$\begin{align*}
+V^{T}X&= Y \\
+X&= VY\\
+X&= \begin{bmatrix}V_{1} & V_{2}\end{bmatrix}\begin{bmatrix}\Sigma _{1}^{-1}U_{1}^{T}\\
+Y_{2}\end{bmatrix}\\
+X&= V_{1}\Sigma _{1}^{-1}U_{1}^{T}+V_{2}Y_{2}\\
+X&= A^{+}+V_{2}Y_{2}
+\end{align*}$$
+Any matrix of this form minimizes the norm, which has a value of
+$$\lVert AA^{+}-I \rVert_{F}=\lVert U_{2} \rVert_{F}.$$
 ![[Pasted image 20231015233458.png|800]]
+
+$$\begin{align*}
+A&= \begin{bmatrix}U_{A1} & U_{A2}\end{bmatrix}\begin{bmatrix}\Sigma _{A1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}V_{A1} & V_{A2}\end{bmatrix}^{T}\\
+B&= \begin{bmatrix}U_{B1} & U_{B2}\end{bmatrix}\begin{bmatrix}\Sigma _{B1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}V_{B1} & V_{B2}\end{bmatrix}^{T}
+\end{align*}$$
+$$\begin{align*}
+\lVert AXB-C \rVert_{F}&= \lVert U_{A}\Sigma _{A}V^{T}_{A}XU_{B}\Sigma _{B}V_{B}^{T}-C \rVert_{F}\\
+&= \left\lVert \Sigma _{A}Y \Sigma _{B}-U_{A}^{T}CV_{B} \right\rVert,
+\end{align*}$$
+where $Y=V_{A}^{T}XU_{B}$ and I have used that multiplying with an orthogonal matrix does not change its norm.
 
 
 ![[Pasted image 20231015233512.png|800]]
+![[Pasted image 20231017155955.png|800]]
 Let 
-$$A=\begin{bmatrix}U_{1} & U_{2}\end{bmatrix}\begin{bmatrix}\Sigma _{1} & 0 \\ 0 & \Sigma _{2}\end{bmatrix}\begin{bmatrix}V_{1} \\ V_{2}\end{bmatrix}$$
-$A^{+}=V \Sigma ^{-1}U^{T}$
+$$A=\begin{bmatrix}U_{1} & U_{2}\end{bmatrix}\begin{bmatrix}\Sigma _{1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}V_{1}  \\  V_{2}\end{bmatrix}=U_{1}\Sigma _{1}V_{1}^{T}$$
+$A^{+}=V_{1} \Sigma_{1} ^{-1}U_{1}^{T}$
 
-$$AA^{+}A=U \Sigma V^{T}V \Sigma ^{-1}U^{T}U \Sigma V^{T}=U \Sigma V^{T}=A$$
-$$A^{+}AA^{+}=V \Sigma^{-1} U^{T}U \Sigma V^{T}V \Sigma ^{-1}U^{T}$$
+$$AA^{+}A=U_{1} \Sigma_{1} V_{1}^{T}V_{1} \Sigma_{1} ^{-1}U_{1}^{T}U_{1} \Sigma_{1} V_{1}^{T}=U_{1} \Sigma_{1} V_{1}^{T}=A$$
+$$A^{+}AA^{+}=V _{1}\Sigma^{-1} _{1}U^{T}_{1}U_{1}\Sigma _{1}V_{1}^{T}V_{1}\Sigma _{1}^{-1}U_{1}^{T}=V_{1}\Sigma _{1}^{-1}U_{1}^{T}=A^{+}$$
+$$(A^{+}A)^{T}=(V_{1}\Sigma _{1}^{-1}U_{1}^{T}U_{1}\Sigma _{1}V_{1}^{T})^{T}=V_{1}\Sigma _{1}^{T}U_{1}^{T}U_{1}\Sigma_{1} ^{-T}V_{1}^{T}$$
 
 ![[Pasted image 20231015233530.png|800]]
 
@@ -49,9 +84,31 @@ C \frac{1}{\sqrt{2}}\begin{bmatrix}e_{j} \\ \pm e_{j}\end{bmatrix}&=  \frac{1}{\
 with corresponding eigenvalues $\sigma _{j}$.
 
 For rectangular $A \in \mathbb{R}^{m\times n}$, we have that 
-
+$$H=\begin{array}{c}
+\begin{matrix}
+ \!n \! & m
+\end{matrix} \\
+\left[\ \begin{matrix}
+0 & A^{T} \\ A & 0
+	\end{matrix}\ \right]
+	&\begin{matrix}
+ \!n \! \\ m
+\end{matrix}
+\end{array}$$
+The argument is the same until we inspect the eigenvalues and vectors of $\tilde \Sigma$. Let's assume that $A$ has rank $r$.
+$$\begin{bmatrix}& &  &   &  \sigma _{1} &   &  \\&  & &  &  & \ddots \\ & &  & &   &   &  \sigma _{r} \\& & &  &   &   &     & 0 \\    \sigma _{1} \\ & \ddots\\ &   &  \sigma _{r} \\  &   &   & 0\end{bmatrix}\begin{bmatrix}p_{1} \\ \vdots \\ p_{n} \\ q_{1} \\ \vdots \\ q_{m}\end{bmatrix}=\begin{bmatrix}\sigma _{1}q_{1} \\ \vdots \\ \sigma _{r}q_{r} \\ 0 \\ \sigma _{1}p_{1} \\ \vdots \\ \sigma _{r}p_{r} \\ 0\end{bmatrix}$$
+Again, we end up with the eigenvectors of the form $\frac{1}{\sqrt{2}}\begin{array}{c}\begin{bmatrix}e_{j} \\ \pm e_{j}\end{bmatrix}\begin{matrix}\}n \\\} m\end{matrix}\end{array}$  with corresponding eigenvalue $\sigma _{j}$ for $j \le r$.
+For $H$, the $2r$ eigenvectors are
+$$\frac{1}{\sqrt{2}}\begin{bmatrix}V & 0 \\ 0 & U\end{bmatrix}\begin{bmatrix}e_{j} \\ \pm e_{j}\end{bmatrix}= \frac{1}{\sqrt{2}}\begin{bmatrix}v_{j} \\ \pm u_{j}\end{bmatrix}$$
+with corresponding eigenvalue $\sigma _{j}$ for $j\le r$.
 
 ```ad-question
 In lecture, we discussed how to solve the ridge regression problem using both a version of the normal equations, and the SVD. In practice, one may want to solve the same ridge regression problem for several values of the parameter lambda, to choose the best one. The SVD makes it quite cheap to do this, but requires an expensive SVD first. The normal equations require an additional O(n^3) work for each lambda, for Cholesky, which can be much cheaper than initially forming A^T$*$A for O(m$*$n^2) if m >> n, but it is not backward stable. Show how to use QR to solve ridge regression for an additional cost of O(n^3) per lambda. Hint: use Givens rotations to update R. 
 
 ```
+
+For Ridge regression, we want to solve
+$$\begin{align*}
+	\min_{x}\lVert Ax-b \rVert+\lambda \lVert x \rVert&= \min_{x} \lVert QRx-b \rVert\\
+	&= \min_{x}\lVert Rx-Q^{T}b \rVert
+\end{align*}$$
