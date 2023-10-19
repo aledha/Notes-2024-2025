@@ -30,25 +30,44 @@ X&= A^{+}+V_{2}Y_{2}
 Any matrix of this form minimizes the norm, which has a value of
 $$\lVert AA^{+}-I \rVert_{F}=\lVert U_{2} \rVert_{F}.$$
 ![[Pasted image 20231015233458.png|800]]
-
+Let's say that $C \in \mathbb{R}^{n \times m},\quad A \in \mathbb{R}^{n \times p},\quad B \in \mathbb{R}^{q \times m}$, and $X \in \mathbb{R}^{p \times q}$. 
+I will use the following notation for the SVD
 $$\begin{align*}
-A&= \begin{bmatrix}U_{A1} & U_{A2}\end{bmatrix}\begin{bmatrix}\Sigma _{A1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}V_{A1} & V_{A2}\end{bmatrix}^{T}\\
-B&= \begin{bmatrix}U_{B1} & U_{B2}\end{bmatrix}\begin{bmatrix}\Sigma _{B1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}V_{B1} & V_{B2}\end{bmatrix}^{T}
+A&= U_{A}\Sigma _{A}V^{T}_{A}=\begin{bmatrix}U_{A1} & U_{A2}\end{bmatrix}\begin{bmatrix}\Sigma _{A1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}V_{A1} & V_{A2}\end{bmatrix}^{T}\\
+B&= U_{B}\Sigma _{B}V^{T}_{B}=\begin{bmatrix}U_{B1} & U_{B2}\end{bmatrix}\begin{bmatrix}\Sigma _{B1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}V_{B1} & V_{B2}\end{bmatrix}^{T},
 \end{align*}$$
+where $\Sigma _{A1} \in \mathbb{R}^{r_{A} \times r_{A}}$ and $\Sigma _{B1} \in \mathbb{R}^{r_{B} \times r_{B}}$, and $\text{rank}(A)=r_{A},\quad \text{rank}(B)=r_{B}$.
+Let's write up the norm
 $$\begin{align*}
 \lVert AXB-C \rVert_{F}&= \lVert U_{A}\Sigma _{A}V^{T}_{A}XU_{B}\Sigma _{B}V_{B}^{T}-C \rVert_{F}\\
-&= \left\lVert \Sigma _{A}Y \Sigma _{B}-U_{A}^{T}CV_{B} \right\rVert,
+	&= \left\lVert \Sigma _{A}Y \Sigma _{B}-U_{A}^{T}CV_{B} \right\rVert_{F},
 \end{align*}$$
-where $Y=V_{A}^{T}XU_{B}$ and I have used that multiplying with an orthogonal matrix does not change its norm.
-
+where $Y=V_{A}^{T}XU_{B}\in \mathbb{R}^{p \times q}$ and I have used that multiplying with an orthogonal matrix does not change its norm. Also, minimizing $\lVert Y \rVert_{F}$ is the same as minimizing $\lVert X \rVert_{F}$. Using our block matrix decomposition,
+$$\begin{align*}
+\left\lVert AXB-C \right\rVert_{F}&= \left\lVert \begin{bmatrix}\Sigma _{A1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}Y_{11} & Y_{12}\\
+Y_{21} & Y_{22}\end{bmatrix}\begin{bmatrix}\Sigma _{B1} & 0 \\ 0 & 0\end{bmatrix} -\begin{bmatrix}U_{A1}^{T} \\ U_{A2}^{T}\end{bmatrix}C\begin{bmatrix}V_{B1} & V_{B2}\end{bmatrix}\right\rVert_{F}
+\end{align*}$$
+Here, $Y_{11}\in \mathbb{R}^{r_{A} \times r_{B}}, \quad Y_{21}\in \mathbb{R}^{(p-r_{A}) \times r_{B}}, \quad Y_{12}\in \mathbb{R}^{r_{A}\times(q-r_{B})}, \quad Y_{22}\in \mathbb{R}^{(p-r_{A})\times(q-r_{B})}$. 
+$$\begin{align*}
+\left\lVert AXB-C \right\rVert_{F}&=  \left\lVert \begin{bmatrix}\Sigma _{A1}Y_{11}\Sigma _{B1} & 0 \\ 0 & 0\end{bmatrix} -\begin{bmatrix}U_{A1}^{T}CV_{B1} & U_{A1}^{T}CV_{B2} \\ U_{A2}^{T}CV_{B1} & U_{A2}^{T}CV_{B2}\end{bmatrix}\right\rVert_{F}\\
+&= \left\lVert \Sigma _{A1}Y_{11}\Sigma _{B1}-U_{A1}^{T}CV_{B1} \right\rVert_{F}+\lVert U_{A2}^{T}CV_{B1} \rVert_{F}\\
+&\quad + \lVert U_{A1}^{T}CV_{B2} \rVert_{F}+\lVert U_{A2}^{T}CV_{B2} \rVert_{F},
+\end{align*}$$
+which is minimized when $Y_{11}=\Sigma _{A1}^{-1}U_{A1}^{T}CV_{B1}\Sigma _{B1}^{-1}$. 
+Further, $\lVert Y \rVert_{F}$ is minimized when the rest of $Y$ is set to zero. We then obtain the desired result,
+$$\begin{align*}
+X_{0}&= V_{A}YU_{B}^{T}\\
+&= \begin{bmatrix}V_{A1}   &  V_{A2}\end{bmatrix}\begin{bmatrix}\Sigma _{A1}^{-1}U_{A1}^{T}CV_{B1}\Sigma _{B1}^{-1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}U_{B1}^{T} \\ U_{B2}^{T}\end{bmatrix}\\
+&= V_{A1}\Sigma _{A1}^{-1}U_{A1}^{T}CV_{B1}\Sigma _{B1}^{-1}U_{B1}^{-1}\\
+&= A^{+}CB^{+}.
+\end{align*}$$
 
 ![[Pasted image 20231015233512.png|800]]
 ![[Pasted image 20231017155955.png|800]]
 Let 
 $$A=\begin{bmatrix}U_{1} & U_{2}\end{bmatrix}\begin{bmatrix}\Sigma _{1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}V_{1}  \\  V_{2}\end{bmatrix}=U_{1}\Sigma _{1}V_{1}^{T}$$
-$A^{+}=V_{1} \Sigma_{1} ^{-1}U_{1}^{T}$
-
-$$AA^{+}A=U_{1} \Sigma_{1} V_{1}^{T}V_{1} \Sigma_{1} ^{-1}U_{1}^{T}U_{1} \Sigma_{1} V_{1}^{T}=U_{1} \Sigma_{1} V_{1}^{T}=A$$
+$A^{+}=V\Sigma ^{+}U^{T}$ 
+$$AA^{+}A=U \Sigma V^{T}V \Sigma ^{+}U^{T}U \Sigma V^{T}$$
 $$A^{+}AA^{+}=V _{1}\Sigma^{-1} _{1}U^{T}_{1}U_{1}\Sigma _{1}V_{1}^{T}V_{1}\Sigma _{1}^{-1}U_{1}^{T}=V_{1}\Sigma _{1}^{-1}U_{1}^{T}=A^{+}$$
 $$(A^{+}A)^{T}=(V_{1}\Sigma _{1}^{-1}U_{1}^{T}U_{1}\Sigma _{1}V_{1}^{T})^{T}=V_{1}\Sigma _{1}^{T}U_{1}^{T}U_{1}\Sigma_{1} ^{-T}V_{1}^{T}$$
 
