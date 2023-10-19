@@ -1,4 +1,4 @@
-Questions 3.11, 3.12, 3.13, 3.14
+Alexander Hatle
 
 ![[Pasted image 20231015233438.png|800]]
 Let 
@@ -61,15 +61,50 @@ X_{0}&= V_{A}YU_{B}^{T}\\
 &= V_{A1}\Sigma _{A1}^{-1}U_{A1}^{T}CV_{B1}\Sigma _{B1}^{-1}U_{B1}^{-1}\\
 &= A^{+}CB^{+}.
 \end{align*}$$
+<div style="page-break-after: always;"></div>
+
 
 ![[Pasted image 20231015233512.png|800]]
-![[Pasted image 20231017155955.png|800]]
-Let 
-$$A=\begin{bmatrix}U_{1} & U_{2}\end{bmatrix}\begin{bmatrix}\Sigma _{1} & 0 \\ 0 & 0\end{bmatrix}\begin{bmatrix}V_{1}  \\  V_{2}\end{bmatrix}=U_{1}\Sigma _{1}V_{1}^{T}$$
-$A^{+}=V\Sigma ^{+}U^{T}$ 
-$$AA^{+}A=U \Sigma V^{T}V \Sigma ^{+}U^{T}U \Sigma V^{T}$$
-$$A^{+}AA^{+}=V _{1}\Sigma^{-1} _{1}U^{T}_{1}U_{1}\Sigma _{1}V_{1}^{T}V_{1}\Sigma _{1}^{-1}U_{1}^{T}=V_{1}\Sigma _{1}^{-1}U_{1}^{T}=A^{+}$$
-$$(A^{+}A)^{T}=(V_{1}\Sigma _{1}^{-1}U_{1}^{T}U_{1}\Sigma _{1}V_{1}^{T})^{T}=V_{1}\Sigma _{1}^{T}U_{1}^{T}U_{1}\Sigma_{1} ^{-T}V_{1}^{T}$$
+
+$$\begin{align*}
+AA^{+}A&= U \Sigma V^{T}V \Sigma ^{+}U^{T}U \Sigma V^{T}\\
+&= U \Sigma \Sigma ^{+}\Sigma V^{T}\\
+&= U \begin{bmatrix}\Sigma _{1} & 0\\
+0 & 0\end{bmatrix}\begin{bmatrix}\Sigma ^{-1}_{1} & 0\\
+0 & 0\end{bmatrix}\begin{bmatrix}\Sigma _{1} & 0\\
+0 & 0\end{bmatrix} V^{T}\\
+&= U \Sigma V^{T}=A
+\end{align*}$$
+
+$$\begin{align*}
+A^{+}AA^{+}&= V \Sigma ^{+}U^{T}U \Sigma V^{T}V \Sigma ^{+}U^{T}\\
+&= V  \begin{bmatrix}\Sigma _{1}^{-1} & 0\\
+0 & 0\end{bmatrix}\begin{bmatrix}\Sigma _{1} & 0\\
+0 & 0\end{bmatrix}\begin{bmatrix}\Sigma _{1}^{-1} & 0\\
+0 & 0\end{bmatrix}U^{T}\\
+&= V \Sigma ^{+}U^{T}=A^{+}
+\end{align*}$$
+$$\begin{align*}
+(A^{+}A)^{T}&= (V \Sigma ^{+}U^{T}U \Sigma V^{T})^{T}\\
+&= V \Sigma ^{T}U^{T} U (\Sigma ^{+})^{T}V^{T}\\
+&= V \Sigma ^{T}(\Sigma ^{+})^{T}V^{T}\\
+&= V \begin{bmatrix}\Sigma ^{T}_{1} & 0\\
+0 & 0\end{bmatrix}\begin{bmatrix}\Sigma _{1}^{-T} & 0\\
+0 & 0\end{bmatrix}V^{T}\\
+&= V\begin{bmatrix}\Sigma _{1}^{-1} & 0\\
+0 & 0\end{bmatrix}\begin{bmatrix}\Sigma _{1} & 0\\
+0 & 0\end{bmatrix}V^{T}\\
+&= V \Sigma ^{+}U^{T}U \Sigma V^{T}=A^{+}A
+\end{align*}$$
+
+$$\begin{align*}
+(AA^{+})^{T}&= (U \Sigma V^{T}V \Sigma ^{+}U^{T})^{T}\\
+&= U (\Sigma ^{+})^{T}V^{T}V \Sigma ^{T}U^{T} \\
+&= U (\Sigma ^{+})^{T}\Sigma ^{T}U^{T}\\
+&= U \Sigma \Sigma ^{+}U^{T}\\
+&= U \Sigma V^{T}V \Sigma ^{+}U^{T}=AA^{+}
+\end{align*}$$
+<div style="page-break-after: always;"></div>
 
 ![[Pasted image 20231015233530.png|800]]
 
@@ -120,14 +155,3 @@ Again, we end up with the eigenvectors of the form $\frac{1}{\sqrt{2}}\begin{arr
 For $H$, the $2r$ eigenvectors are
 $$\frac{1}{\sqrt{2}}\begin{bmatrix}V & 0 \\ 0 & U\end{bmatrix}\begin{bmatrix}e_{j} \\ \pm e_{j}\end{bmatrix}= \frac{1}{\sqrt{2}}\begin{bmatrix}v_{j} \\ \pm u_{j}\end{bmatrix}$$
 with corresponding eigenvalue $\sigma _{j}$ for $j\le r$.
-
-```ad-question
-In lecture, we discussed how to solve the ridge regression problem using both a version of the normal equations, and the SVD. In practice, one may want to solve the same ridge regression problem for several values of the parameter lambda, to choose the best one. The SVD makes it quite cheap to do this, but requires an expensive SVD first. The normal equations require an additional O(n^3) work for each lambda, for Cholesky, which can be much cheaper than initially forming A^T$*$A for O(m$*$n^2) if m >> n, but it is not backward stable. Show how to use QR to solve ridge regression for an additional cost of O(n^3) per lambda. Hint: use Givens rotations to update R. 
-
-```
-
-For Ridge regression, we want to solve
-$$\begin{align*}
-	\min_{x}\lVert Ax-b \rVert+\lambda \lVert x \rVert&= \min_{x} \lVert QRx-b \rVert\\
-	&= \min_{x}\lVert Rx-Q^{T}b \rVert
-\end{align*}$$
