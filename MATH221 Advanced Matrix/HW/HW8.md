@@ -85,13 +85,34 @@ y^{T}Ax&= \lambda y^{T}x\\
 Either $\mu -\lambda =0$ (i.e. the eigenvalues are distinct) or $y^{T}x=0$ and $x$ and $y$ are orthogonal.
 
 ![[Pasted image 20231020151136.png|800]]
-$$f(z)=\sum_{i=-\infty }^{\infty}a_{i}z^{i}$$
-where I'm assuming that $a_{i}$ denotes 
-
-Let $f(z)= \sum_{i=-\infty}^{\infty}a_{i}z^{i}$ be a function which is defined at the eigenvalues of $A$.
-
+$$\begin{align*}
+f(A)&= \sum_{i=-\infty}^{\infty}a_{i}A^{i}\\
+&=\dots+a_{-1}A^{-1}+ a_{0}A^{0}+a_{1}A^{1}+ \dots
+\end{align*}$$
+Let's compute some powers of the Schur form and see what we get,
+$$\begin{align*}
+(Q^{*}AQ)^{2}&= Q^{*}A^{2}Q\\
+(Q^{*}AQ)^{3}&= Q^{*}A^{3}Q\\
+(Q^{*}AQ)^{-1}&= Q^{*}A^{-1}Q\\
+(Q^{*}AQ)^{-2}&= (Q^{*}A^{-1}Q)^{2}=Q^{*}A^{-2}Q.
+\end{align*}$$
+It is evident that we can write $f(T)$ as
+$$\begin{align*}
+f(T)&= \sum_{i=-\infty}^{\infty}a_{i}(Q^{*}AQ)^{i}\\
+	&= \sum_{i=-\infty}^{\infty}a_{i}Q^{*}A^{i}Q\\
+	&= Q^{*}\left(\sum_{i=-\infty}^{\infty}a_{i}A^{i} \right)Q\\
+f(T)&= Q^{*}f(A)Q\\
+Qf(T)Q^{*}&= f(A)
+\end{align*}$$
+which is what we wanted to prove.
 ![[Pasted image 20231020151143.png|800]]
+$$\begin{align*}
+(f(T))_{ii}&= \left(\sum_{j=-\infty}^{\infty}a_{j}T^{j}\right)_{ii}\\
+&= \dots +(a_{-1}T^{-1})_{ii}+(a_{0}T^{0})_{ii}+ (a_{1}T^{1})_{ii}+\dots \\
+&= \dots +a_{-1}T^{-1}_{ii}+a_{0}T^{0}_{ii}+ a_{1}T^{1}_{ii}+\dots 
+\end{align*}$$
 
+$$f(T_{ii})= \sum_{j=-\infty}^{\infty}a_{j}T_{ii}^{j}$$
 ![[Pasted image 20231020151150.png|800]]
 
 ![[Pasted image 20231020151157.png|800]]
