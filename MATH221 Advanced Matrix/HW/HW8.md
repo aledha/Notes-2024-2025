@@ -109,9 +109,9 @@ which is what we wanted to prove.
 $$\begin{align*}
 (f(T))_{ii}&= \left(\sum_{j=-\infty}^{\infty}a_{j}T^{j}\right)_{ii}\\
 &= \dots +(a_{-1}T^{-1})_{ii}+(a_{0}T^{0})_{ii}+ (a_{1}T^{1})_{ii}+\dots \\
-&= \dots +a_{-1}T^{-1}_{ii}+a_{0}T^{0}_{ii}+ a_{1}T^{1}_{ii}+\dots 
+&= \dots +a_{-1}(T^{-1})_{ii}+a_{0}(T^{0})_{ii}+ a_{1}(T^{1})_{ii}+\dots 
 \end{align*}$$
-
+$$$$
 $$f(T_{ii})= \sum_{j=-\infty}^{\infty}a_{j}T_{ii}^{j}$$
 ![[Pasted image 20231020151150.png|800]]
 
