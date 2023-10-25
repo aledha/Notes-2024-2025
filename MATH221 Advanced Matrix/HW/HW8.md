@@ -170,7 +170,12 @@ F_{i,i+1}&= T_{i,i+1}\frac{F_{ii}-F_{i+1,i+1}}{T_{i,i}-T_{i+1,i+1}}
 Note that the divisor is non-zero as the diagonal elements of $T$ are the eigenvalues of $A$, and the eigenvalues are distinct by assumption. 
 The first superdiagonal of $F$ is well-defined and can be calculated from the diagonal. 
 In the sum above, we can let $j=i+2$ and
-$$T_{ii}F_{i,i+2}+T_{i,i+1}F_{i+1,i+2}+T_{i,i+2}F_{i+2,i+2}=F_{i,i}T_{i,i+2}+F_{i,i+1}T_{i+1,i+2}+F_{i,i+2}T_{i+2,i+2},$$
+$$T_{ii}F_{i,i+2}+T_{i,i+1}F_{i+1,i+2}+T_{i,i+2}F_{i+2,i+2}=F_{i,i}T_{i,i+2}+F_{i,i+1}T_{i+1,i+2}+F_{i,i+2}T_{i+2,i+2}.$$
+
+$$F_{i,i+2}= \frac{(F_{i,i}-F_{i+2,i+2})T_{i,i+2}+(F_{i,i+1}-F_{i+1,i+2})T_{i+1,i+2}}{T_{i,i}-T_{i+2,i+2}}$$
+In the equation above, $F_{i,i+2}$ is unknown while everything else is unknown. Thus, we can compute the second super diagonal from the first superdiagonal and the diagonal.
+
+To find the $k$-th superdiagonal, we can let $j=i+k$, which results in an equation 
 
 
 
