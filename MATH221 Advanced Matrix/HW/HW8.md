@@ -130,8 +130,9 @@ for all integers $k$, and therefore
 $$\begin{align*}
 (f(T))_{ii}&= \dots +(a_{-1}T^{-1})_{ii}+(a_{0}T^{0})_{ii}+ (a_{1}T^{1})_{ii}+\dots \\
 (f(T))_{ii}&= \dots +a_{-1}(T_{ii})^{-1}+a_{0}(T_{ii})^{0}+ a_{1}(T_{ii})^{1}+\dots \\
-(f(T))_{ii}&= f(T_{ii}).
+(f(T))_{ii}&= f(T_{ii}),
 \end{align*}$$
+and since $f$ is defined at the eigenvalues of $A$, which appear in the diagonal of $T$, this is well-defined.
 ![[Pasted image 20231020151150.png|800]]
 $$\begin{align*}
 Tf(T)&= T \sum_{i=-\infty}^{\infty}a_{i}T^{i}\\
@@ -142,6 +143,34 @@ Tf(T)&= T \sum_{i=-\infty}^{\infty}a_{i}T^{i}\\
 
 ![[Pasted image 20231020151157.png|800]]
 Errata: Page 188, Question 4.4, Part 4: "earlier subdiagonals" should be "earlier superdiagonals". (Yulong Dong)
+We note from 4.3.2 that $f(T)$ is also upper triangular. So far, we know the diagonal elements,
+$$\begin{align*}
+Tf(T)&= f(T)T\\
+\begin{bmatrix}T_{11} & \dots  & T_{1n}\\
+0 & \ddots & \vdots \\
+0 & 0 & T_{nn}\end{bmatrix}\begin{bmatrix}f(T_{11}) & * & *\\
+0 & \ddots  & *\\
+0 & 0 & f(T_{nn})\end{bmatrix}&= \begin{bmatrix}f(T_{11}) & * & *\\
+0 & \ddots  & *\\
+0 & 0 & f(T_{nn})\end{bmatrix}\begin{bmatrix}T_{11} & \dots  & T_{1n}\\
+0 & \ddots & \vdots \\
+0 & 0 & T_{nn}\end{bmatrix}
+\end{align*}$$
+The equality must holde index-wise,
+$$(Tf(T))_{i,j}=\sum_{k=1}^{n}T_{i,k}(f(T))_{k,j}=\sum_{k=1}^{n}(f(T))_{ik}T_{kj}=(f(T)T)_{ij}$$
+As both matrices are upper triangular, $T_{ij}=0$ and $f(T)_{ij}=0$ for $i>j$, and this equality becomes
+$$\sum_{k=i}^{j}T_{ik}(f(T))_{kj}=\sum_{k=i}^{j}(f(T))_{ik}T_{kj}.$$
+For notational simplicity, let $F_{ij}=(f(T))_{ij}$.
+First, we can let $j=i+1$, and
+$$\begin{align*}
+T_{i,i}F_{i,i+1}+T_{i,i+1}F_{i+1,i+1}&= F_{i,i}T_{i,i+1}+F_{i,i+1}T_{i+1,i+1}\\
+F_{i,i+1}&= T_{i,i+1}\frac{F_{ii}-F_{i+1,i+1}}{T_{i,i}-T_{i+1,i+1}}
+\end{align*}$$
+Note that the divisor is non-zero as the diagonal elements of $T$ are the eigenvalues of $A$, and the eigenvalues are distinct by assumption. 
+The first superdiagonal of $F$ is well-defined and can be calculated from the diagonal. 
+In the sum above, we can let $j=i+2$ and
+$$T_{ii}$$
+
 
 
 ![[Pasted image 20231020151205.png|800]]
