@@ -173,9 +173,10 @@ In the sum above, we can let $j=i+2$ and
 $$T_{ii}F_{i,i+2}+T_{i,i+1}F_{i+1,i+2}+T_{i,i+2}F_{i+2,i+2}=F_{i,i}T_{i,i+2}+F_{i,i+1}T_{i+1,i+2}+F_{i,i+2}T_{i+2,i+2}.$$
 
 $$F_{i,i+2}= \frac{(F_{i,i}-F_{i+2,i+2})T_{i,i+2}+(F_{i,i+1}-F_{i+1,i+2})T_{i+1,i+2}}{T_{i,i}-T_{i+2,i+2}}$$
-In the equation above, $F_{i,i+2}$ is unknown while everything else is unknown. Thus, we can compute the second super diagonal from the first superdiagonal and the diagonal.
+Like this we can compute the second super diagonal from the first superdiagonal and the diagonal.
 
-To find the $k$-th superdiagonal, we can let $j=i+k$, which results in an equation 
+To find the $k$-th superdiagonal, we can let $j=i+k$, which results in an equation involving 
+$$F_{i,i+k}= \frac{1}{T_{i,i}-T_{i+k,i+k}}\sum_{p=}^{}(F_{i,p}-F_{p,k})T_{p,k}$$
 
 
 
