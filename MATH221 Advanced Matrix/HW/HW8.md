@@ -6,7 +6,8 @@ $$A=\begin{bmatrix}A_{11} & A_{12} & \dots & A_{1b} \\ 0 & A_{22} & \dots & A_{2
 where each $A_{ii}$ is square.
 
 We have that $\text{ det}\begin{bmatrix}A & B \\ C & D\end{bmatrix}=\text{ det}(A)\text{ det}(D-CA^{-1}B)$ 
-#ask can I use this formula or should i prove it someway else?
+apply schur form to each block and then the whole matrix.
+
 Splitting up $A$ in the following way,
 $$A=\left[ \begin{array}{c|cc}A_{11} & A_{12} & \dots & A_{1b} \\ \hline0 & A_{22} & \dots & A_{2b} \\ \vdots & 0  &  \ddots & \vdots \\ 0 & 0  &0   &  A_{bb}\end{array}\right],$$
 we can use that 
@@ -109,13 +110,38 @@ which is what we wanted to prove.
 $$\begin{align*}
 (f(T))_{ii}&= \left(\sum_{j=-\infty}^{\infty}a_{j}T^{j}\right)_{ii}\\
 &= \dots +(a_{-1}T^{-1})_{ii}+(a_{0}T^{0})_{ii}+ (a_{1}T^{1})_{ii}+\dots \\
-&= \dots +a_{-1}(T^{-1})_{ii}+a_{0}(T^{0})_{ii}+ a_{1}(T^{1})_{ii}+\dots 
+
 \end{align*}$$
-$$$$
-$$f(T_{ii})= \sum_{j=-\infty}^{\infty}a_{j}T_{ii}^{j}$$
+We can write $T=D(X+I)$, where $D$ is diagonal and $X$ is strictly upper triangular. Then,
+$$\begin{align*}
+T&= D(X+I)\\
+T^{k}&= D^{k}(X+I)^{k}\\
+&= D^{k}(\text{strictly upper triangular matrices} +I^{k}),\tag{1}
+\end{align*}$$
+where I have used that $X^{k}$ is strictly upper triangular (HW1). We see that the diagonal of $T^{k}$ is its diagonal elements to the $k$-th power, $D^{k}$.
+Further, the inverse of $T$ is
+$$T^{-1}=D^{-1}(X+I)^{-1}=D^{-1}(I-X+X^{2}+\dots+(-1)^{n}X^{n}).$$
+We see that it's diagonal entries is $D^{-1}$, as the rest of the matrices are strictly upper triangular.
+Generalising to an arbitrary inverse power,
+$$T^{-k}=(T^{-1})^{k},$$
+we observe that we could apply the same logic as in $(1)$, and get that the diagonal entries of $T^{-k}$ are the diagonal entries of $T^{-1}$ raised to the $k$-th power. In conclusion,
+$$(T^{k})_{ii}=(T_{ii})^{k}$$
+for all integers $k$, and therefore
+$$\begin{align*}
+(f(T))_{ii}&= \dots +(a_{-1}T^{-1})_{ii}+(a_{0}T^{0})_{ii}+ (a_{1}T^{1})_{ii}+\dots \\
+(f(T))_{ii}&= \dots +a_{-1}(T_{ii})^{-1}+a_{0}(T_{ii})^{0}+ a_{1}(T_{ii})^{1}+\dots \\
+(f(T))_{ii}&= f(T_{ii}).
+\end{align*}$$
 ![[Pasted image 20231020151150.png|800]]
+$$\begin{align*}
+Tf(T)&= T \sum_{i=-\infty}^{\infty}a_{i}T^{i}\\
+	&= \sum_{i=-\infty}^{\infty}a_{i}T^{i+1}\\
+	&= \sum_{i=-\infty}^{\infty}a_{i}T^{i}T\\
+&= f(T)T
+\end{align*}$$
 
 ![[Pasted image 20231020151157.png|800]]
 Errata: Page 188, Question 4.4, Part 4: "earlier subdiagonals" should be "earlier superdiagonals". (Yulong Dong)
+
 
 ![[Pasted image 20231020151205.png|800]]
