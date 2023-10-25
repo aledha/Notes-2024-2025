@@ -160,7 +160,8 @@ The equality must holde index-wise,
 $$(Tf(T))_{i,j}=\sum_{k=1}^{n}T_{i,k}(f(T))_{k,j}=\sum_{k=1}^{n}(f(T))_{ik}T_{kj}=(f(T)T)_{ij}$$
 As both matrices are upper triangular, $T_{ij}=0$ and $f(T)_{ij}=0$ for $i>j$, and this equality becomes
 $$\sum_{k=i}^{j}T_{ik}(f(T))_{kj}=\sum_{k=i}^{j}(f(T))_{ik}T_{kj}.$$
-For notational simplicity, let $F_{ij}=(f(T))_{ij}$.
+For notational simplicity, let $F_{ij}=(f(T))_{ij}$, and the sum is
+$$\sum_{k=i}^{j}T_{ik}F_{kj}=\sum_{k=i}^{j}F_{ik}T_{kj}.$$
 First, we can let $j=i+1$, and
 $$\begin{align*}
 T_{i,i}F_{i,i+1}+T_{i,i+1}F_{i+1,i+1}&= F_{i,i}T_{i,i+1}+F_{i,i+1}T_{i+1,i+1}\\
@@ -169,7 +170,7 @@ F_{i,i+1}&= T_{i,i+1}\frac{F_{ii}-F_{i+1,i+1}}{T_{i,i}-T_{i+1,i+1}}
 Note that the divisor is non-zero as the diagonal elements of $T$ are the eigenvalues of $A$, and the eigenvalues are distinct by assumption. 
 The first superdiagonal of $F$ is well-defined and can be calculated from the diagonal. 
 In the sum above, we can let $j=i+2$ and
-$$T_{ii}$$
+$$T_{ii}F_{i,i+2}+T_{i,i+1}F_{i+1,i+2}+T_{i,i+2}F_{i+2,i+2}=F_{i,i}T_{i,i+2}+F_{i,i+1}T_{i+1,i+2}+F_{i,i+2}T_{i+2,i+2},$$
 
 
 
