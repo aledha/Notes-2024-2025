@@ -180,3 +180,4 @@ $$F_{i,i+k}= \frac{1}{T_{i,i}-T_{i+k,i+k}}\sum_{p=i}^{i+k-1}(F_{i,p}-F_{p,i+k})T
 which involves all earlier superdiagonals as well as the diagonal.
 
 ![[Pasted image 20231020151205.png|800]]
+$$f(A)v=f(T)_{ii}v=f(T_{ii})v$$
