@@ -175,9 +175,8 @@ $$T_{ii}F_{i,i+2}+T_{i,i+1}F_{i+1,i+2}+T_{i,i+2}F_{i+2,i+2}=F_{i,i}T_{i,i+2}+F_{
 $$F_{i,i+2}= \frac{(F_{i,i}-F_{i+2,i+2})T_{i,i+2}+(F_{i,i+1}-F_{i+1,i+2})T_{i+1,i+2}}{T_{i,i}-T_{i+2,i+2}}$$
 Like this we can compute the second super diagonal from the first superdiagonal and the diagonal.
 
-To find the $k$-th superdiagonal, we can let $j=i+k$, which results in an equation involving 
-$$F_{i,i+k}= \frac{1}{T_{i,i}-T_{i+k,i+k}}\sum_{p=}^{}(F_{i,p}-F_{p,k})T_{p,k}$$
-
-
+To find the $k$-th superdiagonal, we can let $j=i+k$, which results in the equation
+$$F_{i,i+k}= \frac{1}{T_{i,i}-T_{i+k,i+k}}\sum_{p=i}^{i+k-1}(F_{i,p}-F_{p,i+k})T_{p,i+k},$$
+which involves all earlier superdiagonals as well as the diagonal.
 
 ![[Pasted image 20231020151205.png|800]]
