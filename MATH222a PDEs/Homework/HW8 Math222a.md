@@ -1,13 +1,13 @@
 ![[Pasted image 20231023102748.png|1000]]
 
 
-![[Pasted image 20231023102811.png]]
+![[Pasted image 20231023102811.png|800]]
 
-![[Pasted image 20231023102825.png]]
+![[Pasted image 20231023102825.png|800]]
 
-![[Pasted image 20231023102839.png]]
+![[Pasted image 20231023102839.png|800]]
 
-![[Pasted image 20231023102905.png]]
+![[Pasted image 20231023102905.png|800]]
 
 
 midterm 2

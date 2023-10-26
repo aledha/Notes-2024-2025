@@ -5,8 +5,7 @@ Questions 4.1, 4.2, 4.3, 4.4, 4.5
 $$A=\begin{bmatrix}A_{11} & A_{12} & \dots & A_{1b} \\ 0 & A_{22} & \dots & A_{2b} \\ 0 & 0  &  \ddots & \vdots \\0  & 0  &  0 &  A_{bb}\end{bmatrix},\tag{4.1}$$
 where each $A_{ii}$ is square.
 
-We have that $\text{ det}\begin{bmatrix}A & B \\ C & D\end{bmatrix}=\text{ det}(A)\text{ det}(D-CA^{-1}B)$ 
-apply schur form to each block and then the whole matrix.
+We have that $\text{ det}\begin{bmatrix}A & B \\ C & D\end{bmatrix}=\text{ det}(A)\text{ det}(D-CA^{-1}B)$.
 
 Splitting up $A$ in the following way,
 $$A=\left[ \begin{array}{c|cc}A_{11} & A_{12} & \dots & A_{1b} \\ \hline0 & A_{22} & \dots & A_{2b} \\ \vdots & 0  &  \ddots & \vdots \\ 0 & 0  &0   &  A_{bb}\end{array}\right],$$
@@ -29,6 +28,7 @@ As each eigenvalue of each block $A_{ii}$ is also an eigenvalue of $A$,
 $$\bigcup_{i=1}^{b}\lambda (A_{ii}) \subseteq \lambda (A).$$
 If $\lambda$ is a solution to the characteristic equation $\text{ det}(A-\lambda I)=0$, then, for at least one $i$, it must also solve $\text{ det}(A_{ii}-\lambda I)$ . As a consequence, $A$ does not have any other eigenvalues than those of $A_{ii}$, and that we have the equality
 $$\lambda (A)=\bigcup_{i=1}^{b}\lambda (A_{ii}).$$
+<div style="page-break-after: always;"></div>
 
 ![[Pasted image 20231020151117.png|800]]
 Let $A$ be upper triangular and partitioned as
@@ -71,6 +71,7 @@ Ax_{i}&= Q \lambda _{i} Q^{*}x_{i}\\
 Ax_{i}&= \lambda _{i}x_{i},
 \end{align*}$$
 where the eigenvectors of $A$, $x_{i}=Qe_{i}$, also form an orthonormal basis, since $Q$ is orthogonal.
+<div style="page-break-after: always;"></div>
 
 ![[Pasted image 20231020151127.png|800]]
 $$\begin{align*}
@@ -84,6 +85,7 @@ y^{T}Ax&= \lambda y^{T}x\\
 (\mu -\lambda )y^{T}x&= 0
 \end{align*}$$
 Either $\mu -\lambda =0$ (i.e. the eigenvalues are distinct) or $y^{T}x=0$ and $x$ and $y$ are orthogonal.
+<div style="page-break-after: always;"></div>
 
 ![[Pasted image 20231020151136.png|800]]
 $$\begin{align*}
@@ -180,4 +182,7 @@ $$F_{i,i+k}= \frac{1}{T_{i,i}-T_{i+k,i+k}}\sum_{p=i}^{i+k-1}(F_{i,p}-F_{p,i+k})T
 which involves all earlier superdiagonals as well as the diagonal.
 
 ![[Pasted image 20231020151205.png|800]]
-$$f(A)v=f(T)_{ii}v=f(T_{ii})v$$
+Since $f(A)=Qf(T)Q^{*}$, $f(A)$ have the same eigenvalues of $f(T)$.
+The eigenvalues of $f(T)$ are the diagonal entries $f(T)_{ii}$, which I have shown equals $f(T_{ii})$ in question 4.4.2. 
+By construction, the diagonal elements of $T$ are the eigenvalues of $A$, i.e. $T_{ii}=\lambda _{i}$. 
+In conclusion, the eigenvalues of $f(A)$ are $f(T_{ii})=f(\lambda _{i})$, where $\lambda _{i}$ are the eigenvalues of $A$ (and $T$).
