@@ -35,6 +35,11 @@ $$\begin{align*}
 	&= r \overline{h}
 \end{align*}$$
 ![[Pasted image 20231023102825.png|800]]
+
+![[Pasted image 20231026173153.png|600]]
+![[Pasted image 20231026173527.png|600]]
+![[Pasted image 20231026173232.png|600]]
+
 As per the hint, we will use the null coordinates $u= \frac{1}{2}(t-r), \quad v= \frac{1}{2}(t+r)$.
 
 $$\phi (t,x)= \lim_{v \to u^{+}} \frac{\Psi  (v+u,v-u)}{r}$$
