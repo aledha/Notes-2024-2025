@@ -25,7 +25,7 @@ $(I_{\alpha }f)^{\wedge}(\xi)= (2\pi \lvert \xi  \rvert)^{-a} \hat f(\xi )$
 
 for a proof, see Stein (15, chapter 5) p. 120
 and
-$$\lvert  \{x \in \mathbb{R}^{n}:\lvert I_\alpha f \rvert \ge \lambda  \}\rvert \le C \left(\frac{\lVert f \rVert_{1}}{\lambda } \right)^{\frac{n}{n-\alpha }}$$
+$$\mu   \{x \in \mathbb{R}^{n}:\lvert I_\alpha f \rvert \ge \lambda  \}\le C \left(\frac{\lVert f \rVert_{1}}{\lambda } \right)^{\frac{n}{n-\alpha }}$$
 We can write the operator as 
 $$\begin{align*}
 (I_{\alpha }f)(x)&= \frac{\Gamma \left(\frac{n-\alpha }{2} \right)}{\pi ^{\frac{n}{2}}2^{\alpha}  \Gamma (\frac{\alpha }{2})}\int_{\mathbb{R}^{n}}\lvert x-y \rvert^{-n+\alpha }f(y) \text{ d}y \\
@@ -34,18 +34,23 @@ $$\begin{align*}
 where $K(x)=\lvert x \rvert^{-n+\alpha }$. If we can show that $f\mapsto K*f$ is weak $\left(1, \frac{n}{n-\alpha } \right)$, then $f\mapsto I_{\alpha} f$ is as well. We can further decompose $K$ into $K=K_{1}+K_{\infty}$, where
 $$\begin{align*}
 K_{1}(x)&= \begin{cases}
-K(x) & \quad\text{for }\lvert x \rvert \le \mu \\
-0 & \quad\text{for }\lvert x \rvert > \mu 
+K(x) & \quad\text{for }\lvert x \rvert \le k \\
+0 & \quad\text{for }\lvert x \rvert > k 
 \end{cases}\\
 K_{\infty}(x)&= \begin{cases}
-0 & \quad\text{for }\lvert x \rvert \le \mu \\
-K(x) & \quad\text{for }\lvert x \rvert > \mu .
+0 & \quad\text{for }\lvert x \rvert \le k \\
+K(x) & \quad\text{for }\lvert x \rvert > k .
 \end{cases}
 \end{align*}$$
+for some $k>0$.
 Now we can write our operator as
 $$K*f=K_{1}*f+K_{\infty}*f.$$
 We want to show that
-$$\lvert \{x \in \mathbb{R}^{n}:\lvert K*f \rvert \ge \lambda  \} \rvert \le C \left(\frac{\lVert f \rVert_{1}}{\lambda } \right)^{\frac{n}{n-\alpha }}.$$
+$$\mu \{x \in \mathbb{R}^{n}:\lvert K*f \rvert \ge \lambda  \} \le C \left(\frac{\lVert f \rVert_{1}}{\lambda } \right)^{\frac{n}{n-\alpha }}.$$
+It suffices to prove the above inequality with $2\lambda$ in the LHS, which can be bounded by
+$$\mu \{x \in \mathbb{R}^{n}:\lvert K*f \rvert \ge 2\lambda  \} \le \underbrace{\mu \{x \in \mathbb{R}^{n}:\lvert K_{1}*f \rvert \ge \lambda  \}}_{M_{1}}+\underbrace{\mu \{x \in \mathbb{R}^{n}:\lvert K_{\infty}*f \rvert \ge \lambda  \}}_{M_{\infty}}$$
+Let's inspect $M_{1}$,
+$$M_{1}\le $$
 
 
 ![[Pasted image 20231022173900.png|800]]
