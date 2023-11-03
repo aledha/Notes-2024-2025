@@ -54,7 +54,10 @@ Stein, chapter 3.1.3
 We want to prove the identity 
 $$\partial_{x_{j}}f=-R_{j}(R_{1}-iR_{2})(\partial_{x_{1}}f+i\partial_{x_{2}}f)$$
 
-$$(\partial_{x_{1}}f)^{\wedge}(x)=-2\pi i x_{1}\hat f(x)$$
+$$\begin{align*}
+(\partial_{x_{i}}f)^{\wedge}(x)&= -2\pi i x_{i}\hat f(x)\\
+		&= - \frac{ix_{i}}{\lvert x \rvert}\left(\frac{ix_{1}}{\lvert x \rvert}-i \frac{ix_{2}}{\lvert x \rvert} \right)
+\end{align*}$$
 
 ![[Pasted image 20231022173910.png|800]]
 maybe see page 80
