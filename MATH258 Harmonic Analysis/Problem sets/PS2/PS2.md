@@ -52,12 +52,19 @@ $$\lvert \{x \in \mathbb{R}^{n}:\lvert K*f \rvert \ge \lambda  \} \rvert \le C \
 Stein, chapter 3.1.3
 ![[Pasted image 20231102190832.png]]
 We want to prove the identity 
-$$\partial_{x_{j}}f=-R_{j}(R_{1}-iR_{2})(\partial_{x_{1}}f+i\partial_{x_{2}}f)$$
-
+$$\partial_{x_{j}}f=-R_{j}(R_{1}-iR_{2})(\partial_{x_{1}}f+i\partial_{x_{2}}f),$$
+which can be done by simple calculation,
 $$\begin{align*}
-(\partial_{x_{i}}f)^{\wedge}(x)&= -2\pi i x_{i}\hat f(x)\\
-		&= - \frac{ix_{i}}{\lvert x \rvert}\left(\frac{ix_{1}}{\lvert x \rvert}-i \frac{ix_{2}}{\lvert x \rvert} \right)
+(\partial_{x_{j}}f)^{\wedge}(x)&=  - \frac{ix_{j}}{\lvert x \rvert}\left(\frac{ix_{1}}{\lvert x \rvert}-i \frac{ix_{2}}{\lvert x \rvert} \right)\left(\partial _{x_{1}} f+i \partial _{x_{2}}f\right)^{\wedge}\\
+&= \frac{x_{j}}{\lvert x \rvert^{2}}\left(x_{1}-ix_{2} \right)\left(-2 \pi i x_{1}+2\pi x_{2} \right)\hat f\\
+&= 2\pi \frac{x_{j}}{\lvert x \rvert^{2}}\left(-ix_{1}^{2} +x_{1}x_{2}-x_{1}x_{2}-ix_{2}^{2}\right)\hat f\\
+&= -2\pi ix_{j}\hat f\\
+&= (\partial _{x_{j}}f)^{\wedge}(x).
 \end{align*}$$
+By the $L_{p}$ boundedness of the Riesz transforms, we get that
+$$\left\lVert \partial _{x_{j}}f \right\rVert_{p}≲_{p}\lVert \partial _{x_{1}} f+i \partial _{x_{2}}f \rVert_{p},$$
+and our desired result,
+$$\left\lVert \partial _{x_{1}}f \right\rVert_{p}+\left\lVert \partial _{x_{2}}f \right\rVert_{p}≲_{p}\lVert \partial _{x_{1}} f+i \partial _{x_{2}}f \rVert_{p}.$$
 
 ![[Pasted image 20231022173910.png|800]]
 maybe see page 80
