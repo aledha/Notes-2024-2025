@@ -1,10 +1,18 @@
 Alexander Hatle
 ![[Pasted image 20231022173819.png|800]]
-$$P_{t}(x)=\frac{\Gamma \left(\frac{n+1}{2} \right)}{\pi ^{\frac{n+1}{2}}}\frac{t}{\left(t^{2}+\lvert x \rvert ^{2}\right)^{\frac{n+1}{2}}}$$
-
+Let the Poisson kernel be
+$$P_{t}(x)=c_{n}\frac{t}{\left(t^{2}+\lvert x \rvert ^{2}\right)^{\frac{n+1}{2}}}$$
+and the Riesz transform
 $$R_{j}f(x)= c_{n} \text{p.v.} \int_{\mathbb{R}^{n}} \frac{y_{j}}{\lvert y \rvert^{n+1}}f(x-y)\text{ d}y$$
-where $c_{n}=\Gamma \left(\frac{n+1}{2} \right)\pi ^{-\frac{n+1}{2}}$.
+where $c_{n}=\Gamma \left(\frac{n+1}{2} \right)\pi ^{-\frac{n+1}{2}}$. The Fourier transform of the Riesz transform is
+$$(R_{j}f)^{\wedge}(x)=i \frac{x_{j}}{\lvert x \rvert}\hat f(x)$$
+Find the Riesz transform of the Poisson kernel
+$$Q_{t}^{(j)}(x)=R_{j}(P_{t})(x)$$
+
+
 page 185 solution manual
+![[Pasted image 20231102190832.png]]
+
 
 ![[Pasted image 20231022173836.png|800]]
 p. 26 stein and weiss
@@ -29,7 +37,9 @@ $$\begin{align*}
 (I_{\alpha }f)(x)&= \frac{\Gamma \left(\frac{n-\alpha }{2} \right)}{\pi ^{\frac{n}{2}}2^{\alpha}  \Gamma (\frac{\alpha }{2})}\int_{\mathbb{R}^{n}}\lvert x-y \rvert^{-n+\alpha }f(y) \text{ d}y \\
 &= \frac{\Gamma \left(\frac{n-\alpha }{2} \right)}{\pi ^{\frac{n}{2}}2^{\alpha}  \Gamma (\frac{\alpha }{2})} K*f,
 \end{align*}$$
-where $K(x)=\lvert x \rvert^{-n+\alpha }$. If we can show that $f\mapsto K*f$ is weak $\left(1, \frac{n}{n-\alpha } \right)$, then $f\mapsto I_{\alpha} f$ is as well. We can further decompose $K$ into $K=K_{1}+K_{\infty}$, where
+where $K(x)=\lvert x \rvert^{-n+\alpha }$. If we can show that $f\mapsto K*f$ is strong $(p,q)$ and weak $\left(1, \frac{n}{n-\alpha } \right)$, then $f\mapsto I_{\alpha} f$ is as well. 
+
+We can further decompose $K$ into $K=K_{1}+K_{\infty}$, where
 $$\begin{align*}
 K_{1}(x)&= \begin{cases}
 K(x) & \quad\text{for }\lvert x \rvert \le k \\
@@ -73,7 +83,7 @@ Taking $p=1$ yields that $q= \frac{n}{n-\alpha}$, showing that $f\mapsto K*f$ is
 
 ![[Pasted image 20231022173900.png|800]]
 Stein, chapter 3.1.3
-![[Pasted image 20231102190832.png]]
+
 We want to prove the identity 
 $$\partial_{x_{j}}f=-R_{j}(R_{1}-iR_{2})(\partial_{x_{1}}f+i\partial_{x_{2}}f),$$
 which can be done by simple calculation,
