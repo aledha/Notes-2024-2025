@@ -22,9 +22,7 @@ $(I_{\alpha }f)^{\wedge}(\xi)= (2\pi \lvert \xi  \rvert)^{-a} \hat f(\xi )$
 
 
 
-
-for a proof, see Stein (15, chapter 5) p. 120
-and
+This proof follows closely Stein Chapter 5 p. 120.
 $$\mu   \{x \in \mathbb{R}^{n}:\lvert I_\alpha f \rvert \ge \lambda  \}\le C \left(\frac{\lVert f \rVert_{1}}{\lambda } \right)^{\frac{n}{n-\alpha }}$$
 We can write the operator as 
 $$\begin{align*}
@@ -42,16 +40,36 @@ K_{\infty}(x)&= \begin{cases}
 K(x) & \quad\text{for }\lvert x \rvert > k .
 \end{cases}
 \end{align*}$$
-for some $k>0$.
+for some arbitrary $k>0$.
 Now we can write our operator as
 $$K*f=K_{1}*f+K_{\infty}*f.$$
 We want to show that
 $$\mu \{x \in \mathbb{R}^{n}:\lvert K*f \rvert \ge \lambda  \} \le C \left(\frac{\lVert f \rVert_{1}}{\lambda } \right)^{\frac{n}{n-\alpha }}.$$
 It suffices to prove the above inequality with $2\lambda$ in the LHS, which can be bounded by
-$$\mu \{x \in \mathbb{R}^{n}:\lvert K*f \rvert \ge 2\lambda  \} \le \underbrace{\mu \{x \in \mathbb{R}^{n}:\lvert K_{1}*f \rvert \ge \lambda  \}}_{M_{1}}+\underbrace{\mu \{x \in \mathbb{R}^{n}:\lvert K_{\infty}*f \rvert \ge \lambda  \}}_{M_{\infty}}$$
-Let's inspect $M_{1}$,
-$$M_{1}\le $$
-
+$$\mu \{x \in \mathbb{R}^{n}:\lvert K*f \rvert \ge 2\lambda  \} \le \mu \{x \in \mathbb{R}^{n}:\lvert K_{1}*f \rvert \ge \lambda  \}+\mu \{x \in \mathbb{R}^{n}:\lvert K_{\infty}*f \rvert \ge \lambda  \}$$
+Bounding the first term is matter of using Markov's inequality and [Youngs inequality](https://en.wikipedia.org/wiki/Young%27s_convolution_inequality) for convolutions (with $r=1,p=p,q=1$), 
+$$\mu \{x \in \mathbb{R}^{n}:\lvert K_{1}*f \rvert \ge \lambda  \}\le \frac{\lVert K_{1}*f \rVert^{p}_{p}}{\lambda ^{p}}\le \frac{\lVert K_{1}\lVert_{1}^{p}  \rVert f \rVert^{p}_{p}}{\lambda ^{p}}$$
+where we can assume without loss of generality that $\lVert f \rVert_{p}=1$, as the $L^{p}$ norm is homogeneous. The norm of $K_{1}$ is
+$$\lVert K_{1} \rVert_{1}=\int_{\lvert x \rvert \le k}\lvert x \rvert^{-n+\alpha }\text{ d}x=c_{1}k ^{\alpha }.$$
+Combining this, we get the bound on the first term,
+$$\mu \{x \in \mathbb{R}^{n}:\lvert K_{1}*f \rvert \ge \lambda  \}\le \frac{(c_{1}k^{\alpha })^{p}}{\lambda ^{p}}.$$
+The idea for bounding the second term is to choose $k$ such that $\lVert K_{1}*f \rVert_{\infty} \le  \lambda$ such that the second term is zero. Youngs inequality (with $r=\infty,p=p,q=p'$ where $1/p+1/p'=1$) gives
+$$\begin{align*}
+\lVert K_{\infty}*f \rVert_{\infty} &\le \lVert K_{\infty} \rVert_{p'}\cdot \lVert f \rVert_{p}\\
+&= \lVert K_\infty \rVert_{p'}\\
+&= \left(\int_{\lvert x \rvert \ge k}(\lvert x \rvert^{-n+\alpha })^{p'} \text{ d}x\right)^{\frac{1}{p'}}\\
+&= c_{2}k^{-\frac{n}{q}}
+\end{align*}$$
+where $\frac{1}{q}= \frac{1}{p}-\frac{\alpha }{n}$.
+So if we want $\lVert K_{1}*f \rVert_{\infty} \le  \lambda$ then $c_{2}k^{- \frac{n}{q}}=\lambda$ and such $k=c_{3}\lambda ^{-\frac{q}{n}}$. Then the second term is zero.
+$$\begin{align*}
+\mu \{x \in \mathbb{R}^{n}:\lvert K*f \rvert \ge 2\lambda  \} &\le \left(c_{1}\frac{k^\alpha }{\lambda } \right)^{p}\\
+&\le c_{4} \left(\frac{\left(\lambda ^{-\frac{q}{n}}\right)^{\alpha}}{\lambda }\right)^{p}\\
+&\le  c_{4}\left(\lambda ^{-q \left(\frac{1}{p}-\frac{1}{q}\right)-1} \right)^{p}\\
+&\le c_{4}\lambda ^{-q}\\
+&\le c_{4}\left(\frac{\lVert f \rVert_{p}}{\lambda } \right)^{q}
+\end{align*}$$
+Taking $p=1$ yields that $q= \frac{n}{n-\alpha}$, showing that $f\mapsto K*f$ is weak $\left(1, \frac{n}{n-\alpha }\right)$.
 
 ![[Pasted image 20231022173900.png|800]]
 Stein, chapter 3.1.3
