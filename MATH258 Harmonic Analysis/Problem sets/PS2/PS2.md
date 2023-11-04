@@ -12,6 +12,7 @@ $$\begin{align*}
 (e^{-2\pi \lvert x \rvert})^{\wedge}(\xi )&= c_{n} \frac{1}{(1+\lvert \xi  \rvert^{2})^\frac{n+1}{2}}
 \end{align*}$$
 
+
 page 185 solution manual
 ![[Pasted image 20231102190832.png]]
 
