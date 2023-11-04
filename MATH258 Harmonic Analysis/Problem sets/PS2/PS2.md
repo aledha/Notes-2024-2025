@@ -6,9 +6,11 @@ and the Riesz transform
 $$R_{j}f(x)= c_{n} \text{p.v.} \int_{\mathbb{R}^{n}} \frac{y_{j}}{\lvert y \rvert^{n+1}}f(x-y)\text{ d}y$$
 where $c_{n}=\Gamma \left(\frac{n+1}{2} \right)\pi ^{-\frac{n+1}{2}}$. The Fourier transform of the Riesz transform is
 $$(R_{j}f)^{\wedge}(x)=i \frac{x_{j}}{\lvert x \rvert}\hat f(x)$$
-Find the Riesz transform of the Poisson kernel
-$$Q_{t}^{(j)}(x)=R_{j}(P_{t})(x)$$
 
+First, we'll need to find the Fourier transform of the Poisson kernel. Exercise 2.2.11 in Classical Fourier Analysis Solution Manual states that
+$$\begin{align*}
+(e^{-2\pi \lvert x \rvert})^{\wedge}(\xi )&= c_{n} \frac{1}{(1+\lvert \xi  \rvert^{2})^\frac{n+1}{2}}
+\end{align*}$$
 
 page 185 solution manual
 ![[Pasted image 20231102190832.png]]
