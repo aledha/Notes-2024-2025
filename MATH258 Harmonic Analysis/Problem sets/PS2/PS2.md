@@ -13,10 +13,13 @@ $$\begin{align*}
 (e^{-2\pi \lvert \xi  \rvert})^{\vee}\left(\frac{x}{t}\right)&=c_{n}\frac{1\cdot t^{n+1}}{(1+\lvert x /t\rvert^{2})^\frac{n+1}{2}\cdot t^{n+1}}\\
 &= c_{n} \frac{t^{n+1}}{(t^{2}+\lvert x \rvert^{2})^{\frac{n+1}{2}}}\\
 \frac{1}{t^{n}}(e^{-2\pi \lvert \xi  \rvert})^{\vee}\left(\frac{x}{t}\right)&= P_{t}(x)
-\\
-\left(-i \frac{\xi _{j}}{\lvert \xi  \rvert}e^{-2\pi \lvert \xi  \rvert}\right)^{\vee}(x)&= c_{n} \frac{x_{j}}{(1+\lvert x  \rvert^{2})^\frac{n+1}{2}}
-\end{align*}$$
 
+\end{align*}$$
+Fourier transform of $\(f(tx)\) is \(1/|t|F(\xi / t)\).$
+
+$$\hat P_{t}(x)$$
+
+\left(-i \frac{\xi _{j}}{\lvert \xi  \rvert}e^{-2\pi \lvert \xi  \rvert}\right)^{\vee}(x)&= c_{n} \frac{x_{j}}{(1+\lvert x  \rvert^{2})^\frac{n+1}{2}}
 
 page 185 solution manual
 ![[Pasted image 20231102190832.png]]
