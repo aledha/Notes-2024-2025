@@ -1,47 +1,48 @@
 Alexander Hatle
 ![[Pasted image 20231022173819.png|800]]
-Let the Poisson kernel be
-$$P_{t}(x)=c_{n}\frac{t}{\left(t^{2}+\lvert x \rvert ^{2}\right)^{\frac{n+1}{2}}}$$
-and the Riesz transform
-$$R_{j}f(x)= c_{n} \text{p.v.} \int_{\mathbb{R}^{n}} \frac{y_{j}}{\lvert y \rvert^{n+1}}f(x-y)\text{ d}y$$
+The Poisson kernel is
+$$P_{t}(x)=c_{n}\frac{t}{\left(t^{2}+\lvert x \rvert ^{2}\right)^{\frac{n+1}{2}}},$$
+and the Riesz transform is
+$$R_{j}f(x)= c_{n} \text{p.v.} \int_{\mathbb{R}^{n}} \frac{y_{j}}{\lvert y \rvert^{n+1}}f(x-y)\text{ d}y,$$
 where $c_{n}=\Gamma \left(\frac{n+1}{2} \right)\pi ^{-\frac{n+1}{2}}$. The Fourier transform of the Riesz transform is
 $$(R_{j}f)^{\wedge}(x)=i \frac{x_{j}}{\lvert x \rvert}\hat f(x)$$
-
+This proof will be similar to exercise 5.1.8 in Classical Fourier Analysis Solution Manual by Grafakos.
 First, we'll need to find the Fourier transform of the Poisson kernel. Exercise 2.2.11 in Classical Fourier Analysis Solution Manual states that
 $$\begin{align*}
-(e^{-2\pi \lvert \xi  \rvert})^{\vee}(x)&= c_{n} \frac{1}{(1+\lvert x  \rvert^{2})^\frac{n+1}{2}}\\
+f(x)=(e^{-2\pi \lvert \xi  \rvert})^{\vee}(x)&= c_{n} \frac{1}{(1+\lvert x  \rvert^{2})^\frac{n+1}{2}}\\
 (e^{-2\pi \lvert \xi  \rvert})^{\vee}\left(\frac{x}{t}\right)&=c_{n}\frac{1\cdot t^{n+1}}{(1+\lvert x /t\rvert^{2})^\frac{n+1}{2}\cdot t^{n+1}}\\
 &= c_{n} \frac{t^{n+1}}{(t^{2}+\lvert x \rvert^{2})^{\frac{n+1}{2}}}\\
-\frac{1}{t^{n}}(e^{-2\pi \lvert \xi  \rvert})^{\vee}\left(\frac{x}{t}\right)&= P_{t}(x)
+\underbrace{(e^{-2\pi \lvert \xi  \rvert})^{\vee}\left(\frac{x}{t}\right)}_{f(x/t)}&= t^{n}P_{t}(x)
 
 \end{align*}$$
-Fourier transform of $\(f(tx)\) is \(1/|t|F(\xi / t)\).$
-
-$$\hat P_{t}(x)$$
-
-\left(-i \frac{\xi _{j}}{\lvert \xi  \rvert}e^{-2\pi \lvert \xi  \rvert}\right)^{\vee}(x)&= c_{n} \frac{x_{j}}{(1+\lvert x  \rvert^{2})^\frac{n+1}{2}}
-
-page 185 solution manual
-![[Pasted image 20231102190832.png]]
-
+By the scaling properties of the Fourier transform,
+$$\begin{align*}
+P_{t}(x) &= \frac{1}{t^{n}}f(x/t)\\
+\hat P_{t}(x)&= \frac{1}{t^{n}}\lvert t \rvert^{n} F(\xi \cdot t)\\
+	\hat P_{t}(x)&= e^{-2\pi \lvert \xi  \rvert t}
+\end{align*}$$
+Thus,
+$$\begin{align*}
+\hat Q_{t}^{(j)}(\xi ) &= (R_{j}(P_{t}))^\wedge(\xi )\\
+&= i \frac{\xi _{j}}{\lvert \xi  \rvert} e^{-2\pi \lvert \xi  \rvert t}
+\end{align*}$$
+Taking the inverse transform,
+$$\begin{align*}
+Q_{t}^{(j)}(x)&= \left(i \frac{\xi _{j}}{\lvert \xi  \rvert}F(\xi t) \right)^{\vee}(x)\\
+&= x_{j}\cdot \left(F(\xi t) \right)^{\vee}(x)\\
+&= x_{j} \cdot \frac{1}{t^{n}}f(x/t)\\
+&= c_{n}\frac{x_{j}}{\left(t^{2}+\lvert x \rvert ^{2}\right)^{\frac{n+1}{2}}}.
+\end{align*}$$
 
 ![[Pasted image 20231022173836.png|800]]
 p. 26 stein and weiss
 
 
 ![[Pasted image 20231022173849.png|800]]
-![[IMG_7ED8F45BBC0E-1.jpeg|800]]
-![[IMG_216F7937336C-1.jpeg|800]]
-
-Want to show that
-$$\lVert I_{\alpha} f \rVert_{q} \le C \lVert f \rVert_{p}$$
-$(I_{\alpha }f)^{\wedge}(\xi)= (2\pi \lvert \xi  \rvert)^{-a} \hat f(\xi )$
 
 
-
-
-
-This proof follows closely Stein Chapter 5 p. 120.
+This proof follows closely Stein, Chapter 5 p. 120.
+We want to show that
 $$\mu   \{x \in \mathbb{R}^{n}:\lvert I_\alpha f \rvert \ge \lambda  \}\le C \left(\frac{\lVert f \rVert_{1}}{\lambda } \right)^{\frac{n}{n-\alpha }}$$
 We can write the operator as 
 $$\begin{align*}
@@ -93,9 +94,9 @@ $$\begin{align*}
 Taking $p=1$ yields that $q= \frac{n}{n-\alpha}$, showing that $f\mapsto K*f$ is weak $\left(1, \frac{n}{n-\alpha }\right)$.
 
 ![[Pasted image 20231022173900.png|800]]
-Stein, chapter 3.1.3
+This follows Stein, chapter 3.1.3
 
-We want to prove the identity 
+We first want to prove the identity 
 $$\partial_{x_{j}}f=-R_{j}(R_{1}-iR_{2})(\partial_{x_{1}}f+i\partial_{x_{2}}f),$$
 which can be done by simple calculation,
 $$\begin{align*}
@@ -112,7 +113,11 @@ $$\left\lVert \partial _{x_{1}}f \right\rVert_{p}+\left\lVert \partial _{x_{2}}f
 
 ![[Pasted image 20231022173910.png|800]]
 maybe see page 80
-what does it mean to differentiate dirac delta
+
 Hormander linear pdes vol 1 chapt 2.3 
+
+Assume that the support of $u \in \mathscr{S}'(\mathbb{R}^{n})$ is $\{0 \}$. Prove that there exists $K \in \mathbb{Z}^{+}$ and $a_{\alpha }\in \mathbb C$ such that 
+$$u= \sum_{\lvert \alpha  \rvert \le K}a_{\alpha }\partial ^\alpha \delta $$
+where $\delta$ is the Dirac delta at the origin.
 
 [[HW8]]
