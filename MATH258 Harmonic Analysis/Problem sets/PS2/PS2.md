@@ -34,13 +34,8 @@ Q_{t}^{(j)}(x)&= \left(i \frac{\xi _{j}}{\lvert \xi  \rvert}F(\xi t) \right)^{\v
 &= c_{n}\frac{x_{j}}{\left(t^{2}+\lvert x \rvert ^{2}\right)^{\frac{n+1}{2}}}.
 \end{align*}$$
 
-![[Pasted image 20231022173836.png|800]]
-p. 26 stein and weiss
-
 
 ![[Pasted image 20231022173849.png|800]]
-
-
 This proof follows closely Stein, Chapter 5 p. 120.
 We want to show that
 $$\mu   \{x \in \mathbb{R}^{n}:\lvert I_\alpha f \rvert \ge \lambda  \}\le C \left(\frac{\lVert f \rVert_{1}}{\lambda } \right)^{\frac{n}{n-\alpha }}$$
@@ -110,14 +105,3 @@ By the $L_{p}$ boundedness of the Riesz transforms, we get that
 $$\left\lVert \partial _{x_{j}}f \right\rVert_{p}≲_{p}\lVert \partial _{x_{1}} f+i \partial _{x_{2}}f \rVert_{p},$$
 and our desired result,
 $$\left\lVert \partial _{x_{1}}f \right\rVert_{p}+\left\lVert \partial _{x_{2}}f \right\rVert_{p}≲_{p}\lVert \partial _{x_{1}} f+i \partial _{x_{2}}f \rVert_{p}.$$
-
-![[Pasted image 20231022173910.png|800]]
-maybe see page 80
-
-Hormander linear pdes vol 1 chapt 2.3 
-
-Assume that the support of $u \in \mathscr{S}'(\mathbb{R}^{n})$ is $\{0 \}$. Prove that there exists $K \in \mathbb{Z}^{+}$ and $a_{\alpha }\in \mathbb C$ such that 
-$$u= \sum_{\lvert \alpha  \rvert \le K}a_{\alpha }\partial ^\alpha \delta $$
-where $\delta$ is the Dirac delta at the origin.
-
-[[HW8]]
