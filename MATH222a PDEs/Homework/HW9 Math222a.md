@@ -10,10 +10,23 @@ $$\begin{align*}
 \end{align*}$$
 
 ![[Pasted image 20231107160754.png|800]]
-
+$$\begin{align*}
+\mathcal{F}\left[\text{sin}^{2}x \right]&=  \frac{1}{2\pi }\mathcal{F}\left[\text{sin}x \right]*\mathcal{F}\left[\text{sin}x \right]\\
+	&= \frac{1}{2\pi }\int_{-\infty}^{\infty}\text{sin}x e^{-i  \xi x} \text{ d}x
+\end{align*}$$
 ![[Pasted image 20231107160802.png|800]]
-
+$$\begin{align*}
+\mathcal{F}\left[e^{-\lvert x \rvert} \right]&= \int_{-\infty}^{\infty}e^{-\lvert x \rvert}e^{-i \xi x}\text{ d}x\\
+&= \int_{0}^{\infty}e^{-(1+i \xi)x }\text{ d}x+\int_{-\infty }^{0}e^{(1- i \xi )x}
+\text{ d}x \\
+&= \left[- \frac{1}{1+i \xi } e^{-(1+i \xi)x }\right]_{0}^{\infty}+\left[ \frac{1}{1-i \xi }e^{-(-1+i \xi)x } \right]_{-\infty  }^{0}\\
+&= \frac{1}{1+ i \xi }+\frac{1}{1- i \xi }\\
+&= \frac{1-i \xi +1+i \xi }{1-i^{2}\xi ^{2}}\\
+&= \frac{2}{1+\xi ^{2}}
+\end{align*}$$
 ![[Pasted image 20231107160812.png|800]]
+Since 
+$$\partial _{x}\text{tan}^{-1}(x)=\frac{1}{1+x^{2}}$$
 
 ![[Pasted image 20231107160827.png|800]]
 
