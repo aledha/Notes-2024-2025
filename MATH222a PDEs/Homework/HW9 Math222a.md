@@ -25,11 +25,39 @@ $$\begin{align*}
 &= \frac{2}{1+\xi ^{2}}
 \end{align*}$$
 ![[Pasted image 20231107160812.png|800]]
-Since 
-$$\partial _{x}\text{tan}^{-1}(x)=\frac{1}{1+x^{2}}$$
+We have already shown that $\mathcal{F}\left[e^{-\lvert x \rvert} \right]=\frac{2}{1 + \xi ^{2}}$
+By the inversion formula, we have that
+$$\begin{align*}
+e^{-\lvert x \rvert}&= \int_{-\infty}^{\infty}\frac{2}{1+\xi ^{2}}e^{i \xi x}\frac{\text{ d}\xi }{2\pi }\\
+g(x):=e^{-\lvert x \rvert}&= \frac{1}{\pi } \int_{-\infty}^{\infty}\frac{1}{1+\xi  ^{2}}e^{i \xi x} \text{ d}\xi 
+\end{align*}$$
+Notice that 
+$$\mathcal{F}\left[\frac{1}{1+x^{2}} \right]=\int_{-\infty}^{\infty}\frac{1}{1+x^{2}}e^{-i \xi x}\text{ d}x=\pi g(-x)$$
+Then,
+$$\mathcal{F}\left[\frac{1}{1+x^{2}} \right]=\pi e^{-\lvert x \rvert}$$
 
 ![[Pasted image 20231107160827.png|800]]
-
+If we substitute $z=s \lambda ^{2}$, then $\text{ d}z=\lambda ^{2}\text{ d}s$ and
+$$\begin{align*}
+\int_{0}^{\infty}s^{\alpha -1}e^{-s \lambda ^{2}}\text{ d}s &=\int_{0}^{\infty}\left(\frac{z}{\lambda^{2} } \right)^{\alpha -1}e^{-z} \frac{\text{ d}z}{\lambda ^{2}}\\
+&= \frac{1}{\lambda ^{2(\alpha -1)+2}}\int_{0}^{\infty}z^{\alpha -1}e^{-z}\text{ d}z\\
+&= \lambda^{-2\alpha }\Gamma (\alpha ) 
+\end{align*}$$
 ![[Pasted image 20231107160842.png|800]]
+$$\mathcal{F}\left[\lvert x \rvert^{-\alpha } \right]=\int_{\mathbb{R}^{d}}\lvert x \rvert^{-\alpha }e^{-i \xi \cdot x}\text{ d}x$$
 
+$$\mathcal{F}\left[e^{-s \lvert x \rvert^{2}} \right]= \left(\frac{\pi }{s} \right)^{d/2}e^{-\frac{\lvert \xi  \rvert^{2}}{4s}}$$
+Notice that 
+
+
+
+$$\begin{align*}
+-\Delta  (e^{-s\lvert x \rvert^{2}})&= \sum_{k=1}^{d}\partial_{x^{j}}^{2}e^{-s \lvert x \rvert^{2}} \\
+	&= \sum_{k=1}^{d} \partial _{x^{j}}(-s \cdot 2x^{j}e^{-s \lvert x \rvert^{2}})\\
+	&= 2s\sum_{k=1}^{d}(-e^{-s \lvert x \rvert}+ 2(x^{j})^{2}e^{-s \lvert x \rvert})\\
+&= 2s( -d(d-1)+2\lvert x \rvert^{2})e^{-s \lvert x \rvert}
+\end{align*}$$
 ![[Pasted image 20231107160854.png|800]]
+$$u(\lambda x)=\lambda ^{a}u(x)$$
+Want to show that 
+$$\hat u(\lambda \xi )=\lambda ^{-a-d}\hat u (\xi )$$
