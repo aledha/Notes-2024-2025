@@ -6,14 +6,20 @@ We see that if $\xi =0$, then $\mathcal{F}[x]=0$ since $x$ is an odd function. F
 $$\begin{align*}
  i \xi \mathcal{F}[x]& = \mathcal{F}[\partial_{x}x]\\
 \mathcal{F}[x]&= \frac{1}{i \xi } \mathcal{F}[1]\\
-	&= \frac{2 \pi }{i \xi }\delta (\xi )
+	&= \frac{2 \pi }{i \xi }\delta (\xi ).
 \end{align*}$$
+
 
 ![[Pasted image 20231107160754.png|800]]
 $$\begin{align*}
-\mathcal{F}\left[\text{sin}^{2}x \right]&=  \frac{1}{2\pi }\mathcal{F}\left[\text{sin}x \right]*\mathcal{F}\left[\text{sin}x \right]\\
-	&= \frac{1}{2\pi }\int_{-\infty}^{\infty}\text{sin}x e^{-i  \xi x} \text{ d}x
+\mathcal{F}\left[\text{sin}^{2}x \right]&=  \mathcal{F}\left[ \frac{1 - \cos(2x)}{2}  \right]\\
+&= \pi \delta (\xi )- \int_{-\infty}^{\infty}\frac{\cos(2x)}{2} e^{-i \xi x}\text{ d}x\\
+&= \pi \delta (\xi )-\int_{\infty}^{\infty}\frac{e^{2ix}-e^{-2ix}}{2}e^{-i \xi x}\text{ d}x\\
+&= \pi \delta (\xi )-\frac{1}{2}\int_{-\infty}^{\infty}e^{-(-2+\xi )ix}-e^{-(2+\xi )ix}\text{ d}x\\
+&= \pi \delta (\xi )- \frac{1}{2}\left(2\pi \delta (\xi -2) -2\pi \delta (\xi +2\right)\\
+&= \pi \left(\delta (\xi )+\delta (\xi +2)-\delta (\xi -2) \right)
 \end{align*}$$
+
 ![[Pasted image 20231107160802.png|800]]
 $$\begin{align*}
 \mathcal{F}\left[e^{-\lvert x \rvert} \right]&= \int_{-\infty}^{\infty}e^{-\lvert x \rvert}e^{-i \xi x}\text{ d}x\\
@@ -47,6 +53,9 @@ $$\begin{align*}
 $$\mathcal{F}\left[\lvert x \rvert^{-\alpha } \right]=\int_{\mathbb{R}^{d}}\lvert x \rvert^{-\alpha }e^{-i \xi \cdot x}\text{ d}x$$
 
 $$\mathcal{F}\left[e^{-s \lvert x \rvert^{2}} \right]= \left(\frac{\pi }{s} \right)^{d/2}e^{-\frac{\lvert \xi  \rvert^{2}}{4s}}$$
+$$(\lvert x \rvert^{-\alpha }e^{-s \lvert x \rvert^{2}})^{\wedge}(\xi )=(\lvert x \rvert^{-\alpha })^{\wedge}*\left(\frac{\pi }{s} \right)^{d/2} e^{-\frac{\lvert \xi  \rvert^{2}}{4s}}$$
+
+
 Notice that 
 
 
@@ -61,3 +70,15 @@ $$\begin{align*}
 $$u(\lambda x)=\lambda ^{a}u(x)$$
 Want to show that 
 $$\hat u(\lambda \xi )=\lambda ^{-a-d}\hat u (\xi )$$
+
+We can set $z^{j}= \lambda x^{j}$ for each $j$, and then the Jacobian is
+$$\left\lvert \frac{\partial (z_{1},\dots z_{d})}{\partial (x_{1},\dots ,x_{d})} \right\rvert=\lambda ^{d},$$
+such that $\text{ d}z=\text{ d}z_{1}\cdots  \text{ d}z_{d}=\lambda^{d}\text{ d}x_{1}\cdots \text{ d}x_{d}=\lambda \text{ d}x$. Performing the change of variables,
+$$\begin{align*}
+\mathcal{F}\left[u \right](\xi )&= \int_{\mathbb{R}^{d}}u(x)e^{-i \xi \cdot x}\text{ d}x\\
+	\mathcal{F}\left[u \right](\lambda \xi )&= \int_{\mathbb{R}^{d} }u(x)e^{-i \lambda \xi \cdot x} \text{ d}x\\
+&= \int_{\mathbb{R}^{d}}u \left(\frac{z}{\lambda } \right)e^{-i \xi \cdot z} \frac{\text{d}z}{\lambda ^{d}}\\
+&= \int_{\mathbb{R}^{d}}\lambda ^{-a}u(z)e^{-i \xi \cdot z}\frac{\text{d}z}{\lambda ^{d}}\\
+	&= \lambda ^{-a-d}\cdot \mathcal{F}\left[u \right](\xi ),
+\end{align*}$$
+which is what we wanted to show.
