@@ -5,8 +5,17 @@ $$\begin{cases}
 u(x)= g(x) & \quad\text{on }\{t=0 \} \times \mathbb{R}_{x}
 \end{cases}$$
 
+Taking the Fourier transform,
+$$\begin{align*}
+ \partial _{t}\hat u+(i \xi )^{3}\hat u&= 0,
+\end{align*}$$
+which gives the problem
+$$\begin{cases}
+\partial _{t}\hat u-i \xi ^{3}\hat u= 0 \\
+\hat u(t=0 )=\hat g.
+\end{cases}$$
 
-$$i t \hat u+(i \xi )^{3}\hat u=0$$
+The solution to this is $\hat u=\hat g \cdot e^{i \xi ^{3}t}$
 ![[Pasted image 20231114141852.png|800]]
 
 ![[Pasted image 20231114141901.png|800]]
