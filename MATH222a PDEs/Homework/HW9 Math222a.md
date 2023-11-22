@@ -67,3 +67,4 @@ $$\begin{align*}
 	&= \lambda ^{-a-d}\cdot \mathcal{F}\left[u \right](\xi ),
 \end{align*}$$
 which is what we wanted to show.
+**![](https://lh7-us.googleusercontent.com/fCgJjBoSwtJj9vE5sDbdPKj9K8Kv5Erpn1eWX9HUg_YFQDTqJLX5NT1Wi59IKNPP1HJSmzW3OwAvKX6PphYpD6SJvty2odjtBvaLhG4ZiOD1ZmZ5Nlg7woEg35PwJhHRl-sQpv75RqNna7QmuynWpgM)**
