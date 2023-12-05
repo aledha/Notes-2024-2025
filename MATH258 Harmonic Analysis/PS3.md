@@ -2,12 +2,17 @@ By Alexander Hatle
 
 ![[Pasted image 20231129160816.png|800]]
 
+![[Pasted image 20231204203817.png|600]]
+
+
 
 ---
 
 ![[Pasted image 20231129160825.png|800]]
 http://staff.ustc.edu.cn/~cwliu/teaching/harmonic/GTM250.pdf
 p 218, proposition 4.1.11 (part 4)
+![[Pasted image 20231204203211.png|600]]
+
 
 
 ---
@@ -107,8 +112,37 @@ $$\begin{align*}
 
 ![[Pasted image 20231129160854.png|800]]
 Grafakos Solution manual p. 259 exercise 6.2.7
+$m$ is a multiplier $\quad\Leftrightarrow\quad$ the operator $T_{m}$ defined by $(T_{m}f)^{\wedge}=m \hat f$ is bounded
+$$m(\xi )=\sum_{j=-\infty }^{\infty}a_{j}\psi (2^{-j}\xi )$$
+Notice that this sum has finitely many nonzero terms since $\psi$ is compactly supported and is not supported at the origin. Let $0<R_{1}<R_{2}$ such that $\text{supp }\psi \subset \{\xi :R_{1}<\lvert \xi  \rvert <R_{2} \}$. Differentiation by multiindex $\alpha$ gives
+$$\begin{align*}
+\partial ^{\alpha }(m(\xi ))&= \partial ^{\alpha}\left(\sum_{j=-\infty }^{\infty}a_{j}\psi (2^{-j}\xi )\right) \\
+	&= \sum_{j=-\infty }^{\infty}a_{j}2^{-j \lvert \alpha  \rvert} (\partial ^{\alpha } \psi )(2^{-j}\xi ).
+\end{align*}$$
+Evaluation this at $\xi =\xi _{0}$ ,
+$$(\partial ^{\alpha }m)(\xi_{0} )=\sum_{j=\infty }^{\infty}a_{j}2^{-j \lvert \alpha  \rvert}(\partial ^{\alpha }\psi )(2^{-j}\xi _{0})$$
+The terms are nonzero when index $j$ satisfies that $R_{1}<\lvert 2^{-j}\xi _{0} \rvert<R_{2}$, or equivalently $\frac{\lvert \xi _{0} \rvert}{R_{2}}<2^{j}<\frac{\lvert \xi _{0} \rvert}{R_{1}}$  or $\text{log} \frac{\lvert \xi _{0} \rvert}{R_{2}}<j<\text{log} \frac{\lvert \xi _{0} \rvert}{R_{1}}$ 
+$$\begin{align*}
+\lvert (\partial ^{\alpha }m)(\xi_{0} ) \rvert &\le  (\sup_{k}\lvert a_{k} \rvert) \cdot \lVert \partial ^{\alpha }\psi  \rVert_{L^{\infty}}\cdot \sum_{j=-\infty }^{\infty}2^{-j \lvert \alpha  \rvert}\\
+&\le (\sup_{k}\lvert a_{k} \rvert) \cdot \lVert \partial ^{\alpha }\psi  \rVert_{L^{\infty}}\cdot \left(\frac{\lvert \xi _{0} \rvert}{R_{1}} \right)^{-\lvert \alpha  \rvert} \cdot \left(\text{log}\frac{\lvert \xi _{0} \rvert}{R_{1}}-\text{log}\frac{\lvert \xi _{0} \rvert}{R_{2}}  \right)\\
+&\le (\sup_{k}\lvert a_{k} \rvert) \cdot \lVert \partial ^{\alpha }\psi  \rVert_{L^{\infty}}\cdot \left(\frac{\lvert \xi _{0} \rvert}{R_{1}} \right)^{-\lvert \alpha  \rvert} \cdot \left(1+\text{log}\frac{R_{2}}{R_{1}} \right)\\
+\lvert (\partial ^{\alpha }m)(\xi_{0} )	&\le C_{\alpha } \lvert \xi _{0} \rvert^{-\lvert \alpha  \rvert}
+\end{align*}$$
+where we can apply Hörmander's theorem (Corollary 8.11 in Duoandikoetxea), and obtain that $m$ is a multiplier.
+
 
 ---
 
 ![[Pasted image 20231129160907.png|800]]
 Grafakos Solution, p. 257 exercise 6.2.4
+
+$$\begin{align*}
+\partial ^{\alpha }(e^{im(\xi )})&= e^{im(\xi )}\sum_{\stackrel{l_{j}\ge0, \beta ^{j}\le \alpha }{l_{1}\beta ^{1}+\dots +l_{k}\beta ^{k}=\alpha }}c_{\beta^{1},\dots ,\beta ^{k} } (\partial ^{\beta ^{1}}m(\xi ))^{l_{1}} \cdots (\partial ^{\beta ^{k}}m(\xi ))^{l_{k}}
+\end{align*}$$
+Using the assumption, we can bound this by
+$$\begin{align*}
+\lvert \partial ^{\alpha }(e^{im(\xi )}) \rvert&\le  \left\lvert e^{im(\xi )}\sum_{\stackrel{l_{j}\ge0, \beta ^{j}\le \alpha }{l_{1}\beta ^{1}+\dots +l_{k}\beta ^{k}=\alpha }}c_{\beta^{1},\dots ,\beta ^{k} }(\lvert \xi  \rvert^{-\lvert \beta ^{1} \rvert})^{l_{1}}\cdots (\lvert \xi  \rvert^{-\lvert \beta ^{k} \rvert})^{l_{k}} \right\rvert\\
+&\le C'\left\lvert \sum_{\stackrel{l_{j}\ge0, \beta ^{j}\le \alpha }{l_{1}\beta ^{1}+\dots +l_{k}\beta ^{k}=\alpha }}\lvert \xi  \rvert^{-\lvert \beta ^{1} \rvert l_{1}-\dots -\lvert \beta ^{k} \rvert l_{k}} \right\rvert\\
+&\le C_{\alpha }'\lvert \xi  \rvert^{-\lvert \alpha  \rvert},
+\end{align*}$$
+where we can again apply Hörmander's theorem (Corollary 8.11 in Duoandikoetxea), and get that $e^{im(\xi )}$ is a multiplier on $L^{P}$ for $1<p<\infty$.
