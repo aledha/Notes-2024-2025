@@ -3,17 +3,40 @@ By Alexander Hatle
 ![[Pasted image 20231129160816.png|800]]
 
 ![[Pasted image 20231204203817.png|600]]
+where $K_{\epsilon ,R}(x)=K(x)\chi _{\epsilon <\lvert x \rvert<R}$.
+$$\lVert K*f(x) \rVert_{L^{1}}=\int_{\mathbb{R}^{n}}\left\lvert \int_{\mathbb{R}^{n}}K(y)f(x-y)\text{ d}y \right\rvert \text{ d}x$$
+
+So we want to show that $\lvert \widehat{K}(\xi ) \rvert \le A$ for some $A>0$.
+
+We have that 
+$$\widehat{K_{\epsilon,R}}(\xi )=\int_{\epsilon <\lvert x \rvert<R}K(x)e^{-2\pi i x \cdot \xi }\text{ d}x$$
+$$\begin{align*}
+\hat K(\xi )&= \int_{\mathbb{R}^{n}}K(x)e^{-2\pi i x \cdot \xi }\text{ d}x\\
+	&= \int_{\lvert x \rvert<\epsilon }K(x)e^{-2\pi i x \cdot \xi }\text{ d}x +\int_{\lvert x \rvert>R }K(x)e^{-2\pi i x \cdot \xi }\text{ d}x 
+\end{align*}$$
+
+![[Pasted image 20231205114707.png|600]]
+
 
 
 
 ---
 
 ![[Pasted image 20231129160825.png|800]]
+![[Pasted image 20231205112810.png|600]]
+![[Pasted image 20231205112833.png|600]]
+
+
 http://staff.ustc.edu.cn/~cwliu/teaching/harmonic/GTM250.pdf
 p 218, proposition 4.1.11 (part 4)
 ![[Pasted image 20231204203211.png|600]]
 
+![[Pasted image 20231205110549.png|600]]
+$$T_{1}f(x)=\int_{\mathbb{R}^{n}}K(x,y)f(y)\text{ d}y \quad\text{for }x \notin \text{supp}(f)$$
 
+$$(T_{1}-T_{2})f(x)=a(x)f(x)$$
+$$\lVert T_{1}f \rVert_{L^{2}}\le C \lVert f \rVert_{L^{2}}$$
+T1 and T2 are strong p,p for 1<p<inf and weak 1,1
 
 ---
 
@@ -128,7 +151,7 @@ $$\begin{align*}
 &\le (\sup_{k}\lvert a_{k} \rvert) \cdot \lVert \partial ^{\alpha }\psi  \rVert_{L^{\infty}}\cdot \left(\frac{\lvert \xi _{0} \rvert}{R_{1}} \right)^{-\lvert \alpha  \rvert} \cdot \left(1+\text{log}\frac{R_{2}}{R_{1}} \right)\\
 \lvert (\partial ^{\alpha }m)(\xi_{0} )	&\le C_{\alpha } \lvert \xi _{0} \rvert^{-\lvert \alpha  \rvert}
 \end{align*}$$
-where we can apply Hörmander's theorem (Corollary 8.11 in Duoandikoetxea), and obtain that $m$ is a multiplier.
+where we can apply Hörmander's theorem (Corollary 8.11 in Duoandikoetxea), and obtain that $m$ is a multiplier on $L^{p} \quad\forall\quad 1<p<\infty$.
 
 
 ---
