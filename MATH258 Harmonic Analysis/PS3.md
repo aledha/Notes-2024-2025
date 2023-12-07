@@ -12,7 +12,8 @@ We have that
 $$\widehat{K_{\epsilon,R}}(\xi )=\int_{\epsilon <\lvert x \rvert<R}K(x)e^{-2\pi i x \cdot \xi }\text{ d}x$$
 $$\begin{align*}
 \hat K(\xi )&= \int_{\mathbb{R}^{n}}K(x)e^{-2\pi i x \cdot \xi }\text{ d}x\\
-	&= \int_{\lvert x \rvert<\epsilon }K(x)e^{-2\pi i x \cdot \xi }\text{ d}x +\int_{\lvert x \rvert>R }K(x)e^{-2\pi i x \cdot \xi }\text{ d}x 
+	&= \int_{\lvert x \rvert<\epsilon }K(x)e^{-2\pi i x \cdot \xi }\text{ d}x +\int_{\lvert x \rvert>R }K(x)e^{-2\pi i x \cdot \xi }\text{ d}x + \widehat{K_{\epsilon,R}}(\xi )\\
+	\lvert \hat K(\xi ) \rvert &\le 
 \end{align*}$$
 
 ![[Pasted image 20231205114707.png|600]]
@@ -25,16 +26,10 @@ $$\begin{align*}
 ![[Pasted image 20231129160825.png|800]]
 ![[Pasted image 20231205112810.png|600]]
 ![[Pasted image 20231205112833.png|600]]
-
-
-http://staff.ustc.edu.cn/~cwliu/teaching/harmonic/GTM250.pdf
-p 218, proposition 4.1.11 (part 4)
-![[Pasted image 20231204203211.png|600]]
-
 ![[Pasted image 20231205110549.png|600]]
 $$T_{1}f(x)=\int_{\mathbb{R}^{n}}K(x,y)f(y)\text{ d}y \quad\text{for }x \notin \text{supp}(f)$$
 
-$$(T_{1}-T_{2})f(x)=a(x)f(x)$$
+$$(T_{1}-T_{2})f(x)=\lim_{\epsilon \to 0,R\to \infty}\int_{\mathbb{R}^{n}}K_{\epsilon ,R}(x,y)f(y) \text{ d}y-\int_{\mathbb{R}^{n}}K_{\epsilon ,R}(x,y)f(y) \text{ d}y$$
 $$\lVert T_{1}f \rVert_{L^{2}}\le C \lVert f \rVert_{L^{2}}$$
 T1 and T2 are strong p,p for 1<p<inf and weak 1,1
 
@@ -128,9 +123,6 @@ $$\begin{align*}
 &< \infty
 \end{align*}$$
 
-
-
-
 ---
 
 ![[Pasted image 20231129160854.png|800]]
@@ -153,15 +145,15 @@ $$\begin{align*}
 \end{align*}$$
 where we can apply Hörmander's theorem (Corollary 8.11 in Duoandikoetxea), and obtain that $m$ is a multiplier on $L^{p} \quad\forall\quad 1<p<\infty$.
 
-
 ---
 
 ![[Pasted image 20231129160907.png|800]]
-Grafakos Solution, p. 257 exercise 6.2.4
-
+This is inspired by Fourier Analysis Solution Manual by Grafakos, exercise 6.2.4.
+For every multiindex $\alpha$ we can write
 $$\begin{align*}
-\partial ^{\alpha }(e^{im(\xi )})&= e^{im(\xi )}\sum_{\stackrel{l_{j}\ge0, \beta ^{j}\le \alpha }{l_{1}\beta ^{1}+\dots +l_{k}\beta ^{k}=\alpha }}c_{\beta^{1},\dots ,\beta ^{k} } (\partial ^{\beta ^{1}}m(\xi ))^{l_{1}} \cdots (\partial ^{\beta ^{k}}m(\xi ))^{l_{k}}
+\partial ^{\alpha }(e^{im(\xi )})&= e^{im(\xi )}\sum_{\stackrel{l_{j}\ge0, \beta ^{j}\le \alpha }{l_{1}\beta ^{1}+\dots +l_{k}\beta ^{k}=\alpha }}c_{\beta^{1},\dots ,\beta ^{k} } (\partial ^{\beta ^{1}}m(\xi ))^{l_{1}} \cdots (\partial ^{\beta ^{k}}m(\xi ))^{l_{k}},
 \end{align*}$$
+where $\beta ^{j}$ are multiindices.
 Using the assumption, we can bound this by
 $$\begin{align*}
 \lvert \partial ^{\alpha }(e^{im(\xi )}) \rvert&\le  \left\lvert e^{im(\xi )}\sum_{\stackrel{l_{j}\ge0, \beta ^{j}\le \alpha }{l_{1}\beta ^{1}+\dots +l_{k}\beta ^{k}=\alpha }}c_{\beta^{1},\dots ,\beta ^{k} }(\lvert \xi  \rvert^{-\lvert \beta ^{1} \rvert})^{l_{1}}\cdots (\lvert \xi  \rvert^{-\lvert \beta ^{k} \rvert})^{l_{k}} \right\rvert\\
