@@ -8,6 +8,7 @@ $$\begin{align*}
 \mathcal{F}[x]&= \frac{1}{i \xi } \mathcal{F}[1]\\
 	&= \frac{2 \pi }{i \xi }\delta (\xi ).
 \end{align*}$$
+![[Pasted image 20231209215638.png|600]]
 
 ![[Pasted image 20231107160754.png|800]]
 $$\begin{align*}
@@ -18,6 +19,7 @@ $$\begin{align*}
 &= \pi \delta (\xi )- \frac{1}{2}\left(2\pi \delta (\xi -2) -2\pi \delta (\xi +2\right)\\
 &= \pi \left(\delta (\xi )+\delta (\xi +2)-\delta (\xi -2) \right)
 \end{align*}$$
+![[Pasted image 20231209215732.png|600]]
 
 ![[Pasted image 20231107160802.png|800]]
 $$\begin{align*}
@@ -50,6 +52,9 @@ $$\begin{align*}
 &= \lambda^{-2\alpha }\Gamma (\alpha ) 
 \end{align*}$$
 <div style="page-break-after: always;"></div>
+![[Pasted image 20231209220216.png|800]]
+![[Pasted image 20231209220228.png|600]]
+![[Pasted image 20231209220237.png|600]]
 
 ![[Pasted image 20231107160854.png|800]]
 $$u(\lambda x)=\lambda ^{a}u(x)$$
@@ -67,4 +72,4 @@ $$\begin{align*}
 	&= \lambda ^{-a-d}\cdot \mathcal{F}\left[u \right](\xi ),
 \end{align*}$$
 which is what we wanted to show.
-**![](https://lh7-us.googleusercontent.com/fCgJjBoSwtJj9vE5sDbdPKj9K8Kv5Erpn1eWX9HUg_YFQDTqJLX5NT1Wi59IKNPP1HJSmzW3OwAvKX6PphYpD6SJvty2odjtBvaLhG4ZiOD1ZmZ5Nlg7woEg35PwJhHRl-sQpv75RqNna7QmuynWpgM)**
+![[Pasted image 20231209221253.png|600]]

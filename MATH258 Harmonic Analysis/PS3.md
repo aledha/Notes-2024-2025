@@ -24,14 +24,54 @@ $$\begin{align*}
 ---
 
 ![[Pasted image 20231129160825.png|800]]
-![[Pasted image 20231205112810.png|600]]
-![[Pasted image 20231205112833.png|600]]
-![[Pasted image 20231205110549.png|600]]
-$$T_{1}f(x)=\int_{\mathbb{R}^{n}}K(x,y)f(y)\text{ d}y \quad\text{for }x \notin \text{supp}(f)$$
+This follows Damian Dąbrowski's proof of lemma 4.12 in their paper "Singular Integral Operators", which can be found [here](https://www.damiandabrowski.eu/sios/SIOs-notes-19-11-2023.pdf).
 
-$$(T_{1}-T_{2})f(x)=\lim_{\epsilon \to 0,R\to \infty}\int_{\mathbb{R}^{n}}K_{\epsilon ,R}(x,y)f(y) \text{ d}y-\int_{\mathbb{R}^{n}}K_{\epsilon ,R}(x,y)f(y) \text{ d}y$$
-$$\lVert T_{1}f \rVert_{L^{2}}\le C \lVert f \rVert_{L^{2}}$$
-T1 and T2 are strong p,p for 1<p<inf and weak 1,1
+Let $T=T_{1}-T_{2}$.
+Let $E \subset \mathbb{R}^{n}$ with $\lvert E \rvert<\infty$, then notice that
+$$T(\mathbb 1_{E})(x)=0 \quad\text{for }x \notin E$$
+since the kernel of $T$ is $0$ away from the diagonal. Therefore, 
+$$T (\mathbb 1_{E})=\mathbb 1_{E}T(\mathbb 1_{E}).$$
+
+Let $F \subset \mathbb{R}^{n}$ with $\lvert F \rvert<\infty$, then using the linearity of $T$ and the formula above,
+$$\begin{align*}
+\mathbb 1_{F}T(\mathbb 1_{E})&= \mathbb 1_{E \cap F}T(\mathbb 1_{E})\\
+\mathbb 1_{F}T(\mathbb 1_{E})&= \mathbb 1_{E\cap F}(T(\mathbb 1_{E \cap F})+T(\mathbb 1_{E \backslash F}))\\
+\mathbb 1_{F}T(\mathbb 1_{E})&= 1_{E \cap F}T(\mathbb 1_{E\cap F})+\mathbb 1_{F\cap E}\mathbb 1_{E \backslash F}T(\mathbb 1_{E \backslash F})\\
+\mathbb 1_{F}T(\mathbb 1_{E})&= 1_{E \cap F}T(\mathbb 1_{E\cap F}).\tag{*}
+\end{align*}$$
+
+Let $\{Q \}_{Q \in \mathcal{Q}}$ be the family of unit cubes tiling $\mathbb{R}^{n}$, and let $T(\mathbb 1_{Q})=a_{Q}$. Notice that $\text{supp }a_{Q}\subset Q$.
+![[Pasted image 20231209145949.png|600]]
+$$\begin{align*}
+\lvert a_{Q}(x) \rvert&= \left\lvert \lim_{r \to 0^{+}} \frac{1}{\lvert B_{r} \rvert}\int_{B_{r}(0)}a_{Q}(x-y)\text{ d}y \right\rvert\\
+&=  \lim_{r \to 0^{+}} \frac{1}{\lvert B_{r} \rvert}\left\lvert\int_{B_{r}(x)}a_{Q}(y)\text{ d}y \right\rvert\\
+&=  \lim_{r \to 0^{+}} \frac{1}{\lvert B_{r}(x) \rvert}\left\lvert\int_{B_{r}(x)}(T(\mathbb 1_{Q}))(y)\text{ d}y \right\rvert\\
+&=  \lim_{r \to 0^{+}} \frac{1}{\lvert B_{r}(x) \rvert}\left\lvert\int_{B_{r}(x)} \mathbb 1_{B_{r}(x)}(T(\mathbb 1_{Q}))(y)\text{ d}y \right\rvert\\
+&\stackrel{(*)}{=}\lim_{r \to 0^{+}} \frac{1}{\lvert B_{r}(x) \rvert}\left\lvert\int_{B_{r}(x)} \mathbb 1_{Q\cap B_{r}(x)}T(\mathbb 1_{Q\cap B_{r}(x)})\text{ d}y \right\rvert\\
+	&\le \lim_{r \to 0^{+}} \frac{1}{\lvert B_{r}(x) \rvert} \lVert \mathbb 1_{Q\cap B_{r}(x)} \rVert_{2}\cdot \lVert T(\mathbb 1_{Q\cap B_{r}(x)}) \rVert_{2} 
+\end{align*}$$
+since $T$ is $L^{2}$ bounded, we get that $a_{Q}$ is bounded for a. e. $x \in \mathbb{R}^{n}$.
+$$\begin{align*}
+\lvert a_{Q}(x) \rvert &\le \lim_{r \to 0^{+}} \frac{1}{\lvert B_{r}(x) \rvert} \lVert \mathbb 1_{Q\cap B_{r}(x)} \rVert_{2}^{2}\\
+&\le  \lim_{r \to 0^{+}} \frac{\lvert Q\cap B_{r}(x) \rvert}{\lvert B_{r}(x) \rvert}\\
+&\le C.
+\end{align*}$$
+Then, since $\text{supp }a_{Q} \subset Q$,
+$$\begin{align*}
+a&= \sum_{Q \in \mathcal{Q}}^{}a_{Q}\\
+	\lvert a(x) \rvert &\le C \quad\implies\quad a \in L^{\infty}(\mathbb{R}^{n})
+\end{align*}$$
+and for any $E \in \mathbb{R}^{n}$ with $\lvert E \rvert<\infty$
+$$\begin{align*}
+T(\mathbb 1_{E})&= \sum_{Q \in \mathcal{Q}}^{}T(\mathbb 1_{E\cap Q})\\
+&\stackrel{(*)}{=}\sum_{Q \in \mathcal{Q}}^{}\mathbb 1_{E}T(\mathbb 1_{Q})\\
+&= \mathbb 1_{E}\cdot a.
+\end{align*}$$
+We can approximate $f$ as a sequence of simple functions 
+$$f_{n}=\sum_{i=1}^{n}c_{i} \mathbb 1_{E_{i}}\quad \stackrel{n\to \infty}{\to}f,$$
+where $\{E_{i} \}_{1\le i \le n}$ partitions $\mathbb{R}^{n}$. It is clear that 
+$$T(f_{n})=\sum_{i=1}^{n}c_{i}a_{E_{i}}=af_{n},$$
+and when $n\to \infty$, $T(f)= af$.
 
 ---
 
@@ -51,8 +91,6 @@ $$\int_{\mathbb{R}^{n}}\left\lvert \int_{\mathbb{R}^{n}}P_{\lambda t}(y)f(x-y)\t
 and that both the Poisson maximal function and $\lVert \cdot  \rVert_{H^{1}_{at}}$ are translational invariant, it suffices to show that
 
 
-
-
 By corollary 6.3, 
 ![[Pasted image 20231203165242.png|600]]
 ![[Pasted image 20231203165307.png|600]]
@@ -65,36 +103,20 @@ $$\begin{align*}
  &= \sup_{t>0} \left\lvert \int_{Q}c_{n}\frac{t}{\left(t^{2}+\lvert x-y \rvert ^{2}\right)^{\frac{n+1}{2}}}a(y)\text{ d}y \right\rvert\\
 	\lVert P*a \rVert_{1}&= \int_{\mathbb{R}^{n}}\sup_{t>0} \left\lvert \int_{Q}c_{n}\frac{t}{\left(t^{2}+\lvert x-y \rvert ^{2}\right)^{\frac{n+1}{2}}}a(y)\text{ d}y \right\rvert \text{ d}x
 \end{align*}$$
-$$g(x)=$$
+
 $$\begin{align*}
 \lVert P*a \rVert_{1}&= \int_{\mathbb{R}^{n}}\sup_{t>0}\left\lvert \int_{\mathbb{R}^{n}}P_{t}(y)a(x-y)\text{ d}y \right\rvert \text{ d}x\\
 &= \int_{x-y \in Q}\sup_{t>0}\left\lvert \int_{\mathbb{R}^{n}}P_{t}(y)a(x-y)\text{ d}y \right\rvert \text{ d}x
 \end{align*}$$
 
-
-
-Our problem is therefore reduced to showing that $Tf=P*f$ can be written as
-$$P*f(x)=\int_{\mathbb{R}^{n}}K(x,y)f(y)\text{ d}y \qquad\text{for }x\notin \text{supp}(f)$$
-and that this $K$ satisfies
-$$\int_{\lvert x-y \rvert>2\lvert y-z \rvert}\lvert K(x,y)-K(x,z) \rvert \text{ d}x\le C.$$
-$$\begin{align*}
-\sup_{t>0}\left\lvert \int_{\mathbb{R}^{n}}P_{t}(x-y)f(y)\text{ d}y \right\rvert&= \int_{\mathbb{R}^{n}}K(x,y)f(y) \text{ d}y\\
-\sup_{t>0}\left\lvert \int_{\mathbb{R}^{n}}c_{n}\frac{t}{\left(t^{2}+\lvert x-y \rvert ^{2}\right)^{\frac{n+1}{2}}}f(y)\text{ d}y \right\rvert&= \int_{\mathbb{R}^{n}}K(x,y)f(y) \text{ d}y
-\end{align*}$$
-
-$$\sup_{t>0}\left\lvert \int_{\mathbb{R}^{n}}P_{t}(x-y)f(y)\text{ d}y \right\rvert= \int_{\mathbb{R}^{n}}K(x,y)f(y) \text{ d}y$$
-
-
-
 ---
 
 ![[Pasted image 20231129160844.png|800]]
-https://math.stackexchange.com/questions/4745853/bmo-functions-are-almost-bounded
-https://math.nyu.edu/~varadhan/harmonic/lecture6.pdf
+This follows Professor Srinivasa Varadhan's proof of Lemma 8.3 in their lecture notes, which can be found [here](https://math.nyu.edu/~varadhan/harmonic/lecture6.pdf).
 ![[Pasted image 20231203174858.png|600]]
 $$f \in BMO(\mathbb{R}^{n})\quad\Leftrightarrow\quad M^{\#}f \in L^{\infty}$$
 We let $Q_{2^{k}}$ be the cubes centered at zero with side lengths $2^{k}$ for $k \in \mathbb{N}$.
-We can estimate $\mathbb{R}^{n}$ by summing the cubes:
+We can estimate $\mathbb{R}^{n}$ by summing over the cubes:
 $$\int_{\mathbb{R}^{n}}\frac{f(x)}{1+\lvert x \rvert^{n+\epsilon }} \text{ d}x \le \left(\int_{Q_{2^{0}}}+\sum_{k=1}^{\infty}\int_{Q_{2^{k}}} \right)\frac{f(x)}{1+\lvert x \rvert^{n+\epsilon }}\text{ d}x$$
 We can then write
 $$\begin{align*}

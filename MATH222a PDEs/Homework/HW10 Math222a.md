@@ -31,6 +31,7 @@ $$\begin{align*}
 \lVert u \rVert_{L^{2}_{x}}&= \frac{1}{\sqrt{2\pi }}\lVert \hat g \rVert_{L^{2}_{\xi }}\\
 \lVert u \rVert_{L^{2}_{x}}&= \lVert g \rVert_{L^{2}_{x}}
 \end{align*}$$
+![[Pasted image 20231209213459.png|600]]
 
 <div style="page-break-after: always;"></div>
 
@@ -58,10 +59,13 @@ $$-\frac{\text{d}^{2}}{\text{d}x^{2}}Ai(x)+xAi(x)=\frac{1}{\pi }\lim_{R \to \inf
 And we will show in the next problem that this equals
 $$= \frac{1}{\pi }\lim_{R \to \infty}\int_{0}^{R}\partial _{\xi }\text{sin}\left(\frac{\xi ^{3}}{3} +x \xi \right) \text{ d}\xi =\frac{1}{\pi }\lim_{R \to \infty}\text{sin}\left(\frac{R^{3}}{3} +x R \right)$$
 I couldn't figure this out
+![[Pasted image 20231209213836.png|600]]
+
 <div style="page-break-after: always;"></div>
 
 ![[Pasted image 20231114141928.png|800]]
 
+![[Pasted image 20231209214040.png|600]]
 
 $$\partial _{\xi }\text{sin}\left(\frac{\xi ^{3}}{3} +x \xi \right)=(\xi ^{2}+x)\cdot \text{cos}\left(\frac{\xi ^{3}}{3} +x \xi \right)$$
 $$\begin{align*}
@@ -72,3 +76,9 @@ $$\begin{align*}
 Now, taking $n\to \infty$, the first term goes to zero. 
 $$Ai(x)=\frac{2}{\pi }\int_{0}^{\infty} \frac{\xi }{(\xi ^{2}+x)^{2}}\text{sin}\left(\frac{\xi ^{3}}{3} +x \xi \right)\text{ d}\xi$$
 The integrand in the second term goes to zero as $\xi\to \infty$, and for $x=0$ we have $Ai(0)= \frac{2}{\pi }\int_{0}^{\infty}\xi ^{-3} \text{sin}(\xi ^{3}/3)\text{ d}\xi<\infty$. Therefore, $Ai(x)$ is bounded. 
+
+![[Pasted image 20231209214244.png|800]]
+![[Pasted image 20231209214313.png|600]]
+
+![[Pasted image 20231209214252.png|800]]
+![[Pasted image 20231209215425.png|600]]
