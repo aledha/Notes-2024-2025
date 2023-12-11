@@ -1,28 +1,5 @@
 By Alexander Hatle
 
-![[Pasted image 20231129160816.png|800]]
-
-![[Pasted image 20231204203817.png|600]]
-where $K_{\epsilon ,R}(x)=K(x)\chi _{\epsilon <\lvert x \rvert<R}$.
-$$\lVert K*f(x) \rVert_{L^{1}}=\int_{\mathbb{R}^{n}}\left\lvert \int_{\mathbb{R}^{n}}K(y)f(x-y)\text{ d}y \right\rvert \text{ d}x$$
-
-So we want to show that $\lvert \widehat{K}(\xi ) \rvert \le A$ for some $A>0$.
-
-We have that 
-$$\widehat{K_{\epsilon,R}}(\xi )=\int_{\epsilon <\lvert x \rvert<R}K(x)e^{-2\pi i x \cdot \xi }\text{ d}x$$
-$$\begin{align*}
-\hat K(\xi )&= \int_{\mathbb{R}^{n}}K(x)e^{-2\pi i x \cdot \xi }\text{ d}x\\
-	&= \int_{\lvert x \rvert<\epsilon }K(x)e^{-2\pi i x \cdot \xi }\text{ d}x +\int_{\lvert x \rvert>R }K(x)e^{-2\pi i x \cdot \xi }\text{ d}x + \widehat{K_{\epsilon,R}}(\xi )\\
-	\lvert \hat K(\xi ) \rvert &\le 
-\end{align*}$$
-
-![[Pasted image 20231205114707.png|600]]
-
-
-
-
----
-
 ![[Pasted image 20231129160825.png|800]]
 This follows Damian Dąbrowski's proof of lemma 4.12 in their paper "Singular Integral Operators", which can be found [here](https://www.damiandabrowski.eu/sios/SIOs-notes-19-11-2023.pdf).
 
@@ -74,42 +51,7 @@ $$T(f_{n})=\sum_{i=1}^{n}c_{i}a_{E_{i}}=af_{n},$$
 and when $n\to \infty$, $T(f)= af$.
 
 ---
-
-![[Pasted image 20231129160835.png|800]]
-This proof is heavily inspired by the proof of Therorem 1, part a in Singular Integrals by Stein, p.62.
-The Poisson kernel is
-$$P_{t}(x)=c_{n}\frac{t}{\left(t^{2}+\lvert x \rvert ^{2}\right)^{\frac{n+1}{2}}},$$
-which is radial.
-The Poisson maximal function is defined as
-$$P*f(x)=\sup_{t>0}\left\lvert \int_{\mathbb{R}^{n}}P_{t}(y)f(x-y)\text{ d}y \right\rvert$$
-We want to prove that statement
-$$\lVert P*f \rVert_{1}\le M \lVert f \rVert_{H^{1}_{at}}$$
-for some constant $M$.
-
-Notice that since $P$ is *dilation invariant*, for any $\lambda>0$,
-$$\int_{\mathbb{R}^{n}}\left\lvert \int_{\mathbb{R}^{n}}P_{\lambda t}(y)f(x-y)\text{ d}y \right\rvert \text{ d}x  \le M(\lambda )\lVert f \rVert_{H^{1}_{at}},$$
-and that both the Poisson maximal function and $\lVert \cdot  \rVert_{H^{1}_{at}}$ are translational invariant, it suffices to show that
-
-
-By corollary 6.3, 
-![[Pasted image 20231203165242.png|600]]
-![[Pasted image 20231203165307.png|600]]
-![[Pasted image 20231203170728.png|600]]
-Our problem is reduced to bounding 
-$$\lVert Ta \rVert_{1}=\lVert P*a \rVert_{1}\le C$$
-for any atom $a$.
-$$\begin{align*}
-\sup_{t>0} \left\lvert \int_{\mathbb{R}^{n}}P_{t}(x-y)a(y)\text{ d}y \right\rvert&= \sup_{t>0} \left\lvert \int_{Q}P_{t}(x-y)a(y)\text{ d}y \right\rvert\\
- &= \sup_{t>0} \left\lvert \int_{Q}c_{n}\frac{t}{\left(t^{2}+\lvert x-y \rvert ^{2}\right)^{\frac{n+1}{2}}}a(y)\text{ d}y \right\rvert\\
-	\lVert P*a \rVert_{1}&= \int_{\mathbb{R}^{n}}\sup_{t>0} \left\lvert \int_{Q}c_{n}\frac{t}{\left(t^{2}+\lvert x-y \rvert ^{2}\right)^{\frac{n+1}{2}}}a(y)\text{ d}y \right\rvert \text{ d}x
-\end{align*}$$
-
-$$\begin{align*}
-\lVert P*a \rVert_{1}&= \int_{\mathbb{R}^{n}}\sup_{t>0}\left\lvert \int_{\mathbb{R}^{n}}P_{t}(y)a(x-y)\text{ d}y \right\rvert \text{ d}x\\
-&= \int_{x-y \in Q}\sup_{t>0}\left\lvert \int_{\mathbb{R}^{n}}P_{t}(y)a(x-y)\text{ d}y \right\rvert \text{ d}x
-\end{align*}$$
-
----
+<div style="page-break-after: always;"></div>
 
 ![[Pasted image 20231129160844.png|800]]
 This follows Professor Srinivasa Varadhan's proof of Lemma 8.3 in their lecture notes, which can be found [here](https://math.nyu.edu/~varadhan/harmonic/lecture6.pdf).
@@ -146,9 +88,10 @@ $$\begin{align*}
 \end{align*}$$
 
 ---
+<div style="page-break-after: always;"></div>
 
 ![[Pasted image 20231129160854.png|800]]
-Grafakos Solution manual p. 259 exercise 6.2.7
+Inspired by Fourier Analysis Solution Manual by Grafakos, exercise 6.2.7.
 $m$ is a multiplier $\quad\Leftrightarrow\quad$ the operator $T_{m}$ defined by $(T_{m}f)^{\wedge}=m \hat f$ is bounded
 $$m(\xi )=\sum_{j=-\infty }^{\infty}a_{j}\psi (2^{-j}\xi )$$
 Notice that this sum has finitely many nonzero terms since $\psi$ is compactly supported and is not supported at the origin. Let $0<R_{1}<R_{2}$ such that $\text{supp }\psi \subset \{\xi :R_{1}<\lvert \xi  \rvert <R_{2} \}$. Differentiation by multiindex $\alpha$ gives
@@ -168,6 +111,7 @@ $$\begin{align*}
 where we can apply Hörmander's theorem (Corollary 8.11 in Duoandikoetxea), and obtain that $m$ is a multiplier on $L^{p} \quad\forall\quad 1<p<\infty$.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ![[Pasted image 20231129160907.png|800]]
 This is inspired by Fourier Analysis Solution Manual by Grafakos, exercise 6.2.4.
