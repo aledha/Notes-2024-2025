@@ -56,6 +56,7 @@ $$\begin{align*}
 \end{align*}$$
 What would $\overline{g}(-t)$ be?
 <div style="page-break-after: always;"></div>
+![[Pasted image 20231212121053.png]]
 
 
 ![[Pasted image 20231027172501.png|800]]
