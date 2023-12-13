@@ -21,3 +21,7 @@ maximum principle
 
 ![[Pasted image 20231212123747.png]]
 lambo on wave
+
+
+$$u \in BMO \quad\Leftrightarrow\quad [u]_{BMO}=\sup_{x \in \mathbb{R}^{d},r>0}\frac{1}{\lvert B_{r}(x) \rvert}\int_{B_{r}(x)}\lvert u(y)-u_{B_{r}(x)} \rvert \text{ d}y<\infty$$
+where $u_{B_{r}(x)}$ is the average of $u$ in $B_{r}(x)$.
