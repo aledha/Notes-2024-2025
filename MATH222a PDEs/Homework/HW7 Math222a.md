@@ -4,7 +4,7 @@ I did not submit this.
 
 
 
-
+![[hw07-sol.pdf]]
 
 ![[Pasted image 20231016113810.png|800]]
 
