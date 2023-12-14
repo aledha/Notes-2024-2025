@@ -33,3 +33,5 @@ $$\begin{align*}
 \end{align*}$$
 
 $$\mathcal{F}^{-1}\left[f \right](x)= \frac{1}{2\pi }\mathcal{F}\left[f \right](-x)$$
+
+$$\sum_{\lvert \alpha  \rvert \le k}^{}\lvert D^{\alpha }u \rvert$$
