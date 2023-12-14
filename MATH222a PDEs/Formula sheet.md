@@ -25,3 +25,11 @@ lambo on wave
 
 $$u \in BMO \quad\Leftrightarrow\quad [u]_{BMO}=\sup_{x \in \mathbb{R}^{d},r>0}\frac{1}{\lvert B_{r}(x) \rvert}\int_{B_{r}(x)}\lvert u(y)-u_{B_{r}(x)} \rvert \text{ d}y<\infty$$
 where $u_{B_{r}(x)}$ is the average of $u$ in $B_{r}(x)$.
+
+
+$$\begin{align*}
+\mathcal{F}\left[1 \right]&= 2 \pi \delta _{0}(\xi )\\
+\mathcal{F}^{-1}\left[1 \right]&= \delta _{0}(x)
+\end{align*}$$
+
+$$\mathcal{F}^{-1}\left[f \right](x)= \frac{1}{2\pi }\mathcal{F}\left[f \right](-x)$$
