@@ -30,10 +30,10 @@ $$\tau _{ij}= \frac{1}{12}h^{2}(u_{xxxx}+2u_{xxyy}+u_{yyyy})+\mathcal{O}(h^{4}).
 
 # Problem 2
 ![[Pasted image 20240123134127.png]]
-I'm trying to solve the PDE $u_{xx}+u_{yy}=1$ on an irregular domain. I want to make a change of variables with
+
 $$\xi (x,y)= \frac{x}{C+\frac{A}{H}y}, \qquad \eta (x,y)= \frac{y}{H}$$
 where $C, A,H>0$ are positive constants.
-How can I write this PDE in terms of $\xi, \eta$ derivatives?
+
 
 ![[Pasted image 20240123134209.png]]
 
