@@ -78,11 +78,25 @@ $$\begin{align*}
 The Dirichlet boundary condition is simply that $u=0$ on $\Gamma _{D}$, where $\Gamma _{D}=\{(\xi,\eta ):\{\xi =1 \}\cup \{\eta =0 \} \}$
 
 For the Neumann boundary, we have the condition on the directional derivative $\partial _{\mathbf n}u=0$ on $\Gamma _{N}$, where $\Gamma _{N}=\{(\xi ,\eta ):\{\xi =0 \}\cup \{\eta =1 \} \}$. 
-The normal vector on the top boundary $\eta =1$ is 
+
 
 $$\mathbf n=(n^{x},n^{y})=\frac{1}{\sqrt{\eta _{x}^{2}+\eta _{y}^{2}}}(\eta _{x},\eta _{y})$$
+
+$$\partial _{\mathbf n}u=u_{x}n^{x}+u_{u}n^{y}=\frac{1}{J}\left[(y_{\eta }n^{x}-x_{\eta }n^{y})u_{\xi }+(-y_{\xi }n^{x}+x_{\xi }n^{y})u_{\eta } \right]$$
+The normal vector on the top boundary has the normal vector in the physical space $\mathbf n=(n^{x},n^{y})=(0,1)$. The Neumann condition in $\hat \Omega$ can be written as
+$$\partial _{\mathbf n}u=\frac{1}{J}\left[-A \xi u_\xi +\left(\frac{B}{2}+A \eta  \right)u_{\eta }  \right]=0$$
+
+For the left boundary, the normal vector is $\mathbf n=(n^{x},n^{y})=(-1,0)$. The Neumann condition can be written as
+$$\partial _{\mathbf n}u= \frac{1}{J} \left[-H u_{\xi } \right]=0$$
+
+In conclusion, the PDE can be expressed in the transferred domain as
+
 
 ![[Pasted image 20240123134209.png]]
 
 # Problem 3
 ![[Pasted image 20240123134225.png]]
+
+$$\frac{1}{k}D_{t}^{+}U_{j}^{n}= \frac{\kappa }{2}(D_{x}^{2}U_{j}^{n}+D_{x}^{2}U_{j}^{n+1})-\gamma \left[(1-\theta )U_{j}^{n}+\theta U_{j}^{n+1} \right]$$
+
+$$\frac{u(x,t+k)-u(x,t)}{k}= \frac{u(x-h,t)-2u(x,t)+u(x+h,t)+u(x-h,t+k)-2u(x,t+k)+u(x+h,t+k)}{2h^{2}}- \gamma ((1-\theta )u(x,t)+\theta u(x,t+k))$$
