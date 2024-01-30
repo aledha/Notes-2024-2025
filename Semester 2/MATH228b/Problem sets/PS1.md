@@ -33,6 +33,24 @@ $$\tau _{ij}= \frac{1}{12}h^{2}(u_{xxxx}+2u_{xxyy}+u_{yyyy})+\mathcal{O}(h^{4}).
 
 $$\xi (x,y)= \frac{x}{C+\frac{A}{H}y}, \qquad \eta (x,y)= \frac{y}{H}$$
 where $C, A,H>0$ are positive constants.
+We wish to rewrite the PDE $u_{xx}+u_{yy}=1$ in the new domain. Using the chain rule, we find
+$$\begin{align*}
+u_{x}&= \xi _{x}u_{\xi }+\eta _{x} u_{\eta }\\
+u_{xx}&= \xi _{xx}u_{\xi }+\xi _{x}(\xi _{x}u_{\xi \xi }+\eta _{x}u_{\xi \eta })+\eta _{xx}u_{\eta }+\eta _{x}(\xi _{x} u_{\eta \xi }+\eta _{x}u_{\eta \eta })\\
+u_{yy}&= \xi _{yy}u_{\xi }+\xi _{y} (\xi _{y}u_{\xi \xi }+\eta _{y}u_{\xi \eta })+\eta _{yy}u_{\eta }+\eta _{y}(\xi _{y} u_{\eta \xi }+\eta _{y}u_{\eta \eta }).
+\end{align*}$$
+The terms $\xi _{xx},\eta _{x},\eta _{xx},\eta _{yy}$ are zero so our PDE is
+$$\begin{align*}
+\xi _{xx}u_{\xi }+ (\xi _{x})^{2}u_{\xi \xi }+\xi _{yy}u_{\xi }+(\xi _{y})^{2}u_{\xi \xi }+\xi _{y}\eta _{y}u_{\xi \eta }+ \eta _{y}\xi _{y}u_{\eta \xi }+(\eta _{y})^{2}u_{\eta \eta}&= 1\\
+(\xi _{xx}+\xi _{yy})u_{\xi }+ ((\xi _{x})^{2}+(\xi _{y})^{2})u_{\xi \xi }+2\xi _{y}\eta _{y}u_{\xi \eta }+(\eta _{y})^{2}u_{\eta \eta}&= 1
+\end{align*}$$
+
+The Dirichlet boundary condition is simply that $u=0$ on $\Gamma _{D}$, where $\Gamma _{D}=\{(\xi,\eta ):\{\xi =1 \}\cup \{\eta =0 \} \}$
+
+For the Neumann boundary, we have the condition on the directional derivative $\partial _{\mathbf n}u=0$ on $\Gamma _{N}$, where $\Gamma _{N}=\{(\xi ,\eta ):\{\xi =0 \}\cup \{\eta =1 \} \}$. 
+The normal vector on the top boundary $\eta =1$ is 
+$$\mathbf n=(n^{x},n^{y})=\frac{1}{\sqrt{\eta _{x}^{2}+\eta _{y}^{2}}}(\eta _{x},\eta _{y})$$
+
 
 
 ![[Pasted image 20240123134209.png]]
