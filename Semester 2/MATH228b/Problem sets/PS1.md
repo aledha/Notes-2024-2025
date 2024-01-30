@@ -45,13 +45,42 @@ $$\begin{align*}
 (\xi _{xx}+\xi _{yy})u_{\xi }+ ((\xi _{x})^{2}+(\xi _{y})^{2})u_{\xi \xi }+2\xi _{y}\eta _{y}u_{\xi \eta }+(\eta _{y})^{2}u_{\eta \eta}&= 1
 \end{align*}$$
 
+
+
+
+$$x(\xi ,\eta )= \left(\frac{B}{2}+A \eta \right)\xi ,\qquad y(\xi ,\eta )=H \eta $$
+
+
+$$- \frac{1}{J^{2}}(a u_{\xi \xi }-2bu_{\xi \eta }+cu_{\eta \eta} +du_{\eta }+eu_{\xi })=1,$$
+where
+$$\begin{align*}
+&a=x_{\eta }^{2}+y_{\eta }^{2} ,\qquad b=x_{\xi }x_{\eta }+y_{\xi }y_{\eta },\qquad c=x_{\xi }^{2}+y_{\xi }^{2},\\
+&	d=\frac{y_{\xi }\alpha -x_{\xi }\beta }{J},\qquad e=\frac{x_{\eta }\beta -y_{\eta }\alpha }{J},
+\end{align*}$$
+and 
+$$\begin{align*}
+\alpha &= ax_{\xi \xi }-2bx_{\xi \eta }+cx_{\eta \eta},\\
+\beta &= ay_{\xi \xi }-2by_{\xi \eta }+cy_{\eta \eta}.
+\end{align*}$$
+For our problem, we have that $x_{\xi \xi }=x_{\eta \eta}=y_\xi =y_{\xi \xi}=y_{\eta \eta }=0$. The other partial derivatives are
+$$x_{\xi }=\frac{B}{2}+A \eta ,\quad x_{\xi \eta }=A, \quad x_{\eta }=A \xi , \quad y_{\eta }=H.$$
+Our variables are thus simplified to
+$$\begin{align*}
+&a=(A \xi )^{2}+H^{2} ,\qquad b=\left(\frac{B}{2}+A \eta  \right)A \xi  ,\qquad c=\left(\frac{B}{2}+A \eta  \right)^{2},\\
+&	d=0,\qquad e=\frac{2AH }{J},
+\end{align*}$$
+and 
+$$\begin{align*}
+\alpha &= -2A,\\
+\beta &= 0.
+\end{align*}$$
+
 The Dirichlet boundary condition is simply that $u=0$ on $\Gamma _{D}$, where $\Gamma _{D}=\{(\xi,\eta ):\{\xi =1 \}\cup \{\eta =0 \} \}$
 
 For the Neumann boundary, we have the condition on the directional derivative $\partial _{\mathbf n}u=0$ on $\Gamma _{N}$, where $\Gamma _{N}=\{(\xi ,\eta ):\{\xi =0 \}\cup \{\eta =1 \} \}$. 
 The normal vector on the top boundary $\eta =1$ is 
+
 $$\mathbf n=(n^{x},n^{y})=\frac{1}{\sqrt{\eta _{x}^{2}+\eta _{y}^{2}}}(\eta _{x},\eta _{y})$$
-
-
 
 ![[Pasted image 20240123134209.png]]
 
