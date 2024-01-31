@@ -90,9 +90,45 @@ For the left boundary, the normal vector is $\mathbf n=(n^{x},n^{y})=(-1,0)$. Th
 $$\partial _{\mathbf n}u= \frac{1}{J} \left[-H u_{\xi } \right]=0$$
 
 In conclusion, the PDE can be expressed in the transferred domain as
+$$
+\begin{align*}
+- \frac{1}{J^{2}}(a u_{\xi \xi }-2bu_{\xi \eta }+cu_{\eta \eta} +eu_{\xi })&=  1  \qquad  \text{in }\hat \Omega \\
+u&= 0 \qquad \text{on }\xi =1 \text{ and }\eta =0\\
+-A \xi u_\xi +\left(\frac{B}{2}+A \eta  \right)u_{\eta }&= 0\qquad \text{on } \eta =1\\
+u_{\xi }&= 0\qquad\text{on } \xi =0
+\end{align*}$$
 
 
 ![[Pasted image 20240123134209.png]]
+
+Let's discretize the domain with $u_{ij}=u(\xi _{i},\eta _{j})=u (i/n,j/n)$. The partial derivatives can be approximated by central differences, and it can be shown by Taylor expansion that 
+$$\begin{align*}
+u_{\xi \xi }&= \frac{u_{i-1,j}-2u_{ij}+u_{i+1,j}}{h^{2}}-\frac{h^{2}}{12}u_{\xi \xi \xi \xi} +\mathcal{O}(h^{4}),\\
+u_{\eta \eta }&= \frac{u_{i,j-1}-2u_{ij}+u_{i,j+1}}{h^{2}}-\frac{h^{2}}{12}u_{\eta \eta \eta \eta} +\mathcal{O}(h^{4}),\\
+u_{\xi }&= \frac{u_{i+1,j}-u_{i-1,j}}{2h}-\frac{h^{2}}{6}u_{\xi \xi \xi } + \mathcal{O}(h^{4}).
+\end{align*}$$
+The mixed derivative can be obtained by applying central derivatives to the last term,
+$$u_{\xi \eta } = \frac{(u_{i+1,j+1}-u_{i+1,j-1})-(u_{i-1,j+1}-u_{i-1,j-1})}{(2h)^{2}}+ \tau_{ij}.$$
+Let's Taylor expand first in the $\eta$-direction, and then in the $\xi$-direction
+$$\begin{align*}
+u_{i +1,j \pm 1}&= u(\xi + h,\eta  \pm h)\\
+	&= u(\xi +h,\eta )\pm hu_{\eta }(\xi +h,\eta ) +\frac{h^{2}}{2}u_{\eta \eta}(\xi +h, \eta ) + \mathcal{O}(h^{3})\\
+	&= u +hu_{\xi }+\frac{h^{2}}{2}u_{\xi \xi}\\
+&\quad \pm \text{ } h \left(u_{\eta } + h u_{\eta \xi } + \frac{h^{2}}{2} u_{\eta \xi \xi} \right)\\
+&\quad + \frac{h^{2}}{2}\left(u_{\eta \eta} +hu_{\eta \eta \xi }  + \frac{h^{2}}{2} u_{\eta \eta \xi \xi }\right).
+\end{align*}$$
+Similarly, we have 
+$$\begin{align*}
+u_{i-1,j\pm1}&= u -hu_{\xi }+\frac{h^{2}}{2}u_{\xi \xi} - \frac{h^{3}}{6}u_{\xi \xi \xi}\\
+&\quad \pm \text{ } h \left(u_{\eta } - h u_{\eta \xi } + \frac{h^{2}}{2} u_{\eta \xi \xi}- \frac{h^{3}}{6}u_{\eta \xi \xi \xi} \right)\\
+&\quad + \frac{h^{2}}{2}\left(u_{\eta \eta} -hu_{\eta \eta \xi }  + \frac{h^{2}}{2} u_{\eta \eta \xi \xi } - \frac{h^{3}}{6}u_{\eta \xi \xi \xi}\right)
+\end{align*}$$
+
+
+
+The interior of the domain can be described by the scheme
+
+$$- \frac{1}{J^{2}}\left[a_{ij} \left(\frac{u_{i-1,j}-2u_{ij}+u_{i+1,j}}{h^{2}} \right) -2b \partial _{\xi }\left(\frac{u_{i,j+1}-u_{i,j-1}}{2h} \right) +\right]$$
 
 # Problem 3
 ![[Pasted image 20240123134225.png]]
