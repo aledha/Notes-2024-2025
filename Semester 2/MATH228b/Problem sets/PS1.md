@@ -31,25 +31,10 @@ $$\tau _{ij}= \frac{1}{12}h^{2}(u_{xxxx}+2u_{xxyy}+u_{yyyy})+\mathcal{O}(h^{4}).
 # Problem 2
 ![[Pasted image 20240123134127.png]]
 
-$$\xi (x,y)= \frac{x}{C+\frac{A}{H}y}, \qquad \eta (x,y)= \frac{y}{H}$$
-where $C, A,H>0$ are positive constants.
-We wish to rewrite the PDE $u_{xx}+u_{yy}=1$ in the new domain. Using the chain rule, we find
-$$\begin{align*}
-u_{x}&= \xi _{x}u_{\xi }+\eta _{x} u_{\eta }\\
-u_{xx}&= \xi _{xx}u_{\xi }+\xi _{x}(\xi _{x}u_{\xi \xi }+\eta _{x}u_{\xi \eta })+\eta _{xx}u_{\eta }+\eta _{x}(\xi _{x} u_{\eta \xi }+\eta _{x}u_{\eta \eta })\\
-u_{yy}&= \xi _{yy}u_{\xi }+\xi _{y} (\xi _{y}u_{\xi \xi }+\eta _{y}u_{\xi \eta })+\eta _{yy}u_{\eta }+\eta _{y}(\xi _{y} u_{\eta \xi }+\eta _{y}u_{\eta \eta }).
-\end{align*}$$
-The terms $\xi _{xx},\eta _{x},\eta _{xx},\eta _{yy}$ are zero so our PDE is
-$$\begin{align*}
-\xi _{xx}u_{\xi }+ (\xi _{x})^{2}u_{\xi \xi }+\xi _{yy}u_{\xi }+(\xi _{y})^{2}u_{\xi \xi }+\xi _{y}\eta _{y}u_{\xi \eta }+ \eta _{y}\xi _{y}u_{\eta \xi }+(\eta _{y})^{2}u_{\eta \eta}&= 1\\
-(\xi _{xx}+\xi _{yy})u_{\xi }+ ((\xi _{x})^{2}+(\xi _{y})^{2})u_{\xi \xi }+2\xi _{y}\eta _{y}u_{\xi \eta }+(\eta _{y})^{2}u_{\eta \eta}&= 1
-\end{align*}$$
-
-
-
+$$\xi (x,y)= \frac{x}{\frac{B}{2}+\frac{A}{H}y}, \qquad \eta (x,y)= \frac{y}{H}$$
+where $B, A,H>0$ are positive constants.
 
 $$x(\xi ,\eta )= \left(\frac{B}{2}+A \eta \right)\xi ,\qquad y(\xi ,\eta )=H \eta $$
-
 
 $$- \frac{1}{J^{2}}(a u_{\xi \xi }-2bu_{\xi \eta }+cu_{\eta \eta} +du_{\eta }+eu_{\xi })=1,$$
 where
@@ -60,7 +45,8 @@ $$\begin{align*}
 and 
 $$\begin{align*}
 \alpha &= ax_{\xi \xi }-2bx_{\xi \eta }+cx_{\eta \eta},\\
-\beta &= ay_{\xi \xi }-2by_{\xi \eta }+cy_{\eta \eta}.
+\beta &= ay_{\xi \xi }-2by_{\xi \eta }+cy_{\eta \eta},\\
+J &= x_{\xi }y_{\eta }-x_{\eta }y_{\xi } 
 \end{align*}$$
 For our problem, we have that $x_{\xi \xi }=x_{\eta \eta}=y_\xi =y_{\xi \xi}=y_{\eta \eta }=0$. The other partial derivatives are
 $$x_{\xi }=\frac{B}{2}+A \eta ,\quad x_{\xi \eta }=A, \quad x_{\eta }=A \xi , \quad y_{\eta }=H.$$
@@ -72,7 +58,8 @@ $$\begin{align*}
 and 
 $$\begin{align*}
 \alpha &= -2A,\\
-\beta &= 0.
+\beta &= 0,\\
+J&= \frac{BH}{2}+AH \eta 
 \end{align*}$$
 
 The Dirichlet boundary condition is simply that $u=0$ on $\Gamma _{D}$, where $\Gamma _{D}=\{(\xi,\eta ):\{\xi =1 \}\cup \{\eta =0 \} \}$
@@ -94,7 +81,7 @@ $$
 \begin{align*}
 - \frac{1}{J^{2}}(a u_{\xi \xi }-2bu_{\xi \eta }+cu_{\eta \eta} +eu_{\xi })&=  1  \qquad  \text{in }\hat \Omega \\
 u&= 0 \qquad \text{on }\xi =1 \text{ and }\eta =0\\
--A \xi u_\xi +\left(\frac{B}{2}+A \eta  \right)u_{\eta }&= 0\qquad \text{on } \eta =1\\
+-A \xi u_\xi +\left(\frac{B}{2}+A   \right)u_{\eta }&= 0\qquad \text{on } \eta =1\\
 u_{\xi }&= 0\qquad\text{on } \xi =0
 \end{align*}$$
 
@@ -107,28 +94,57 @@ u_{\xi \xi }&= \frac{u_{i-1,j}-2u_{ij}+u_{i+1,j}}{h^{2}}-\frac{h^{2}}{12}u_{\xi 
 u_{\eta \eta }&= \frac{u_{i,j-1}-2u_{ij}+u_{i,j+1}}{h^{2}}-\frac{h^{2}}{12}u_{\eta \eta \eta \eta} +\mathcal{O}(h^{4}),\\
 u_{\xi }&= \frac{u_{i+1,j}-u_{i-1,j}}{2h}-\frac{h^{2}}{6}u_{\xi \xi \xi } + \mathcal{O}(h^{4}).
 \end{align*}$$
-The mixed derivative can be obtained by applying central derivatives to the last term,
+A second order mixed derivative can be obtained by applying central derivatives to the last term,
 $$u_{\xi \eta } = \frac{(u_{i+1,j+1}-u_{i+1,j-1})-(u_{i-1,j+1}-u_{i-1,j-1})}{(2h)^{2}}+ \tau_{ij}.$$
 Let's Taylor expand first in the $\eta$-direction, and then in the $\xi$-direction
 $$\begin{align*}
 u_{i +1,j \pm 1}&= u(\xi + h,\eta  \pm h)\\
-	&= u(\xi +h,\eta )\pm hu_{\eta }(\xi +h,\eta ) +\frac{h^{2}}{2}u_{\eta \eta}(\xi +h, \eta ) + \mathcal{O}(h^{3})\\
-	&= u +hu_{\xi }+\frac{h^{2}}{2}u_{\xi \xi}\\
+	&= u(\xi +h,\eta )\pm hu_{\eta }(\xi +h,\eta ) +\frac{h^{2}}{2}u_{\eta \eta}(\xi +h, \eta ) + \frac{h^{3}}{6}u_{\eta \eta \eta}(\xi +h,\eta )+\mathcal{O}(h^{4})\\
+	&= u +hu_{\xi }+\frac{h^{2}}{2}u_{\xi \xi}+\frac{h^{3}}{6}u_{\xi \xi \xi}  \\
 &\quad \pm \text{ } h \left(u_{\eta } + h u_{\eta \xi } + \frac{h^{2}}{2} u_{\eta \xi \xi} \right)\\
-&\quad + \frac{h^{2}}{2}\left(u_{\eta \eta} +hu_{\eta \eta \xi }  + \frac{h^{2}}{2} u_{\eta \eta \xi \xi }\right).
+&\quad + \frac{h^{2}}{2}\left(u_{\eta \eta} +hu_{\eta \eta \xi }  \right)\\
+&\quad \pm \frac{h^{3}}{6}\left(u_{\eta \eta \eta }\right) + \mathcal{O}(h^{4}),
 \end{align*}$$
+where every term with $h^{4}$ or higher is collected in the $\mathcal{O}(h^{4})$ term. The difference between these two is
+$$u_{i+1,j+1}-u_{i+1,j-1}=2h \left(u_{\eta }+hu_{\eta \xi }+\frac{h^{2}}{2} u_{\eta \xi \xi} \right)+\frac{h^{3}}{3}u_{\eta \eta \eta }+\mathcal{O}(h^{4})$$
+
 Similarly, we have 
 $$\begin{align*}
 u_{i-1,j\pm1}&= u -hu_{\xi }+\frac{h^{2}}{2}u_{\xi \xi} - \frac{h^{3}}{6}u_{\xi \xi \xi}\\
-&\quad \pm \text{ } h \left(u_{\eta } - h u_{\eta \xi } + \frac{h^{2}}{2} u_{\eta \xi \xi}- \frac{h^{3}}{6}u_{\eta \xi \xi \xi} \right)\\
-&\quad + \frac{h^{2}}{2}\left(u_{\eta \eta} -hu_{\eta \eta \xi }  + \frac{h^{2}}{2} u_{\eta \eta \xi \xi } - \frac{h^{3}}{6}u_{\eta \xi \xi \xi}\right)
+&\quad \pm \text{ } h \left(u_{\eta } - h u_{\eta \xi } + \frac{h^{2}}{2} u_{\eta \xi \xi} \right)\\
+&\quad + \frac{h^{2}}{2}\left(u_{\eta \eta} -hu_{\eta \eta \xi } \right)\\
+	&\quad \pm \frac{h^{3}}{6}u_{\eta \eta \eta } +\mathcal{O}(h^{4}).
 \end{align*}$$
-
+Where the difference is
+$$u_{i-1,j+1}-u_{i-1,j-1}=2h \left(u_{\eta } - h u_{\eta \xi } + \frac{h^{2}}{2} u_{\eta \xi \xi} \right) + \frac{h^{3}}{3}u_{\eta \eta \eta }+\mathcal{O}(h^{4})$$
+Finally, we obtain that
+$$\frac{(u_{i+1,j+1}-u_{i+1,j-1})-(u_{i-1,j+1}-u_{i-1,j-1})}{(2h)^{2}}=\frac{4h^{2}u_{\eta \xi} +\mathcal{O}(h^{4})}{4h^{2}}=u_{\eta \xi }+\mathcal{O}(h^{2}),$$
+and that the truncation error is $\tau _{ij}=\mathcal{O}(h^{2})$.
 
 
 The interior of the domain can be described by the scheme
+$$- \frac{1}{J^{2}}\left[a_{ij} \left(\frac{u_{i-1,j}-2u_{ij}+u_{i+1,j}}{h^{2}} \right) -2b_{ij} \left(\frac{(u_{i+1,j+1}-u_{i+1,j-1})-(u_{i-1,j+1}-u_{i-1,j-1})}{(2h)^{2}} \right) + c \left(\frac{u_{i,j+1}-2u_{ij}+u_{i,j-1}}{h^{2}} \right) + e \left(\frac{u_{i+1,j}-u_{i-1,j}}{2h} \right)\right]=1$$
+$$(-2a_{ij}-2c_{ij})u_{ij}+\left(a_{ij}-\frac{h}{2}e_{ij}\right)u_{i-1,j}+\left(a_{ij}+\frac{h}{2}e_{ij}\right)u_{i+1,j}+c_{ij}u_{i,j+1}+c_{ij}u_{i,j-1}-\frac{b_{ij}}{2}u_{i+1,j+1}+\frac{b_{ij}}{2}u_{i+1,j-1}-\frac{b_{ij}}{2}u_{i-1,j+1}+\frac{b_{ij}}{2}u_{i-1,j-1}=-(Jh)^{2}$$
+The Neumann boundary condition on $\{\xi =0 \}$ can be approximated wih
+$$u_\xi ≈\frac{1}{h}\left(-\frac{3}{2}u_{1,j}+2u_{2,j}- \frac{1}{2}u_{3,j} \right)=0$$
+Using the Taylor expansions centered at $i=1$,
+$$\begin{align*}
+u_{1,j}&= u+hu_{\xi }+ \frac{h^{2}}{2}u_{\xi \xi }+\mathcal{O}(h^{3}),\\
+u_{2,j}&= u+2hu_{\xi }+2h^{2}u_{\xi \xi }+\mathcal{O}(h^{3}),
+\end{align*}$$
+we can see that 
+$$\begin{align*}
+\frac{1}{h}\left(-\frac{3}{2}u_{0,j}+2u_{1,j}- \frac{1}{2}u_{2,j} \right)&= \frac{1}{h}\left(2\left(hu_{\xi }+\frac{h^{2}}{2}u_{\xi \xi }\right)- \frac{1}{2}\left(2hu_{\xi }+2h^{2}u_{\xi \xi } \right) \right) +\mathcal{O}(h^{2}),\\
+&= u_{\xi }+\mathcal{O}(h^{2}),
+\end{align*}$$
+i.e., that this approximation is second order accurate.
 
-$$- \frac{1}{J^{2}}\left[a_{ij} \left(\frac{u_{i-1,j}-2u_{ij}+u_{i+1,j}}{h^{2}} \right) -2b \partial _{\xi }\left(\frac{u_{i,j+1}-u_{i,j-1}}{2h} \right) +\right]$$
+The Neumann condition on $\{\eta =1 \}$ is similar,
+$$\begin{align*}
+-A \xi u_\xi +\left(\frac{B}{2}+A  \right)u_{\eta }&= 0\\
+≈-A \xi _{i}\frac{u_{i+1,n+1}-u_{i-1,n+1}}{2h}+ \left(\frac{B}{2}+A \right) \frac{1}{h} \left(-\frac{3}{2}u_{i,n+1}+2u_{i,n}-\frac{1}{2}u_{i,n-1} \right)&= 0,
+\end{align*}$$
+and is also second order accurate.
 
 # Problem 3
 ![[Pasted image 20240123134225.png]]
