@@ -53,11 +53,11 @@ $$x_{\xi }=\frac{B}{2}+A \eta ,\quad x_{\xi \eta }=A, \quad x_{\eta }=A \xi , \q
 Our variables are thus simplified to
 $$\begin{align*}
 &a=(A \xi )^{2}+H^{2} ,\qquad b=\left(\frac{B}{2}+A \eta  \right)A \xi  ,\qquad c=\left(\frac{B}{2}+A \eta  \right)^{2},\\
-&	d=0,\qquad e=\frac{2AH }{J},
+&	d=0,\qquad e=\frac{2AHb }{J},
 \end{align*}$$
 and 
 $$\begin{align*}
-\alpha &= -2A,\\
+\alpha &= -2Ab,\\
 \beta &= 0,\\
 J&= \frac{BH}{2}+AH \eta 
 \end{align*}$$
@@ -151,7 +151,7 @@ $$\begin{align*}
 The scheme at the top boundary is therefore
 $$\begin{align*}
 -A \xi u_\xi +\left(\frac{B}{2}+A  \right)u_{\eta }&= 0,\\
-≈-A \xi _{i}\frac{u_{i+1,n+1}-u_{i-1,n+1}}{2h}+ \left(\frac{B}{2}+A \right) \frac{1}{h} \left(-\frac{3}{2}u_{i,n+1}+2u_{i,n}-\frac{1}{2}u_{i,n-1} \right)&= 0.
+≈-A \xi _{i}\frac{u_{i+1,n+1}-u_{i-1,n+1}}{2h}+ \left(\frac{B}{2}+A \right) \frac{1}{h} \left(\frac{3}{2}u_{i,n+1}-2u_{i,n}+\frac{1}{2}u_{i,n-1} \right)&= 0.
 \end{align*}$$
 
 
