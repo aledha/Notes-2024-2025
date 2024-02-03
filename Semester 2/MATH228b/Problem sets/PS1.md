@@ -1,3 +1,4 @@
+By Alexander Hatle
 # Problem 1
 ![[Pasted image 20240118132809.png]]
 
@@ -26,8 +27,14 @@ $$\nabla _{9}^{2}u_{ij}=\nabla _{5}^{2}u_{ij}+ \frac{1}{6}\left(h^{2}\partial _{
 The truncation error of the 5-point Laplacian is to be $\frac{1}{12}h^{2}(u_{xxxx}+u_{yyyy})+\mathcal{O}(h^{4})$. Inserting this into the above equation gives the truncation error of the 9-point Laplacian,
 $$\tau _{ij}= \frac{1}{12}h^{2}(u_{xxxx}+2u_{xxyy}+u_{yyyy})+\mathcal{O}(h^{4}).$$
 
+![[Pasted image 20240202194132.png]]
+See attached file. My result:
+![[Pasted image 20240202194153.png|500]]
+
+<div style="page-break-after: always;"></div>
 
 # Problem 2
+
 ![[Pasted image 20240123134127.png]]
 A mapping from the original domain to the unit square is
 $$\xi (x,y)= \frac{x}{\frac{B}{2}+\frac{A}{H}y}, \qquad \eta (x,y)= \frac{y}{H}$$
@@ -118,9 +125,15 @@ and that the truncation error is $\tau _{ij}=\mathcal{O}(h^{2})$.
 
 
 The interior of the domain can be described by the scheme
-$$- \frac{1}{J^{2}}\left[a_{ij} \left(\frac{u_{i-1,j}-2u_{ij}+u_{i+1,j}}{h^{2}} \right) -2b_{ij} \left(\frac{(u_{i+1,j+1}-u_{i+1,j-1})-(u_{i-1,j+1}-u_{i-1,j-1})}{(2h)^{2}} \right) + c_{ij} \left(\frac{u_{i,j+1}-2u_{ij}+u_{i,j-1}}{h^{2}} \right) + e_{ij} \left(\frac{u_{i+1,j}-u_{i-1,j}}{2h} \right)\right]=1.$$
+$$\begin{align*}
+- \frac{1}{J^{2}}\Bigg[a_{ij} \left(\frac{u_{i-1,j}-2u_{ij}+u_{i+1,j}}{h^{2}} \right) -2b_{ij} \left(\frac{(u_{i+1,j+1}-u_{i+1,j-1})-(u_{i-1,j+1}-u_{i-1,j-1})}{(2h)^{2}} \right) + \\
+c_{ij} \left(\frac{u_{i,j+1}-2u_{ij}+u_{i,j-1}}{h^{2}} \right) + e_{ij} \left(\frac{u_{i+1,j}-u_{i-1,j}}{2h} \right)\Bigg]=1
+\end{align*}$$
 Collecting terms,
-$$(-2a_{ij}-2c_{ij})u_{ij}+\left(a_{ij}-\frac{h}{2}e_{ij}\right)u_{i-1,j}+\left(a_{ij}+\frac{h}{2}e_{ij}\right)u_{i+1,j}+c_{ij}u_{i,j+1}+c_{ij}u_{i,j-1}-\frac{b_{ij}}{2}u_{i+1,j+1}+\frac{b_{ij}}{2}u_{i+1,j-1}+\frac{b_{ij}}{2}u_{i-1,j+1}-\frac{b_{ij}}{2}u_{i-1,j-1}=-(Jh)^{2}.$$
+$$\begin{align*}
+(-2a_{ij}-2c_{ij})u_{ij}+\left(a_{ij}-\frac{h}{2}e_{ij}\right)u_{i-1,j}+\left(a_{ij}+\frac{h}{2}e_{ij}\right)u_{i+1,j}+\\
+c_{ij}u_{i,j+1}+c_{ij}u_{i,j-1}-\frac{b_{ij}}{2}u_{i+1,j+1}+\frac{b_{ij}}{2}u_{i+1,j-1}+\frac{b_{ij}}{2}u_{i-1,j+1}-\frac{b_{ij}}{2}u_{i-1,j-1}=-(Jh)^{2}.
+\end{align*}$$
 The Neumann boundary condition on $\{\xi =0 \}$ can be approximated with
 $$u_\xi ≈\frac{1}{h}\left(-\frac{3}{2}u_{1,j}+2u_{2,j}- \frac{1}{2}u_{3,j} \right)=0$$
 To show that this is $\mathcal{O}(h^{2})$, we will use Taylor expansions centered at $i=1$,
@@ -152,8 +165,18 @@ $$\begin{align*}
 -A \xi u_\xi +\left(\frac{B}{2}+A  \right)u_{\eta }&= 0,\\
 ≈-A \xi _{i}\frac{u_{i+1,n+1}-u_{i-1,n+1}}{2h}+ \left(\frac{B}{2}+A \right) \frac{1}{h} \left(\frac{3}{2}u_{i,n+1}-2u_{i,n}+\frac{1}{2}u_{i,n-1} \right)&= 0.
 \end{align*}$$
+![[Pasted image 20240202193540.png]]
+See attached Julia file. Here is my result:
+![[Pasted image 20240202193905.png|500]]
+
+![[Pasted image 20240202193950.png]]
+See attached Julia file. My result:
+![[Pasted image 20240202194033.png|800]]
+
+<div style="page-break-after: always;"></div>
 
 # Problem 3
+
 ![[Pasted image 20240123134225.png]]
 The method described can be written as
 $$\frac{u(x,t+k)-u(x,t)}{k}=\frac{u(x-h,t)-2u(x,t)+u(x+h,t)+u(x-h,t+k)-2u(x,t+k)+u(x+h,t+k)}{2h^{2}}- \gamma ((1-\theta )u(x,t)+\theta u(x,t+k))$$
