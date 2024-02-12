@@ -41,8 +41,31 @@ $$u_{t}+au_{x}= \mathcal{O}(h^{2}+k^{2})$$
 where $\mathcal{O}(kh)$ vanishes since it is necessarily smaller than either $\mathcal{O}(h^{2})$ or $\mathcal{O}(k^{2})$. The method has second order accuracy in both time and space.
 
 ![[Pasted image 20240210102241.png]]
+The domain of dependance for the the point $(X,T)$ is $\left[X-2\frac{h}{k},X\right]$. Since we want our solution to converge to $u(X,T)=u(X-aT)$, this point must be in the domain of dependance, i.e.,
+$$X-2\frac{h}{k}T\le X-aT  \le X$$
+and hence this method satisfies the CFL condition if
+$$0 \le  \frac{ak}{h} \le2$$
 
 ![[Pasted image 20240210102246.png]]
+
+Substituting in $U_{j}^{n-1}=e^{ijh \xi }$ and $U_{j}^{n}=g(\xi )U_{j}^{n-1}=g(\xi )e^{ijh \xi}$,
+$$\begin{align*}
+g(\xi )^{2}e^{ijh \xi }&= e^{i(j-2)h \xi }- \left(\frac{ak}{h}-1 \right) \left(g(\xi )e^{ijh \xi }-g(\xi )e^{i(j-2)h \xi } \right)\\
+g(\xi )^{2}&= e^{-2i h \xi }-\left(\frac{ak}{h}-1 \right) \left(g(\xi )-g(\xi )e^{-2ih \xi } \right)
+\end{align*}$$
+Setting $\gamma (\xi )=e^{i h \xi }g(\xi )$,
+$$\begin{align*}
+\gamma (\xi )^{2}e^{-2ih \xi }&= e^{-2ih \xi }- \left(\frac{ak}{h}-1 \right)(\gamma (\xi) e^{-ih\xi }-\gamma (\xi )e^{-3ih \xi })\\
+	\gamma (\xi )^{2}&= 1-\left(\frac{ak}{h} -1\right)(e^{ih \xi }-e^{-ih \xi })\gamma (\xi )
+\end{align*}$$
+Using that $e^{ix}-e^{-ix}=\text{cos}(x)+i \text{sin}(x)-\text{cos}(-x)-i \text{sin}(-x)=2i \text{sin}(x)$,
+$$\gamma (\xi )^{2}= 1- 2\left(\frac{ak}{h} -1\right)i \text{sin}(h \xi ) \gamma (\xi ).$$
+This is closely related to 
+![[Pasted image 20240212105212.png|500]]
+which has the stability limit $\lvert \nu  \rvert \le 1$. Translating this to our skewed method, our stability limit becomes
+$$\left\lvert \frac{ak}{h}-1 \right\rvert \le 1.$$
+The CFL condition is $0\le\frac{ak}{h}\le2$, which in fact satisfies the above stability limit.
+
 
 ![[Pasted image 20240210102300.png]]
 
