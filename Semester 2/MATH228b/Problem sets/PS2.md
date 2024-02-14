@@ -36,12 +36,12 @@ u_{t}(x,t)+\frac{k}{2}u_{tt}(x,t)+u_{t}(x-2h,t)-\frac{k}{2}u_{tt}(x-2h,t)+\mathc
 u_{t}+ \frac{k}{2}u_{tt}+(u_{t}-2hu_{tx}+\mathcal{O}(h^{2}))-\frac{k}{2}(u_{tt}+\mathcal{O}(h))+\mathcal{O}(k^{2})&= -2au_{x}+2hau_{xx}+\mathcal{O}(h^{2})\\
 2u_{t}+2h(-u_{tx}-au_{xx})+\mathcal{O}(kh+k^{2})&= -2au_{x}+\mathcal{O}(h^{2})
 \end{align*}$$
-We can use the original equation to get that $u_{tx}=-au_{xx}$ so that the second term vanishes and divide by two to get that
+We can use the original equation that $u_{tx}=-au_{xx}$, so that the second term vanishes and divide by two to get that
 $$u_{t}+au_{x}= \mathcal{O}(h^{2}+k^{2})$$
-where $\mathcal{O}(kh)$ vanishes since it is necessarily smaller than either $\mathcal{O}(h^{2})$ or $\mathcal{O}(k^{2})$. The method has second order accuracy in both time and space.
+where $\mathcal{O}(kh)$ vanishes since it is smaller than either $\mathcal{O}(h^{2})$ or $\mathcal{O}(k^{2})$. The method has second order accuracy in both time and space.
 
 ![[Pasted image 20240210102241.png]]
-The domain of dependance for the the point $(X,T)$ is $\left[X-2\frac{h}{k},X\right]$. Since we want our solution to converge to $u(X,T)=u(X-aT)$, this point must be in the domain of dependance, i.e.,
+The domain of dependance for the the point $(X,T)$ is $\left[X-2\frac{h}{k},X\right]$. Since we want our solution to converge to the true solution $u(X,T)=u(X-aT)$, this point must be in the domain of dependance, i.e.,
 $$X-2\frac{h}{k}T\le X-aT  \le X$$
 and hence this method satisfies the CFL condition if
 $$0 \le  \frac{ak}{h} \le2$$
