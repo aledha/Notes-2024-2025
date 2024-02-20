@@ -20,5 +20,10 @@ $$MP_{K}=\frac{r + \delta }{1-\tau }.$$
 An increase in tax will lead to a decrease in optimal capital stock and hence a decrease in investment.
 
 ![[Pasted image 20240205145013.png]]
+![[fredgraph.png]]
+If the output grows more than the capital stock in a given time period, firms must invest to compensate.
 
 ![[Pasted image 20240205145023.png]]
+
+![[fredgraph-2.png]]
+They differ in that the percentage change for housing is much more volatile than for rent.
