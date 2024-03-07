@@ -39,5 +39,16 @@ $$\begin{bmatrix}H_{0}(x_{1}) & H_{1}(x_{1}) & H_{2}(x_{1}) & H_{3}(x_{1}) \\ H_
 ![[Pasted image 20240305141848.png]]
 
 ![[Pasted image 20240305141859.png]]
+$$\begin{align*}
+-\nabla ^{2}u(x,y)&= 1 \quad\text{on }\Omega \\
+n \cdot \nabla u&= 0 \quad\text{on }\Gamma _{N}\\
+u&= 0 \quad\text{on }\Gamma _{D}
+\end{align*}$$
+
+$$\begin{align*}
+\int_{\Omega }-(\nabla ^{2}u)v \text{ d}x&= \int_{\Omega }v \text{ d}x\\
+\int_{\Omega }\nabla u \cdot \nabla v \text{ d}x -\oint_{\partial \Omega } (n \cdot \nabla u)v \text{ d}x&= \int_{\Omega }v \text{ d}x\\
+\int_{\Omega }\nabla u \cdot \nabla v \text{ d}x&= \int_{\Omega }v \text{ d}x
+\end{align*}$$
 
 ![[Pasted image 20240305141914.png]]
