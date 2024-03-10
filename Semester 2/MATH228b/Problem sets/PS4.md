@@ -35,6 +35,8 @@ H_{3}(x) &= 8x^{3}-12x.
 Parametrise by adding a midpoint to each element. Each element has four local nodes and four local basis functions. 
 $$\begin{bmatrix}H_{0}(x_{1}) & H_{1}(x_{1}) & H_{2}(x_{1}) & H_{3}(x_{1}) \\ H_{0}(x_{2}) & H_{1}(x_{2}) & H_{2}(x_{2}) & H_{3}(x_{2}) \\ H_{0}(x_{3}) & H_{1}(x_{3}) & H_{2}(x_{3}) & H_{3}(x_{3}) \\ H_{0}(x_{4}) & H_{1}(x_{4}) & H_{2}(x_{4}) & H_{3}(x_{4})\end{bmatrix} \begin{bmatrix}a_{1} & a_{2} & a_{3} & a_{4} \\ b_{1} & b_{2} & b_{3} & b_{4} \\ c_{1} & c_{2} & c_{3} & c_{4} \\ d_{1} & d_{2} & d_{3} & d_{4}\end{bmatrix}=\begin{bmatrix}0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1\end{bmatrix}$$
 
+Counting
+
 
 ![[Pasted image 20240305141848.png]]
 
