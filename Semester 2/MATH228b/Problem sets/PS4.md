@@ -35,8 +35,24 @@ H_{3}(x) &= 8x^{3}-12x.
 Parametrise by adding a midpoint to each element. Each element has four local nodes and four local basis functions. 
 $$\begin{bmatrix}H_{0}(x_{1}) & H_{1}(x_{1}) & H_{2}(x_{1}) & H_{3}(x_{1}) \\ H_{0}(x_{2}) & H_{1}(x_{2}) & H_{2}(x_{2}) & H_{3}(x_{2}) \\ H_{0}(x_{3}) & H_{1}(x_{3}) & H_{2}(x_{3}) & H_{3}(x_{3}) \\ H_{0}(x_{4}) & H_{1}(x_{4}) & H_{2}(x_{4}) & H_{3}(x_{4})\end{bmatrix} \begin{bmatrix}a_{1} & a_{2} & a_{3} & a_{4} \\ b_{1} & b_{2} & b_{3} & b_{4} \\ c_{1} & c_{2} & c_{3} & c_{4} \\ d_{1} & d_{2} & d_{3} & d_{4}\end{bmatrix}=\begin{bmatrix}0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1\end{bmatrix}$$
 
-Counting
+We have degree 3 polynomial, meaning that we have initially 4 degrees of freedom in each element. The condition on each boundary is. We are left with 2 degrees of freedom, and $\text{dim}(V_{h})=2$. 
 
+We introduce the midpoints of each element. Then there are five nodes, namely $x_{1}=0,x_{2}=0.25,x_{3}=0.5,x_{4}=0.75$ and $x_{5}=1$.
+$$\phi _{1}(x)=aH_{0}(x)+bH_{1}(x)+cH_{2}(x)+dH_{3}(x)$$
+$$\begin{align*}
+\phi _{1}(0)&= a-2c=0\\
+\phi _{1}'(0)&= 2b-12d=0\\
+\phi _{1}(x_{2})&= 1\\
+\phi _{1}(x_{3})&= 0\\
+\phi _{1}(x_{4})&= 0
+\end{align*}$$
+
+Each element has three local nodes and two local basis functions. 
+$$\begin{align*}
+\phi _{1}(x_{1})= 0,\qquad \phi _{1}(x_{2})&= 1, \qquad \phi _{1}(x_{3})=0,\\
+\phi _{2}(x_{1})=0,\qquad \phi _{2}(x_{2})&= 0, \qquad \phi _{2}(x_{3})=1,
+\end{align*}$$
+as well as $\phi _{1}'(x_{1})=\phi _{2}'(x_{1})=0$.
 
 ![[Pasted image 20240305141848.png]]
 
