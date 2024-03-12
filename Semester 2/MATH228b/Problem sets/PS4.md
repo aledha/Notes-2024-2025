@@ -47,12 +47,24 @@ $$\begin{align*}
 \phi _{1}(x_{4})&= 0
 \end{align*}$$
 
+Consider an element $I=[x_{k-1},x_{k}]$. 
+$$\begin{align*}
+\psi _{1}(x)
+\end{align*}$$
+
+
+
+
+
+
 Each element has three local nodes and two local basis functions. 
 $$\begin{align*}
 \phi _{1}(x_{1})= 0,\qquad \phi _{1}(x_{2})&= 1, \qquad \phi _{1}(x_{3})=0,\\
 \phi _{2}(x_{1})=0,\qquad \phi _{2}(x_{2})&= 0, \qquad \phi _{2}(x_{3})=1,
 \end{align*}$$
 as well as $\phi _{1}'(x_{1})=\phi _{2}'(x_{1})=0$.
+
+Let's consider an element with four local basis functions and four local nodes $x_{1},x_{2},x_{3},x_{4}$.
 
 ![[Pasted image 20240305141848.png]]
 
