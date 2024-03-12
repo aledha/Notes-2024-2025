@@ -54,7 +54,7 @@ $$\begin{align*}
 
 ![[Pasted image 20240305141848.png]]
 Since we have derived a bases for $V_{h}$, we can now write $u_{h}(x)=u_{1}\phi _{1}(x)+u_{2}\phi _{2}(x)$. The Galerkin formulation simplifies to: Find $u_{1},u_{2}$ such that
-$$\int_{0}^{1}u_{j}\phi _{j}''(x)\phi _{i}''(x)\text{ d}x=\int_{0}^{1}f(x)\phi _{i}(x)\text{ d}x \quad\text{for}\quad i=1,2 .$$
+$$\int_{0}^{1}u_{h,j}\phi _{j}''(x)\phi _{i}''(x)\text{ d}x=\int_{0}^{1}f(x)\phi _{i}(x)\text{ d}x \quad\text{for}\quad i=1,2 .$$
 This can be written as a linear system,
 $$A \mathbf u= \mathbf f,$$
 where $a_{ij}=\int_{0}^{1}\phi _{j}''(x)\phi _{i}''(x)\text{ d}x$ and $f_{i}=\int_{0}^{1}f(x)\phi _{i}(x)\text{ d}x$.
@@ -102,9 +102,44 @@ and
 $$\begin{align*}
 f_{1}&= \int_{0}^{1/2}(480x-120)(12x^{2}-16x^{3}) \text{ d}x + \int_{1/2}^{1}(480x-120)(16x^{3}-36x^{2}+24x-4)\text{ d}x\\
 &= 60\\
-f_{2}&= \int_{0}^{1/2}(480x-120)(8x^{3}-4x^{2}) \text{ d}x + \int_{1/2}^{1}(480x-120)(8x^{3}-20x^{2}+16x-4)\text{ d}x
+f_{2}&= \int_{0}^{1/2}(480x-120)(8x^{3}-4x^{2}) \text{ d}x + \int_{1/2}^{1}(480x-120)(8x^{3}-20x^{2}+16x-4)\text{ d}x\\
+&= 8
 \end{align*}$$
 
+Now we can compute $u_{h}(x)=u_{h,1}\cdot \phi _{1}(x)+u_{h,2}\cdot \phi _{2}(x)$. Let's also compute the exact solution to compare the error.
+$$\begin{align*}
+u''''(x)&= 480x-120\\
+u'''(x)&= 240x^{2}-120x+C_{1}\\
+u''(x)&= 80x^{3}-60x^{2}+C_{1}x+C_{2}\\
+u'(x)&= 20x^{4}-20x^{3}+C_{1}'x^{2}+C_{2}x+C_{3}\\
+u(x)&= 4x^{5}-5x^{4}+C_{1}''x^{3}+C_{2}'x^{2}+C_{3}x+C_{4}
+\end{align*}$$
+Imposing the conditions,
+$$\begin{align*}
+u(0)&= C_{4}=0\\
+u'(0)&= C_{3}=0\\
+u'(1)&=20-20+3C_{1}''+2C_{2}'=0 \quad\implies\quad C_{1}''= -\frac{2}{3}C_{2}'\\
+u(1)&= -1+C_{1}''+C_{2}'=0 \\
+&\qquad -1- \frac{2}{3}C_{2}'+C_{2}'=0\\
+&\qquad C_{2}'=3\\
+&\qquad C_{1}''=-2
+\end{align*}$$
+So the exact solution is
+$$u(x)=4x^{5}-5x^{4}-2x^{3}+3x^{2}$$
+
+
+$$\begin{align*}
+u''''(x)&= 1\\
+u''(x)&= \frac{1}{2}x^{2}+C_{1}x+C_{2}\\
+u(x)&= \frac{1}{24}x^{4}+C_{1}x^{3}+C_{2}x^{2}+C_{3}x+C_{4}
+\end{align*}$$
+$$\begin{align*}
+C_{4}&= C_{3}=0\\
+u(1)&= \frac{1}{24}+C_{1}+C_{2}=0\\
+u'(1)&= \frac{1}{6}+3C_{1}+2C_{2}=0\\
+C_{1}&= -\frac{1}{12}, \quad C_{2}=\frac{1}{24}
+\end{align*}$$
+$$u(x)=\frac{1}{24}x^{4}-\frac{1}{12}x^{3}+\frac{1}{24}x^{2}$$
 ![[Pasted image 20240305141859.png]]
 $$\begin{align*}
 -\nabla ^{2}u(x,y)&= 1 \quad\text{on }\Omega \\
