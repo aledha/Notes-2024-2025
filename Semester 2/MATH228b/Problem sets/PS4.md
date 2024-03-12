@@ -39,11 +39,71 @@ H_{0}(2x-1) & \quad\text{for } x \in [1/2,1]
 \tilde H_{0}(2x-1) & \quad\text{for } x \in [1/2,1]
 \end{cases}
 \end{align*}$$
+
+$$\begin{align*}
+\phi _{1}(x)&= \begin{cases}
+12x^{2}-16x^{3}  & \quad\text{for }x \in [0,1/2)\\
+16x^{3}-36x^{2}+24x-4 & \quad\text{for } x \in [1/2,1]
+\end{cases}\\
+\phi _{2}(x)&= \begin{cases}
+8x^{3}-4x^{2} & \quad\text{for }x \in [0,1/2)\\
+ 8 x^3 - 20 x^2 + 16 x - 4 & \quad\text{for } x \in [1/2,1]
+\end{cases}
+\end{align*}$$
 ![[Pasted image 20240311183148.png|400]]
 
 ![[Pasted image 20240305141848.png]]
-Since we have derived a bases for $V_{h}$, we can now write $u_{h}(x)=u_{1}\phi _{1}(x)+u_{2}\phi _{2}(x)$.
+Since we have derived a bases for $V_{h}$, we can now write $u_{h}(x)=u_{1}\phi _{1}(x)+u_{2}\phi _{2}(x)$. The Galerkin formulation simplifies to: Find $u_{1},u_{2}$ such that
+$$\int_{0}^{1}u_{j}\phi _{j}''(x)\phi _{i}''(x)\text{ d}x=\int_{0}^{1}f(x)\phi _{i}(x)\text{ d}x \quad\text{for}\quad i=1,2 .$$
+This can be written as a linear system,
+$$A \mathbf u= \mathbf f,$$
+where $a_{ij}=\int_{0}^{1}\phi _{j}''(x)\phi _{i}''(x)\text{ d}x$ and $f_{i}=\int_{0}^{1}f(x)\phi _{i}(x)\text{ d}x$.
 
+$$\begin{align*}
+\phi _{1}(x)&= \begin{cases}
+12x^{2}-16x^{3}  & \quad\text{for }x \in [0,1/2)\\
+16x^{3}-36x^{2}+24x-4 & \quad\text{for } x \in [1/2,1]
+\end{cases}\\
+\phi _{2}(x)&= \begin{cases}
+8x^{3}-4x^{2} & \quad\text{for }x \in [0,1/2)\\
+ 8 x^3 - 20 x^2 + 16 x - 4 & \quad\text{for } x \in [1/2,1]
+\end{cases}
+\end{align*}$$
+$$\begin{align*}
+\phi _{1}'(x)&= \begin{cases}
+24x-48x^{2}  & \quad\text{for }x \in [0,1/2) \\
+48x^{2}-64x+24 & \quad\text{for }x \in [1/2,1]
+\end{cases}\\
+\phi _{1}''(x)&= \begin{cases}
+24-96x & \quad\text{for }x \in [0,1/2)\\
+96x-64 & \quad\text{for }x \in [1/2,1]
+\end{cases}
+\end{align*}$$
+$$\begin{align*}
+\phi _{2}'(x)&= \begin{cases}
+24x^{2}-8x  & \quad\text{for }x \in [0,1/2)\\
+24x^{2}-40x+16 & \quad\text{for }x \in [1/2,1]
+\end{cases}\\
+\phi _{2}''(x)&= \begin{cases}
+48x-8  & \quad\text{for }x \in [0,1/2)\\
+48x-40 & \quad\text{for }x \in [1/2,1]
+\end{cases}
+\end{align*}$$
+Then, 
+$$\begin{align*}
+a_{11}&= \int_{0}^{1/2}(24-96x)^{2}\text{ d}x+\int_{1/2}^{1}(96x-64)^{2}\text{ d}x\\
+&= 224\\
+a_{22}&= \int_{0}^{1/2}(48x-8)^{2}\text{ d}x+\int_{1/2}^{1}(48x-40)^{2}\text{ d}x\\
+&= 64\\
+a_{12}=a_{21}&= \int_{0}^{1/2}(24-96x)(48x-8)\text{ d}x+\int_{1/2}^{1}(96x-64)(48x-40)\text{ d}x\\
+&= -16
+\end{align*}$$
+and
+$$\begin{align*}
+f_{1}&= \int_{0}^{1/2}(480x-120)(12x^{2}-16x^{3}) \text{ d}x + \int_{1/2}^{1}(480x-120)(16x^{3}-36x^{2}+24x-4)\text{ d}x\\
+&= 60\\
+f_{2}&= \int_{0}^{1/2}(480x-120)(8x^{3}-4x^{2}) \text{ d}x + \int_{1/2}^{1}(480x-120)(8x^{3}-20x^{2}+16x-4)\text{ d}x
+\end{align*}$$
 
 ![[Pasted image 20240305141859.png]]
 $$\begin{align*}
