@@ -13,60 +13,37 @@ such that the first two terms vanish. Our Galerkin formulation is find $u_{h}\in
 $$\int_{0}^{1}u_{h}''(x)v''(x)\text{ d}x=\int_{0}^{1}f(x)v(x)\text{ d}x \quad\forall\quad v \in V_{h}.$$
 
 ![[Pasted image 20240305141817.png]]
-$$\begin{align*}
-\mathcal{H}_{1}(x)&= 0 \cdot H_{0}(x)+a\cdot H_{1}(x)+ 0 \cdot \tilde H_{0}(x)+b \tilde H_{1}(x)\\
-&= a \cdot H_{1}(2x)+b \cdot \tilde H_{1}(2x) \\
-\mathcal{H}_{2}(x)&= a \cdot H_{0}(2x-1) + 0 \cdot H_{1}(2x-1)+c \cdot \tilde H_{0}(2x-1)+0 \cdot \tilde H_{1}(2x-1)\\
-&= a \cdot H_{0}(2x-1)+ c \cdot \tilde H_{0}(2x-1)
-\end{align*}$$
+We have degree 3 polynomials on each, meaning that we initially have a total of 8 degrees. The condition on each boundary reduces this by 4, and the differentiability reduces the DoF by 2. We are left with 2 degrees of freedom, and $\text{dim}(V_{h})=2$. As we will see, these two degrees correspond to the value and the derivative at $x=1/2$.
 
-Let us consider using a linear combination of Hermite polynomials as a basis,
-$$\begin{align*}
-\psi _{1}(x)&= aH_{0}(x)+bH_{1}(x)+cH_{2}(x) +dH_{3}(x),\\
-\psi _{2}(x)&= eH_{0}(x)+fH_{1}(x)+gH_{2}(x)+hH_{3}(x).
-\end{align*}$$
+Consider Hermite **interpolation**,
+$$f_{I}(x)=f(0)H_{0}(x)+f(1)H_{1}(x)+f'(0) \tilde H_{0}(x)+f'(1)\tilde H_{1}(x),$$
 where
 $$\begin{align*}
-H_{0}(x)&= 1,\\
-H_{1}(x)&= 2x,\\
-H_{2}(x)&= 4x^{2}-2,\\
-H_{3}(x) &= 8x^{3}-12x.
+H_{0}(x) &=  2x^{3} - 3x^{2} + 1\qquad 
+H_{1}(x) = 3x^{2} - 2x^{3}\\
+\tilde H_{0}(x) &=  x^{3} - 2x^{2} + x \qquad 
+\tilde H_{1}(x) = x^{3} - x^{2}
 \end{align*}$$
-Parametrise by adding a midpoint to each element. Each element has four local nodes and four local basis functions. 
-$$\begin{bmatrix}H_{0}(x_{1}) & H_{1}(x_{1}) & H_{2}(x_{1}) & H_{3}(x_{1}) \\ H_{0}(x_{2}) & H_{1}(x_{2}) & H_{2}(x_{2}) & H_{3}(x_{2}) \\ H_{0}(x_{3}) & H_{1}(x_{3}) & H_{2}(x_{3}) & H_{3}(x_{3}) \\ H_{0}(x_{4}) & H_{1}(x_{4}) & H_{2}(x_{4}) & H_{3}(x_{4})\end{bmatrix} \begin{bmatrix}a_{1} & a_{2} & a_{3} & a_{4} \\ b_{1} & b_{2} & b_{3} & b_{4} \\ c_{1} & c_{2} & c_{3} & c_{4} \\ d_{1} & d_{2} & d_{3} & d_{4}\end{bmatrix}=\begin{bmatrix}0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1\end{bmatrix}$$
-
-We have degree 3 polynomial, meaning that we have initially 4 degrees of freedom in each element. The condition on each boundary is. We are left with 2 degrees of freedom, and $\text{dim}(V_{h})=2$. 
-
-We introduce the midpoints of each element. Then there are five nodes, namely $x_{1}=0,x_{2}=0.25,x_{3}=0.5,x_{4}=0.75$ and $x_{5}=1$.
-$$\phi _{1}(x)=aH_{0}(x)+bH_{1}(x)+cH_{2}(x)+dH_{3}(x)$$
+Each element has two local basis functions. In the first element, we want the first basis function to satisfy $\psi _{1}(0)=\psi _{1}'(0)=\psi _{1}'(1/2)=0$ and $\psi _{1}(1/2)=1$. The second basis function should satisfy $\psi _{2}(0)=\psi _{2}'(0)=\psi _{2}(1/2)=0$ and $\psi _{2}'(1/2)=1$. Interpolating using these values gives
+$$\psi  _{1}(x)=H_{1}(2x), \quad \psi _{2}(x)=\tilde H_{1}(2x).$$
+Similarly, on the second element we get the local basis functions
+$$\psi _{3}(x)=H_{0}(2x-1), \quad \psi _{4}(x)=\tilde H_{0}(2x-1).$$
+So the two global basis functions are
 $$\begin{align*}
-\phi _{1}(0)&= a-2c=0\\
-\phi _{1}'(0)&= 2b-12d=0\\
-\phi _{1}(x_{2})&= 1\\
-\phi _{1}(x_{3})&= 0\\
-\phi _{1}(x_{4})&= 0
+\phi _{1}(x)&= \begin{cases}
+H_{1}(2x)  & \quad\text{for }x \in [0,1/2)\\
+H_{0}(2x-1) & \quad\text{for } x \in [1/2,1]
+\end{cases}\\
+\phi _{2}(x)&= \begin{cases}
+\tilde H_{1}(2x)  & \quad\text{for }x \in [0,1/2)\\
+\tilde H_{0}(2x-1) & \quad\text{for } x \in [1/2,1]
+\end{cases}
 \end{align*}$$
-
-Consider an element $I=[x_{k-1},x_{k}]$. 
-$$\begin{align*}
-\psi _{1}(x)
-\end{align*}$$
-
-
-
-
-
-
-Each element has three local nodes and two local basis functions. 
-$$\begin{align*}
-\phi _{1}(x_{1})= 0,\qquad \phi _{1}(x_{2})&= 1, \qquad \phi _{1}(x_{3})=0,\\
-\phi _{2}(x_{1})=0,\qquad \phi _{2}(x_{2})&= 0, \qquad \phi _{2}(x_{3})=1,
-\end{align*}$$
-as well as $\phi _{1}'(x_{1})=\phi _{2}'(x_{1})=0$.
-
-Let's consider an element with four local basis functions and four local nodes $x_{1},x_{2},x_{3},x_{4}$.
+![[Pasted image 20240311183148.png|400]]
 
 ![[Pasted image 20240305141848.png]]
+Since we have derived a bases for $V_{h}$, we can now write $u_{h}(x)=u_{1}\phi _{1}(x)+u_{2}\phi _{2}(x)$.
+
 
 ![[Pasted image 20240305141859.png]]
 $$\begin{align*}
