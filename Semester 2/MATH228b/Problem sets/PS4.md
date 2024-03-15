@@ -50,6 +50,7 @@ $$\begin{align*}
  8 x^3 - 20 x^2 + 16 x - 4 & \quad\text{for } x \in [1/2,1]
 \end{cases}
 \end{align*}$$
+Here is a plot of these basis functions. We see that $\phi _{1}$ controls the value at $x=1/2$, while $\phi _{2}$ controls the derivative at $x=1/2$. 
 ![[Pasted image 20240311183148.png|400]]
 
 ![[Pasted image 20240305141848.png]]
@@ -126,50 +127,21 @@ u(1)&= -1+C_{1}''+C_{2}'=0 \\
 \end{align*}$$
 So the exact solution is
 $$u(x)=4x^{5}-5x^{4}-2x^{3}+3x^{2}$$
+Here are the exact and numerical solution plotted
+![[Pasted image 20240315105306.png|500]]
 
+<div style="page-break-after: always;"></div>
 
-$$\begin{align*}
-u''''(x)&= 1\\
-u''(x)&= \frac{1}{2}x^{2}+C_{1}x+C_{2}\\
-u(x)&= \frac{1}{24}x^{4}+C_{1}x^{3}+C_{2}x^{2}+C_{3}x+C_{4}
-\end{align*}$$
-$$\begin{align*}
-C_{4}&= C_{3}=0\\
-u(1)&= \frac{1}{24}+C_{1}+C_{2}=0\\
-u'(1)&= \frac{1}{6}+3C_{1}+2C_{2}=0\\
-C_{1}&= -\frac{1}{12}, \quad C_{2}=\frac{1}{24}
-\end{align*}$$
-$$u(x)=\frac{1}{24}x^{4}-\frac{1}{12}x^{3}+\frac{1}{24}x^{2}$$
 ![[Pasted image 20240305141859.png]]
-$$\begin{align*}
--\nabla ^{2}u(x,y)&= 1 \quad\text{on }\Omega \\
-n \cdot \nabla u&= 0 \quad\text{on }\Gamma _{N}\\
-u&= 0 \quad\text{on }\Gamma _{D}
-\end{align*}$$
-We will get a triangular mesh $T_{h}$ from the mesh generator written in the homework last week. The space of piecewise linear continuous functions on this mesh is
-$$V_{h}= \{v \in C^{0}(\Omega  ):v|_{K}\in \mathbb P_{1}\quad\forall\quad K \in T_{h} \}.$$
+See attached code. 
+Here are my results of the examples
+![[Pasted image 20240315105534.png|400]]
+![[Pasted image 20240315105547.png|400]]
+![[Pasted image 20240315105559.png|400]]
 
-We integrate both sides of Poissons's equation in order to obtain the variational form. We seek $u_{h} \in V_{h}$ such that
-$$\begin{align*}
-\int_{\Omega }-(\nabla ^{2}u_{h})v \text{ d}x&= \int_{\Omega }v \text{ d}x \quad\forall\quad v \in V_{h},\\
-\int_{\Omega }\nabla u_{h} \cdot \nabla v \text{ d}x -\oint_{\partial \Omega } (n \cdot \nabla u_{h})v \text{ d}x&= \int_{\Omega }v \text{ d}x \quad\forall\quad v \in V_{h},
-\end{align*}$$
-where we have used the divergence theorem. For implementations sake, we will first assume Neumann conditions on the entire boundary, and later impose Dirichlet conditions. The Galerkin form is the following: find $u_{h}\in V_{h}$ such that
-$$\int_{\Omega }\nabla u_{h} \cdot \nabla v \text{ d}x= \int_{\Omega }v \text{ d}x \quad\forall\quad v \in V_{h}.$$
-$V_{h}$ can be written as a span of the nodal basis functions, $V_{h}=\text{span}\{\phi _{1}, \dots, \phi _{n} \}$, where $n$ is the number of nodes. Since $u_{h}\in V_{h}$, we can write it as a sum of the nodal basis functions for $V_{h}$, i.e., $u_{h}(x)=\sum_{j=1}^{n}u_{h, j}\phi _{j}$, where $u_{h,j}$ are scalars. 
-The Galerkin form can be rewritten to
-$$\begin{align*}
-\int_{\Omega }\nabla \left(\sum_{j=1}^{n}u_{h,j}\phi _{j} \right)\cdot \nabla \phi _{i}\text{ d}x&= \int_{\Omega }\phi _{i}\text{ d}x \quad\text{for }i=1,\dots,n,
-\end{align*}$$
-which can be written as a linear system,
-$$A \mathbf u=\mathbf b,$$
-where 
-$$\begin{align*}
-A_{ij}&= \int_{\Omega }\nabla \phi _{i} \cdot \nabla \phi _{j}\text{ d}x,\\
-b_{i}&= \int_\Omega \phi _{i}\text{ d}x.
-\end{align*}$$
-
-Let's consider a single element, $T^{k}$, with the three local nodes $\mathbf x_{1}^{k},\mathbf x_{2}^{k}, \mathbf x_{3}^{k}$. The local basis functions 
-
+<div style="page-break-after: always;"></div>
 
 ![[Pasted image 20240305141914.png]]
+See attached code. My results are
+![[Pasted image 20240315105627.png|500]]
+which is to be expected, due to the geometric singularity that arises in the polygon.
