@@ -52,6 +52,7 @@ $$\begin{align*}
 \end{align*}$$
 Here is a plot of these basis functions. We see that $\phi _{1}$ controls the value at $x=1/2$, while $\phi _{2}$ controls the derivative at $x=1/2$. 
 ![[Pasted image 20240311183148.png|400]]
+Note: I realise that $\phi _{2}'(1/2)=2$  since I didn't scale the Hermite interpolation. However, this is still a valid basis for $V_{h}$.
 
 ![[Pasted image 20240305141848.png]]
 Since we have derived a bases for $V_{h}$, we can now write $u_{h}(x)=u_{1}\phi _{1}(x)+u_{2}\phi _{2}(x)$. The Galerkin formulation simplifies to: Find $u_{1},u_{2}$ such that
