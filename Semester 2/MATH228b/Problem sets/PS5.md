@@ -89,6 +89,19 @@ Since $u_\text{exact}=e^{-ikx}$ satisfies (1)-(4) for the domain (7)-(10), it is
 
 
 ![[Pasted image 20240402132433.png]]
+$$\begin{align*}
+K_{ij}&= \int_{\Omega }\nabla \phi _{j}\cdot \nabla \phi _{i} \text{ d}\mathbf x, \qquad &M_{ij}&=  \int_{\Omega }\phi _{j}\phi _{i}\text{ d}\mathbf x,\\
+(B_{\text{in}})_{ij}&= \int_{\Gamma _\text{in}} \phi _{j}\phi _{i}\text{ d}s, &(B_{\text{out}})_{ij}&=  \int_{\Gamma _{\text{out}} }\phi _{j}\phi _{i}\text{ d}s,\\
+(\mathbf b_{\text{in}})_{j}&= \int_{\Gamma _{\text{in}}}\phi _{j}\text{ d}s.
+\end{align*}$$
+
+For assembly, we will apply a stamping method. Consider an element $T^{k}$ with local nodes $\mathbf x_{1}^{k},\mathbf x_{2}^{k},\mathbf x_{3}^{k}$ and local basis functions $\mathcal{H}_{1}^{k},\mathcal{H}_{2}^{k},\mathcal{H}_{3}^{k}$, where $\mathcal{H}^{k}_{\alpha }=c_{\alpha }^{k}+c_{x,\alpha }^{k}x+ c_{y,\alpha }^{k}y$.
+$$\begin{align*}
+K^{k}_{\alpha \beta} &= \int_{T^{k}}\partial _{x}\mathcal{H^{k}_{\alpha }}\cdot \partial _{x}\mathcal{H^{k}_{\beta  }}+\partial _{y}\mathcal{H^{k}_{\alpha }}\cdot \partial _{y}\mathcal{H^{k}_{\beta  }}\text{ d}\mathbf x\\
+&= \text{Area}^{k}(c_{x,\alpha }^{k}c_{x,\beta }^{k}+c_{y,\alpha }^{k}c_{y,\beta }^{k}).
+\end{align*}$$
+
+$$M_{\alpha \beta  }^{k}=\int_{T^{k}}\mathcal{H}_{\alpha }^{k}(\mathbf x) \cdot \mathcal{H}^{k}_{\beta }(\mathbf x)\text{ d}\mathbf x$$
 
 ![[Pasted image 20240402132439.png]]
 
@@ -97,3 +110,11 @@ Since $u_\text{exact}=e^{-ikx}$ satisfies (1)-(4) for the domain (7)-(10), it is
 ![[Pasted image 20240402132453.png]]
 
 ![[Pasted image 20240402132457.png]]
+
+# Problem 4
+
+![[Pasted image 20240402175556.png]]
+
+![[Pasted image 20240402175603.png]]
+
+![[Pasted image 20240402175610.png]]
