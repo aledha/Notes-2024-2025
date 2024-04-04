@@ -105,6 +105,7 @@ $$M_{\alpha \beta  }^{k}=\int_{T^{k}}\mathcal{H}_{\alpha }^{k}(\mathbf x) \cdot 
 Compute on reference triangle. no, use prob 4
 
 ![[Pasted image 20240402132439.png]]
+should be second order
 
 ![[Pasted image 20240402132447.png]]
 
