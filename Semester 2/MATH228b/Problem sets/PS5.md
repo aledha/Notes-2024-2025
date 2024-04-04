@@ -102,6 +102,7 @@ K^{k}_{\alpha \beta} &= \int_{T^{k}}\partial _{x}\mathcal{H^{k}_{\alpha }}\cdot 
 \end{align*}$$
 
 $$M_{\alpha \beta  }^{k}=\int_{T^{k}}\mathcal{H}_{\alpha }^{k}(\mathbf x) \cdot \mathcal{H}^{k}_{\beta }(\mathbf x)\text{ d}\mathbf x$$
+Compute on reference triangle. no, use prob 4
 
 ![[Pasted image 20240402132439.png]]
 
@@ -118,3 +119,4 @@ $$M_{\alpha \beta  }^{k}=\int_{T^{k}}\mathcal{H}_{\alpha }^{k}(\mathbf x) \cdot 
 ![[Pasted image 20240402175603.png]]
 
 ![[Pasted image 20240402175610.png]]
+third order
