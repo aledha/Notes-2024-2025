@@ -118,9 +118,43 @@ should be second order
 ![[Pasted image 20240402175556.png]]
 See attached file.
 ![[Pasted image 20240402175603.png]]
+
+I'm assuming that the RHS $f=1$.
+Our Galerkin formulation is
+$$\begin{align*}
+\int_{\Omega }\left(\sum_{j=1}^{n}\hat u_{j}\nabla \phi _{j} \right)\cdot \nabla \phi _{i}\text{ d}\mathbf x&= \int_{\Omega } \phi _{i} \text{ d}\mathbf x,\\
+A \mathbf u&= \mathbf b,
+\end{align*}$$
+with 
+$$\begin{align*}
+A_{ij}&= \int_{\Omega }\nabla \phi _{j}\cdot \nabla \phi _{i}\text{ d}\mathbf x\\
+b_{i}&= \int_{\Omega }\phi _{i}\text{ d}x
+\end{align*}$$
 $$\mathcal{H}^{k}_{\alpha }=c_{\alpha }^{k}+c_{x,\alpha }^{k}x+ c_{y,\alpha }^{k}y+c_{xy,\alpha}^{k}xy+c_{x^{2},\alpha }^{k}x^{2}+c_{y^{2},\alpha}^{k}y^{2}$$
-$$\begin{bmatrix}1 & x_{1}^{k} & y_{1}^{k} & x_{1}^{k}y_{1}^{k} & (x_{1}^{k})^{2} & (y_{1}^{k})^{2} \\ 1 & x_{2}^{k} & y_{2}^{k} & x_{2}^{k}y_{2}^{k} & (x_{2}^{k})^{2} & (y_{2}^{k})^{2} \\ 1 & x_{3}^{k} & y_{3}^{k} &x_{3}^{k}y_{3}^{k} &  (x_{3}^{k})^{2} & (y_{3}^{k})^{2} \\ 1 & x_{4}^{k} & y_{4}^{k} &x_{4}^{k}y_{4}^{k} &  (x_{4}^{k})^{2} & (y_{4}^{k})^{2} \\ 1 & x_{5}^{k} & y_{5}^{k} &x_{5}^{k}y_{5}^{k} &  (x_{5}^{k})^{2} & (y_{5}^{k})^{2} \\ 1 & x_{6}^{k} & y_{6}^{k} &x_{6}^{k}y_{6}^{k} &  (x_{6}^{k})^{2} & (y_{6}^{k})^{2}\end{bmatrix}\begin{bmatrix}c_{1 }^{k} & c_{x,1}^{k} & c_{y,1}^{k} & c_{xy,1}^{k} & c_{x^2,1}^{k} & c_{y^{2},1}^{k} \\ c_{2 }^{k} & c_{x,2}^{k} & c_{y,2}^{k} & c_{xy,2}^{k} & c_{x^2,2}^{k} & c_{y^{2},2}^{k} \\ c_{3 }^{k} & c_{x,3}^{k} & c_{y,3}^{k} & c_{xy,3}^{k} & c_{x^2,3}^{k} & c_{y^{2},3}^{k} \\ c_{4 }^{k} & c_{x,4}^{k} & c_{y,4}^{k} & c_{xy,4}^{k} & c_{x^2,4}^{k} & c_{y^{2},4}^{k} \\ c_{5 }^{k} & c_{x,5}^{k} & c_{y,5}^{k} & c_{xy,5}^{k} & c_{x^2,5}^{k} & c_{y^{2},5}^{k} \\ c_{6 }^{k} & c_{x,6}^{k} & c_{y,6}^{k} & c_{xy,6}^{k} & c_{x^2,6}^{k} & c_{y^{2},6}^{k}\end{bmatrix}=I$$
+$$\begin{bmatrix}1 & x_{1}^{k} & y_{1}^{k} & x_{1}^{k}y_{1}^{k} & (x_{1}^{k})^{2} & (y_{1}^{k})^{2} \\ 1 & x_{2}^{k} & y_{2}^{k} & x_{2}^{k}y_{2}^{k} & (x_{2}^{k})^{2} & (y_{2}^{k})^{2} \\ 1 & x_{3}^{k} & y_{3}^{k} &x_{3}^{k}y_{3}^{k} &  (x_{3}^{k})^{2} & (y_{3}^{k})^{2} \\ 1 & x_{4}^{k} & y_{4}^{k} &x_{4}^{k}y_{4}^{k} &  (x_{4}^{k})^{2} & (y_{4}^{k})^{2} \\ 1 & x_{5}^{k} & y_{5}^{k} &x_{5}^{k}y_{5}^{k} &  (x_{5}^{k})^{2} & (y_{5}^{k})^{2} \\ 1 & x_{6}^{k} & y_{6}^{k} &x_{6}^{k}y_{6}^{k} &  (x_{6}^{k})^{2} & (y_{6}^{k})^{2}\end{bmatrix}
+\begin{bmatrix}c_{1 }^{k} & c_{2}^{k} & c_{3}^{k} & c_{4}^{k} & c_{5}^{k} & c_{6}^{k} \\ c_{x,1 }^{k} & c_{x,2}^{k} & c_{x,3}^{k} & c_{x,4}^{k} & c_{x,5}^{k} & c_{x,6}^{k} \\ c_{y,1 }^{k} & c_{y,2}^{k} & c_{y,3}^{k} & c_{y,4}^{k} & c_{y,5}^{k} & c_{y,6}^{k} \\ c_{xy,1 }^{k} & c_{xy,2}^{k} & c_{xy,3}^{k} & c_{xy,4}^{k} & c_{xy,5}^{k} & c_{xy,6}^{k} \\ c_{x^{2},1 }^{k} & c_{x^{2},2}^{k} & c_{x^{2},3}^{k} & c_{x^{2},4}^{k} & c_{x^{2},5}^{k} & c_{x^{2},6}^{k} \\ c_{y^{2},1 }^{k} & c_{y^{2},2}^{k} & c_{y^{2},3}^{k} & c_{y^{2},4}^{k} & c_{y^{2},5}^{k} & c_{y^{2},6}^{k}\end{bmatrix}=I$$
 Or that $C =V^{-1}$.
+Now that we have the coefficients for the local basis functions, we can consider element-wise contriutions to $A$ and $b$. The elementary matrix for an element $T^{k}$ is
+$$\begin{align*}
+A^{k}_{\alpha \beta }&= \int_{T^{k}}\partial _{x}\mathcal{H}_{\alpha }^{k} \cdot \partial _{x}\mathcal{H^{k}_{\beta  }}+\partial _{y}\mathcal{H}^{k}_{\alpha }\cdot \partial _{y}\mathcal{H^{k}_{\beta  }}\text{ d}\mathbf x,\\
+&= \int_{T^{k}}(c_{x,\alpha }^{k}+c_{xy,\alpha}^{k}y+2c_{x^{2},\alpha  }^{k}x)(c_{x,\beta }^{k}+c_{xy,\beta}^{k}y+2c_{x^{2},\beta }^{k}x)\\
+&\qquad \quad  + (c_{y,\alpha }^{k}+c_{xy,\alpha}^{k}x+2c_{y^{2},\alpha  }^{k}y)(c_{y,\beta }^{k}+c_{xy,\beta}^{k}x+2c_{y^{2},\beta }^{k}y) \text{ d}\mathbf x,\\
+&= :\int_{T^{k}}a_{\alpha \beta}(\mathbf x)\text{ d}\mathbf x,
+\end{align*}$$
+where we can use the quadrature rule 
+![[Pasted image 20240405112128.png|800]]
+to approximate the integral as
+$$\begin{align*}
+A_{\alpha \beta}^{k}&≈\frac{1}{3}A_{k}\sum_{i=1}^{3}a_{\alpha \beta}(\mathbf x_{i}^{g}) \quad\text{for }\alpha ,\beta =1,\dots,6.
+\end{align*}$$
+This is actually exact since the quadrature is second order accurate and $a_{\alpha \beta}(\mathbf x)\in \mathbb P_{2}(K)$.
+The elementary load can be approximated similarly,
+$$\begin{align*}
+b_{\alpha }^{k}&= \int_{T^{k}}\mathcal{H^{k}_{\alpha }}(\mathbf x) \text{ d}\mathbf x\\
+&≈ \frac{1}{3}A_{k}\sum_{i=1}^{3}\mathcal{H^{k}_{\alpha }}(\mathbf x_{i}^{g})
+\end{align*}$$
+
+
 
 ![[Pasted image 20240402175610.png]]
 third order
