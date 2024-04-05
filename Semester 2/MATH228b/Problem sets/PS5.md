@@ -98,11 +98,35 @@ K_{ij}&= \int_{\Omega }\nabla \phi _{j}\cdot \nabla \phi _{i} \text{ d}\mathbf x
 For assembly, we will apply a stamping method. Consider an element $T^{k}$ with local nodes $\mathbf x_{1}^{k},\mathbf x_{2}^{k},\mathbf x_{3}^{k}$ and local basis functions $\mathcal{H}_{1}^{k},\mathcal{H}_{2}^{k},\mathcal{H}_{3}^{k}$, where $\mathcal{H}^{k}_{\alpha }=c_{\alpha }^{k}+c_{x,\alpha }^{k}x+ c_{y,\alpha }^{k}y$.
 $$\begin{align*}
 K^{k}_{\alpha \beta} &= \int_{T^{k}}\partial _{x}\mathcal{H^{k}_{\alpha }}\cdot \partial _{x}\mathcal{H^{k}_{\beta  }}+\partial _{y}\mathcal{H^{k}_{\alpha }}\cdot \partial _{y}\mathcal{H^{k}_{\beta  }}\text{ d}\mathbf x\\
-&= \text{Area}^{k}(c_{x,\alpha }^{k}c_{x,\beta }^{k}+c_{y,\alpha }^{k}c_{y,\beta }^{k}).
+&= A_{k}(c_{x,\alpha }^{k}c_{x,\beta }^{k}+c_{y,\alpha }^{k}c_{y,\beta }^{k}).
 \end{align*}$$
 
 $$M_{\alpha \beta  }^{k}=\int_{T^{k}}\mathcal{H}_{\alpha }^{k}(\mathbf x) \cdot \mathcal{H}^{k}_{\beta }(\mathbf x)\text{ d}\mathbf x$$
 Compute on reference triangle. no, use prob 4
+![[Pasted image 20240405112128.png|800]]
+$$M^{k}_{\alpha \beta}= \frac{1}{3}A_{k}\sum_{i=1}^{3}\mathcal{H_{\alpha }^{k}}(\mathbf x_{i}^{g})\mathcal{H_{\beta}^{k}}(\mathbf x_{i}^{g})$$
+Moving on to the boundary integrals, consider a boundary edge between node $\mathbf x_{i}$ and $\mathbf x_{j}$, which will have two nonzero local basis functions $\phi _{i},\phi _{j}$ such that $\phi _{i}(\mathbf x_{i})=\phi _{j}(\mathbf x_{j})=1$ and $\phi _{i}(\mathbf x_{j})=\phi _{j}(\mathbf x_{i})=0$.
+$$\begin{align*}
+(B_{\text{in}})_{ij}&=  \int_{\Gamma _\text{in}} \phi _{j}\phi _{i}\text{ d}s\\
+&= \int_{\mathbf x_{i}}^{\mathbf x_{j}}  \phi _{j}(\mathbf x)\phi _{i}(\mathbf x) \text{ d}\mathbf x\\
+&= \int_{0}^{1}s(1-s)
+\end{align*}$$
+$$\begin{align*}
+(B_{\text{in}})_{\alpha \beta }^{k}&= \int_{e}\mathcal{H_{\alpha }^{k}}(s)\mathcal{H_{\beta }^{k}}(s)\text{ d}s\\
+(B_{\text{in}})^{k}_{11}=(B_{\text{in}})^{k}_{22}&= \int_{0}^{h} \frac{s}{h}\left(1-\frac{s}{h} \right)\text{ d}s\\
+&= \left[\frac{s^{2}}{2h}-\frac{s^{3}}{3h^{2}} \right]_{0}^{h}\\
+&= \frac{h}{2}-\frac{h}{3}=\frac{h}{6}\\
+(B_{\text{in}})^{k}_{12}=(B_{\text{in}})^{k}_{21}&=\int_{0}^{h}\frac{s^{2}}{h^{2}}\text{ d}s\\
+&= \frac{h}{3}
+\end{align*}$$
+Similar for $B_{\text{out}}$. 
+For $b_{\text{in}}$:
+$$\begin{align*}
+(b_{\text{in}})^{k}_{1}=(b_{\text{in}})^{k}_{2}&= \int_{0}^{h}\frac{s}{h}\text{ d}s\\
+&= \frac{h}{2}
+\end{align*}$$
+
+
 
 ![[Pasted image 20240402132439.png]]
 should be second order
@@ -158,3 +182,5 @@ b_{\alpha }^{k}&= \int_{T^{k}}\mathcal{H^{k}_{\alpha }}(\mathbf x) \text{ d}\mat
 
 ![[Pasted image 20240402175610.png]]
 third order
+
+![[Pasted image 20240405150500.png|600]]
