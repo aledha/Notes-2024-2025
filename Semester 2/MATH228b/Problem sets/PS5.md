@@ -1,10 +1,12 @@
 Alexander Hatle
 
-![[Pasted image 20240402132322.png]]
+# Problem 1
+
+![[Pasted image 20240402132322.png|800]]
 
 Applying the divergence theorem and applying the boundary conditions, we get the following Galerkin formulation:
 Given a triangulation $T_{h}$, we can describe the space of continuous piece-wise linear functions as
-$$V_{h}=\{v \in C^{0}(\Omega  ):\quad v|_{K}\in \mathbb P_{1}(K)\quad\forall K \in T_{h} \}$$
+$$V_{h}=\{v \in C^{0}(\Omega  ):\quad v|_{K}\in \mathbb P_{1}(K)\quad\forall K \in T_{h} \},$$
 Find $u_{h}\in V_{h}$ such that, for every $v \in V_{h}$,
 $$\begin{align*}
 \int_{\Omega }v(-\nabla ^{2}u_{h}-k^{2}u_{h})\text{ d}\mathbf x&= 0, \\
@@ -13,7 +15,7 @@ $$\begin{align*}
 \int_{\Omega }\nabla v \cdot \nabla u_{h}\text{ d}\mathbf x-k^{2}\int_{\Omega }vu_{h}\text{ d}\mathbf x+ik \left(\int_{\Gamma _{\text{out}}}vu_{h}\text{ d}s +\int_{\Gamma _{\text{in}}}vu_{h}\text{ d}s \right)&= 2ik \int_{\Gamma _{\text{in}}} v \text{ d}s . 
 \end{align*}$$
 
-![[Pasted image 20240402132407.png]]
+![[Pasted image 20240402132407.png|800]]
 Using a nodal basis, $V_{h}=\text{span}\{\phi _{1},\dots ,\phi _n \}$, we can write any $v \in V_{h}$ as $v(x)=\sum_{i=1}^{n}v_{i}\phi _{i}(x)$, where $v_{i}$ are scalars. 
 $$\begin{align*}
 \int_{\Omega }\nabla \phi _{j} \cdot \nabla \left(\sum_{i=1}^{n}u_{h,i}\phi _{i} \right)\text{ d}\mathbf x-k^{2}\int_{\Omega }\phi _{j}\left(\sum_{i=1}^{n}u_{h,i}\phi _{i} \right)\text{ d}\mathbf x&\\
@@ -34,17 +36,22 @@ K_{ij}&= \int_{\Omega }\nabla \phi _{j}\cdot \nabla \phi _{i} \text{ d}\mathbf x
 \end{align*}$$
 Notice that these are real matrices/vectors that do not depend on the wave number $k$.
 
-![[Pasted image 20240402132412.png]]
+![[Pasted image 20240402132412.png|800]]
+Using the fact that $\mathbf u(\mathbf x)=\sum_{i=1}^{n}u_{h,i}\phi _{i}(\mathbf x)$,
 $$\begin{align*}
 H(\mathbf u)&= \mathbf u^{H}B_\text{out}\mathbf u\\
 &= \sum_{j=1}^{n} \overline{u_{h,j}}\left(\sum_{i=1}^{n}\int_{\Gamma _{\text{out}}}\phi _{j}(\mathbf x)\phi _{i}(\mathbf x)\text{ d}s \cdot u_{h,i} \right)\\
 &= \int_{\Gamma _\text{out}}\left(\sum_{j=1}^{n}\overline{u_{h,j}\phi_{j} (\mathbf x)} \right)\cdot \left(\sum_{i=1}^{n}u_{h,i}\phi_{i} (\mathbf x) \right)\text{ d}s\\
 &= \int_{\Gamma _\text{out}}\overline{u_{h}(\mathbf x)}\cdot u_{h}(\mathbf x) \text{ d}s\\
-	&= \int_{\Gamma _\text{out}}\lvert u_{h}(\mathbf x) \rvert^{2} \text{ d}s
+	&= \int_{\Gamma _\text{out}}\lvert u_{h}(\mathbf x) \rvert^{2} \text{ d}s\\
+&= H(\mathbf u)
 \end{align*}$$
 
+<div style="page-break-after: always;"></div>
 
-![[Pasted image 20240402132420.png]]
+# Problem 2
+
+![[Pasted image 20240402132420.png|800]]
 We simply need to check each of equations in the Helmholtz problem (1)-(4).
 The first equation is
 $$\begin{align*}
@@ -85,10 +92,10 @@ which is satisfied.
 
 Since $u_\text{exact}=e^{-ikx}$ satisfies (1)-(4) for the domain (7)-(10), it is an exact solution to the Helmholtz problem.
 
-![[Pasted image 20240402132426.png]]
+![[Pasted image 20240402132426.png|800]]
+See attached code.
 
-
-![[Pasted image 20240402132433.png]]
+![[Pasted image 20240402132433.png|800]]
 $$\begin{align*}
 K_{ij}&= \int_{\Omega }\nabla \phi _{j}\cdot \nabla \phi _{i} \text{ d}\mathbf x, \qquad &M_{ij}&=  \int_{\Omega }\phi _{j}\phi _{i}\text{ d}\mathbf x,\\
 (B_{\text{in}})_{ij}&= \int_{\Gamma _\text{in}} \phi _{j}\phi _{i}\text{ d}s, &(B_{\text{out}})_{ij}&=  \int_{\Gamma _{\text{out}} }\phi _{j}\phi _{i}\text{ d}s,\\
@@ -102,15 +109,13 @@ K^{k}_{\alpha \beta} &= \int_{T^{k}}\partial _{x}\mathcal{H^{k}_{\alpha }}\cdot 
 \end{align*}$$
 
 $$M_{\alpha \beta  }^{k}=\int_{T^{k}}\mathcal{H}_{\alpha }^{k}(\mathbf x) \cdot \mathcal{H}^{k}_{\beta }(\mathbf x)\text{ d}\mathbf x$$
-Compute on reference triangle. no, use prob 4
+We will use the quadrature from problem 4:
 ![[Pasted image 20240405112128.png|800]]
 $$M^{k}_{\alpha \beta}= \frac{1}{3}A_{k}\sum_{i=1}^{3}\mathcal{H_{\alpha }^{k}}(\mathbf x_{i}^{g})\mathcal{H_{\beta}^{k}}(\mathbf x_{i}^{g})$$
-Moving on to the boundary integrals, consider a boundary edge between node $\mathbf x_{i}$ and $\mathbf x_{j}$, which will have two nonzero local basis functions $\phi _{i},\phi _{j}$ such that $\phi _{i}(\mathbf x_{i})=\phi _{j}(\mathbf x_{j})=1$ and $\phi _{i}(\mathbf x_{j})=\phi _{j}(\mathbf x_{i})=0$.
-$$\begin{align*}
-(B_{\text{in}})_{ij}&=  \int_{\Gamma _\text{in}} \phi _{j}\phi _{i}\text{ d}s\\
-&= \int_{\mathbf x_{i}}^{\mathbf x_{j}}  \phi _{j}(\mathbf x)\phi _{i}(\mathbf x) \text{ d}\mathbf x\\
-&= \int_{0}^{1}s(1-s)
-\end{align*}$$
+which is second order accurate, hence equality.
+
+Moving on to the boundary integrals, consider a boundary edge between node $\mathbf x_{i}$ and $\mathbf x_{j}$, which will have two nonzero local basis functions $\mathcal{H^{k}_{\alpha }},\mathcal{H^{k}_{\beta  }}$ such that $\mathcal{H^{k}_{\alpha }}(\mathbf x_{i})=\mathcal{H^{k}_{\beta  }}(\mathbf x_{j})=1$ and $\mathcal{H^{k}_{\alpha }}(\mathbf x_{j})=\mathcal{H^{k}_{\beta  }}(\mathbf x_{i})=0$.
+We can compute the "elementary" $B_{\text{in}}$ matrix  in the following way
 $$\begin{align*}
 (B_{\text{in}})_{\alpha \beta }^{k}&= \int_{e}\mathcal{H_{\alpha }^{k}}(s)\mathcal{H_{\beta }^{k}}(s)\text{ d}s\\
 (B_{\text{in}})^{k}_{11}=(B_{\text{in}})^{k}_{22}&= \int_{0}^{h} \frac{s}{h}\left(1-\frac{s}{h} \right)\text{ d}s\\
@@ -126,22 +131,31 @@ $$\begin{align*}
 &= \frac{h}{2}
 \end{align*}$$
 
+![[Pasted image 20240402132439.png|800]]
+See attached code. My result:
+![[Pasted image 20240405174357.png|500]]
 
+<div style="page-break-after: always;"></div>
 
-![[Pasted image 20240402132439.png]]
-should be second order
+# Problem 3
 
-![[Pasted image 20240402132447.png]]
+![[Pasted image 20240402132447.png|800]]
+See attached code.
 
-![[Pasted image 20240402132453.png]]
-
-![[Pasted image 20240402132457.png]]
-
+![[Pasted image 20240402132453.png|800]]
+See attached code. Plot:
+![[Pasted image 20240405173557.png|600]]
+![[Pasted image 20240402132457.png|800]]
+See attached code. When $k$ gives a high value of $H(\mathbf u)$:
+![[Pasted image 20240405175252.png|500]]
+and when $k$ gives a low value:
+![[Pasted image 20240405175158.png|500]]
+<div style="page-break-after: always;"></div>
 # Problem 4
 
-![[Pasted image 20240402175556.png]]
+![[Pasted image 20240402175556.png|800]]
 See attached file.
-![[Pasted image 20240402175603.png]]
+![[Pasted image 20240402175603.png|800]]
 
 I'm assuming that the RHS $f=1$.
 Our Galerkin formulation is
@@ -179,8 +193,6 @@ b_{\alpha }^{k}&= \int_{T^{k}}\mathcal{H^{k}_{\alpha }}(\mathbf x) \text{ d}\mat
 \end{align*}$$
 
 
-
-![[Pasted image 20240402175610.png]]
-third order
-
+![[Pasted image 20240402175610.png|800]]
+See attached code. My result is satisfying:
 ![[Pasted image 20240405150500.png|600]]
