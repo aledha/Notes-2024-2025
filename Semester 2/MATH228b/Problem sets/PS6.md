@@ -14,7 +14,7 @@ f(\rho _{i})  & \quad\text{for }\rho _{i}+\rho _{i+1}<\rho _{\text{max}}\\
 f(\rho _{i+1}) & \quad\text{for }\rho _{i}+\rho _{i+1}>\rho _{\text{max}}
 \end{cases}
 \end{align*}$$
-
+#look at the signs of the slopes of the characteristics $a(u)=\frac{\text{d}f(u)}{\text{d}u}$
 
 
 
