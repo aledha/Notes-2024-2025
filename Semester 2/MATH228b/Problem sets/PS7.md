@@ -38,7 +38,7 @@ Setting $C_{11}=0$ and $C_{12}=1/2$,
 
 $$\begin{align*}
 \hat u&= \{u_{h} \}+\frac{1}{2} [\![ u_{h} ]\!]\\
-\hat \sigma &= \{\sigma _{h} \} + -\frac{1}{2}[\![ \sigma _{h} ]\!]
+\hat \sigma &= \{\sigma _{h} \}  -\frac{1}{2}[\![ \sigma _{h} ]\!]
 \end{align*}$$
 
 
