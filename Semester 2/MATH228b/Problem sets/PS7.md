@@ -37,8 +37,8 @@ $$\begin{align*}
 Setting $C_{11}=0$ and $C_{12}=1/2$,
 
 $$\begin{align*}
-\hat u&= \{u_{h} \}+\frac{1}{2} [\![ u_{h} ]\!]\\
-\hat \sigma &= \{\sigma _{h} \}  -\frac{1}{2}[\![ \sigma _{h} ]\!]
+\hat u&= \{u_{h} \}+\frac{1}{2} [\![ u_{h} ]\!]= \max_{}(u_{L},u_{R})\\
+\hat \sigma &= \{\sigma _{h} \}  -\frac{1}{2}[\![ \sigma _{h} ]\!]=\min_{}(u_{L},u_{R}) 
 \end{align*}$$
 
 
