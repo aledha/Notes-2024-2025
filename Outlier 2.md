@@ -19,3 +19,13 @@ $$
 -\lambda ^3 +285\lambda ^2 -6084\lambda +14400&= 0
 \end{aligned}
 $$
+
+"Here are a few points of feedback:
+
+1. Accuracy: Most of the steps were correct, but you got tripped up in step 6. End points can or cannot be local extremum depending on the definition used. It is equivalent to saying that defining the natural numbers without the 0 is wrong.
+
+2. Clarity and Detail: All steps are logical and easy to follow.
+
+3. Formatting: The LaTeX formatting didn't render for $\vec{RQ} = R - Q$ in step 2
+
+﻿Conclusion: Great work, but make sure to use the LaTex guide and take a look at step 6 again.
