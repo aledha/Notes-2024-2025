@@ -1,14 +1,21 @@
-Using Vieta's formulas, the sum of the roots of the polynomial $z^4 - (3+2i)z^3 + (5-4i)z^2 - (7+6i)z+ (2-8i) = 0$ is $3+2i$. To find the sum of the squares of the roots, we use the identity $(z_1+z_2+z_3+z_4)^2 = z_1^2+z_2^2+z_3^2+z_4^2 + 2(z_1z_2+z_1z_3+z_1z_4+z_2z_3+z_2z_4+z_3z_4)$. The term $z_1z_2+z_1z_3+z_1z_4+z_2z_3+z_2z_4+z_3z_4$ corresponds to the coefficient of the third-highest degree term, which is $5-4i$. 
+$$
+\begin{bmatrix}
+59 - \lambda & 59 & 71 \\
+59 & 77 - \lambda & 101 \\
+71 & 101 & 149 - \lambda
+\end{bmatrix}
+$$
 
-Thus, we can calculate the sum of the squares of the roots as follows:
-$$\sum_{k=1}^4 z_k^2 = (3+2i)^2 - 2(5-4i) = 9 + 12i + 4i^2 - 10 + 8i = -5 + 20i.$$
+$$
+\det \left( K^TK-\lambda I\right)= (59-\lambda )\det\begin{bmatrix}77-\lambda  & 101 \\ 101 & 149-\lambda \end{bmatrix}-59\det\begin{bmatrix}59 & 101 \\ 71 & 149-\lambda \end{bmatrix}+71\det\begin{bmatrix}59 & 77-\lambda  \\ 71 & 101\end{bmatrix}
+$$
+After computing each determinant, we get
+$$\det \left( K^TK-\lambda I\right)= (59-\lambda )((77-\lambda)(149-\lambda )-101^2 )-59(59(149-\lambda )-101\cdot 71)+71(59\cdot 101-(77-\lambda )71)\,.$$
 
-Next, we determine the magnitude of the complex number $-5 + 20i$ using the formula $|z| = \sqrt{a^2 + b^2}$ for a complex number $z = a + bi$. Applying this formula, we get:
-$$\left| \sum_{k=1}^4 z_k^2 \right| = | -5 + 20i | = \sqrt{(-5)^2 + 20^2} = \sqrt{25 + 400} = \sqrt{425}.$$
-
-Finally, simplifying $\sqrt{425}$ by factoring out the square of the greatest perfect square that divides $425$, we have:
-$$\sqrt{425} = \sqrt{25 \cdot 17} = \sqrt{25} \sqrt{17} = 5 \sqrt{17}.$$
-
-Therefore, $\left| \sum_{k=1}^4 z_k^2 \right| = 5 \sqrt{17}$.
-___
-$$\lvert x_2-x_1 \rvert$$
+$$\det(K^TK-\lambda I)=-\lambda ^3 +285\lambda ^2 -6084\lambda +14400$$
+Now we need to set this equals to zero in order to find the eigenvalues:
+$$
+\begin{aligned}
+-\lambda ^3 +285\lambda ^2 -6084\lambda +14400&= 0
+\end{aligned}
+$$
