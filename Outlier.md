@@ -1,24 +1,36 @@
+To find the derivative of $\tan x \sin x$, we will use the Product Rule:
 
-**Given**: 
-$$\frac{(3x^2y^{-2})^3}{(9xy^3)^3}.$$
+**Product Rule**: If $f(x) = g(x) \cdot  h(x)$, then $f'(x) = g'(x) \cdot h(x) + g(x) \cdot h'(x)$
 
-Step 1: Apply the exponent power to each term within parenthesis:
-$$\frac{3^3x^{2\cdot 3}y^{-2\cdot 3}}{9^3x^3y^{3\cdot 3}}.$$
-Step 2: Simplify exponents:
-(27 x^6 y^-6) / (729 x^3 y^9)
-$$\frac{27x^6y^{-6}}{729x^3y^9}.$$
+Let $f(x) = \tan x\sin x$ Then $g(x) = \tan x$ and $h(x) = \sin x$.
 
-Step 3: Apply the rule of exponents for negative exponents: $y^{-6} = \frac{1}{y^6}$
-$$\frac{27x^6}{729x^3y^9y^6}.$$
+**Now find the derivatives of g(x) and h(x):** 
+To find the derivative of $g(x)=\tan x = \frac{\sin x}{\cos x}$, we will use the quotient rule, which is similar to the product rule:
 
-Step 4: Cancel out common factors in the numerator and denominator:
+**Quotient rule:** if $g(x)=\frac{u(x)}{v(x)},$ then $g'(x)=\frac{u'(x)v(x)-u(x)v'(x)}{(v(x))^2}$.
+
+Letting $u(x)=\sin x$ and $v(x)=\cos x$, we get 
+
 $$
 \begin{aligned}
-\frac{27}{729}&= \frac{1}{27},\\
-\frac{x^6}{x^3}&= x^3,\\
-y^9y^6&= y^{15}.
+g'(x)&= \frac{\cos x \cos x-\sin x(-\sin x)}{\cos ^2 x},\\
+&= \frac{\cos ^2x+\sin ^2 x}{\cos ^2 x},\\
+&= \frac{1}{\cos ^2 x},
+\end{aligned}
+$$
+where we used the Pythagorean Identity in the second line.
+
+The derivative of $h(x)$ is $h'(x)=\cos x$
+
+**Plug these values into the Product Rule formula:** $f'(x) = g'(x) \cdot h(x) + g(x) \cdot h'(x)$ 
+
+$$
+\begin{aligned}
+f'(x) &=  \frac{\sin x}{\cos ^2 x} + \tan x \cdot \cos x\\
+&= \frac{\tan x}{\cos x}+\tan x \cdot \cos x\\
+&= \left(\frac{1}{\cos x}+\cos x \right)\tan x
 \end{aligned}
 $$
 
-So, the simplified expression is:
-$$\frac{1}{27}x^3y^{15}.$$
+**That's the simplest form of the derivative. So,** 
+$$\frac{\text{d}}{\text{d}x}(\tan x \sin x) = \left(\frac{1}{\cos x}+\cos x \right)\tan x.$$
