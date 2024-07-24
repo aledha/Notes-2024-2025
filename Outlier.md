@@ -1,36 +1,31 @@
-To find the derivative of $\tan x \sin x$, we will use the Product Rule:
+**Sure, here's a breakdown of how long you'll need to work to afford the down payment on the house:**
 
-**Product Rule**: If $f(x) = g(x) \cdot  h(x)$, then $f'(x) = g'(x) \cdot h(x) + g(x) \cdot h'(x)$
+## Income and Expenses:
 
-Let $f(x) = \tan x\sin x$ Then $g(x) = \tan x$ and $h(x) = \sin x$.
+- **Hourly Rate:** $\$25/\text{hour}$
+- **Weekly Hours:** $40 \text{hours}/\text{week}$
+- **Weekly Earnings:** $\$25 \cdot 40 = \$1,000/\text{week}$
+- **Monthly Earnings:** $\$1,000 \cdot 4.3 (\text{approximate number of weeks in a month}) = \$4,300/\text{month}$
 
-**Now find the derivatives of g(x) and h(x):** 
-To find the derivative of $g(x)=\tan x = \frac{\sin x}{\cos x}$, we will use the quotient rule, which is similar to the product rule:
+- **Double Time Holidays (assuming 5 hrs paid at double time):** \$25 x 2 x 5 = \$250/\text{month}
 
-**Quotient rule:** if $g(x)=\frac{u(x)}{v(x)},$ then $g'(x)=\frac{u'(x)v(x)-u(x)v'(x)}{(v(x))^2}$.
+**Total Monthly Income:** \$4300 + \$1612.50 +250 = \$6162.50
 
-Letting $u(x)=\sin x$ and $v(x)=\cos x$, we get 
+- **Health Insurance:** \$100/pay period x 2 pay periods/\text{month} = \$200/\text{month}
+- **401K Contribution:** 5% of \$6162.50 = \$308.13/\text{month}
+- **Taxes:** Approximately 15% of \$6162.50 = \$924.38/\text{month}
 
-$$
-\begin{aligned}
-g'(x)&= \frac{\cos x \cos x-\sin x(-\sin x)}{\cos ^2 x},\\
-&= \frac{\cos ^2x+\sin ^2 x}{\cos ^2 x},\\
-&= \frac{1}{\cos ^2 x},
-\end{aligned}
-$$
-where we used the Pythagorean Identity in the second line.
+**Total Monthly Expenses:** \$200 +\$308.13 +\$400 +\$200 +\$400 +\$100 +\$924.38 = \$2532.51
 
-The derivative of $h(x)$ is $h'(x)=\cos x$
+**Disposable Income:** \$6162.50 - \$2532.51 = \$3629.99
 
-**Plug these values into the Product Rule formula:** $f'(x) = g'(x) \cdot h(x) + g(x) \cdot h'(x)$ 
 
-$$
-\begin{aligned}
-f'(x) &=  \frac{\sin x}{\cos ^2 x} + \tan x \cdot \cos x\\
-&= \frac{\tan x}{\cos x}+\tan x \cdot \cos x\\
-&= \left(\frac{1}{\cos x}+\cos x \right)\tan x
-\end{aligned}
-$$
+## Home Affordability:
 
-**That's the simplest form of the derivative. So,** 
-$$\frac{\text{d}}{\text{d}x}(\tan x \sin x) = \left(\frac{1}{\cos x}+\cos x \right)\tan x.$$
+- **Down Payment on \$250,000 house (20%):** \$250,000 x .2 = \$50,000
+- **Total Savings needed:** \$50,000
+
+**Time to save for down payment:** \$50,000 / \$3629.99 per \text{month} ≈ **13.78 \text{month}s** or about **1 year and 1 month.**
+
+
+Please note, these calculations are estimates and do not include other potential expenses like homeowner's insurance, HOA fees, or closing costs. Also, your overtime and holiday pay may vary depending on your actual work schedule, so this should be considered a rough guideline.
