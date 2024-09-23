@@ -46,7 +46,17 @@ $$
 $$
 for all $\psi \in V$.
 
-Now we need to approximate the infinite dimensional function space $V$ with some finite dimensional function space $V_{h}$. Let $\phi _{1}, \phi _{2},\dots,\phi _{n}$ be a set of basis functions for $V_{h}$, then any $v\in V_{h}$ can be written as
+Lets partition the domain $H$ into a set of non-overlapping triangles $\{\tau_{k}\}_{k=1}^{m}$, and denote this triangulation as $\Omega _{h}=\mathop{\cup}_{k=1}^{m}\tau _{k}$. Denote the vertices of the triangles as $\mathbf x_{j}$ for $j=1,\dots,n$.
+
+Now we need to approximate the infinite dimensional function space $V$ with some finite dimensional function space $V_{h}$. Let $\phi _{1}, \phi _{2},\dots,\phi _{n}$ be a set of basis piecewise linear functions for $V_{h}$ such that
+$$
+\phi _{i}(\mathbf x_{j})=\begin{cases}
+1, & \quad\text{for }i=j, \\
+0, & \quad\text{for }i\neq j.
+\end{cases}
+$$
+
+Then, any $v\in V_{h}$ can be written as
 $$
 v= \sum_{j=1}^{n}v_{j}\phi _{j},
 $$
@@ -76,27 +86,4 @@ A_{ij}&= \int_{H}\phi _{i} \phi _{j} \text{ d}x +\Delta t \cdot \theta \int_{H}\
 f_{i}&= \int_{H}\phi _{i} v^{n}\text{ d}x -\Delta t \cdot (1-\theta )\int_{H}\nabla \phi _{i} \cdot \nabla v^{n} \text{ d}x.
 \end{aligned}
 $$
-
-
-
-
-In order to test the convergence of our numerical scheme, we need to introduce a potential that satisfies the boundary condition $n \cdot \nabla v=0$ on $\partial H$. One potential that satisfies this is
-$$
-v(x,y,t)= \cos (2\pi x)\cos (2\pi y)e^{-t}.
-$$
-Then the time derivative is
-$$
-\frac{\partial v}{\partial t}=-\cos(2\pi x)\cos (2\pi y)e^{-t}.
-$$
-The space derivatives are
-$$
-\nabla v=-2\pi e^{-t}\begin{bmatrix} \sin (2\pi x)\cos (2\pi y) \\  \cos (2\pi x)\sin (2\pi y)\end{bmatrix},
-$$
-and 
-$$
-\begin{aligned}
-\nabla \cdot \nabla v&= -2\pi e^{-t}(2\pi \cos (2\pi x)\cos (2\pi y) + 2\pi \cos (2\pi x)\cos (2\pi y))\\
-&= -8\pi ^{2}\cos(2\pi x)\cos (2\pi y)e^{-t}.
-\end{aligned}
-$$
-We see that the boundary condition $n \cdot \nabla v=0$ is fulfilled on $\partial H$.
+In order to build the matrix $A$ and the vector $f$, we will utilize the 
