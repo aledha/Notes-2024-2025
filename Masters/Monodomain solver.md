@@ -97,3 +97,8 @@ where $w_{i}^{g}=\frac{1}{3}$ and $\mathbf x_{i}^{g}=\sum_{j=1}^{3}(\frac{\mathb
 $$\int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}(\mathbf x)\cdot \mathcal{H}_{\beta  }^{k}(\mathbf x)\text{ d}\mathbf x=\frac{1}{3}T_{k}\sum_{i=1}^{3}\mathcal{H}_{\alpha }^{k}(\mathbf x_{i}^{g})\cdot \mathcal{H}_{\beta }^{k}(\mathbf x_{i}^{g}).$$
 Since the quadrature is second order accurate and the integrand is the product two first order polynomials, this approximation is accurate. The elemental matrix is now
 $$A_{\alpha \beta }^{k}=\frac{1}{3}T_{k}\sum_{i=1}^{3}(\mathcal{H}_{\alpha }^{k}(\mathbf x_{i}^{g})\cdot \mathcal{H}_{\beta }^{k}(\mathbf x_{i}^{g}))+\Delta t \cdot \theta (c_{x,\alpha }^{k}c_{x,\beta }^{k}+c_{y,\alpha }^{k}c_{y,\beta }^{k})T_{k}.$$
+The elemental load vector is
+$$\begin{aligned}
+f^{k}_{\alpha}&= \int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}\cdot v^{n}\text{ d}\mathbf x+\int_{\tau ^{k}}\partial _{x}\mathcal{H}_{\alpha }^{k}\cdot \partial _{x}v^{n}+\partial _{y}\mathcal{H}_{\alpha }^{k}\cdot \partial _{y}v^{n}\text{ d}\mathbf x\\
+&= \int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}\cdot v^{n}\text{ d}\mathbf x+\int_{\tau ^{k}}c_{x,\alpha }^{k} \cdot \partial _{x}v^{n}+c_{y,\alpha }^{k}\cdot \partial _{y}v^{n}\text{ d}\mathbf x
+\end{aligned}$$
