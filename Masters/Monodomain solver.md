@@ -86,4 +86,4 @@ A_{ij}&= \int_{H}\phi _{i} \phi _{j} \text{ d}x +\Delta t \cdot \theta \int_{H}\
 f_{i}&= \int_{H}\phi _{i} v^{n}\text{ d}x -\Delta t \cdot (1-\theta )\int_{H}\nabla \phi _{i} \cdot \nabla v^{n} \text{ d}x.
 \end{aligned}
 $$
-In order to build the matrix $A$ and the vector $f$, we will utilize the 
+In order to build the matrix $A$ and the vector $f$, we will utilize the stamping method.
