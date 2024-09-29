@@ -102,4 +102,8 @@ $$\begin{aligned}
 f^{k}_{\alpha}&= \int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}\cdot v^{n}\text{ d}\mathbf x+\int_{\tau ^{k}}\partial _{x}\mathcal{H}_{\alpha }^{k}\cdot \partial _{x}v^{n}+\partial _{y}\mathcal{H}_{\alpha }^{k}\cdot \partial _{y}v^{n}\text{ d}\mathbf x\\
 &= \int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}\cdot v^{n}\text{ d}\mathbf x+\int_{\tau ^{k}}c_{x,\alpha }^{k} \cdot \partial _{x}v^{n}+c_{y,\alpha }^{k}\cdot \partial _{y}v^{n}\text{ d}\mathbf x.
 \end{aligned}$$
-In order to calculate $v^{n}$, we let 
+Let $v^{n}=\sum_{i=1}^{n}v^{n}_{i}\phi _{i}$. On an element $\tau _{k}$, we can interpolate $v_{n}$ as
+$$
+v^{n}(\mathbf x)|_{\tau^{k}}=\sum_{\alpha =1}^{3}v^{n}_{l(i)}\mathcal{H}_{\alpha }^{k}(\mathbf x),
+$$
+where $l(i)$ is the global-to-local mapping.
