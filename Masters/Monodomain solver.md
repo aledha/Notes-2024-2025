@@ -96,7 +96,10 @@ $$\int_{\tau ^{k}}f(\mathbf x)\text{ d}\mathbf x\approx T_{k}\sum_{i=1}^{3}w_{i}
 where $w_{i}^{g}=\frac{1}{3}$ and $\mathbf x_{i}^{g}=\sum_{j=1}^{3}(\frac{\mathbf x_{j}}{6}+\delta _{ij}\frac{\mathbf x_{i}}{2})$ for $i=1,2,3$. Then the first term of the elemental matrix reads
 $$\int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}(\mathbf x)\cdot \mathcal{H}_{\beta  }^{k}(\mathbf x)\text{ d}\mathbf x=\frac{1}{3}T_{k}\sum_{i=1}^{3}\mathcal{H}_{\alpha }^{k}(\mathbf x_{i}^{g})\cdot \mathcal{H}_{\beta }^{k}(\mathbf x_{i}^{g}).$$
 Since the quadrature is second order accurate and the integrand is the product two first order polynomials, this approximation is accurate. The elemental matrix is now
-$$A_{\alpha \beta }^{k}=\frac{1}{3}T_{k}\sum_{i=1}^{3}(\mathcal{H}_{\alpha }^{k}(\mathbf x_{i}^{g})\cdot \mathcal{H}_{\beta }^{k}(\mathbf x_{i}^{g}))+\Delta t \cdot \theta (c_{x,\alpha }^{k}c_{x,\beta }^{k}+c_{y,\alpha }^{k}c_{y,\beta }^{k})T_{k}.$$
+$$\begin{aligned}
+A_{\alpha \beta }^{k}&= T_{k}\left(\frac{1}{3}\sum_{i=1}^{3}(\mathcal{H}_{\alpha }^{k}(\mathbf x_{i}^{g})\cdot \mathcal{H}_{\beta }^{k}(\mathbf x_{i}^{g}))+\Delta t \cdot \theta (c_{x,\alpha }^{k}c_{x,\beta }^{k}+c_{y,\alpha }^{k}c_{y,\beta }^{k})\right)\\
+
+\end{aligned}\tag{EM}$$
 The elemental load vector is
 $$\begin{aligned}
 f^{k}_{\alpha}&= \int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}\cdot v^{n}\text{ d}\mathbf x-\Delta t \cdot (1-\theta )\int_{\tau ^{k}}\partial _{x}\mathcal{H}_{\alpha }^{k}\cdot \partial _{x}v^{n}+\partial _{y}\mathcal{H}_{\alpha }^{k}\cdot \partial _{y}v^{n}\text{ d}\mathbf x\\
@@ -128,8 +131,14 @@ $$
 
 Thus, the elemental load vector becomes
 $$
-f^{k}_{\alpha}=T_{k}\sum_{\beta =1}^{3}v_{l(\beta ,k)}^{n}\left(\frac{1}{3}\sum_{i=1}^{3}(\mathcal{H}_{\alpha }^{k}(\mathbf x^{g}_{i})\cdot \mathcal{H}_{\beta }^{k}(\mathbf x^{g}_{i}))-\Delta t \cdot (1-\theta )(c_{x,\alpha }^{k}c_{x,\beta }^{k}+c_{y,\alpha }^{k}c_{y,\beta }^{k}) \right).
+\begin{aligned}
+f^{k}_{\alpha}&= \sum_{\beta =1}^{3}v_{l(\beta ,k)}^{n}T_{k}\left(\frac{1}{3}\sum_{i=1}^{3}(\mathcal{H}_{\alpha }^{k}(\mathbf x^{g}_{i})\cdot \mathcal{H}_{\beta }^{k}(\mathbf x^{g}_{i}))-\Delta t \cdot (1-\theta )(c_{x,\alpha }^{k}c_{x,\beta }^{k}+c_{y,\alpha }^{k}c_{y,\beta }^{k}) \right)\\
+&= :\sum_{\beta =1}^{3}v_{l(\beta ,k)}^{n}\cdot F^{k}_{\alpha ,\beta }
+\end{aligned}
 $$
+
+$$F^{k}_{\alpha ,\beta }=T_{k}\left(\frac{1}{3}\sum_{i=1}^{3}(\mathcal{H}_{\alpha }^{k}(\mathbf x^{g}_{i})\cdot \mathcal{H}_{\beta }^{k}(\mathbf x^{g}_{i}))-\Delta t \cdot (1-\theta )(c_{x,\alpha }^{k}c_{x,\beta }^{k}+c_{y,\alpha }^{k}c_{y,\beta }^{k}) \right)$$
+
 
 For local nodes $\mathbf x_{\beta }^{k}=[x_{\beta }^{k},y_{\beta }^{k}]$ we must have that $\mathcal{H}_{\alpha }^{k}(\mathbf x_{\beta })=\delta _{\alpha \beta}$, which we can write in matrix notation:
 $$
