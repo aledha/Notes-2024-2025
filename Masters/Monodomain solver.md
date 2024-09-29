@@ -104,13 +104,41 @@ f^{k}_{\alpha}&= \int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}\cdot v^{n}\text{ d}\m
 \end{aligned}$$
 Let $v^{n}=\sum_{i=1}^{n}v^{n}_{i}\phi _{i}$. On an element $\tau ^{k}$, we can interpolate $v^{n}$ as
 $$
-v^{n}(\mathbf x)|_{\tau^{k}}=\sum_{\alpha =1}^{3}v^{n}_{l(\alpha ,k)}\mathcal{H}_{\alpha }^{k}(\mathbf x),
+v^{n}(\mathbf x)|_{\tau^{k}}=\sum_{\beta =1}^{3}v^{n}_{l(\beta ,k)}\mathcal{H}_{\beta }^{k}(\mathbf x),
 $$
-where $l(\alpha,k)$ is the local-to-global mapping for node $\alpha$ in the element $\tau ^{k}$.
+where $l(\beta,k)$ is the local-to-global mapping for node $\beta$ in the element $\tau ^{k}$.
 
 Using the interpolation for $v^{n}$ and the same Gaussian quadrature, we can compute the first term of the elemental load vector as
 $$
 \begin{aligned}
-\int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}\cdot v^{n}\text{ d}\mathbf x&= 
+\int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}(\mathbf x)\cdot v^{n}(\mathbf x)\text{ d}\mathbf x&= \int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}(\mathbf x) \cdot \left(\sum_{\beta =1}^{3}v_{l(\beta ,k)}^{n} \mathcal{H}^{k}_{\beta }(\mathbf x)\right) \text{ d}\mathbf x\\
+&= \sum_{\beta =1}^{3}v_{l(\beta ,k)}^{n} \cdot \int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}(\mathbf x)\cdot \mathcal{H}_{\beta }^{k}(\mathbf x)\text{ d}x\\
+&= \sum_{\beta =1}^{3}v_{l(\beta ,k)}^{n}\cdot \frac{1}{3}T_{k} \sum_{i=1}^{3}\mathcal{H}_{\alpha }^{k}(\mathbf x^{g}_{i})\cdot \mathcal{H}_{\beta }^{k}(\mathbf x^{g}_{i}).
 \end{aligned}
 $$
+
+The second term of the elemental load vector is
+$$
+\begin{aligned}
+\int_{\tau ^{k}}c_{x,\alpha }^{k} \cdot \partial _{x}v^{n}+c_{y,\alpha }^{k}\cdot \partial _{y}v^{n}\text{ d}\mathbf x&=\int_{\tau ^{k}}c_{x,\alpha }^{k} \cdot \partial _{x}\left(\sum_{\beta =1}^{3}v^{n}_{l(\beta ,k)}\mathcal{H}_{\beta }^{k}\right)+c_{y,\alpha }^{k}\cdot \partial _{y}\left(\sum_{\beta =1}^{3}v^{n}_{l(\beta ,k)}\mathcal{H}_{\beta }^{k} \right)\text{ d}\mathbf x\\
+&= \sum_{\beta =1}^{3}v_{l(\beta ,k)}^{n}\int_{\tau ^{k}}c_{x,\alpha }^{k}\cdot c_{x,\beta }^{k}+c^{k}_{y,\alpha }\cdot c_{y,\beta }^{k} \text{ d}\mathbf x\\
+&= T^{k}\sum_{\beta =1}^{3}v_{l(\beta ,k)}^{n}(c_{x,\alpha }^{k}\cdot c_{x,\beta }^{k}+c^{k}_{y,\alpha }\cdot c_{y,\beta }^{k} ).
+\end{aligned}
+$$
+
+Thus, the elemental load vector becomes
+$$
+f^{k}_{\alpha}=T_{k}\sum_{\beta =1}^{3}v_{l(\beta ,k)}^{n}\left(\frac{1}{3}\sum_{i=1}^{3}(\mathcal{H}_{\alpha }^{k}(\mathbf x^{g}_{i})\cdot \mathcal{H}_{\beta }^{k}(\mathbf x^{g}_{i}))-\Delta t \cdot (1-\theta )(c_{x,\alpha }^{k}c_{x,\beta }^{k}+c_{y,\alpha }^{k}c_{y,\beta }^{k}) \right).
+$$
+
+For local nodes $\mathbf x_{\beta }^{k}=[x_{\beta }^{k},y_{\beta }^{k}]$ we must have that $\mathcal{H}_{\alpha }^{k}(\mathbf x_{\beta })=\delta _{\alpha \beta}$, which we can write in matrix notation:
+$$
+\begin{bmatrix}1  & x_{1}^{k} & y_{1}^{k} \\ 1 & x_{2}^{k} & y_{2}^{k} \\ 1 & x_{3}^{k} & y_{3}^{k}\end{bmatrix}\begin{bmatrix}c_{1}^{k} & c_{1,x}^{k} & c_{1,y}^{k} \\ c_{2}^{k} & c_{2,x}^{k} & c_{2,y}^{k} \\ c_{3}^{k} & c_{3,x}^{k} & c_{3,y}^{k}\end{bmatrix}=\begin{bmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{bmatrix},
+$$
+meaning that we can compute the coefficient matrix by inverting the Vandermonde matrix:
+$$
+C=\begin{bmatrix}c_{1}^{k} & c_{1,x}^{k} & c_{1,y}^{k} \\ c_{2}^{k} & c_{2,x}^{k} & c_{2,y}^{k} \\ c_{3}^{k} & c_{3,x}^{k} & c_{3,y}^{k}\end{bmatrix}=\begin{bmatrix}1  & x_{1}^{k} & y_{1}^{k} \\ 1 & x_{2}^{k} & y_{2}^{k} \\ 1 & x_{3}^{k} & y_{3}^{k}\end{bmatrix}^{-1}=V^{-1}.
+$$
+
+
+
