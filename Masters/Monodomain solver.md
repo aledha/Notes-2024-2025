@@ -99,11 +99,18 @@ Since the quadrature is second order accurate and the integrand is the product t
 $$A_{\alpha \beta }^{k}=\frac{1}{3}T_{k}\sum_{i=1}^{3}(\mathcal{H}_{\alpha }^{k}(\mathbf x_{i}^{g})\cdot \mathcal{H}_{\beta }^{k}(\mathbf x_{i}^{g}))+\Delta t \cdot \theta (c_{x,\alpha }^{k}c_{x,\beta }^{k}+c_{y,\alpha }^{k}c_{y,\beta }^{k})T_{k}.$$
 The elemental load vector is
 $$\begin{aligned}
-f^{k}_{\alpha}&= \int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}\cdot v^{n}\text{ d}\mathbf x+\int_{\tau ^{k}}\partial _{x}\mathcal{H}_{\alpha }^{k}\cdot \partial _{x}v^{n}+\partial _{y}\mathcal{H}_{\alpha }^{k}\cdot \partial _{y}v^{n}\text{ d}\mathbf x\\
-&= \int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}\cdot v^{n}\text{ d}\mathbf x+\int_{\tau ^{k}}c_{x,\alpha }^{k} \cdot \partial _{x}v^{n}+c_{y,\alpha }^{k}\cdot \partial _{y}v^{n}\text{ d}\mathbf x.
+f^{k}_{\alpha}&= \int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}\cdot v^{n}\text{ d}\mathbf x-\Delta t \cdot (1-\theta )\int_{\tau ^{k}}\partial _{x}\mathcal{H}_{\alpha }^{k}\cdot \partial _{x}v^{n}+\partial _{y}\mathcal{H}_{\alpha }^{k}\cdot \partial _{y}v^{n}\text{ d}\mathbf x\\
+&= \int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}\cdot v^{n}\text{ d}\mathbf x-\Delta t \cdot (1-\theta )\int_{\tau ^{k}}c_{x,\alpha }^{k} \cdot \partial _{x}v^{n}+c_{y,\alpha }^{k}\cdot \partial _{y}v^{n}\text{ d}\mathbf x.
 \end{aligned}$$
-Let $v^{n}=\sum_{i=1}^{n}v^{n}_{i}\phi _{i}$. On an element $\tau _{k}$, we can interpolate $v_{n}$ as
+Let $v^{n}=\sum_{i=1}^{n}v^{n}_{i}\phi _{i}$. On an element $\tau ^{k}$, we can interpolate $v^{n}$ as
 $$
-v^{n}(\mathbf x)|_{\tau^{k}}=\sum_{\alpha =1}^{3}v^{n}_{l(i)}\mathcal{H}_{\alpha }^{k}(\mathbf x),
+v^{n}(\mathbf x)|_{\tau^{k}}=\sum_{\alpha =1}^{3}v^{n}_{l(\alpha ,k)}\mathcal{H}_{\alpha }^{k}(\mathbf x),
 $$
-where $l(i)$ is the global-to-local mapping.
+where $l(\alpha,k)$ is the local-to-global mapping for node $\alpha$ in the element $\tau ^{k}$.
+
+Using the interpolation for $v^{n}$ and the same Gaussian quadrature, we can compute the first term of the elemental load vector as
+$$
+\begin{aligned}
+\int_{\tau ^{k}}\mathcal{H}_{\alpha }^{k}\cdot v^{n}\text{ d}\mathbf x&= 
+\end{aligned}
+$$
