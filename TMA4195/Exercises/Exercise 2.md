@@ -45,3 +45,65 @@ $$\begin{aligned}
 m'(t)&= -\mu \\
 x''(t)&= \frac{1}{m(t)}-\xi \frac{1}{(1+x(t))^{2}}
 \end{aligned}$$
+
+![[Pasted image 20240930153322.png|900]]
+Let $y=y_{0}(t)+\epsilon y_{1}(t)+\epsilon ^{2}y_{2}(t)$, and substitute into the equation:
+Since 
+$$\begin{aligned}
+y(0)&= 0\quad\implies\quad y_{0}(0)=y_{1}(0)=y_{2}(0)=0\\
+y'(0)&= 0\quad\implies\quad y_{0}'(0)=y_{1}'(0)=y_{2}'(0)=0
+\end{aligned}$$
+
+$$
+\begin{aligned}
+y_{0}''(t)+\epsilon y_{1}''(t)+\epsilon ^{2}y_{2}''(t)+\epsilon y_{0}'(t)+\epsilon ^{2}y_{1}'(t)+1&= 0\\
+y_{0}''(t)+1+\epsilon (y_{1}''(t)+y_{0}'(t))+\epsilon ^{2}(y_{2}''(t)+y_{1}'(t))&= 0
+\end{aligned}
+$$
+Since this holds for all $0<\epsilon \ll 1$, we get a system of equations:
+$$
+\begin{aligned}
+y''_{0}(t)+1&= 0\\
+y''_{1}(t)+y_{0}'(t)&= 0\\
+y_{2}''(t)+y'_{1}(t)&= 0
+\end{aligned}
+$$
+From the first equation, we get
+$$\begin{aligned}
+y_{0}''(t)&= -1\\
+y_{0}(t)&= -\frac{1}{2}t^{2}+B_{0}t+A_{0}\\
+	y_{0}(0)=y_{0}'(0)=0 \quad\implies\quad y_{0}(t)&= -\frac{1}{2}t^{2}
+\end{aligned}$$
+Using this in the second equation,
+$$\begin{aligned}
+y_{1}''(t)-t&= 0\\
+y_{1}''(t)&= t\\
+y_{1}(t)&= \frac{1}{6}t^3
+\end{aligned}$$
+
+$$\begin{aligned}
+y_{2}''(t)&= -\frac{1}{2}t^{2}\\
+y_{2}(t)&= -\frac{1}{24}t^{4}
+\end{aligned}$$
+
+Thus, the approximate solution is
+$$y(t)=-\frac{1}{2}t^{2}+\frac{\epsilon }{6}t^{3}-\frac{\epsilon ^{2}}{24}t^{4}$$
+
+The general solution has the form
+$$\begin{aligned}
+y(t)&= A+Be^{-\epsilon t}- \frac{t}{\epsilon }\\
+y'(0)&=-\epsilon B-\frac{1}{\epsilon }=0\\
+B&= -\frac{1}{\epsilon ^{2}}\\
+y(t)&= A-\frac{1}{\epsilon ^{2}}e^{-\epsilon t}-\frac{t}{\epsilon } \\
+y(0)=0\quad\implies\quad A&= \frac{1}{\epsilon ^{2}}
+\end{aligned}$$
+Taylor expand:
+$$\begin{aligned}
+y(t)&= \frac{1}{\epsilon ^{2}}(1-e^{-\epsilon t})-\frac{t}{\epsilon }\\
+&= \frac{1}{\epsilon ^{2}}\left(1- \sum_{n=0}^{\infty}\frac{(-\epsilon t)^{n}}{n!} \right)-\frac{t}{\epsilon }\\
+&= \frac{1}{\epsilon ^{2}}\left(-\sum_{n=1}^{\infty}\frac{(-\epsilon t)^{n}}{n!} \right) -\frac{t}{\epsilon }\\
+&= \frac{1}{\epsilon ^{2}}\left(\epsilon t-\frac{\epsilon ^{2}t^{2}}{2}+\frac{\epsilon ^{3}t^{3}}{6}-\frac{\epsilon ^{4}t^{4}}{24}+\dots \right)-\frac{t}{\epsilon }\\
+&= \frac{t}{\epsilon }-\frac{t^{2}}{2}+\frac{\epsilon t^{3}}{6}-\frac{\epsilon ^{2}t^{4}}{24}+\dots-\frac{t}{\epsilon }\\
+&= -\frac{t^{2}}{2}+\frac{\epsilon t^{3}}{6}-\frac{\epsilon ^{2}t^{4}}{24}+\dots
+\end{aligned}$$
+
