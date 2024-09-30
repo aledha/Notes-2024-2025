@@ -34,5 +34,14 @@ $$\begin{aligned}
 \frac{R}{T^{2}}x''(t)&= \frac{\alpha \beta }{Mm(t)}-\frac{g}{(1+x(t))^{2}}\\
 x''(t)&= \frac{T^{2}\alpha \beta }{RM}\frac{1}{m(t)}- \frac{gT^{2}}{R}\frac{1}{(1+ x(t))^2}
 \end{aligned}$$
-Set $\frac{T^{2}\alpha \beta }{RM}=1\quad\implies\quad T= \sqrt{\frac{RM}{\alpha \beta }}$. Then,
-$$x''(t)=\frac{1}{m(t)}-\frac{gM}{\alpha \beta }\frac{1}{(1+x(t))^{2}}$$
+Set $\frac{T^{2}\alpha \beta }{RM}=1\quad\implies\quad T= \sqrt{\frac{RM}{\alpha \beta }}$. Then, our set of equations is
+
+$$\begin{aligned}
+m'(t)&= -\frac{\alpha }{M}\sqrt{\frac{RM}{\alpha \beta }}=-\sqrt{\frac{\alpha R}{\beta M}}\\
+x''(t)&= \frac{1}{m(t)}-\frac{gM}{\alpha \beta }\frac{1}{(1+x(t))^{2}}
+\end{aligned}$$
+
+$$\begin{aligned}
+m'(t)&= -\mu \\
+x''(t)&= \frac{1}{m(t)}-\xi \frac{1}{(1+x(t))^{2}}
+\end{aligned}$$
