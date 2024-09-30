@@ -14,6 +14,8 @@ $$
 n \cdot (M_{i}\nabla v)&= 0, &x\in \partial H.
 \end{aligned}
 $$
+---
+
 ## Analytical Solution of the Simplified Monodomain Model
 To start, we will implement a solver for just the diffusion term, and then we will add the reactionary term later. We will also assume $H$ being the unit square, $H=[0,1]\times[0,1]$. Our model problem is then
 $$
@@ -150,4 +152,12 @@ C=\begin{bmatrix}c_{1}^{k} & c_{1,x}^{k} & c_{1,y}^{k} \\ c_{2}^{k} & c_{2,x}^{k
 $$
 
 
-
+To test our solution, we can set
+$$v(x,y,t)=\cos (2\pi x)\cos (2\pi y)e^{-t}$$
+Then,
+$$\begin{aligned}
+\nabla v&= -2\pi \begin{bmatrix}\sin (2\pi x)\cos (2\pi y) \\ \cos (2\pi x)\sin (2\pi y)\end{bmatrix}e^{-8\pi ^{2}t}\\
+\nabla ^{2}v&= -8\pi ^{2}\cos (2\pi x)\cos (2\pi y)e^{-8\pi ^{2}t}
+\end{aligned}$$
+and
+$$\partial _{t}v=-8\pi ^{2}\cos (2\pi x)\cos (2\pi y)e^{-8\pi ^{2}t}$$
