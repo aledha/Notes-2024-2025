@@ -128,7 +128,16 @@ $$\begin{aligned}
 \end{aligned}$$
 
 ![[Pasted image 20241001154955.png|800]]
- $\mathbf n_{0}=\cos \theta \mathbf e_{1}+\sin \theta \mathbf e_{2}$.
+ Any direction vector may be denoted as
+ $$\begin{aligned}
+\mathbf n_{0}&= \cos \theta \mathbf e_{1}+\sin \theta \mathbf e_{2}\\
+&= \cos \theta \begin{bmatrix}1\\
+0\end{bmatrix}+\sin \theta \begin{bmatrix}0 \\
+1\end{bmatrix}\\
+&= \begin{bmatrix}\cos \theta  \\
+\sin \theta \end{bmatrix}
+\end{aligned}$$
+ The deformed vector is
 $$\begin{aligned}
 \mathbf n&= \mathbf F \mathbf n_{0}\\
 &= \mathbf F(\cos \theta \mathbf e_{1}+\sin \theta \mathbf e_{2})\\
@@ -144,3 +153,31 @@ $$\begin{aligned}
 &= \begin{bmatrix}\cos \theta +0.1\sin \theta \\
 1.1\sin \theta \end{bmatrix}
 \end{aligned}$$
+Now we can calculate the stretch ratio
+
+$$
+\begin{aligned}
+\lambda &= \frac{\lVert \mathbf n \rVert}{\lVert \mathbf n_{0} \rVert}\\
+&= \frac{(\cos \theta  +0.1\sin \theta )^{2}+1.1^{2}\sin ^{2}\theta }{\cos ^{2}\theta +\sin^{2} \theta }\\
+&= \frac{\cos ^{2}\theta +0.2\cos \theta \sin \theta +0.01\sin ^{2}\theta +1.21\sin ^{2}\theta }{1}\\
+&= \cos ^{2}\theta +0.2\cos \theta \sin \theta +1.22\sin ^{2}\theta \\
+&= 1+0.2\cos \theta \sin \theta +0.22\sin ^{2}\theta 
+\end{aligned}
+$$
+$$\begin{aligned}
+\epsilon &= \lambda -1\\
+&= 0.2\cos \theta \sin \theta +0.22\sin ^{2}\theta 
+\end{aligned}$$
+Calculating using the Green strain tensor
+$$\begin{aligned}
+\epsilon &= \mathbf n_{0}^{T}\mathbf E \mathbf n_{0}\\
+&= \begin{bmatrix}\cos \theta  & \sin \theta \end{bmatrix}\begin{bmatrix}0 & 0.05\\
+0.05 & 0.11\end{bmatrix}\begin{bmatrix}\cos \theta \\
+\sin \theta \end{bmatrix}\\
+&= \begin{bmatrix}\cos \theta  & \sin \theta \end{bmatrix}\begin{bmatrix}0.05\sin \theta \\
+0.05\cos \theta +0.11 \sin \theta \end{bmatrix}\\
+&= 0.05\cos \theta \sin \theta +\sin \theta (0.05\cos \theta +0.11\sin \theta )\\
+&= 0.1\cos \theta \sin \theta +0.11\sin^{2} \theta 
+\end{aligned}$$
+which is half of the longitudinal strain calculated using $\mathbf F$.
+![[Pasted image 20241002185347.png|700]]
