@@ -128,3 +128,19 @@ $$\begin{aligned}
 \end{aligned}$$
 
 ![[Pasted image 20241001154955.png|800]]
+ $\mathbf n_{0}=\cos \theta \mathbf e_{1}+\sin \theta \mathbf e_{2}$.
+$$\begin{aligned}
+\mathbf n&= \mathbf F \mathbf n_{0}\\
+&= \mathbf F(\cos \theta \mathbf e_{1}+\sin \theta \mathbf e_{2})\\
+&= \cos \theta \mathbf F \mathbf e_{1}+ \sin \theta \mathbf F \mathbf e_{2}\\
+&= \cos \theta \begin{bmatrix}1 & 0.1\\
+0 & 1.1\end{bmatrix}\begin{bmatrix}1\\
+0\end{bmatrix}+ \sin \theta \begin{bmatrix}1 & 0.1\\
+0 & 1.1\end{bmatrix}\begin{bmatrix}0 \\
+1\end{bmatrix}\\
+&= \cos \theta \begin{bmatrix}1\\
+0\end{bmatrix}+\sin \theta \begin{bmatrix}0.1\\
+1.1\end{bmatrix}\\
+&= \begin{bmatrix}\cos \theta +0.1\sin \theta \\
+1.1\sin \theta \end{bmatrix}
+\end{aligned}$$
