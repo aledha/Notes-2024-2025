@@ -200,3 +200,5 @@ $$\begin{aligned}
 1.1\sin \theta \end{bmatrix}\\
 &= \begin{bmatrix}\end{bmatrix}
 \end{aligned}$$
+
+$$\begin{bmatrix}L_{n} \\ A_{n}\end{bmatrix}=\begin{bmatrix}\frac{1}{2} & \frac{1}{6} \\ \frac{1}{2} & \frac{5}{6}\end{bmatrix}\begin{bmatrix}L_{n-1} \\ A_{n-1}\end{bmatrix}$$
