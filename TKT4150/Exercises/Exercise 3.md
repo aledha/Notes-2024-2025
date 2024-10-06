@@ -181,3 +181,22 @@ $$\begin{aligned}
 \end{aligned}$$
 which is half of the longitudinal strain calculated using $\mathbf F$.
 ![[Pasted image 20241002185347.png|700]]
+$$
+\begin{aligned}
+\lambda (\theta )&= 1+0.2\cos \theta \sin  \theta +0.22\sin ^{2}\theta \\
+\lambda'(\theta )&= -0.2 \sin^{2} \theta +0.2\cos ^{2}\theta +0.44 \sin \theta \cos \theta \\
+&= 0.2 \cos 2\theta +0.22 \sin 2\theta =0\\
+0.22\sin 2\theta &= -0.2\cos 2\theta \\
+\tan 2\theta &= -\frac{0.2}{0.22}\\
+2\theta &= \pi n +\tan ^{-1} \left(-\frac{10}{11} \right)\\
+\theta &= \frac{\pi }{2}n-\frac{1}{2}\tan ^{-1}\left(\frac{10}{11} \right)\\
+&= \frac{\pi }{2}n-0.369
+\end{aligned}
+$$
+This gives us the solutions $\theta = \{1.202,2.773,4.323,5.914 \}=\{68.86\degree,158.85\degree,248.86\degree,338.86\degree \}$.
+$$\begin{aligned}
+\mathbf E \mathbf n(\theta )&= \begin{bmatrix}0 & 0.05\\
+0.05 & 0.11\end{bmatrix}\begin{bmatrix}\cos \theta +0.1\sin \theta \\
+1.1\sin \theta \end{bmatrix}\\
+&= 
+\end{aligned}$$
