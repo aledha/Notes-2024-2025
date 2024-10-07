@@ -7,13 +7,10 @@ n \cdot (M_{i}\nabla v)&= 0, &x\in \partial H.
 \end{aligned}
 $$
 To start, we will implement a solver for just the diffusion term, and then we will add the reactionary term later. The model simplifies to 
-$$
-\begin{aligned}
-\frac{\partial s}{\partial t}&= f(s,v,t),&x\in H,\\
-\frac{\lambda }{1+\lambda }\nabla \cdot (M_{i}\nabla v)&= \frac{\partial v}{\partial t}, &x\in H,\\
-n \cdot (M_{i}\nabla v)&= 0, &x\in \partial H.
-\end{aligned}
-$$
+
+
+
+
 ---
 
 ## Analytical Solution of the Simplified Monodomain Model
