@@ -198,6 +198,8 @@ $$\begin{aligned}
 \mathbf E \mathbf n(\theta )&= \begin{bmatrix}0 & 0.05\\
 0.05 & 0.11\end{bmatrix}\begin{bmatrix}\cos \theta +0.1\sin \theta \\
 1.1\sin \theta \end{bmatrix}\\
-&= \begin{bmatrix}\end{bmatrix}
+&= \begin{bmatrix}0.055\sin \theta \\
+0.05\cos \theta +0.005\sin \theta +\end{bmatrix}
 \end{aligned}$$
 
+![[Pasted image 20241009121934.png|800]]

@@ -68,9 +68,16 @@ $$
 	for $t_{n}+\theta \Delta t <t \le t_{n}+\Delta t$ with the initial conditions $v(t_{n}+\theta \Delta t)=v_{\theta }^{n+1}$ and $s(t_{n}+\theta \Delta t)=s^{n}_{\theta }$.
 
 ### Solver for step 2
-In order to solve the PDE in step 2, we will utilize a $\theta$-rule to discretize in time.
+In order to solve the PDE in step 2, we will utilize a $\theta$-rule to discretize in time:
 $$
 \begin{aligned}
-\frac{v^{n+1}-v^{n}}{\Delta t}&= \frac{\lambda }{1+\lambda }\left(\theta \nabla ^{2}v^{n+1}+(1-\theta )\nabla ^{2}v^{n} \right)
+\frac{v^{n+1}-v^{n}}{\Delta t}&= \frac{\lambda }{1+\lambda }\left(\theta \nabla ^{2}v^{n+1}+(1-\theta )\nabla ^{2}v^{n} \right).
+\end{aligned}
+$$
+Notice that this $\theta$ differs from the parameter $\theta$ for the operator splitting. However, a parameter choice of $\theta =\frac{1}{2}$ gives a second order accuracy in time for both the operator splitting and the $\theta$-rule. Now, we can reformulate the time-discrete equation into a Galerkin formulation:
+$$
+\begin{aligned}
+\int _{H}(v^{n+1}-v^{n})\phi  \text{ d}\mathbf x&=\Delta t\int_{H} \frac{\lambda }{1+\lambda }\left(\theta \nabla ^{2}v^{n+1}+(1-\theta )\nabla ^{2}v^{n} \right)\phi \text{ d}\mathbf x\\
+\int_{H}v^{n+1}\phi \text{ d}\mathbf x-\gamma \theta \int_{H}\phi \cdot \nabla ^{2}v^{n+1}\text{ d}\mathbf x&= \int_{H}
 \end{aligned}
 $$
