@@ -203,3 +203,17 @@ $$\begin{aligned}
 \end{aligned}$$
 
 ![[Pasted image 20241009121934.png|800]]
+Consider the endpoints of the material line, 
+We can express the deformed length as
+$$\begin{aligned}
+\text{ d}s^{2}&=  \left(\frac{\partial x_{i}}{\partial s_{0}}\frac{\partial x_{i}}{\partial s_{0}} \right)\text{ d}s_{0}^{2}\\
+\frac{\text{d}s}{\text{d}s_{0}}&= \sqrt{\frac{\partial x_{i}}{\partial s_{0}}\frac{\partial x_{i}}{\partial s_{0}}}
+\end{aligned}.$$
+
+By the chain rule, we have that
+$$\begin{aligned}
+\frac{\partial x_{i}}{\partial s_{0}}&= \frac{\partial x_{i}}{\partial X_{k}}\frac{\partial X_{k}}{\partial s_{0}}\\
+&= F_{ik}\frac{\text{ d} X_{k}}{\text{ d}s_{0}}.
+\end{aligned}$$
+Let the direction vector $\mathbf e=e_{i}\mathbf b_{i},$ where $\mathbf b_{i}$ are the basis vectors. The vector of the reference length in direction $e$ is
+$$\text{ d}\mathbf r_{0}=\mathbf e \text{ d}s_{0}=\mathbf e_{k}b_{k}\text{ d}X_{k}$$
