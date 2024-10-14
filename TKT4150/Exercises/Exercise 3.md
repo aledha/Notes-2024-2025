@@ -1,3 +1,4 @@
+Alexander Hatle
 ![[Pasted image 20241001140743.png|800]]
 ![[Pasted image 20241001141237.png|700]]
 $$T=\begin{bmatrix}-50 & 35 & 0 \\ 35 & -70 & 0 \\ 0 & 0 & 0\end{bmatrix}$$
@@ -199,8 +200,22 @@ $$\begin{aligned}
 0.05 & 0.11\end{bmatrix}\begin{bmatrix}\cos \theta +0.1\sin \theta \\
 1.1\sin \theta \end{bmatrix}\\
 &= \begin{bmatrix}0.055\sin \theta \\
-0.05\cos \theta +0.005\sin \theta +\end{bmatrix}
+0.05\cos \theta +0.005\sin \theta +0.121 \sin \theta \end{bmatrix}\\
+&= \begin{bmatrix}0.055\sin \theta \\
+0.05\cos \theta +0.126\sin \theta \end{bmatrix}
 \end{aligned}$$
+Calculating $\mathbf E \mathbf n$ for each of the directions:
+$$\begin{aligned}
+\mathbf E \mathbf n(68.86\degree)&= \begin{bmatrix}0.051\\
+0.136\end{bmatrix}\\
+\mathbf E \mathbf n(158.85\degree)&= \begin{bmatrix}0.020\\
+-0.001\end{bmatrix}\\
+\mathbf E \mathbf n(248.86\degree)&= \begin{bmatrix}-0.051\\
+-0.136\end{bmatrix}\\
+\mathbf E \mathbf n(338.86\degree)&= \begin{bmatrix}-0.020\\
+0.001\end{bmatrix}
+\end{aligned}$$
+I notice that $\mathbf E \mathbf n(68.86\degree)=-\mathbf E \mathbf n(248.86\degree)$, and $\mathbf E \mathbf n(158.85\degree)=-\mathbf E \mathbf n(338.85\degree)$, which makes sense since these are $180\degree$ apart from each other.
 
 ![[Pasted image 20241009121934.png|800]]
 Consider the endpoints of the material line, 
@@ -216,4 +231,76 @@ $$\begin{aligned}
 &= F_{ik}\frac{\text{ d} X_{k}}{\text{ d}s_{0}}.
 \end{aligned}$$
 Let the direction vector $\mathbf e=e_{i}\mathbf b_{i},$ where $\mathbf b_{i}$ are the basis vectors. The vector of the reference length in direction $e$ is
-$$\text{ d}\mathbf r_{0}=\mathbf e \text{ d}s_{0}=\mathbf e_{k}b_{k}\text{ d}X_{k}$$
+$$\text{ d}\mathbf r_{0}=\mathbf e \text{ d}s_{0}=\mathbf b_{k}\text{ d}X_{k},$$
+then
+$$\begin{aligned}
+e_{k}\text{ d}s_{0}&= \text{ d}X_{k}\\
+e_{k}&= \frac{\text{d}X_{k}}{\text{d}s_{0}}.
+\end{aligned}$$
+Substituting into the earlier equation, we get that
+$$\frac{\partial x_{i}}{\partial s_{0}}=F_{ik}e_{k},$$
+and 
+$$\begin{aligned}
+\frac{\text{d}s}{\text{d}s_{0}}&=  \sqrt{F_{ij}e_{j}F_{ik}e_{k}}\\
+&= \sqrt{\mathbf e^{T} (\mathbf F^{T}\mathbf F) \mathbf e}
+\end{aligned}$$
+Since
+$$\begin{aligned}
+\mathbf E&=  \frac{1}{2}(\mathbf F^{T}\mathbf F-\mathbf I)\\
+\mathbf F^{T}\mathbf F&= 2\mathbf E+\mathbf I,
+\end{aligned}$$
+we can rewrite this as
+$$\begin{aligned}
+\frac{\text{d}s}{\text{d}s_{0}}&= \sqrt{\mathbf e^{T}(2\mathbf E+\mathbf I)\mathbf e}\\
+&= \sqrt{\mathbf e^{T}e+2\mathbf e^{T}\mathbf E \mathbf e}\\
+&= \sqrt{1+2e_{i}E_{ij}e_{j}}.
+\end{aligned}$$
+So the stretch ratio is
+$$\lambda = \sqrt{1+2e_{i}E_{ij}e_{j}},$$
+and the longitudinal strain is 
+$$\begin{aligned}
+\epsilon &= \lambda -1\\
+&= \sqrt{1+2e_{i}E_{ij}e_{j}}-1.
+\end{aligned}$$
+
+![[Pasted image 20241014132626.png|800]]
+$$\epsilon =\sqrt{1+2e_{i}E_{ij}e_{j}}-1\tag{3}$$
+Trying direction $\mathbf e_{1}=\begin{bmatrix}1 & 0 & 0\end{bmatrix}^{T}$ first,
+$$\begin{aligned}
+\epsilon &= \sqrt{1+2E_{11}}-1,\\
+\lambda &= \sqrt{1+2E_{11}}.
+\end{aligned}$$
+We see that this generalizes to
+$$\begin{aligned}
+\epsilon _{k}&= \sqrt{1+2E_{kk}}-1\\
+\lambda  _{k}&= \sqrt{1+2E_{kk}}
+\end{aligned}$$
+![[Pasted image 20241014133153.png|800]]
+Since we have a sphere, the stresses must be equal in both directions: $\sigma _{1}=\sigma _{2}$, and the radiuses must also be equal: $r_{1}=r_{2}$. Then,
+$$\begin{aligned}
+\frac{\sigma }{r}+\frac{\sigma }{r}&= \frac{p}{t}\\
+\sigma &= \frac{r}{2t}p.
+\end{aligned}$$
+![[Pasted image 20241014133524.png|800]]
+$$\frac{\sigma _{z}}{r_{z}}+\frac{\sigma _{\theta }}{r_{\theta }}=\frac{p}{t}.$$
+If we assume that $r_{z}\gg r_{\theta}$, then $\frac{\sigma _{z}}{r_{z}}$ is negligible compared to $\frac{\sigma _{\theta }}{r_{\theta }}$. Then,
+$$\begin{aligned}
+\frac{\sigma _{\theta }}{r_{\theta }}&= \frac{p}{t}\\
+\sigma _{\theta }&= \frac{r_{\theta }}{t}p.
+\end{aligned}$$
+![[Pasted image 20241014134323.png|800]]
+![[IMG_514E57C1E805-1.jpeg|800]]
+From the figure, we see that
+$$\begin{aligned}
+F_{p}&= A_{p}p\\
+&= \pi (r-t)^{2}p
+\end{aligned}$$
+since $t\ll r$, we can approximate this as
+$$F_{p}=\pi r^{2}p.$$
+For $F_{z}$, we can approximate the crossection $A_{t}$ as $2\pi r \cdot t$, giving
+$$F_{z}=2\pi rt \sigma _{z}.$$
+Setting $F_{z}=F_{p}$ gives
+$$\begin{aligned}
+2\pi rt \sigma _{z}&= \pi r^{2}p\\
+\sigma _{z}&= \frac{r}{2t}p.
+\end{aligned}$$
