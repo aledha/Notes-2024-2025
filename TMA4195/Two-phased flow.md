@@ -133,7 +133,7 @@ q_{g}&= -\lambda _{g}kp_{x}\\
 \end{aligned}$$
 
 $$\phi u_{t}+q \left(\frac{\lambda _{g}(u)}{\lambda _{g}(u)+\lambda _{w}(u)} \right)_{x}=0$$
-This is hyperbolic with
+This is hyperbolic with (substituting back $\lambda _{g} (u) =\frac{k_{rw}(u)}{\mu _{g}}=\frac{u^{2}}{\mu _{g}}$)
 $$\begin{aligned}
 F(u)&= \frac{u^{2}/\mu _{g}}{u^{2} /\mu _{g}+(1-u)^{2}/\mu _{w}}\\
 &= \frac{u^{2}}{u^{2}+M (1-u)^{2}},
@@ -147,3 +147,32 @@ By elementary calculations,
 $$f(u)=\frac{2Mu(1-u)}{(u^{2}+M(1-u)^{2})^{2}}=F'(u)$$
 So $F'(0)=F'(1)=0$ and $F'(u)\ge0$. 
 
+The initial condition is 
+$$u(x,0)=\begin{cases}
+1 & \quad\text{for }x \le0, \\
+0 & \quad\text{for }x>0,
+\end{cases}$$
+because the well is initially filled with brine. This is a front with the velocity 
+$$v=\frac{F(u^{*})-F(0)}{u^{*}-0}.$$
+![[IMG_0350.jpg|400]]
+![[IMG_0349.jpg|400]]
+
+We want to find when the derivative matches the tangent, i.e., the equation
+$$\begin{aligned}
+\frac{F(u)-F(0)}{u-0}&= F'(u)\\
+	\frac{1}{u}\frac{u^{2}}{u^{2}+M(1-u)^{2}}&= \frac{2Mu(1-u)}{(u^{2}+M(1-u)^{2})^{2}}\\
+1&= \frac{2M(1-u)}{u^{2}+M(1-u)^{2}}\\
+u^{2}+M(1-u)^{2}&= 2M(1-u)\\
+	u^{*}&= \sqrt{\frac{M}{M+1}}
+\end{aligned}$$
+Then the velocity is
+$$\begin{aligned}
+V&= \frac{F(u^{*})-0}{u^{*}-0}\\
+\vdots \\
+&= \frac{1}{2(\sqrt{M(1+M)}-M)}q_{T}
+\end{aligned}$$
+What is the breakthrough time?
+$$\begin{aligned}
+VT_{b}&= L\\
+T_{b}&= \frac{L}{V}
+\end{aligned}$$
