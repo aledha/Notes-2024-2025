@@ -73,8 +73,25 @@ T_{31} & T_{32} & 0\end{bmatrix}-\frac{\nu }{\eta }(T_{11}+T_{22})\begin{bmatrix
 0 & 1 & 0\\
 0 & 0 & 1\end{bmatrix}
 \end{aligned}$$
+$$\begin{aligned}
+E_{ij}&= \frac{1+\nu }{\eta }T_{ij}-\frac{\nu }{\eta }T_{kk}\delta _{ij}\\
+E_{ij}+\frac{\nu }{\eta }T_{kk}\delta _{ij}&= \frac{1+\nu }{\eta }T_{ij}\\
+T_{ij}&= \frac{\eta }{1+\nu }\left(E_{ij}+\frac{\nu }{\eta }T_{kk}\delta _{ij} \right)\\
+T_{ij}&= \frac{\eta }{1+\nu }\left(E_{ij}+\frac{\nu }{\eta }(T_{11}+T_{22})\delta _{ij} \right).
+\end{aligned}$$
+Using equation $(4)$ for $T_{11}$,
+$$\begin{aligned}
+T_{11}&= \frac{\eta }{1+\nu }\left(E_{11}+\frac{\eta }{1-2\nu }(E_{11}+E_{22}+E_{33}) \right)\\
+&= \frac{\eta }{1+\nu }E_{11}+\frac{\eta^{2} }{(1+\nu )(1-2\nu )}(E_{11}+E_{22}+E_{33})
+\end{aligned}$$
+
+
 
 ---
 ![[Pasted image 20241015154535.png|800]]
 Stress power is deformation work per unit time. In an elastic material, the energy is stored in the deformation of the material, while in inelastic materials, it may be partly transferred into heat energy.
 ![[Pasted image 20241015155421.png|800]]
+
+![[Pasted image 20241016132055.png[800]]]
+
+![[Pasted image 20241016132104.png|800]]
