@@ -79,10 +79,19 @@ E_{ij}+\frac{\nu }{\eta }T_{kk}\delta _{ij}&= \frac{1+\nu }{\eta }T_{ij}\\
 T_{ij}&= \frac{\eta }{1+\nu }\left(E_{ij}+\frac{\nu }{\eta }T_{kk}\delta _{ij} \right)\\
 T_{ij}&= \frac{\eta }{1+\nu }\left(E_{ij}+\frac{\nu }{\eta }(T_{11}+T_{22})\delta _{ij} \right).
 \end{aligned}$$
-Using equation $(4)$ for $T_{11}$,
+
 $$\begin{aligned}
-T_{11}&= \frac{\eta }{1+\nu }\left(E_{11}+\frac{\eta }{1-2\nu }(E_{11}+E_{22}+E_{33}) \right)\\
-&= \frac{\eta }{1+\nu }E_{11}+\frac{\eta^{2} }{(1+\nu )(1-2\nu )}(E_{11}+E_{22}+E_{33})
+E_{11}&= \frac{1+\nu }{\eta }T_{11}-\frac{\nu }{\eta }(T_{11}+T_{22})\\
+E_{11}+E_{22}&= \frac{1+\nu }{\eta }(T_{11}+T_{22})-\frac{2\nu }{\eta }(T_{11}+T_{22})\\
+&= \frac{1-\nu }{\eta }(T_{11}+T_{22})\\
+T_{11}+T_{22}&= \frac{\eta }{1-\nu }(E_{11}+E_{22})
+\end{aligned}$$
+
+Then,
+$$\begin{aligned}
+T_{ij}&= \frac{\eta }{1+\nu }\left(E_{ij}+\frac{\nu}{\eta }\frac{\eta }{1-\nu }(E_{11}+E_{22}) \right)\\
+&= \frac{\eta }{1+\nu }\left(E_{ij}+\frac{\nu }{1-\nu } (E_{11}+E_{22})\right)\\
+T_{\alpha \beta}&= \frac{\eta }{1+\nu }\left(E_{\alpha \beta}+\frac{\nu }{1-\nu } E_{\rho \rho }\right)
 \end{aligned}$$
 
 
@@ -92,6 +101,6 @@ T_{11}&= \frac{\eta }{1+\nu }\left(E_{11}+\frac{\eta }{1-2\nu }(E_{11}+E_{22}+E_
 Stress power is deformation work per unit time. In an elastic material, the energy is stored in the deformation of the material, while in inelastic materials, it may be partly transferred into heat energy.
 ![[Pasted image 20241015155421.png|800]]
 
-![[Pasted image 20241016132055.png[800]]]
+![[Pasted image 20241016132055.png|800]]
 
 ![[Pasted image 20241016132104.png|800]]
