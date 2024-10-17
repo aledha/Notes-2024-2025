@@ -72,7 +72,7 @@ $$
 	$$
 \begin{aligned}
 \frac{\partial v}{\partial t}&= -I_{\text{ion}}(v,s),\\
-\frac{\partial s}{\partial t}&= f(v,s,t),
+\frac{\partial s}{\partial t}&= f(v,s),
 \end{aligned}
 $$
 	for $t_{n}+\theta \Delta t <t \le t_{n}+\Delta t$ with the initial conditions $v(t_{n}+\theta \Delta t)=v_{\theta }^{n+1}$ and $s(t_{n}+\theta \Delta t)=s^{n}_{\theta }$.
