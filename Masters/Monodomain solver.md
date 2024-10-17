@@ -24,7 +24,6 @@ $$\nabla ^{2}v = -8\pi ^{2}\cos (2\pi x)\cos (2\pi y)\sin t,$$
 and
 $$\frac{\partial v}{\partial t}=\cos (2\pi x)\cos (2\pi y)\cos t.$$
 
-
 Let 
 $$\begin{aligned}
 \frac{\partial s}{\partial t}&= f(v)=v\\
@@ -42,7 +41,10 @@ I_\text{ion}&= s\\
 &= -\cos (2\pi x)\cos (2\pi y)\cos t
 \end{aligned}$$
 such that
-$$I_\text{stim}=\frac{8\pi ^{2}\lambda }{1+\lambda }\cos (2\pi x)\cos (2\pi y)\sin t.$$
+$$\begin{aligned}
+I_\text{stim}&= I_{\text{ion}}+\left(\frac{8\pi ^{2}\lambda }{1+\lambda }\sin t + \cos t\right) \cos (2\pi x)\cos (2\pi y)\\
+&= \frac{8\pi ^{2}\lambda }{1+\lambda }\cos (2\pi x)\cos (2\pi y)\sin t
+\end{aligned}$$
 
 With the initial conditions
 $$\begin{aligned}
