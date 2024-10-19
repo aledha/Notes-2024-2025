@@ -63,16 +63,7 @@ $$\mathbf E= \frac{1+\nu }{\eta }\mathbf T-\frac{\nu }{\eta }\text{tr}(\mathbf T
 or in index notation as
 $$E_{ij}=\frac{1+\nu }{\eta }T_{ij}-\frac{\nu }{\eta }T_{kk}\delta _{ij}.$$
 ![[Pasted image 20241014164810.png|800]]
-$$T_{ij}=\frac{\eta }{1+\nu }\left(E_{ij}+\frac{\eta }{1-2\nu }E_{kk}\delta _{ij} \right)\tag{4}$$
-First, we find an expression for $E_{ij}$ given the plane stress conditions:
-$$\begin{aligned}
-\mathbf E&=  \frac{1+\nu }{\eta }\mathbf T-\frac{\nu }{\eta }\text{tr}(\mathbf T) \mathbf I\\
-&= \frac{1+\nu }{\eta }\begin{bmatrix}T_{11} & T_{12} & 0\\
-T_{21} & T_{22} & 0\\
-T_{31} & T_{32} & 0\end{bmatrix}-\frac{\nu }{\eta }(T_{11}+T_{22})\begin{bmatrix}1 & 0 & 0\\
-0 & 1 & 0\\
-0 & 0 & 1\end{bmatrix}
-\end{aligned}$$
+Using the result from the previous task,
 $$\begin{aligned}
 E_{ij}&= \frac{1+\nu }{\eta }T_{ij}-\frac{\nu }{\eta }T_{kk}\delta _{ij}\\
 E_{ij}+\frac{\nu }{\eta }T_{kk}\delta _{ij}&= \frac{1+\nu }{\eta }T_{ij}\\
