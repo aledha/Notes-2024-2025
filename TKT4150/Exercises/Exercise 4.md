@@ -63,6 +63,8 @@ $$\mathbf E= \frac{1+\nu }{\eta }\mathbf T-\frac{\nu }{\eta }\text{tr}(\mathbf T
 or in index notation as
 $$E_{ij}=\frac{1+\nu }{\eta }T_{ij}-\frac{\nu }{\eta }T_{kk}\delta _{ij}.$$
 ![[Pasted image 20241014164810.png|800]]
+$$T_{ij}=\frac{\eta }{1+\nu }\left(E_{ij}+\frac{\nu }{1-2\nu }E_{kk}\delta _{ij} \right)\tag{4}$$
+
 Using the result from the previous task,
 $$\begin{aligned}
 E_{ij}&= \frac{1+\nu }{\eta }T_{ij}-\frac{\nu }{\eta }T_{kk}\delta _{ij}\\
@@ -85,8 +87,19 @@ T_{ij}&= \frac{\eta }{1+\nu }\left(E_{ij}+\frac{\nu}{\eta }\frac{\eta }{1-\nu }(
 T_{\alpha \beta}&= \frac{\eta }{1+\nu }\left(E_{\alpha \beta}+\frac{\nu }{1-\nu } E_{\rho \rho }\right)
 \end{aligned}$$
 
-
-
+---
+![[Pasted image 20241019221251.png|800]]
+Using equation $(4)$,
+$$\begin{aligned}
+T_{ij}&= \frac{\eta }{1+\nu }\left(E_{ij}+\frac{\nu }{1-2\nu }E_{kk}\delta _{ij} \right)\\
+T_{ij,j}&= \frac{\eta }{1+\nu }\left(E_{ij,j}+\frac{\nu }{1-2\nu }E_{kk,j}\delta _{ij} \right).
+\end{aligned}$$
+Substituting into the Cauchy equations, we get
+$$\begin{aligned}
+\frac{\eta }{1+\nu }\left(E_{ij,j}+\frac{\nu }{1-2\nu }E_{kk,j}\delta _{ij} \right)+ \rho b_{i}&= \rho \ddot u_{i}\\
+\frac{\eta }{1+\nu }\left(\frac{1}{2}(u_{i,j}+u_{j,i})_{j}+\frac{\nu }{1-2\nu }\frac{1}{2}(u_{k,k}+u_{k,k})_{j}\delta _{ij} \right)+ \rho b_{i}&= \rho \ddot u_{i}\\
+\frac{\eta }{1+\nu }\left(\frac{1}{2}(u_{i,jj}+u_{j,ij})+\frac{\nu }{1-2\nu }u_{k,kj}\delta _{ij} \right)+ \rho b_{i}&= \rho \ddot u_{i}
+\end{aligned}$$
 ---
 ![[Pasted image 20241015154535.png|800]]
 Stress power is deformation work per unit time. In an elastic material, the energy is stored in the deformation of the material, while in inelastic materials, it may be partly transferred into heat energy.
