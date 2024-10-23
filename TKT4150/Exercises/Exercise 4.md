@@ -98,8 +98,18 @@ Substituting into the Cauchy equations, we get
 $$\begin{aligned}
 \frac{\eta }{1+\nu }\left(E_{ij,j}+\frac{\nu }{1-2\nu }E_{kk,j}\delta _{ij} \right)+ \rho b_{i}&= \rho \ddot u_{i}\\
 \frac{\eta }{1+\nu }\left(\frac{1}{2}(u_{i,j}+u_{j,i})_{j}+\frac{\nu }{1-2\nu }\frac{1}{2}(u_{k,k}+u_{k,k})_{j}\delta _{ij} \right)+ \rho b_{i}&= \rho \ddot u_{i}\\
-\frac{\eta }{1+\nu }\left(\frac{1}{2}(u_{i,jj}+u_{j,ij})+\frac{\nu }{1-2\nu }u_{k,kj}\delta _{ij} \right)+ \rho b_{i}&= \rho \ddot u_{i}
+\frac{\eta }{1+\nu }\left(\frac{1}{2}(u_{i,jj}+u_{j,ij})+\frac{\nu }{1-2\nu }u_{k,kj}\delta _{ij} \right)+ \rho b_{i}&= \rho \ddot u_{i}\\
+\frac{\eta }{1+\nu }\left(\frac{1}{2}(u_{i,jj}+u_{j,ij})+\frac{\nu }{1-2\nu }u_{k,kj}\delta _{ij} \right)&= \rho (\ddot u_{i}-b_{i})\\
+\frac{1}{2}(u_{i,jj}+u_{j,ij})+\frac{\nu }{1-2\nu }u_{k,kj}\delta _{ij} &= \frac{1+\nu }{\eta }\rho (\ddot u_{i}-b_{i})\\
+\frac{1}{2}(u_{i,jj}+u_{j,ij})+\frac{\nu }{1-2\nu }u_{k,ki} &= \frac{1+\nu }{\eta }\rho (\ddot u_{i}-b_{i})\\
+\frac{1}{2}(u_{i,jj}+u_{j,ij})+\frac{\nu }{1-2\nu }u_{j,ji} &= \frac{1+\nu }{\eta }\rho (\ddot u_{i}-b_{i})\\
+u_{i,jj}+u_{j,ij}+\frac{2\nu }{1-2\nu }u_{j,ji} &= \frac{2+2\nu }{\eta }\rho (\ddot u_{i}-b_{i})\\
+u_{i,jj}+\frac{1-2\nu +2\nu }{1-2\nu }u_{j,ji} &= \frac{2+2\nu }{\eta }\rho (\ddot u_{i}-b_{i})\\
+u_{i,jj}+\frac{1 }{1-2\nu }u_{j,ji} &= \frac{2+2\nu }{\eta }\rho (\ddot u_{i}-b_{i})
 \end{aligned}$$
+
+
+
 ---
 ![[Pasted image 20241015154535.png|800]]
 Stress power is deformation work per unit time. In an elastic material, the energy is stored in the deformation of the material, while in inelastic materials, it may be partly transferred into heat energy.
