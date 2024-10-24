@@ -19,10 +19,26 @@ Due to incompressibility, we have that $\det F=\lambda _{1}\lambda _{2}\lambda _
 $$\mathbf F= \begin{bmatrix}\lambda _{1} & 0 & 0\\
 0 & \lambda _{2} & 0\\
 0 & 0 & \frac{1}{\lambda _{1}\lambda _{2}}\end{bmatrix}$$
+The right Cauchy-Green tensor
+$$\begin{aligned}
+\mathbf C &= \mathbf F ^{T}\mathbf F\\
+&= \begin{bmatrix}\lambda _{1}^{2} & 0 & 0\\
+0 & \lambda _{2}^{2} & 0\\
+0 & 0 & \frac{1}{(\lambda _{1}\lambda _{2})^{2}}\end{bmatrix}
+\end{aligned}$$
+And the left Cauchy-Green tensor
+$$\begin{aligned}
+\mathbf b &=  \mathbf F \mathbf F^{T}\\
+&= \begin{bmatrix}\lambda _{1}^{2} & 0 & 0\\
+0 & \lambda _{2}^{2} & 0\\
+0 & 0 & \frac{1}{(\lambda _{1}\lambda _{2})^{2}}\end{bmatrix}
+\end{aligned}$$
+
 ![[Pasted image 20241016132945.png|800]]
 $$\begin{aligned}
 \sigma &= \frac{1}{J}\mathbf F \mathbf S \mathbf F^{T}\\
 &= \mathbf F(2c_{1}\mathbf I-p \mathbf C^{-1})\mathbf F^{T}\\
+&= 2c_{1}\mathbf F \mathbf F^{T}-p \mathbf F(\mathbf F^{T}\mathbf F)^{-1}\mathbf F^{T}\\
 &= 2c_{1}\mathbf b-p \mathbf I
 \end{aligned}$$
 ![[Pasted image 20241016132953.png|800]]
