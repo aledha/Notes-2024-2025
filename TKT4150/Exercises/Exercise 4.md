@@ -112,9 +112,29 @@ u_{i,jj}+\frac{1 }{1-2\nu }u_{j,ji} &= \frac{2+2\nu }{\eta }\rho (\ddot u_{i}-b_
 
 ---
 ![[Pasted image 20241015154535.png|800]]
-Stress power is deformation work per unit time. In an elastic material, the energy is stored in the deformation of the material, while in inelastic materials, it may be partly transferred into heat energy.
+Stress power is deformation work per unit time. In an elastic material, the energy is stored in the deformation of the material, while in inelastic materials, it may be partly transferred into heat energy. Equation (4.73) from the compendium says that
+$$\omega =T_{ij}D_{ij} \tag{4.73}$$
 ![[Pasted image 20241015155421.png|800]]
+Using equation (4.73),
+$$\omega =\frac{\partial \phi }{\partial E_{ij}}D_{ij},$$
+where $\dot {\mathbf E}=\mathbf D$, so
+$$\omega = \frac{\partial \phi }{\partial E_{ij}}\dot E_{ij}$$
+
 
 ![[Pasted image 20241016132055.png|800]]
+The first Piola-Kirchoff stress $\mathbf T_{0}$ is can be related to the Cauchy stress tensor $\mathbf T$ as
+$$\mathbf T_{0}=J \mathbf T \mathbf F^{-T},\tag{4.98}$$
+where $J=\det \mathbf F$.
+The second Piola-Kirchoff stress tensor $\mathbf S$ can be related as
+$$\begin{aligned}
+\mathbf S&= \mathbf F^{-1}\mathbf T_{0}\\
+&= J\mathbf F^{-1} \mathbf T \mathbf F^{-T}\\
+\end{aligned}\tag{4.99}$$
 
 ![[Pasted image 20241016132104.png|800]]
+$$\begin{aligned}
+\mathbf S^{T}&= \left(J \mathbf F^{-1}\mathbf T \mathbf F^{-T} \right)^{T}\\
+&= J \mathbf F^{-1}\mathbf T^{T}\mathbf F^{-T}\\
+&= J\mathbf F^{-1}\mathbf T\mathbf F^{-T}\\
+&= \mathbf S.
+\end{aligned}$$
