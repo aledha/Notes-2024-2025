@@ -17,11 +17,46 @@ I_{4}&= a_{0i}C_{ij}a_{0j}\\
 &= a_{0k} a_{0l}\\
 &= \mathbf a_{0}\otimes \mathbf a_{0}
 \end{aligned}$$
-Substituting
+Since the material is incompressible, $J=\det F=\lambda _{1}\lambda _{2}=1$, and $\lambda _{2}=\frac{1}{\lambda _{1}}$. Substituting:
 $$\begin{aligned}
 \mathbf S&= 2\left(\frac{\partial \Psi }{\partial I_{1}} \mathbf I+\frac{\partial \Psi }{\partial I_{4}} \mathbf a_{0}\otimes \mathbf a_{0}+\frac{\partial \Psi }{\partial J}\frac{1}{2}J \mathbf C^{-1}\right)\\
 &= 2c_{1}\mathbf I+\left[8k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}) \right]a_{0}\otimes a_{0}-pC^{-1}
 \end{aligned}$$
+The stress matrix is
+$$\begin{aligned}
+\sigma &= \frac{1}{J}\mathbf F \mathbf S \mathbf F^{T}\\
+&= \mathbf F \left(2c_{1}\mathbf I+\left[8k_{1}(I_{4}-1)\cdot \exp((k_{2}(I_{4}-1)^{2})) \right]\mathbf a_{0}\otimes \mathbf a_{0}-pC^{-1} \right)\mathbf F^{T}\\
+&= 2c_{1}\mathbf b+\left[8k_{1}(I_{4}-1)\cdot \exp((k_{2}(I_{4}-1)^{2})) \right]\mathbf F \mathbf a_{0}\otimes \mathbf a_{0} \mathbf F^{T}-p \mathbf I\\
+&=  2c_{1}\mathbf b+\left[8k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}) \right]\mathbf a \otimes \mathbf a-p \mathbf I
+\end{aligned}$$
+Setting up expressions for $\mathbf F, \mathbf b,\mathbf a \otimes \mathbf a$:
+$$\begin{aligned}
+\mathbf F&= \begin{bmatrix}\lambda _{1} & 0\\
+0 & \lambda _{2}\end{bmatrix}\\
+&= \begin{bmatrix}\lambda _{1} & 0\\
+0 & \frac{1}{\lambda _{1}}\end{bmatrix}\\
+\mathbf b &= \mathbf F \mathbf F^{T}\\
+&= \begin{bmatrix}\lambda _{1}^{2} & 0\\
+0 & \frac{1}{\lambda _{1}^{2}}\end{bmatrix}\\
+\mathbf a \otimes \mathbf a&= \mathbf F \mathbf a_{0}\otimes \mathbf F \mathbf a_{0}\\
+&= \begin{bmatrix}\lambda _{1} & 0\\
+0 & \frac{1}{\lambda _{1}}\end{bmatrix}\begin{bmatrix}1\\
+0\end{bmatrix}\otimes \begin{bmatrix}\lambda _{1} & 0\\
+0 & \frac{1}{\lambda _{1}}\end{bmatrix}\begin{bmatrix}1\\
+0\end{bmatrix}\\
+&= \begin{bmatrix}\lambda _{1} \\
+0\end{bmatrix}\otimes \begin{bmatrix}\lambda _{1}\\
+0\end{bmatrix}\\
+&= \begin{bmatrix}\lambda _{1}^{2} & 0\\
+0 & 0\end{bmatrix}
+\end{aligned}$$
+Substituting into the stress matrix equation:
+$$\begin{aligned}
+\begin{bmatrix}\sigma _{1} & 0\\
+0 & \sigma _{2}\end{bmatrix}&= 2c_{1}\begin{bmatrix}\lambda _{1} ^{2} & 0\\
+0 & \frac{1}{\lambda _{1}^{2}}\end{bmatrix}+\left[8k_{1}(I_{4}-1)\cdot \exp() \right]
+\end{aligned}$$
+
 
 
 ![[Pasted image 20241025154856.png|700]]
