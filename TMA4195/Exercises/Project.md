@@ -15,3 +15,14 @@ $$\frac{\partial }{\partial t}\iiint_{\Omega }c\rho T \text{ d}V=\iiint_{\Omega 
 Since $\Omega$ is arbitrary, this can be written equivalently in differential form:
 $$\frac{\partial }{\partial t}(c \rho T)= \nabla \cdot (k \nabla T)+q.$$
 
+![[Pasted image 20241030122021.png]]
+![[Pasted image 20241030122031.png]]
+![[Pasted image 20241030122047.png]]
+
+$$\begin{aligned}
+-D \frac{\partial }{\partial x}\left(\left(1-x^{2} \right)\frac{\partial }{\partial x} \left(\sum_{n=1}^{\infty}T_{n}P_{n}(x) \right) \right)&= -I(x)+QS(x)a(x,x_{s})\\
+-D\sum_{n=1}^{\infty}T_{n} \frac{\partial }{\partial x}\left(\left(1-x^{2} \right)\frac{\partial P_{n}(x) }{\partial x}  \right)&= -I(x)+QS(x)a(x,x_{s})\\
+-D\sum_{n=1}^{\infty}T_{n} ((1-x^{2})P_{n}')' &= -I(x)+QS(x)a(x,x_{s})\\
+-D\sum_{n=1}^{\infty}T_{n} (-n(n+1))P_{n} &= -I(x)+QS(x)a(x,x_{s})\\
+D\sum_{n=1}^{\infty}T_{n} n(n+1)P_{n} &= -I(x)+QS(x)a(x,x_{s})
+\end{aligned}$$
