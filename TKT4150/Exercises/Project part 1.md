@@ -339,13 +339,20 @@ $$\begin{aligned}
 
 
 ![[Pasted image 20241025155145.png|700]]
-$$\Psi (I_{1},J,I_{4_{1}}^{*},I_{4_{2}}^{*})=\frac{c}{2}(I_{1}-3)+\frac{k_{1}}{2k_{2}}\sum_{i=1,2}^{}\left(\exp \left[k_{2}(I_{4_{i}}^{*}-1)^{2} \right] -1\right)$$
+$$\Psi (I_{1},J,I_{4_{1}}^{*},I_{4_{2}}^{*})=\frac{c}{2}(I_{1}-3)+\frac{k_{1}}{2k_{2}}\sum_{i=1,2}^{}\left(\exp \left[k_{2}(I_{4_{i}}^{*}-1)^{2} \right] -1\right)+p(J-1)$$
 $$\Psi  (I_{1},J,I_{4_{1}},I_{4_{2}})=\frac{c}{2}(I_{1}-3)+\frac{k_{1}}{2k_{2}}\sum_{i=1,2}\left(\exp(k_{2}(I_{4_{i}}-1)^{2}-1) \right)+p(J-1)$$
 The second Piola-Kirchoff stress is still
+$$
+\mathbf S= 2\left(\frac{\partial \Psi }{\partial J}\frac{\partial J}{\partial \mathbf C}+\frac{\partial \Psi }{\partial I_{1}}\frac{\partial I_{1}}{\partial \mathbf C}+\frac{\partial \Psi }{\partial I^{*}_{4_{1}}}\frac{\partial I^{*}_{4_{1}}}{\partial \mathbf C} +\frac{\partial \Psi }{\partial I^{*}_{4_{2}}}\frac{\partial I^{*}_{4_{2}}}{\partial \mathbf C} \right),
+$$
+and the Cauchy Stress tensor is
+$$\mathbf \sigma =\frac{1}{J}\left(2\mathbf F\frac{\partial \Psi }{\partial J}\frac{\partial J}{\partial \mathbf C}\mathbf F^{T}+2\mathbf F\frac{\partial \Psi }{\partial I_{1}}\frac{\partial I_{1}}{\partial \mathbf C}\mathbf F^{T}+2\mathbf F\frac{\partial \Psi }{\partial I_{4_{1}}^{*}}\frac{\partial I_{4_{1}}^{*}}{\partial \mathbf C}\mathbf F^{T} +2\mathbf F\frac{\partial \Psi }{\partial I_{4_{2}}^{*}}\frac{\partial I_{4_{2}}^{*}}{\partial \mathbf C}\mathbf F^{T} \right)$$
+We need to calculate $\frac{\partial \Psi }{\partial I_{1}},\frac{\partial \Psi }{\partial I_{4_{1}}^{*}}$ and $\frac{\partial \Psi }{\partial I_{4_{2}}^{*}}$:
 $$\begin{aligned}
-\mathbf S&= 2\left(\frac{\partial \Psi }{\partial J}\frac{\partial J}{\partial \mathbf C}+\frac{\partial \Psi }{\partial I_{1}}\frac{\partial I_{1}}{\partial \mathbf C}+\frac{\partial \Psi }{\partial I^{*}_{4_{1}}}\frac{\partial I^{*}_{4_{1}}}{\partial \mathbf C} +\frac{\partial \Psi }{\partial I^{*}_{4_{2}}}\frac{\partial I^{*}_{4_{2}}}{\partial \mathbf C} \right)
+\frac{\partial \Psi }{\partial I_{1}}&= \frac{c}{2}+\sum_{i=1,2}^{}\frac{k_{1}}{2k_{2}}\cdot 2k_{2}f(I_{1},I_{4_{i}})\frac{\partial f(I_{1},I_{4_{i}})}{\partial I_{1}}\exp[k_{2}(f(I_{1},I_{4_{i}})^{2})-1]\\
+&= \frac{c}{2}+\sum_{i=1,2}^{}k_{1}\kappa f(I_{1},I_{4_{i}})\exp[k_{2}(f(I_{1},I_{4_{i}})^{2})-1]\\
+\frac{\partial \Psi }{\partial I_{4_{i}}}&= \frac{k_{1}}{2k_{2}}2k_{2}f(I_{1},I_{4_{i}})\frac{\partial f(I_{1},I_{4_{i}})}{\partial I_{4_{i}}}\exp[k_{2}(f(I_{1},I_{4_{i}})^{2})-1]\\
+&= k_{1}(1-3\kappa )f(I_{1},I_{4_{i}})\exp[k_{2}(f(I_{1},I_{4_{i}})^{2})-1].
 \end{aligned}$$
-The following terms are the same as before:
-
 
 ![[Pasted image 20241025155246.png|700]]
