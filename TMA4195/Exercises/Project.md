@@ -24,5 +24,7 @@ $$\begin{aligned}
 -D\sum_{n=1}^{\infty}T_{n} \frac{\partial }{\partial x}\left(\left(1-x^{2} \right)\frac{\partial P_{n}(x) }{\partial x}  \right)&= -I(x)+QS(x)a(x,x_{s})\\
 -D\sum_{n=1}^{\infty}T_{n} ((1-x^{2})P_{n}')' &= -I(x)+QS(x)a(x,x_{s})\\
 -D\sum_{n=1}^{\infty}T_{n} (-n(n+1))P_{n} &= -I(x)+QS(x)a(x,x_{s})\\
-D\sum_{n=1}^{\infty}T_{n} n(n+1)P_{n} &= -I(x)+QS(x)a(x,x_{s})
+D\sum_{n=1}^{\infty}T_{n} n(n+1)P_{n} &= -I(x)+QS(x)a(x,x_{s})\\
+Q(x_{s})&= \frac{I(x)+D\sum_{n=1}^{\infty}T_{n} n(n+1)P_{n}}{S(x)a(x,x_{s})}
 \end{aligned}$$
+
