@@ -28,7 +28,7 @@ D\sum_{n=0}^{\infty}T_{n} n(n+1)P_{n}(x) &= -I(x)+QS(x)a(x,x_{s})\\
 D\sum_{n=0}^{\infty}T_{n} n(n+1)P_{n}(x) &= B_{\text{out}}T(x)+A_{\text{out}}+QS(x)a(x,x_{s})\\
 D\sum_{n=0}^{\infty}\left[n(n+1)T_{n}P_{n}(x)-B_{\text{out}}T_{n}P_{n}(x) \right] &= A_{\text{out}}+QS(x)a(x,x_{s})
 \end{aligned}$$
-The general Lagrange equation with $\mu =0$ is 
+The general Legendre equation with $\mu =0$ is 
 $$\begin{aligned}
 (1-x^{2})P''(x)-2xP'(x)+\left[\lambda (\lambda +1)-\frac{\mu ^{2}}{1-x^{2}} \right]P(x)&= 0\\
 (1-x^{2})P_{n}''(x)-2xP_{n}'(x)&= -n (n +1)P_{n}(x)
@@ -36,9 +36,22 @@ $$\begin{aligned}
 Then,
 $$\begin{aligned}
 D\sum_{n=0}^{\infty}\left[-(1-x^{2})T_{n}P_{n}''(x)+2xT_{n}P_{n}'(x)-B_{\text{out}}T_{n}P_{n}(x) \right] &= A_{\text{out}}+QS(x)a(x,x_{s})\\
--D \left[(1-x^{2})T''(x)-2xT'(x)+B_{\text{out}}T(x) \right]&= A_{\text{out}}+QS(x)a(x,x_{s})
+-D \left[(1-x^{2})T''(x)-2xT'(x)+B_{\text{out}}T(x) \right]&= A_{\text{out}}+QS(x)a(x,x_{s})\\
+((1-x^{2})T'(x))'+B_{\text{out}}T(x) &= -\frac{A_{\text{out}}}{D}-\frac{Q}{D}S(x)a(x,x_{s})
 \end{aligned}$$
+We postulate that
+$$\begin{aligned}
+((1-x^{2})T'(x))'&= -\frac{A_{\text{out}}}{D},\\
+B_{\text{out}}T(x)&= -\frac{Q}{D}S(x)a(x,x_{s})
+\end{aligned}$$
+Solving the differential equation: 
 
+$$\begin{aligned}
+\int \frac{\text{d}}{\text{dx}}\left((1-x^{2})\frac{\text{d}T(x)}{\text{d}x} \right)\text{ d}x&= \int- \frac{A_{\text{out}}}{D}\text{ d}x\\
+(1-x^{2})\frac{\text{d}T(x)}{\text{d}x}&= -\frac{A_{\text{out}}}{D}x+C_{1}\\
+\frac{\text{d}T(x)}{\text{d}x}&= -\frac{\frac{A_{\text{out}}}{D}x+C_{1}}{1-x^{2}}\\
+T(x)&= \int-\frac{\frac{A_{\text{out}}}{D}x+C_{1}}{1-x^{2}} \text{ d}x
+\end{aligned}$$
 
 
 
