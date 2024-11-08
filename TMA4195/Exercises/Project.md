@@ -31,21 +31,47 @@ $$\begin{aligned}
 -D\frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial y_{i}(x)}{\partial x}\right)+B_{\text{out}}y_{i}(x)&= 0\quad\text{for }i=1,2.
 \end{aligned}$$
 
-
+https://www.iitg.ac.in/shyamashree/Lecture16-2016.pdf
 
 ### inserting sum into hom. eq.
+
+$$\begin{aligned}
+-D(1-x^{2})y''(x)-2xy'(x)+B_{\text{out}}y(x)&= 0\\
+-Dy''(x)-\frac{2x}{1-x^{2}}y'(x)+\frac{B_{\text{out}}}{1-x^{2}}y(x)&= 0
+\end{aligned}$$
 Let $y(x)=\sum_{n=0}^{\infty}\alpha _{n}x^{n}$. Then, the homogenous equations becomes
 $$\begin{aligned}
--D\frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial }{\partial x} \left(\sum_{n=0}^{\infty}\alpha _{n}x^{n} \right)\right)+B_{\text{out}}\sum_{n=0}^{\infty}\alpha _{n}x^{n}&= 0\\
-\sum_{n=0}^{\infty}\alpha _{n}\left[-D \frac{\partial }{\partial x} \left((1-x^{2})\frac{1}{n}x^{n-1} \right)+B_{\text{out}}x^{n} \right]&= 0\\
-\sum_{n=0}^{\infty}\alpha _{n}\left[-\frac{D}{n} \frac{\partial }{\partial x} \left(x^{n-1}-x^{n+1}\right)+B_{\text{out}}x^{n} \right]&= 0\\
-\sum_{n=0}^{\infty}\alpha _{n}\left[-\frac{D}{n} \left(\frac{1}{n-1}x^{n-2}-\frac{1}{n+1}x^{n} \right)+B_{\text{out}}x^{n} \right]&= 0\\
-\sum_{n=0}^{\infty}\alpha _{n}\left[-\frac{D}{n} \left(\frac{(n+1)x^{n-2}}{(n-1)(n+1)}-\frac{(n-1)x^{n}}{(n-1)(n+1)} \right)+\frac{n(n-1)(n+1)}{n(n-1)(n+1)}B_{\text{out}}x^{n} \right]&= 0\\
-\sum_{n=0}^{\infty}\alpha _{n} \left[\frac{-D(n+1)x^{n-2}+(D(n-1)+B_{\text{out}}n(n^{2}-1))x^{n}}{n(n^{2}-1)} \right]&= 0
+-D(1-x^{2})y''(x)-2xy'(x)+B_{\text{out}}y(x)&= 0\\
+-D(1-x^{2})\frac{\partial ^{2}}{\partial x^{2}}\left(\sum_{n=0}^{\infty}\alpha _{n}x^{n} \right)-2x \frac{\partial }{\partial x}\left(\sum_{n=0}^{\infty}\alpha _{n}x^{n} \right)+B_{\text{out}}\sum_{n=0}^{\infty}\alpha _{n}x^{n}&= 0\\
+-D(1-x^{2})\sum_{n=2}^{\infty}\alpha _{n}\frac{1}{n(n-1)}x^{n-2}-2x \sum_{n=1}^{\infty}\alpha _{n}\frac{1}{n}x^{n-1}+B_{\text{out}}\sum_{n=0}^{\infty}\alpha _{n}x^{n}&= 0\\
+-D(1-x^{2})\sum_{n=0}^{\infty}\alpha _{n+2}\frac{1}{(n+2)(n+1)}x^{n}-2x \sum_{n=0}^{\infty}\alpha _{n+1}\frac{1}{n+1}x^{n}+B_{\text{out}}\sum_{n=0}^{\infty}\alpha _{n}x^{n}&= 0\\
+\sum_{n=0}^{\infty}\left[-D(1-x^{2})\frac{\alpha _{n+2}}{(n+2)(n+1)}-2x \frac{\alpha _{n+1}}{n+1}+B_{\text{out}}\alpha _{n} \right]x^{n}&= 0
+\end{aligned}$$
+Since $\frac{1}{1-x^{2}}=\sum_{n=0}^{\infty}x^{2n}$ for $\lvert x \rvert<1$, 
+$$\begin{aligned}
+\sum_{n=0}^{\infty}\left[-D\frac{\alpha _{n+2}}{(n+2)(n+1)}-\frac{2x}{1-x^{2}} \frac{\alpha _{n+1}}{n+1}+\frac{B_{\text{out}}}{1-x^{2}}\alpha _{n} \right]x^{n}&= 0
+\end{aligned}$$
+
+This equation must be valid for $x=0$, where only the summand $n=0$ contribute to the sum:
+$$\begin{aligned}
+\sum_{n=0}^{\infty}\left[-D(1-0)\frac{\alpha _{n+2}}{(n+2)(n+1)}-2 \cdot 0\cdot  \frac{\alpha _{n+1}}{n+1}+B_{\text{out}}\alpha _{n} \right]0^{n}&= 0\\
+-D\frac{\alpha _{2}}{2}+B_{\text{out}}\alpha _{0}&= 0
+\end{aligned}$$
+Setting $x=1$:
+$$\begin{aligned}
+\sum_{n=0}^{\infty}\left[-D(1-1^{2})\frac{\alpha _{n+2}}{(n+2)(n+1)}-2 \frac{\alpha _{n+1}}{n+1}+B_{\text{out}}\alpha _{n} \right]1^{n}&= 0\\
+\sum_{n=0}^{\infty}\left[-2 \frac{\alpha _{n+1}}{n+1}+B_{\text{out}}\alpha _{n} \right]&= 0 
 \end{aligned}$$
 
 
 
+$$\begin{aligned}
+-D\frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial }{\partial x} \left(\sum_{n=0}^{\infty}\alpha _{n}x^{n} \right)\right)+B_{\text{out}}\sum_{n=0}^{\infty}\alpha _{n}x^{n}&= 0\\
+-D \frac{\partial }{\partial x} \left((1-x^{2})\sum_{n=1}^{\infty}\alpha _{n}\frac{1}{n}x^{n-1} \right)+B_{\text{out}}\sum_{n=0}^{\infty}\alpha _{n}x^{n} &= 0\\
+\sum_{n=0}^{\infty}\alpha _{n}\left[-\frac{D}{n} \frac{\partial }{\partial x} \left(x^{n-1}-x^{n+1}\right)+B_{\text{out}}x^{n} \right]&= 0\\
+\sum_{n=0}^{\infty}\alpha _{n}\left[\frac{D}{n(n-1)}x^{n-2}-\frac{D}{n(n+1)}x^{n} +B_{\text{out}}x^{n} \right]&= 0\\
+
+\end{aligned}$$
 ### using wiki solution
 The homogenous equation is of the form of the general Legendre equation,
 $$(1-x)^{2}y''-2xy'+\left[\lambda (\lambda +1)-\frac{\mu ^{2}}{1-x^{2}} \right]y=0,$$
