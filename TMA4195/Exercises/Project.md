@@ -18,67 +18,51 @@ $$\frac{\partial }{\partial t}(c \rho T)= \nabla \cdot (k \nabla T)+q.$$
 ![[Pasted image 20241030122021.png]]
 ![[Pasted image 20241030122031.png]]
 ![[Pasted image 20241030122047.png]]
-
 $$\begin{aligned}
--D \frac{\partial }{\partial x}\left(\left(1-x^{2} \right)\frac{\partial }{\partial x} \left(\sum_{n=0}^{\infty}T_{n}P_{n}(x) \right) \right)&= -I(x)+QS(x)a(x,x_{s})\\
--D\sum_{n=0}^{\infty}T_{n} \frac{\partial }{\partial x}\left(\left(1-x^{2} \right)\frac{\partial P_{n}(x) }{\partial x}  \right)&= -I(x)+QS(x)a(x,x_{s})\\
--D\sum_{n=0}^{\infty}T_{n} ((1-x^{2})P_{n}'(x))' &= -I(x)+QS(x)a(x,x_{s})\\
--D\sum_{n=0}^{\infty}T_{n} (-n(n+1))P_{n}(x) &= -I(x)+QS(x)a(x,x_{s})\\
-D\sum_{n=0}^{\infty}T_{n} n(n+1)P_{n}(x) &= -I(x)+QS(x)a(x,x_{s})\\
-D\sum_{n=0}^{\infty}T_{n} n(n+1)P_{n}(x) &= B_{\text{out}}T(x)+A_{\text{out}}+QS(x)a(x,x_{s})\\
-D\sum_{n=0}^{\infty}\left[n(n+1)T_{n}P_{n}(x)-B_{\text{out}}T_{n}P_{n}(x) \right] &= A_{\text{out}}+QS(x)a(x,x_{s})
+-D\frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial T(x)}{\partial x}\right)&= -I(x)+QS(x)a(x,x_{s})\\
+-D\frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial T(x)}{\partial x}\right)&= -B_{\text{out}}T(x)-A_{\text{out}}+QS(x)a(x,x_{s})\\
+-D\frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial T(x)}{\partial x}\right)+B_{\text{out}}T(x)&= -A_{\text{out}}+QS(x)a(x,x_{s})\\
 \end{aligned}$$
-The general Legendre equation with $\mu =0$ is 
+We can express $T$ as a particular solution with two homogenous solutions:
+$$T(x)=T_{p}(x)+C_{1}y_{1}(x)+C_{2}y_{2}(x),$$
+such that
 $$\begin{aligned}
-(1-x^{2})P''(x)-2xP'(x)+\left[\lambda (\lambda +1)-\frac{\mu ^{2}}{1-x^{2}} \right]P(x)&= 0\\
-(1-x^{2})P_{n}''(x)-2xP_{n}'(x)&= -n (n +1)P_{n}(x)
-\end{aligned}$$
-Then,
-$$\begin{aligned}
-D\sum_{n=0}^{\infty}\left[-(1-x^{2})T_{n}P_{n}''(x)+2xT_{n}P_{n}'(x)-B_{\text{out}}T_{n}P_{n}(x) \right] &= A_{\text{out}}+QS(x)a(x,x_{s})\\
--D \left[(1-x^{2})T''(x)-2xT'(x)+B_{\text{out}}T(x) \right]&= A_{\text{out}}+QS(x)a(x,x_{s})\\
-((1-x^{2})T'(x))'+B_{\text{out}}T(x) &= -\frac{A_{\text{out}}}{D}-\frac{Q}{D}S(x)a(x,x_{s})
-\end{aligned}$$
-We postulate that
-$$\begin{aligned}
-((1-x^{2})T'(x))'&= -\frac{A_{\text{out}}}{D},\\
-B_{\text{out}}T(x)&= -\frac{Q}{D}S(x)a(x,x_{s})
-\end{aligned}$$
-Solving the differential equation: 
-
-$$\begin{aligned}
-\int \frac{\text{d}}{\text{dx}}\left((1-x^{2})\frac{\text{d}T(x)}{\text{d}x} \right)\text{ d}x&= \int- \frac{A_{\text{out}}}{D}\text{ d}x\\
-(1-x^{2})\frac{\text{d}T(x)}{\text{d}x}&= -\frac{A_{\text{out}}}{D}x+C_{1}\\
-\frac{\text{d}T(x)}{\text{d}x}&= -\frac{\frac{A_{\text{out}}}{D}x+C_{1}}{1-x^{2}}\\
-T(x)&= \int-\frac{\frac{A_{\text{out}}}{D}x+C_{1}}{1-x^{2}} \text{ d}x
+-D\frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial T_{p}(x)}{\partial x}\right)+B_{\text{out}}T_{p}(x)&= -A_{\text{out}}+QS(x)a(x,x_{s})\\
+-D\frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial y_{i}(x)}{\partial x}\right)+B_{\text{out}}y_{i}(x)&= 0\quad\text{for }i=1,2.
 \end{aligned}$$
 
 
 
+### inserting sum into hom. eq.
+Let $y(x)=\sum_{n=0}^{\infty}\alpha _{n}x^{n}$. Then, the homogenous equations becomes
 $$\begin{aligned}
--D(1-x^{2})T''(x)+2DxT'(x)+I(x)-QS(x)a(x,x_{s})&= 0\\
-D \left((1-x^{2})T''(x)-2xT'(x)) \right)+I(x)-QS(x)a(x,x_{s} &= 0\\
-D\left((1-x^{2})T''(x)-2xT'(x) \right)+B_{\text{out}}T(x)&= QS(x)a(x,x_{s})-A_{\text{out}}
-\end{aligned}$$
-Substituting into our equation,
-$$\begin{aligned}
--D\lambda (\lambda +1)T(x)+B_{\text{out}}T(x)&= QS(x)a(x,x_{s})-A_{\text{out}}\\
-(-D \lambda (\lambda +1)+B_{\text{out}})T(x)&= QS(x)a(x,x_{s})-A_{\text{out}}
-\end{aligned}$$
-Let $T(x)=\sum_{n=0}^{\infty}T_{n}P_{n}(x)$, then
-$$\begin{aligned}
-\sum_{n=0}^{\infty}(-D n (n +1)+B_{\text{out}})T_{n}P_{n}(x)&= QS(x)a(x,x_{s})-A_{\text{out}}
+-D\frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial }{\partial x} \left(\sum_{n=0}^{\infty}\alpha _{n}x^{n} \right)\right)+B_{\text{out}}\sum_{n=0}^{\infty}\alpha _{n}x^{n}&= 0\\
+\sum_{n=0}^{\infty}\alpha _{n}\left[-D \frac{\partial }{\partial x} \left((1-x^{2})\frac{1}{n}x^{n-1} \right)+B_{\text{out}}x^{n} \right]&= 0\\
+\sum_{n=0}^{\infty}\alpha _{n}\left[-\frac{D}{n} \frac{\partial }{\partial x} \left(x^{n-1}-x^{n+1}\right)+B_{\text{out}}x^{n} \right]&= 0\\
+\sum_{n=0}^{\infty}\alpha _{n}\left[-\frac{D}{n} \left(\frac{1}{n-1}x^{n-2}-\frac{1}{n+1}x^{n} \right)+B_{\text{out}}x^{n} \right]&= 0\\
+\sum_{n=0}^{\infty}\alpha _{n}\left[-\frac{D}{n} \left(\frac{(n+1)x^{n-2}}{(n-1)(n+1)}-\frac{(n-1)x^{n}}{(n-1)(n+1)} \right)+\frac{n(n-1)(n+1)}{n(n-1)(n+1)}B_{\text{out}}x^{n} \right]&= 0\\
+\sum_{n=0}^{\infty}\alpha _{n} \left[\frac{-D(n+1)x^{n-2}+(D(n-1)+B_{\text{out}}n(n^{2}-1))x^{n}}{n(n^{2}-1)} \right]&= 0
 \end{aligned}$$
 
-$$\frac{1}{D}(I(x)-QS(x)a(x,x_{s}))=\left[\lambda (\lambda +1)-\frac{\mu ^{2}}{1-x^{2}} \right]T(x)$$
-Since $I(x)=B_{\text{out}}T(x)+A_{\text{out}}$ and $\mu =0$,
-$$
-\frac{B_{\text{out}}}{D}T(x)+\frac{A_{\text{out}}}{D}= \lambda (\lambda +1) T(x) + \frac{QS(x)a(x,x_{s})}{D},
-$$
-and then (?)
+
+
+### using wiki solution
+The homogenous equation is of the form of the general Legendre equation,
+$$(1-x)^{2}y''-2xy'+\left[\lambda (\lambda +1)-\frac{\mu ^{2}}{1-x^{2}} \right]y=0,$$
+where in our problem $\lambda (\lambda +1)=-\frac{B_{\text{out}}}{D}$, and $\mu =0$. The two linearly independent solutions are
+![[Pasted image 20241108130254.png|800]]
+Where
+![[Pasted image 20241108130943.png|300]]
+and
+![[Pasted image 20241108131008.png|400]]
+Denoting $y_{1}(x)=P^{0}_{\lambda}$, we have
 $$\begin{aligned}
-\frac{B_{\text{out}}}{D}&= \lambda (\lambda +1)\\
-A_{\text{out}}&= 
+y_{1}(x)&= \frac{1}{\Gamma (1)}\,\prescript{}{2}F_{1}\left(-\lambda , \lambda +1,1,\frac{1-x}{2}\right)\\
+&= \sum_{n=0}^{\infty}\frac{(-\lambda )_{n}(\lambda +1)_{n}}{(1)_{n}}\cdot \frac{x^{n}}{n!}\\
+&= \sum_{n=0}^{\infty}\prod_{k=0}^{n-1}\frac{(-\lambda-k)(\lambda +1-k) }{(1-k)}
 \end{aligned}$$
+
+
+
 
 ![[Pasted image 20241105142315.png]]
