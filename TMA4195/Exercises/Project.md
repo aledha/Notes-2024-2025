@@ -68,7 +68,7 @@ $$\begin{aligned}
 \alpha _{n+2}&= \frac{Dn(n-1)-2n+B_{\text{out}}}{D(n+2)(n+1)}\alpha _{n}
 \end{aligned}$$
 
-
+![[Pasted image 20241110094124.png|600]]
 
 
 ![[Pasted image 20241105142315.png]]
