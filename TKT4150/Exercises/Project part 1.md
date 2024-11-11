@@ -340,7 +340,6 @@ $$\begin{aligned}
 
 ![[Pasted image 20241025155145.png|700]]
 $$\Psi (I_{1},J,I_{4_{1}}^{*},I_{4_{2}}^{*})=\frac{c}{2}(I_{1}-3)+\frac{k_{1}}{2k_{2}}\sum_{i=1,2}^{}\left(\exp \left[k_{2}(I_{4_{i}}^{*}-1)^{2} \right] -1\right)+p(J-1)$$
-$$\Psi  (I_{1},J,I_{4_{1}},I_{4_{2}})=\frac{c}{2}(I_{1}-3)+\frac{k_{1}}{2k_{2}}\sum_{i=1,2}\left(\exp(k_{2}(I_{4_{i}}-1)^{2}-1) \right)+p(J-1)$$
 The second Piola-Kirchoff stress is still
 $$
 \mathbf S= 2\left(\frac{\partial \Psi }{\partial J}\frac{\partial J}{\partial \mathbf C}+\frac{\partial \Psi }{\partial I_{1}}\frac{\partial I_{1}}{\partial \mathbf C}+\frac{\partial \Psi }{\partial I^{*}_{4_{1}}}\frac{\partial I^{*}_{4_{1}}}{\partial \mathbf C} +\frac{\partial \Psi }{\partial I^{*}_{4_{2}}}\frac{\partial I^{*}_{4_{2}}}{\partial \mathbf C} \right),
@@ -349,10 +348,47 @@ and the Cauchy Stress tensor is
 $$\mathbf \sigma =\frac{1}{J}\left(2\mathbf F\frac{\partial \Psi }{\partial J}\frac{\partial J}{\partial \mathbf C}\mathbf F^{T}+2\mathbf F\frac{\partial \Psi }{\partial I_{1}}\frac{\partial I_{1}}{\partial \mathbf C}\mathbf F^{T}+2\mathbf F\frac{\partial \Psi }{\partial I_{4_{1}}^{*}}\frac{\partial I_{4_{1}}^{*}}{\partial \mathbf C}\mathbf F^{T} +2\mathbf F\frac{\partial \Psi }{\partial I_{4_{2}}^{*}}\frac{\partial I_{4_{2}}^{*}}{\partial \mathbf C}\mathbf F^{T} \right)$$
 We need to calculate $\frac{\partial \Psi }{\partial I_{1}},\frac{\partial \Psi }{\partial I_{4_{1}}^{*}}$ and $\frac{\partial \Psi }{\partial I_{4_{2}}^{*}}$:
 $$\begin{aligned}
-\frac{\partial \Psi }{\partial I_{1}}&= \frac{c}{2}+\sum_{i=1,2}^{}\frac{k_{1}}{2k_{2}}\cdot 2k_{2}f(I_{1},I_{4_{i}})\frac{\partial f(I_{1},I_{4_{i}})}{\partial I_{1}}\exp[k_{2}(f(I_{1},I_{4_{i}})^{2})-1]\\
-&= \frac{c}{2}+\sum_{i=1,2}^{}k_{1}\kappa f(I_{1},I_{4_{i}})\exp[k_{2}(f(I_{1},I_{4_{i}})^{2})-1]\\
-\frac{\partial \Psi }{\partial I_{4_{i}}}&= \frac{k_{1}}{2k_{2}}2k_{2}f(I_{1},I_{4_{i}})\frac{\partial f(I_{1},I_{4_{i}})}{\partial I_{4_{i}}}\exp[k_{2}(f(I_{1},I_{4_{i}})^{2})-1]\\
-&= k_{1}(1-3\kappa )f(I_{1},I_{4_{i}})\exp[k_{2}(f(I_{1},I_{4_{i}})^{2})-1].
+\frac{\partial \Psi }{\partial I_{1}}&= \frac{c}{2}+\sum_{i=1,2}^{}\frac{k_{1}}{2k_{2}}\cdot 2k_{2}(I_{4_{i}}^{*}-1) \frac{\partial I_{4_{i}}^{*}}{\partial I_{1}}\exp[k_{2}(I_{4_{i}}^{*}-1)^{2})-1]\\
+&= \frac{c}{2}+\sum_{i=1,2}^{}2k_{1}\kappa_{op}\kappa _{ip} (I_{4_{i}}^{*}-1)\exp[k_{2}(I_{4_{i}}^{*}-1)^{2}-1]\\
+\frac{\partial \Psi }{\partial I_{4_{i}}}&= \frac{k_{1}}{2k_{2}}2k_{2}(I_{4_{i}}^{*}-1)\frac{\partial I_{4_{i}}^{*}}{\partial I_{4_{i}}}\exp[k_{2}(I_{4_{i}}^{*}-1)^{2})-1]\\
+&= 2k_{1}\kappa _{op}(1-2 \kappa _{ip})(I_{4_{i}}^{*}-1)\exp[k_{2}(I_{4_{i}}^{*}-1)^{2})-1].
 \end{aligned}$$
+We also need to calculate $\frac{\partial I_{4_{i}}^{*}}{\partial \mathbf C}$:
+$$\begin{aligned}
+\frac{\partial I_{4_{1}}^{*}}{\partial C}&= \frac{\partial I_{4_{1}}^{*}}{\partial I_{4_{1}}}\frac{\partial I_{4_{1}}}{\partial C}\\
+&= 2 \kappa _{op}(1-2\kappa _{ip}) \mathbf m_{0}\otimes \mathbf m_{0}\\
+\frac{\partial I_{4_{2}}^{*}}{\partial C}&= 2 \kappa _{op}(1-2\kappa _{ip}) \mathbf m_{0}'\otimes \mathbf m_{0}'
+\end{aligned}$$
+Then substituting these and previous values into the Cauchy stress tensor
+$$\begin{aligned}
+\mathbf \sigma &= 2 \mathbf F \left(\frac{p}{2} \mathbf C^{-1} \right)\mathbf F^{T}\\
+&+2 \mathbf F \left(\frac{c}{2}+\sum_{i=1,2}^{}2k_{1}\kappa_{op}\kappa _{ip} (I_{4_{i}}^{*}-1)\exp[k_{2}(I_{4_{i}}^{*}-1)^{2}-1] \right) \mathbf F^{T}\\
+&+2\mathbf F \cdot 2k_{1}\kappa _{op}(1-2 \kappa _{ip})(I_{4_{1}}^{*}-1)\exp[k_{2}(I_{4_{1}}^{*}-1)^{2})-1]2 \kappa _{op}(1-2\kappa _{ip}) \mathbf m_{0}\otimes \mathbf m_{0} \mathbf F^{T}\\
+&+2\mathbf F \cdot 2k_{1}\kappa _{op}(1-2 \kappa _{ip})(I_{4_{2}}^{*}-1)\exp[k_{2}(I_{4_{2}}^{*}-1)^{2})-1]2 \kappa _{op}(1-2\kappa _{ip}) \mathbf m_{0}'\otimes \mathbf m_{0}' \mathbf F^{T}\\
+\mathbf \sigma &= p \mathbf 1\\
+&+ \left( c+4\sum_{i=1,2}^{}k_{1}\kappa_{op}\kappa _{ip} (I_{4_{i}}^{*}-1)\exp[k_{2}(I_{4_{i}}^{*}-1)^{2}-1]\right)\mathbf b\\
+&+8k_{1}\kappa _{op}^{2}(1-2 \kappa _{ip})^{2}(I_{4_{1}}^{*}-1)\exp[k_{2}(I_{4_{1}}^{*}-1)^{2})-1] \mathbf m\otimes \mathbf m\\
+&+8k_{1}\kappa _{op}^{2}(1-2 \kappa _{ip})^{2}(I_{4_{2}}^{*}-1)\exp[k_{2}(I_{4_{2}}^{*}-1)^{2})-1] \mathbf m'\otimes \mathbf m'
+\end{aligned}$$
+We still have 
+$$\begin{aligned}
+\mathbf b &= \begin{bmatrix}\lambda _{1}^{2} & 0 & 0\\
+0 & \lambda _{2}^{2} & 0\\
+0 & 0 & \frac{1}{(\lambda _{1}\lambda _{2})^{2}}\end{bmatrix}\\
+\mathbf m \otimes \mathbf m&=  \begin{bmatrix}\lambda _{1}^{2}\cos ^{2}\theta  & \lambda _{1}\lambda _{2}\sin \theta \cos \theta  & 0\\
+\lambda _{1}\lambda _{2}\sin \theta \cos \theta  & \lambda _{2}\sin ^{2}\theta  & 0\\
+0 & 0 & 0\end{bmatrix}\\
+\mathbf m' \otimes \mathbf m'&=  \begin{bmatrix}\lambda _{1}^{2}\cos ^{2}\theta  & -\lambda _{1}\lambda _{2}\sin \theta \cos \theta  & 0\\
+-\lambda _{1}\lambda _{2}\sin \theta \cos \theta  & \lambda _{2}\sin ^{2}\theta  & 0\\
+0 & 0 & 0\end{bmatrix}.
+\end{aligned}$$
+Setting $\sigma _{33}=0$ gives
+$$\begin{aligned}
+\sigma _{33}&= 0\\
+0&= p+\left( c+4\sum_{i=1,2}^{}k_{1}\kappa_{op}\kappa _{ip} (I_{4_{i}}^{*}-1)\exp[k_{2}(I_{4_{i}}^{*}-1)^{2}-1]\right) \frac{1}{(\lambda _{1}\lambda _{2})^{2}}\\
+p &= -\frac{1}{(\lambda _{1}\lambda _{2})^{2}}\left( c+4\sum_{i=1,2}^{}k_{1}\kappa_{op}\kappa _{ip} (I_{4_{i}}^{*}-1)\exp[k_{2}(I_{4_{i}}^{*}-1)^{2}-1]\right)
+\end{aligned}$$
+
+
 
 ![[Pasted image 20241025155246.png|700]]
