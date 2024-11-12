@@ -124,7 +124,7 @@ where $\gamma = \frac{\Delta t\lambda }{1+\lambda }$.
 The bilinear and linear form are
 $$\begin{aligned}
 a(v^{n+1},\phi )&= \int_{H}\phi v^{n+1}+\gamma \theta \nabla \phi \cdot \nabla v^{n+1}\text{ d}\mathbf x\\
-L(\phi )&= \int_{H}\phi (v^{n}+I_\text{stim})-\gamma (1-\theta )\nabla \phi \cdot \nabla v^{n}\text{ d}\mathbf x
+L(\phi )&= \int_{H}\phi (v^{n}+\Delta t \cdot I_\text{stim})-\gamma (1-\theta )\nabla \phi \cdot \nabla v^{n}\text{ d}\mathbf x
 \end{aligned}$$
 
 
