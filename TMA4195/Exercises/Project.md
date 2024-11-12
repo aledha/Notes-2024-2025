@@ -34,22 +34,18 @@ $$\begin{aligned}
 https://www.iitg.ac.in/shyamashree/Lecture16-2016.pdf
 
 ### inserting sum into hom. eq.
-
+Let $y(x)=\sum_{n=0}^{\infty}\alpha _{n}x^{n}$. Then, the homogenous equation becomes
 $$\begin{aligned}
--D(1-x^{2})y''(x)-2xy'(x)+B_{\text{out}}y(x)&= 0\\
--Dy''(x)-\frac{2x}{1-x^{2}}y'(x)+\frac{B_{\text{out}}}{1-x^{2}}y(x)&= 0
-\end{aligned}$$
-Let $y(x)=\sum_{n=0}^{\infty}\alpha _{n}x^{n}$. Then, the homogenous equations becomes
-$$\begin{aligned}
--D(1-x^{2})y''(x)-2xy'(x)+B_{\text{out}}y(x)&= 0\\
--D(1-x^{2})\frac{\partial ^{2}}{\partial x^{2}}\left(\sum_{n=0}^{\infty}\alpha _{n}x^{n} \right)-2x \frac{\partial }{\partial x}\left(\sum_{n=0}^{\infty}\alpha _{n}x^{n} \right)+B_{\text{out}}\sum_{n=0}^{\infty}\alpha _{n}x^{n}&= 0\\
--D(1-x^{2})\sum_{n=2}^{\infty}\alpha _{n}n(n-1)x^{n-2}-2x \sum_{n=1}^{\infty}\alpha _{n}nx^{n-1}+B_{\text{out}}\sum_{n=0}^{\infty}\alpha _{n}x^{n}&= 0
+-D(1-x^{2})y''(x)+2Dxy'(x)+B_{\text{out}}y(x)&= 0\\
+(1-x^{2})y''(x)-2xy'(x)-\frac{B_{\text{out}}}{D}y(x)&= 0\\
+(1-x^{2})\frac{\partial ^{2}}{\partial x^{2}}\left(\sum_{n=0}^{\infty}\alpha _{n}x^{n} \right)-2x \frac{\partial }{\partial x}\left(\sum_{n=0}^{\infty}\alpha _{n}x^{n} \right)-\frac{B_{\text{out}}}{D}\sum_{n=0}^{\infty}\alpha _{n}x^{n}&= 0\\
+(1-x^{2})\sum_{n=2}^{\infty}\alpha _{n}n(n-1)x^{n-2}-2x \sum_{n=1}^{\infty}\alpha _{n}nx^{n-1}-\frac{B_{\text{out}}}{D}\sum_{n=0}^{\infty}\alpha _{n}x^{n}&= 0
 \end{aligned}$$
 The first term is
 $$\begin{aligned}
--D(1-x^{2})\sum_{n=2}^{\infty}\alpha _{n}n(n-1)x^{n-2}&= -D\sum_{n=2}^{\infty}\alpha _{n}n(n-1)x^{n-2}+D\sum_{n=2}^{\infty}\alpha _{n}n(n-1)x^{n}\\
-&= -D\sum_{n=0}^{\infty}\alpha _{n+2}(n+2)(n+1)x^{n}+D\sum_{n=0}^{\infty}\alpha _{n}n(n-1)x^{n}\\
-&= -D\sum_{n=0}^{\infty}\left(\alpha _{n+2}(n+2)(n+1)-\alpha _{n}n(n-1) \right)x^{n},
+(1-x^{2})\sum_{n=2}^{\infty}\alpha _{n}n(n-1)x^{n-2}&= \sum_{n=2}^{\infty}\alpha _{n}n(n-1)x^{n-2}-\sum_{n=2}^{\infty}\alpha _{n}n(n-1)x^{n}\\
+&= \sum_{n=0}^{\infty}\alpha _{n+2}(n+2)(n+1)x^{n}-\sum_{n=0}^{\infty}\alpha _{n}n(n-1)x^{n}\\
+&= \sum_{n=0}^{\infty}\left(\alpha _{n+2}(n+2)(n+1)-\alpha _{n}n(n-1) \right)x^{n},
 \end{aligned}$$
 where in the second step we used that $n(n-1)=0$ when $n=0$ or $n=1$. The second term is
 $$\begin{aligned}
@@ -58,15 +54,39 @@ $$\begin{aligned}
 \end{aligned}$$
 so we get
 $$\begin{aligned}
--D \sum_{n=0}^{\infty}\left(\alpha _{n+2}(n+2)(n+1)-\alpha _{n}n(n-1) \right)x^{n}-2 \sum_{n=0}^{\infty}\alpha _{n}nx^{n}+B_{\text{out}}\sum_{n=0}^{\infty}\alpha _{n}x^{n}&= 0\\
-\sum_{n=0}^{\infty}\left[-D \alpha _{n+2}(n+2)(n+1)+D \alpha _{n}n(n-1)-2 \alpha _{n}n+B_{\text{out}}\alpha _{n} \right]x^{n}&= 0
+ \sum_{n=0}^{\infty}\left(\alpha _{n+2}(n+2)(n+1)-\alpha _{n}n(n-1) \right)x^{n}-2 \sum_{n=0}^{\infty}\alpha _{n}nx^{n}-\frac{B_{\text{out}}}{D}\sum_{n=0}^{\infty}\alpha _{n}x^{n}&= 0\\
+\sum_{n=0}^{\infty}\left[\alpha _{n+2}(n+2)(n+1)- \alpha _{n}n(n-1)-2 \alpha _{n}n-\frac{B_{\text{out}}}{D}\alpha _{n} \right]x^{n}&= 0
 \end{aligned}$$
 (need to explain why)
 $$\begin{aligned}
--D \alpha _{n+2}(n+2)(n+1)+D \alpha _{n}n(n-1)-2 \alpha _{n}n+B_{\text{out}}\alpha _{n}&= 0\\
--D \alpha _{n+2}(n+2)(n+1)+\left[Dn(n-1)-2n+B_{\text{out}} \right]\alpha _{n}&= 0\\
-\alpha _{n+2}&= \frac{Dn(n-1)-2n+B_{\text{out}}}{D(n+2)(n+1)}\alpha _{n}
+\alpha _{n+2}(n+2)(n+1)- \alpha _{n}n(n-1)-2 \alpha _{n}n-\frac{B_{\text{out}}}{D}\alpha _{n} &= 0\\
+\alpha _{n+2}(n+2)(n+1)-\left[n(n-1)+2n+ \frac{B_{\text{out}}}{D} \right]\alpha _{n}&= 0\\
+\alpha _{n+2}&= \frac{n(n-1)+2n+ \frac{B_{\text{out}}}{D} }{(n+2)(n+1)}\alpha _{n}\\
+\alpha _{n+2}&= \frac{n(n+1)+ \frac{B_{\text{out}}}{D}}{(n+2)(n+1)}\alpha _{n}\\
+\alpha _{n+2}&= f(n) \alpha _{n}
 \end{aligned}$$
+
+$$\begin{aligned}
+\alpha _{2}&= f(0)\alpha _{0}\\
+\alpha _{4}&= f(2)f(0)\alpha _{0}\\
+\vdots \\
+\alpha _{2n}&= \alpha _{0}\prod_{k=0 }^{n} f(2k)
+\end{aligned}$$
+$$\begin{aligned}
+\alpha _{3}&= f(1)\alpha _{1}\\
+\alpha _{5}&= f(3)f(1)\alpha _{1}\\
+\vdots \\
+\alpha _{2n+1}&= \alpha _{1}\prod_{k=0}^{n}f(2k+1)
+\end{aligned}$$
+
+$$\begin{aligned}
+y(x)&= \sum_{n=0}^{\infty}\alpha _{n}x^{n}\\
+&= \sum_{n=0}^{\infty}\alpha _{2n}x^{2n}+\sum_{n=0}^{\infty}\alpha _{2n+1}x^{2n+1}\\
+&= \sum_{n=0}^{\infty}\left(\prod_{k=0}^{n}f(2k) \right)\alpha _{0}x^{2n}+\sum_{n=0}^{\infty}\left(\prod_{k=0}^{n}f(2k+1) \right)\alpha _{1}x^{2n+1}\\
+&=: y_{1}(x)+y_{2}(x) 
+\end{aligned}$$
+
+For $x>x_{s}$ consider the homogenous equation for $w(u)=y(1-u)$
 
 ![[Pasted image 20241110094124.png|600]]
 
