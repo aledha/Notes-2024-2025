@@ -88,7 +88,7 @@ y(x)&= \sum_{n=0}^{\infty}\alpha _{n}x^{n}\\
 
 For $x>x_{s}$ consider the homogenous equation for $w(u)=y(1-u)$
 
-![[Pasted image 20241110094124.png|600]]
+![[Pasted image 20241110094124.png|900]]
 
 
 ![[Pasted image 20241105142315.png]]
