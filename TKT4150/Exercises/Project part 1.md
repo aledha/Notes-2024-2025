@@ -178,24 +178,6 @@ $$\begin{aligned}
 -\lambda _{1}\lambda _{2}\sin \theta \cos \theta  & \lambda _{2}\sin ^{2}\theta  & 0\\
 0 & 0 & 0\end{bmatrix}.
 \end{aligned}$$
-Calculating $I_{4_{1}},I_{4_{2}}$:
-$$\begin{aligned}
-I_{4_{1}}&= \mathbf m_{0}\cdot \mathbf C \cdot \mathbf m_{0}\\
-&= \mathbf m_{0}\cdot \mathbf F ^{T}\mathbf F \cdot \mathbf m_{0}\\
-&= \begin{bmatrix}\lambda _{1}\cos \theta \\
-\lambda _{2}\sin \theta \\
-0\end{bmatrix}\cdot \begin{bmatrix}\lambda _{1}\cos \theta \\
-\lambda _{2}\sin \theta \\
-0\end{bmatrix}\\
-&= \lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta \\
-I_{4_{2}}&= \mathbf m_{0}'\cdot \mathbf C \cdot \mathbf m_{0}'\\
-&= \begin{bmatrix}\lambda _{1}\cos \theta \\
--\lambda _{2}\sin \theta \\
-0\end{bmatrix}\cdot \begin{bmatrix}\lambda _{1}\cos \theta \\
--\lambda _{2}\sin \theta \\
-0\end{bmatrix}\\
-&= \lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta 
-\end{aligned}$$
 
 Substituting all these values into (2):
 $$\begin{aligned}
@@ -207,22 +189,46 @@ $$\begin{aligned}
 0 & 0 & 1\end{bmatrix}+c\begin{bmatrix}\lambda _{1}^{2} & 0 & 0\\
 0 & \lambda _{2}^{2} & 0\\
 0 & 0 & \frac{1}{(\lambda _{1}\lambda _{2})^{2}}\end{bmatrix}\\
-&+2k_{1}(\lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta -1)\exp(k_{2}(\lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta -1)^{2}-1)\begin{bmatrix}\lambda _{1}^{2}\cos ^{2}\theta  & \lambda _{1}\lambda _{2}\sin \theta \cos \theta  & 0\\
+&+2k_{1}(I_{4_{1}}-1)\exp(k_{2}(I_{4_{1}}-1)^{2}-1)\begin{bmatrix}\lambda _{1}^{2}\cos ^{2}\theta  & \lambda _{1}\lambda _{2}\sin \theta \cos \theta  & 0\\
 \lambda _{1}\lambda _{2}\sin \theta \cos \theta  & \lambda _{2}\sin ^{2}\theta  & 0\\
 0 & 0 & 0\end{bmatrix}\\
-&+2k_{1}(\lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta -1)\exp(k_{2}(\lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta -1)^{2}-1)
+&+2k_{1}(I_{4_{2}}-1)\exp(k_{2}(I_{4_{2}}-1)^{2}-1)
 \begin{bmatrix}\lambda _{1}^{2}\cos ^{2}\theta  & -\lambda _{1}\lambda _{2}\sin \theta \cos \theta  & 0\\
 -\lambda _{1}\lambda _{2}\sin \theta \cos \theta  & \lambda _{2}\sin ^{2}\theta  & 0\\
-0 & 0 & 0\end{bmatrix}\\
+0 & 0 & 0\end{bmatrix}
+
+\end{aligned}$$
+Calculating $I_{4_{1}},I_{4_{2}}$:
+$$\begin{aligned}
+I_{4_{1}}&= \mathbf m_{0}\cdot \mathbf C \cdot \mathbf m_{0}\\
+&= \mathbf m_{0}\cdot \mathbf F ^{T}\mathbf F \cdot \mathbf m_{0}\\
+&= \begin{bmatrix}\lambda _{1}\cos \theta \\
+\lambda _{2}\sin \theta \\
+0\end{bmatrix}\cdot \begin{bmatrix}\lambda _{1}\cos \theta \\
+\lambda _{2}\sin \theta \\
+0\end{bmatrix}\\
+&= \lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta, \\
+I_{4_{2}}&= \mathbf m_{0}'\cdot \mathbf C \cdot \mathbf m_{0}'\\
+&= \begin{bmatrix}\lambda _{1}\cos \theta \\
+-\lambda _{2}\sin \theta \\
+0\end{bmatrix}\cdot \begin{bmatrix}\lambda _{1}\cos \theta \\
+-\lambda _{2}\sin \theta \\
+0\end{bmatrix}\\
+&= \lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta.
+\end{aligned}$$
+Let $I_{4}=I_{4_{1}}=I_{4_{2}}$, so $(2)$ becomes
+$$\begin{aligned}
 \begin{bmatrix}\sigma _{11} & \sigma _{12} & \sigma _{13}\\
 \sigma _{21} & \sigma _{22} & \sigma _{23}\\
 \sigma _{31} & \sigma _{32} & \sigma _{33}\end{bmatrix}&=\begin{bmatrix}p+c\lambda _{1}^{2} & 0 & 0\\
 0 & p+c\lambda _{2}^{2} & 0\\
-0 & 0 & p+\frac{c}{(\lambda _{1}\lambda _{2})^{2}}\end{bmatrix}\\
-&+2k_{1}(\lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta -1)\exp(k_{2}(\lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta -1)^{2}-1)\begin{bmatrix}\lambda _{1}^{2}\cos ^{2}\theta  & 0  & 0\\
+0 & 0 & p+\frac{c}{(\lambda _{1}\lambda _{2})^{2}}\end{bmatrix}
++4k_{1}(I_{4}-1)\exp(k_{2}(I_{4}-1)^{2}-1)
+\begin{bmatrix}\lambda _{1}^{2}\cos ^{2}\theta  & 0  & 0\\
 0  & \lambda _{2}\sin ^{2}\theta  & 0\\
 0 & 0 & 0\end{bmatrix}.
 \end{aligned}$$
+
 Due to plane stress conditions, we set $\sigma _{33}=0$ in order to determine $p$:
 $$\begin{aligned}
 \sigma _{33}&= 0\\
@@ -231,9 +237,9 @@ p&= -\frac{c}{(\lambda _{1}\lambda _{2})^{2}},
 giving us the final expressions for $\sigma _{11}$ and $\sigma _{22}$
 $$\begin{aligned}
 \sigma _{11} &=-\frac{c}{(\lambda _{1}\lambda _{2})^{2}}+c\lambda _{1}^{2}
-+2k_{1}(\lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta -1)\exp(k_{2}(\lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta -1)^{2}-1)\lambda _{1}^{2}\cos ^{2}\theta \\
++4k_{1}(I_{4}-1)\exp(k_{2}(I_{4}-1)^{2}-1)\lambda _{1}^{2}\cos ^{2}\theta \\
 \sigma _{22} &=-\frac{c}{(\lambda _{1}\lambda _{2})^{2}}+c\lambda _{2}^{2}
-+2k_{1}(\lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta -1)\exp(k_{2}(\lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta -1)^{2}-1)\lambda _{2}^{2}\sin ^{2}\theta.
++4k_{1}(I_{4}-1)\exp(k_{2}(I_{4}-1)^{2}-1)\lambda _{2}^{2}\sin ^{2}\theta.
 \end{aligned}$$
 
 
@@ -315,7 +321,7 @@ $$\begin{aligned}
 \sigma _{22}&= (c+\kappa g(1)+\kappa g(2)) \left(\lambda _{2}^{2}-\frac{1}{(\lambda _{1}\lambda _{2})^{2}} \right)+(1-3\kappa )(g(1)+g(2))\lambda _{2}^{2}\sin ^{2}\theta 
 \end{aligned}$$
 As before,
-$$I_{4_{1}}=I_{4_{2}}=\lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta, $$
+$$I_{4}=I_{4_{1}}=I_{4_{2}}=\lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta, $$
 and
 $$\begin{aligned}
 I_{1}&= \text{tr}\mathbf C\\
