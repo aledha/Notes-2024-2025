@@ -413,9 +413,9 @@ p &= -\frac{1}{(\lambda _{1}\lambda _{2})^{2}}\left( c+8k_{1}\kappa_{op}\kappa _
 Finally, the expressions for the stress are
 $$\begin{aligned}
 \sigma _{11}&= (c+8k_{1}\kappa_{op}\kappa _{ip} (I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2}-1]) \left(\lambda _{1}^{2}- \frac{1}{(\lambda _{1}\lambda _{2})^{2}} \right)\\
-&+16k_{1}\kappa _{op}^{2}(1-2 \kappa _{ip})^{2}(I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2})-1]\lambda _{1}^{2}\cos ^{2}\theta \\
+&+16k_{1}\kappa _{op}^{2}(1-2 \kappa _{ip})^{2}(I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2}-1]\lambda _{1}^{2}\cos ^{2}\theta \\
 \sigma _{22}&= (c+8k_{1}\kappa_{op}\kappa _{ip} (I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2}-1]) \left(\lambda _{2}^{2}- \frac{1}{(\lambda _{1}\lambda _{2})^{2}} \right)\\
-&+16k_{1}\kappa _{op}^{2}(1-2 \kappa _{ip})^{2}(I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2})-1]\lambda _{2}^{2}\sin ^{2}\theta 
+&+16k_{1}\kappa _{op}^{2}(1-2 \kappa _{ip})^{2}(I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2}-1]\lambda _{2}^{2}\sin ^{2}\theta 
 \end{aligned}$$
 
 $$I_{4}^{*}= 2 \kappa _{op}\kappa _{ip}I_{1}+2\kappa _{op}(1-2\kappa _{ip})I_{4}+(1-2\kappa _{op}-2\kappa _{op}\kappa _{ip})I_{n}$$
