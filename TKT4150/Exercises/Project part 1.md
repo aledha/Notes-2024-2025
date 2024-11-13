@@ -384,17 +384,52 @@ $$\begin{aligned}
 \mathbf m \otimes \mathbf m&=  \begin{bmatrix}\lambda _{1}^{2}\cos ^{2}\theta  & \lambda _{1}\lambda _{2}\sin \theta \cos \theta  & 0\\
 \lambda _{1}\lambda _{2}\sin \theta \cos \theta  & \lambda _{2}\sin ^{2}\theta  & 0\\
 0 & 0 & 0\end{bmatrix}\\
-\mathbf m' \otimes \mathbf m'&=  \begin{bmatrix}\lambda _{1}^{2}\cos ^{2}\theta  & -\lambda _{1}\lambda _{2}\sin \theta \cos \theta  & 0\\
--\lambda _{1}\lambda _{2}\sin \theta \cos \theta  & \lambda _{2}\sin ^{2}\theta  & 0\\
+\mathbf m' \otimes \mathbf m'&=  \begin{bmatrix}\lambda _{1}^{2}\cos ^{2}\theta  & -\lambda _{1}\lambda _{2}\sin^{2} \theta \cos \theta  & 0\\
+-\lambda _{1}\lambda _{2}\sin \theta \cos \theta  & \lambda^{2} _{2}\sin ^{2}\theta  & 0\\
 0 & 0 & 0\end{bmatrix}.
 \end{aligned}$$
+Since $I_{4_{1}}=I_{4_{2}}$,  $I_{4_{1}}^{*}=I_{4_{2}}^{*}=:I_{4}^{*}$  and 
+$$\begin{aligned}
+\mathbf \sigma &= p \mathbf 1 + \left(c + 8k_{1}\kappa _{op}\kappa _{ip}(I_{4}^{*}-1)\exp(\left[k_{2}(I_{4}^{*}-1)^{2}-1 \right]) \right)\mathbf b\\
+&+8k_{1}\kappa _{op}^{2}(1-2 \kappa _{ip})^{2}(I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2})-1] \mathbf m\otimes \mathbf m\\
+&+8k_{1}\kappa _{op}^{2}(1-2 \kappa _{ip})^{2}(I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2})-1] \mathbf m'\otimes \mathbf m'\\
+\mathbf \sigma &= p \begin{bmatrix}1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1\end{bmatrix}\\
+&+\left(c + 8k_{1}\kappa _{op}\kappa _{ip}(I_{4}^{*}-1)\exp(\left[k_{2}(I_{4}^{*}-1)^{2}-1 \right]) \right)\begin{bmatrix}\lambda _{1}^{2} & 0 & 0\\
+0 & \lambda _{2}^{2} & 0\\
+0 & 0 & \frac{1}{(\lambda _{1}\lambda _{2})^{2}}\end{bmatrix}\\
+&+16k_{1}\kappa _{op}^{2}(1-2 \kappa _{ip})^{2}(I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2})-1]\begin{bmatrix}\lambda _{1}^{2}\cos ^{2}\theta  & 0  & 0\\
+0  & \lambda _{2}^{2}\sin ^{2}\theta  & 0\\
+0 & 0 & 0\end{bmatrix}.
+\end{aligned}$$
+
 Setting $\sigma _{33}=0$ gives
 $$\begin{aligned}
 \sigma _{33}&= 0\\
-0&= p+\left( c+4\sum_{i=1,2}^{}k_{1}\kappa_{op}\kappa _{ip} (I_{4_{i}}^{*}-1)\exp[k_{2}(I_{4_{i}}^{*}-1)^{2}-1]\right) \frac{1}{(\lambda _{1}\lambda _{2})^{2}}\\
-p &= -\frac{1}{(\lambda _{1}\lambda _{2})^{2}}\left( c+4\sum_{i=1,2}^{}k_{1}\kappa_{op}\kappa _{ip} (I_{4_{i}}^{*}-1)\exp[k_{2}(I_{4_{i}}^{*}-1)^{2}-1]\right)
+0&= p+\left( c+8k_{1}\kappa_{op}\kappa _{ip} (I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2}-1]\right) \frac{1}{(\lambda _{1}\lambda _{2})^{2}}\\
+p &= -\frac{1}{(\lambda _{1}\lambda _{2})^{2}}\left( c+8k_{1}\kappa_{op}\kappa _{ip} (I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2}-1]\right)
+\end{aligned}$$
+Finally, the expressions for the stress are
+$$\begin{aligned}
+\sigma _{11}&= (c+8k_{1}\kappa_{op}\kappa _{ip} (I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2}-1]) \left(\lambda _{1}^{2}- \frac{1}{(\lambda _{1}\lambda _{2})^{2}} \right)\\
+&+16k_{1}\kappa _{op}^{2}(1-2 \kappa _{ip})^{2}(I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2})-1]\lambda _{1}^{2}\cos ^{2}\theta \\
+\sigma _{22}&= (c+8k_{1}\kappa_{op}\kappa _{ip} (I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2}-1]) \left(\lambda _{2}^{2}- \frac{1}{(\lambda _{1}\lambda _{2})^{2}} \right)\\
+&+16k_{1}\kappa _{op}^{2}(1-2 \kappa _{ip})^{2}(I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2})-1]\lambda _{2}^{2}\sin ^{2}\theta 
 \end{aligned}$$
 
+$$I_{4}^{*}= 2 \kappa _{op}\kappa _{ip}I_{1}+2\kappa _{op}(1-2\kappa _{ip})I_{4}+(1-2\kappa _{op}-2\kappa _{op}\kappa _{ip})I_{n}$$
+
+$$\begin{aligned}
+I_{n}&= \mathbf m_{n}\cdot \mathbf m_{n}\\
+&= \mathbf F \mathbf e_{3} \cdot \mathbf F \mathbf e_{3}\\
+&= \begin{bmatrix}\lambda _{1} & 0 & 0 \\ 0 & \lambda _{2} & 0 \\ 0 & 0 & \frac{1}{(\lambda _{1}\lambda _{2})^{2}}\end{bmatrix}\begin{bmatrix}0 \\
+0 \\
+1\end{bmatrix} \cdot \begin{bmatrix}\lambda _{1} & 0 & 0 \\ 0 & \lambda _{2} & 0 \\ 0 & 0 & \frac{1}{(\lambda _{1}\lambda _{2})^{2}}\end{bmatrix}\begin{bmatrix}0 \\
+0 \\
+1\end{bmatrix}\\
+&= \frac{1}{(\lambda _{1}\lambda _{2})^{4}}
+\end{aligned}$$
 
 
 ![[Pasted image 20241025155246.png|700]]
