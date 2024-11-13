@@ -18,15 +18,15 @@ I_{4}&= a_{0i}C_{ij}a_{0j}\\
 \end{aligned}$$
 Since the material is incompressible, $J=\det F=\lambda _{1}\lambda _{2}=1$, and $\lambda _{2}=\frac{1}{\lambda _{1}}$. Substituting:
 $$\begin{aligned}
-\mathbf S&= 2\left(\frac{\partial \Psi }{\partial I_{1}} \mathbf I+\frac{\partial \Psi }{\partial I_{4}} \mathbf a_{0}\otimes \mathbf a_{0}+\frac{\partial \Psi }{\partial J}\frac{1}{2}J \mathbf C^{-1}\right)\\
-&= 2c_{1}\mathbf I+\left[8k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}) \right]a_{0}\otimes a_{0}-pC^{-1}.
+\mathbf S&= 2\left(\frac{\partial \Psi }{\partial I_{1}} \mathbf 1+\frac{\partial \Psi }{\partial I_{4}} \mathbf a_{0}\otimes \mathbf a_{0}+\frac{\partial \Psi }{\partial J}\frac{1}{2}J \mathbf C^{-1}\right)\\
+&= 2c_{1}\mathbf 1+8k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1) \mathbf a_{0}\otimes \mathbf a_{0}-p \mathbf C^{-1}.
 \end{aligned}$$
 The stress matrix is
 $$\begin{aligned}
 \sigma &= \frac{1}{J}\mathbf F \mathbf S \mathbf F^{T}\\
-&= \mathbf F \left(2c_{1}\mathbf I+\left[8k_{1}(I_{4}-1)\cdot \exp((k_{2}(I_{4}-1)^{2})) \right]\mathbf a_{0}\otimes \mathbf a_{0}-pC^{-1} \right)\mathbf F^{T}\\
-&= 2c_{1}\mathbf b+\left[8k_{1}(I_{4}-1)\cdot \exp((k_{2}(I_{4}-1)^{2})) \right]\mathbf F \mathbf a_{0}\otimes \mathbf a_{0} \mathbf F^{T}-p \mathbf I\\
-&=  2c_{1}\mathbf b+\left[8k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}) \right]\mathbf a \otimes \mathbf a-p \mathbf I.
+&= \mathbf F \left(2c_{1}\mathbf I+8k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1) \mathbf a_{0}\otimes \mathbf a_{0}-pC^{-1} \right)\mathbf F^{T}\\
+&= 2c_{1}\mathbf b+8k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1) \mathbf F \mathbf a_{0}\otimes \mathbf a_{0} \mathbf F^{T}-p \mathbf I\\
+&=  2c_{1}\mathbf b+8k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1) \mathbf a \otimes \mathbf a-p \mathbf I.
 \end{aligned}\tag{1}$$
 Setting up expressions for $\mathbf F, \mathbf b,\mathbf a \otimes \mathbf a$:
 $$\begin{aligned}
@@ -53,7 +53,7 @@ Substituting into (1):
 $$\begin{aligned}
 \begin{bmatrix}\sigma _{1} & 0\\
 0 & \sigma _{2}\end{bmatrix}&= 2c_{1}\begin{bmatrix}\lambda _{1} ^{2} & 0\\
-0 & \frac{1}{\lambda _{1}^{2}}\end{bmatrix}+\left[8k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}) \right]\begin{bmatrix}\lambda _{1}^{2} & 0\\
+0 & \frac{1}{\lambda _{1}^{2}}\end{bmatrix}+8k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1) \begin{bmatrix}\lambda _{1}^{2} & 0\\
 0 & 0\end{bmatrix}-p\begin{bmatrix}1 & 0\\
 0 & 1\end{bmatrix}.
 \end{aligned}$$
@@ -64,8 +64,8 @@ p&= \frac{2c_{1}}{\lambda _{1}^{2}}.
 \end{aligned}$$
 Then, the equation for $\sigma _{1}$ is
 $$\begin{aligned}
-\sigma _{1}&= 2c_{1}\lambda _{1}^{2}+8k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2})\lambda _{1}^{2}-\frac{2c_{1}}{\lambda _{1}^{2}}\\
-&= \left[2c_{1}+8k_{1}(I_{4}-1)\exp(k_{2}(I_{4}-1)^{2}) \right]\lambda _{1}^{2}- \frac{2c_{1}}{\lambda _{1}^{2}}.
+\sigma _{1}&= 2c_{1}\lambda _{1}^{2}+8k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1)\lambda _{1}^{2}-\frac{2c_{1}}{\lambda _{1}^{2}}\\
+&= \left[2c_{1}+8k_{1}(I_{4}-1)\exp(k_{2}(I_{4}-1)^{2}-1) \right]\lambda _{1}^{2}- \frac{2c_{1}}{\lambda _{1}^{2}}.
 \end{aligned}$$
 We find $I_{4}$ as
 $$\begin{aligned}
@@ -79,7 +79,7 @@ I_{4}&= \mathbf a_{0}\mathbf C \mathbf a_{0}\\
 &= \lambda _{1}^{2}
 \end{aligned}$$
 Since $\sigma _{1}= \frac{P}{A_{0}}$, we can set up the expression for $P$:
-$$P=\left[2c_{1}+8k_{1}(\lambda _{1}^{2}-1)\exp(k_{2}(\lambda _{1}^{2}-1)^{2}) \right]A_{0}\lambda _{1}^{2}- \frac{2c_{1}A_{0}}{\lambda _{1}^{2}}.$$
+$$P=\left[2c_{1}+8k_{1}(\lambda _{1}^{2}-1)\exp(k_{2}(\lambda _{1}^{2}-1)^{2}-1) \right]A_{0}\lambda _{1}^{2}- \frac{2c_{1}A_{0}}{\lambda _{1}^{2}}.$$
 ![[Pasted image 20241025154856.png|700]]
 
 
@@ -214,7 +214,7 @@ I_{4_{2}}&= \mathbf m_{0}'\cdot \mathbf C \cdot \mathbf m_{0}'\\
 0\end{bmatrix}\cdot \begin{bmatrix}\lambda _{1}\cos \theta \\
 -\lambda _{2}\sin \theta \\
 0\end{bmatrix}\\
-&= \lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta.
+&= \lambda^{2} _{1}\cos ^{2}\theta +\lambda^{2} _{2}\sin ^{2}\theta.
 \end{aligned}$$
 Let $I_{4}=I_{4_{1}}=I_{4_{2}}$, so $(2)$ becomes
 $$\begin{aligned}
@@ -321,7 +321,7 @@ $$\begin{aligned}
 \sigma _{22}&= (c+\kappa g(1)+\kappa g(2)) \left(\lambda _{2}^{2}-\frac{1}{(\lambda _{1}\lambda _{2})^{2}} \right)+(1-3\kappa )(g(1)+g(2))\lambda _{2}^{2}\sin ^{2}\theta 
 \end{aligned}$$
 As before,
-$$I_{4}=I_{4_{1}}=I_{4_{2}}=\lambda _{1}\cos ^{2}\theta +\lambda _{2}\sin ^{2}\theta, $$
+$$I_{4}=I_{4_{1}}=I_{4_{2}}=\lambda ^{2}_{1}\cos ^{2}\theta +\lambda^{2} _{2}\sin ^{2}\theta, $$
 and
 $$\begin{aligned}
 I_{1}&= \text{tr}\mathbf C\\
@@ -382,7 +382,7 @@ $$\begin{aligned}
 0 & \lambda _{2}^{2} & 0\\
 0 & 0 & \frac{1}{(\lambda _{1}\lambda _{2})^{2}}\end{bmatrix}\\
 \mathbf m \otimes \mathbf m&=  \begin{bmatrix}\lambda _{1}^{2}\cos ^{2}\theta  & \lambda _{1}\lambda _{2}\sin \theta \cos \theta  & 0\\
-\lambda _{1}\lambda _{2}\sin \theta \cos \theta  & \lambda _{2}\sin ^{2}\theta  & 0\\
+\lambda _{1}\lambda _{2}\sin \theta \cos \theta  & \lambda^{2} _{2}\sin ^{2}\theta  & 0\\
 0 & 0 & 0\end{bmatrix}\\
 \mathbf m' \otimes \mathbf m'&=  \begin{bmatrix}\lambda _{1}^{2}\cos ^{2}\theta  & -\lambda _{1}\lambda _{2}\sin^{2} \theta \cos \theta  & 0\\
 -\lambda _{1}\lambda _{2}\sin \theta \cos \theta  & \lambda^{2} _{2}\sin ^{2}\theta  & 0\\
