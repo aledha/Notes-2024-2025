@@ -20,14 +20,14 @@ I_{4}&= a_{0i}C_{ij}a_{0j}\\
 Since the material is incompressible, $J=\det F=\lambda _{1}\lambda _{2}=1$, and $\lambda _{2}=\frac{1}{\lambda _{1}}$. Substituting:
 $$\begin{aligned}
 \mathbf S&= 2\left(\frac{\partial \Psi }{\partial I_{1}} \mathbf 1+\frac{\partial \Psi }{\partial I_{4}} \mathbf a_{0}\otimes \mathbf a_{0}+\frac{\partial \Psi }{\partial J}\frac{1}{2}J \mathbf C^{-1}\right)\\
-&= \mu \mathbf 1+2k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1) \mathbf a_{0}\otimes \mathbf a_{0}-p \mathbf C^{-1}.
+&= \mu \mathbf 1+2k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1) \mathbf a_{0}\otimes \mathbf a_{0}+p \mathbf C^{-1}.
 \end{aligned}$$
 The stress matrix is
 $$\begin{aligned}
 \sigma &= \frac{1}{J}\mathbf F \mathbf S \mathbf F^{T}\\
-&= \mathbf F \left(\mu \mathbf I+2k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1) \mathbf a_{0}\otimes \mathbf a_{0}-pC^{-1} \right)\mathbf F^{T}\\
-&= \mu \mathbf b+2k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1) \mathbf F \mathbf a_{0}\otimes \mathbf a_{0} \mathbf F^{T}-p \mathbf I\\
-&=  \mu \mathbf b+2k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1) \mathbf a \otimes \mathbf a-p \mathbf I.
+&= \mathbf F \left(\mu \mathbf I+2k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1) \mathbf a_{0}\otimes \mathbf a_{0}+pC^{-1} \right)\mathbf F^{T}\\
+&= \mu \mathbf b+2k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1) \mathbf F \mathbf a_{0}\otimes \mathbf a_{0} \mathbf F^{T}+p \mathbf I\\
+&=  \mu \mathbf b+2k_{1}(I_{4}-1)\cdot \exp(k_{2}(I_{4}-1)^{2}-1) \mathbf a \otimes \mathbf a+p \mathbf I.
 \end{aligned}\tag{1}$$
 Setting up expressions for $\mathbf F, \mathbf b,\mathbf a \otimes \mathbf a$:
 $$\begin{aligned}
