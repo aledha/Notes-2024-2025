@@ -4,6 +4,10 @@ $$\Psi =\frac{c}{2}(I_{1}-3)$$
 Denote the initial internal and external radius as $A$ and $B$, respectively. Denote the internal and external radius after the pressure increase as $a$ and $b$, respectively.
 $$(\sigma _{r}+ d\sigma_{r})(r+dr)d\theta = \sigma_{r}r d\theta +\sigma_{\theta}d\theta dr$$
 
+* pre-stretched
+* anistropy, media and adventita
+
+
 ![[Pasted image 20241114120218.png|700]]
 
 ![[Pasted image 20241025155412.png]]
