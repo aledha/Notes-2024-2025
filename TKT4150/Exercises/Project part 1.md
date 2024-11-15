@@ -82,7 +82,7 @@ I_{4}&= \mathbf a_{0}\mathbf C \mathbf a_{0}\\
 Since $\sigma _{1}= \frac{P}{A_{0}}$, we can set up the expression for $P$:
 $$P=\left[\mu +2k_{1}(\lambda _{1}^{2}-1)\exp(k_{2}(\lambda _{1}^{2}-1)^{2}) \right]A_{0}\lambda _{1}^{2}- \frac{\mu A_{0}}{\lambda _{1}^{2}}.$$
 ![[Pasted image 20241025154856.png|700]]
-![[Pasted image 20241114120736.png|300]]
+![[Pasted image 20241114120736.png|600]]
 * Trachea muscle tissue (From Muscles.pptx)
 	* $c = 0.877 \text{ kPa}$
 	* $k_{1} = 0.154 \text{ kPa}$
