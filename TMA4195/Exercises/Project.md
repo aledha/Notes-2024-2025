@@ -17,7 +17,7 @@ $$\frac{\partial }{\partial t}(c \rho T)= \nabla \cdot (k \nabla T)+q.$$
 
 ![[Pasted image 20241030122021.png]]
 ![[Pasted image 20241030122031.png]]
-![[Pasted image 20241030122047.png]]
+
 $$\begin{aligned}
 -D\frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial T(x)}{\partial x}\right)&= -I(x)+QS(x)a(x,x_{s})\\
 -D\frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial T(x)}{\partial x}\right)&= -B_{\text{out}}T(x)-A_{\text{out}}+QS(x)a(x,x_{s})\\
@@ -86,7 +86,40 @@ y(x)&= \sum_{n=0}^{\infty}\alpha _{n}x^{n}\\
 &=: y_{1}(x)+y_{2}(x) 
 \end{aligned}$$
 
-For $x>x_{s}$ consider the homogenous equation for $w(u)=y(1-u)$
+
+
+$$\begin{aligned}
+w(u)&= a_{0}\left(1+ \sum_{n=1}^{\infty}\left(\prod_{k=1}^{n}\frac{k(k-1)+B}{2k^{2}} \right)u^{n} \right)\\
+&= a_{0}+a_{0}\frac{B}{2}u+a_{0}\frac{B}{2}\cdot \frac{B+2}{8}u^{2}+\dots \\
+w'(u)&= a_{0}\frac{B}{2}+\dots \\
+w'(0)&= a_{0}\frac{B}{2}
+\end{aligned}$$
+
+$$T(x)=\begin{cases}
+T_{p}(x)+C_{1}y_{1}(x)+C_{2}y_{2}(x) & \quad\text{for }x<x_{s} \\
+T_{p}(x)+w(1-x) & \quad\text{for }x>x_{s}
+\end{cases}$$
+
+### Inhomo
+$$-D\frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial T_{p}(x)}{\partial x}\right)+B_{\text{out}}T_{p}(x)= -A_{\text{out}}+QS(x)a(x,x_{s})$$
+Let $T_{p}=\sum_{n=0}^{\infty}T_{n}P_{n}(x)$, then
+$$\begin{aligned}
+\sum_{n=0}^{\infty}-D \frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial T_{n}P_{n}(x)}{\partial x}\right)+B_{\text{out}}T_{n}P_{n}(x)&=  -A_{\text{out}}+QS(x)a(x,x_{s})
+\end{aligned}$$
+![[Pasted image 20241030122047.png]]
+Using $S(x)=1+S_{2} \frac{1}{2}(3x^{2}-1)=1+S_{2}P_{2}(x)$  
+$$\begin{aligned}
+\sum_{n=0}^{\infty}-D \frac{\partial }{\partial x}\left((1-x^{2})\frac{\partial T_{n}P_{n}(x)}{\partial x}\right)+B_{\text{out}}T_{n}P_{n}(x)&=  -A_{\text{out}}+QS(x)a(x,x_{s})\\
+\sum_{n=0}^{\infty}Dn(n+1)T_{n}P_{n}(x)+B_{\text{out}}T_{n}P_{n}(x)&= -A_{\text{out}}+Q(1+S_{2}P_{2}(x)) a(x,x_{s})\\
+\sum_{n=0}^{\infty}(Dn(n+1)T_{n}+B_{\text{out}}T_{n})P_{n}(x)&= -A_{\text{out}}+Q a(x,x_{s})+QS_{2}a(x,x_{s})P_{2}(x)\\
+\sum_{n=0}^{\infty}(Dn(n+1)T_{n}+B_{\text{out}}T_{n})P_{n}(x)&= (-A_{\text{out}}+Q a(x,x_{s}))P_{0}(x)+QS_{2}a(x,x_{s})P_{2}(x)
+\end{aligned}$$
+Then, due to the orthogonality of Legendre polynomials,
+$$\begin{aligned}
+(D \cdot 0(0+1)T_{0}+B_{\text{out}}T_{0})P_{0}(x)&= (-A_{\text{out}}+Qa(x,x_{s}))P_{0}(x),\\
+(D \cdot 2(2+1)T_{2}+B_{\text{out}}T_{2})P_{2}(x)&= QS_{2}a(x,x_{s})P_{2}(x),\\
+\end{aligned}$$
+$$T_{p}=T_{0}P_{0}(x)+T_{2}P_{2}(x)$$
 
 ![[Pasted image 20241110094124.png|900]]
 
