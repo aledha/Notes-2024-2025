@@ -1,8 +1,4 @@
 ![[Pasted image 20241025155403.png]]
-Neo-Hooke:
-$$\Psi =\frac{c}{2}(I_{1}-3)$$
-Denote the initial internal and external radius as $A$ and $B$, respectively. Denote the internal and external radius after the pressure increase as $a$ and $b$, respectively.
-
 
 The deformation tensor is 
 $$
@@ -75,3 +71,31 @@ c &= \frac{1 \cdot 0.9}{2 \cdot 1.2}\cdot \frac{16 \text{ kPa} \cdot (6 \text{ m
 
 ![[Pasted image 20241025155412.png]]
 ![[Pasted image 20241025155425.png|500]]
+Again, taking the circumferential direction in the equation for the Neo-Hookean relation, and using that the length is fixed ($\lambda _z=1$):
+$$\begin{aligned}
+\sigma _{\theta }&=  \frac{2c}{\lambda _{z}\lambda _{\theta }\lambda _{r}}\lambda _{\theta }^{2}\\
+&= \frac{2c \lambda _\theta }{ \lambda _r}
+\end{aligned}$$
+If we approximate the balloon to be a cylinder with fixed lengths, we can reuse the equilibrium condition 
+$$\begin{aligned}
+\sigma _\theta \cdot 2tL&= p(r-t)L\\
+p&= \frac{2t}{r-t}\sigma _\theta,
+\end{aligned}$$
+where $t$ and $r$ are the current thickness and radius. Substituting the equation for $\sigma _\theta$,
+$$p=\frac{4ct}{r-t}\cdot \frac{\lambda _\theta }{\lambda _r}$$
+We have the relation between the current thickness and radius as $t(r)=3.45\text{ mm}-0.15r$. Since we wish to use the pressure to increase the radius from $r_0$ to $R$, we can set up the following stretch ratios
+$$\begin{aligned}
+\lambda _\theta &= \frac{R}{r_0 },\\
+\lambda _r &= \frac{t(R)}{t(r_0)}.
+\end{aligned}$$
+Substituting these back into the equation, 
+$$\begin{aligned}
+p&= \frac{4c \cdot t(R)}{R-t(R)}\cdot \frac{\frac{R}{r_0}}{\frac{t(R)}{t(r_0)}}\\
+&= \frac{4cR \cdot  t(r_0)}{(R-t(R))r_0}\\
+&= \frac{4cR \cdot (3.45 \text{ mm} -0.15r_0)}{(R-3.45 \text{ mm}+0.15R)r_0},
+\end{aligned}$$
+and inserting the known values of $R=5 \text{ mm}, r_0=\frac{R}{1.66}=3 \text{ mm}$ and the previously calculated $c=17 \text{ kPa}$:
+$$\begin{aligned}
+p&= \frac{4 \cdot 17 \text{ kPa}\cdot 5 \text{ mm} \cdot (3.45 \text{ mm}-0.15 \cdot 3\text{ mm})}{(5 \text{ mm}-3.45 \text{ mm}+0.15 \cdot 5 \text{ mm})\cdot 3 \text{ mm}}\\
+&= 147.8 \text{ kPa}
+\end{aligned}$$
