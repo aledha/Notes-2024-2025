@@ -3,8 +3,8 @@ Alexander Hatle
 
 ![[Pasted image 20241025154833.png|500]]
 ![[Pasted image 20241025153439.png|700]]
-$$\Psi (I_{1},I_{4},J)=\frac{\mu}{2} (I_{1}-3)+\frac{k_{1}}{2k_{2}}(\exp(k_{2}(I_{4}-1)^{2})-1)-p(J-1)$$
-
+$$$$
+The second Piola-Kirchoff stress is given by
 $$\begin{aligned}
 \mathbf S&= 2\frac{\partial \Psi }{\partial \mathbf C}\\
 &= 2\left(\frac{\partial \Psi }{\partial I_{1}} \frac{\partial I_{1}}{\partial \mathbf C}+\frac{\partial \Psi }{\partial I_{4}} \frac{\partial I_{4}}{\partial \mathbf C}+\frac{\partial \Psi }{\partial J} \frac{\partial J}{\partial \mathbf C}\right).
