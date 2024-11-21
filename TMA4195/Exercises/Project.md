@@ -121,6 +121,19 @@ $$\begin{aligned}
 \end{aligned}$$
 $$T_{p}=T_{0}P_{0}(x)+T_{2}P_{2}(x)$$
 
+
+Homo for $x>x_s$:
+$$a_{n+1} = \frac{n(n+1)+B}{2(n+1)^2}a_n$$
+
+$$\begin{aligned}
+T_3&= \sum_{n=0}^{\infty}a_nu^n\\
+&= \sum_{n=0}^{\infty}u^n\prod_{j=0}^{n}\frac{(j-1)j+B}{2j^2}a_0\\
+T_3 (x)&= a_0\sum_{n=0}^{\infty}(1-x)^n\prod_{j=0}^{n}\frac{(j-1)j+B}{2j^2}\\
+T_3'(x)&= -a_0\sum_{n=0}^{\infty}nu^{n-1}\prod_{j=0}^{n}\frac{(j-1)j+B}{2j^2}
+\end{aligned}$$
+
+
+
 ![[Pasted image 20241110094124.png|900]]
 
 
