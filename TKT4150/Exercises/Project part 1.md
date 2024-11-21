@@ -431,7 +431,7 @@ $$\begin{aligned}
 &+16k_{1}\kappa _{op}^{2}(1-2 \kappa _{ip})^{2}(I_{4}^{*}-1)\exp[k_{2}(I_{4}^{*}-1)^{2}]\lambda _{2}^{2}\sin ^{2}\theta 
 \end{aligned}$$
 
-$$I_{4}^{*}= 2 \kappa _{op}\kappa _{ip}I_{1}+2\kappa _{op}(1-2\kappa _{ip})I_{4}+(1-2\kappa _{op}-2\kappa _{op}\kappa _{ip})I_{n}$$
+$$I_{4}^{*}= 2 \kappa _{op}\kappa _{ip}I_{1}+2\kappa _{op}(1-2\kappa _{ip})I_{4}+(1-2\kappa _{op}-2\kappa _{op}\kappa _{ip})I_{n}$$The 
 
 $$\begin{aligned}
 I_{n}&= \mathbf m_{n}\cdot \mathbf m_{n}\\
