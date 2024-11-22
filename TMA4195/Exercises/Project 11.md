@@ -49,5 +49,8 @@ $$\mathbf M_{ij}=\frac{D}{C_a}\begin{cases}
 $$\begin{aligned}
 C_{a}\frac{\partial }{\partial t}(e^{\lambda t}u(x))&=  D(1-x^{2})\frac{\partial ^{2}}{\partial x^{2}}(e^{\lambda t}u(x))-2Dx \frac{\partial }{\partial x}(e^{\lambda t}u(x))-B_{\text{out}}(e^{\lambda t}u(x))\\
 \lambda C_{a}e^{\lambda t}u(x)&= D(1-x^{2})e^{\lambda t}u''(x)-2Dxe^{\lambda t}u'(x)-B_{\text{out}}e^{\lambda t}u(x)\\
-0&= D(1-x^{2})u''(x)-2Dx u'(x)-(B_{\text{out}}+\lambda C_{a})u(x)
+0&= D(1-x^{2})u''(x)-2Dx u'(x)-(B_{\text{out}}+\lambda C_{a})u(x)\\
+0&= D(1-x_i ^2 )\frac{u_{i+1}-2u_i+u_{i-1}}{h^2}-2Dx_i \frac{u_{i+1}-u_{i-1}}{2h}-(B_\text{out}+\lambda C_a)u_i\\
+0&= \left[\frac{D(1-x_i^2)}{h^2}-\frac{Dx_i}{h} \right] u_{i+1}+\left[-\frac{2D(1-x_i^2)}{h^2}-(B_\text{out}+\lambda C_a) \right]u_i+\left[\frac{D(1-x_i^2)}{h^2}+\frac{Dx_i}{h} \right]u_{i-1}\\
+0&= \left[\frac{D}{h^2}-Di^2-Di \right] u_{i+1}+\left[-\frac{2D}{h^2}+2Di^2-(B_\text{out}+\lambda C_a) \right]u_i+\left[\frac{D}{h^2}-Di^2+Di \right]u_{i-1}
 \end{aligned}$$
