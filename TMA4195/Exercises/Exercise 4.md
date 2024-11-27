@@ -132,11 +132,35 @@ y^u&= y(x)+Y\left(\frac{x}{\varepsilon }\right)-\lim_{x \to 0}y(x)\\
 \end{aligned}$$
 ![[Pasted image 20241124170216.png|800]]
 Since the problem is symmetric around $x=0$, we can solve with the BCs $u'(0)=0$ and $u(1)=1$. 
+A simpler way to see that $u$ is even: set $v(x)=u(-x)$, then
+$$\begin{aligned}
+\epsilon (-1)^2v''-(2-(-x)^2)v&= -1\\
+\varepsilon v''-(2-x^2)v&= -1
+\end{aligned}$$
+so $u$ is even and must therefore have $u'(0)=0$.
+
 Note that for $x≈1$, 
 $$\begin{aligned}
 \varepsilon u''-\underbrace{(2-1)u(1)}_{≈0}&= -1\\
 \varepsilon u''&≈-1
 \end{aligned}$$
-and that $\lvert u'' \rvert>>1$. 
-However, when $x \sim 1/2$, 
-$$$$
+and that $\lvert u''(x\sim1) \rvert>>1$. 
+We therefore assume that the boundary layer is at $x=1$. 
+### Outer solution
+Using the BC $u(1)$ and the expansion $u=u_0+\varepsilon u_1$:
+$$\begin{aligned}
+\varepsilon u_0 ''-(2-x^2)(u_0+\varepsilon u_1)&= -1\\
+\varepsilon (u_0''-(2-x^2)u_1)-(2-x^2)u_0&= -1\\
+\text{leading order:}\qquad (2-x^2)u_0&= 1\\
+u_0(x)&= \frac{1}{2-x^2}
+\end{aligned}$$
+
+### Inner solution
+Since the boundary layer is now at $x=1$, we set $\eta =\frac{1-x}{\delta (\varepsilon) }$, and $U\left(\frac{1-x}{\delta (\varepsilon) }\right)=u(x)$. Then,
+$$\begin{aligned}
+\varepsilon \partial _x^2U-(2-x^2)U&= -1\\
+\frac{\varepsilon }{\delta (\varepsilon)^2 }U''-(2-x^2)U&= -1\\
+\frac{\varepsilon }{\delta (\varepsilon)^2 }U''-(2-\left(1-\delta (\varepsilon )\eta  \right)^2)U&= -1\\
+\frac{\varepsilon }{\delta (\varepsilon)^2 }U''-(2-\left(1-2\delta (\varepsilon )\eta+(\delta (\varepsilon )\eta )^2  \right))U&= -1\\
+\frac{\varepsilon }{\delta (\varepsilon)^2 }U''-(1+2)U&= -1
+\end{aligned}$$
