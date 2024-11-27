@@ -23,3 +23,22 @@ This implies that the electric field may be represented as the gradient of a sca
 $$
 E=-\nabla u.
 $$
+The current $J$ in a conductor with an electric field $E$ and with conductivity $M$ is given by the relation
+$$
+J=ME=-M \nabla u.
+$$
+
+If one assumes that there are no current sources or sinks in a small volume $V$, we can set the net flux out of the surface $\partial V$ to zero:
+$$\int_{\partial V}\mathbf n \cdot \nabla \cdot (-M \nabla u)\text{ d}S=0,$$
+
+where we can apply the divergence theorem to get
+$$
+-\int_V \nabla \cdot (-M \nabla u) \text{ d}V=0.
+$$
+
+Since $V$ is an arbitrary volume, the integrand must be zero:
+$$
+\nabla \cdot (M \nabla u)=0.
+$$
+
+For 
