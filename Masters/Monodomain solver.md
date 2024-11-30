@@ -103,10 +103,7 @@ s^{n+1}\end{bmatrix}&=\begin{bmatrix}v^n-\Delta t(1-\theta )s^n\\
 s^n+\Delta t(1-\theta )v^n\end{bmatrix} \\
 \mathbf A \mathbf x&= \mathbf b,
 \end{aligned}$$
-where 
-$$
-\mathbf A=
-$$
+
 Setting $\theta =0$ gives us the forward Euler method:
 $$\begin{aligned}
 v^{n+1}&= v^{n}-\Delta ts^{n}\\
