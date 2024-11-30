@@ -44,8 +44,16 @@ $$
 \end{aligned}
 $$
 
+Since the cell membrane is thin, accumulation of charge in one domain causes accumulation of the opposite charge in the other domain. Thus, the rate of total charge accumulation must be zero:
+$$
+\frac{\partial }{\partial t}(q_{i}+q_{e} )=0.
+$$
 
-The net current in a domain equals the 
+Combining \ref{}, \ref{} and \ref{} gives
+$$
+\nabla \cdot (M_{i}\nabla u_{i})+\nabla \cdot (M_{e}\nabla u_{e})=0.
+$$
+
 
 
 If one assumes that there are no current sources or sinks in a small volume $V$, we can set the net flux out of the surface $\partial V$ to zero:
