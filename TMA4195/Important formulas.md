@@ -15,3 +15,14 @@ $$y^u= y(x)+Y\left(\frac{x}{\varepsilon }\right)-\lim_{x \to 0}y(x)$$
 
 ```
 
+```ad-note
+title: Stability of equilibrium points
+1. If $\det J(\mathbf x_{e})<0\quad\implies\quad$ unstable
+2. If $\det J(\mathbf x_{e})>0$
+	1. $\text{trace} J(\mathbf x_{e})>0\quad\implies\quad$ unstable
+	2. $\text{trace} J(\mathbf x_{e})<0\quad\implies\quad$ asymptomatically stable
+	3. $\text{trace} J(\mathbf x_{e})=0\quad\implies\quad$ stable
+
+When $n=1$, the equilibrium point is stable if $f'(u)<0$.
+
+```
