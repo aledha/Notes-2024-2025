@@ -49,6 +49,32 @@ $$
 \frac{\partial }{\partial t}(q_{i}+q_{e} )=0.
 $$
 
+The cell membrane can be viewed as a capacitor with capacitance per unit area $C_{m}$ and capacitance per unit volume as $\chi C_{m}$. The transmembrane voltage $v=u_{i}-u_{e}$ and the amount of separated charge $q=\frac{1}{2}(q_{i}-q_{e})$ are related by
+$$
+q=\chi C_{m}v,
+$$
+which we can differentiate with respect to time to get
+$$
+\frac{1}{2}\left(\frac{\partial q_{i}}{\partial t}-\frac{\partial q_{e}}{\partial t} \right)= \chi C_{m}\frac{\partial v}{\partial t}.
+$$
+
+Combining \ref{} and \ref{} gives
+$$
+\frac{\partial q_{i}}{\partial t}=-\frac{\partial q_{e}}{\partial t}=\chi C_{m}\frac{\partial v}{\partial t},
+$$
+
+which we can substitute in \ref{} 
+$$
+\begin{aligned}
+-\nabla \cdot  J_{i}&= \chi C_{m}\frac{\partial v}{\partial t}+\chi I_\text{ion},\\
+-\nabla \cdot J_{e}&= -\chi C_{m}\frac{\partial v}{\partial t}-\chi I_\text{ion}.
+\end{aligned}
+$$
+Using \ref{eq: currents}
+$$
+-
+$$
+
 Combining \ref{}, \ref{} and \ref{} gives
 $$
 \nabla \cdot (M_{i}\nabla u_{i})+\nabla \cdot (M_{e}\nabla u_{e})=0.
