@@ -73,14 +73,17 @@ $$
 Using \ref{eq: currents}
 $$
 \begin{aligned}
-\nabla \cdot (\nabla u_{i})&= \chi C_{m}\frac{\partial v}{\partial t} + \chi I_\text{ion},\\
-\nabla \cdot (\nabla u_{e})&= -\chi C_{m}\frac{\partial v}{\partial t} - \chi I_\text{ion}.
+\nabla \cdot (M_{i}\nabla u_{i})&= \chi C_{m}\frac{\partial v}{\partial t} + \chi I_\text{ion},\\
+\nabla \cdot (M_{e}\nabla u_{e})&= -\chi C_{m}\frac{\partial v}{\partial t} - \chi I_\text{ion}.
 \end{aligned}
 $$
 
-We can use the relation $u_{i}=v+u_{e}$ on the first equation to get
+We add the two equations and use the relation $u_{i}=v+u_{e}$ to get
 $$
-\nabla \cdot (\nabla v +\nabla u_{e})=\chi C_{m}\frac{\partial v}{\partial t}+\chi I_\text{ion}
+\begin{aligned}
+\nabla \cdot (M_{i}\nabla v+M_{i}\nabla u_{e})+\nabla \cdot (M_{e}\nabla u_{e})&= 0\\
+\nabla \cdot (M_{i}\nabla v)+\nabla \cdot ((M_{i}+M_{e})\nabla u_{e})&= 0
+\end{aligned}
 $$
 
 
