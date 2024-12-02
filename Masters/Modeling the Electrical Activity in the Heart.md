@@ -26,13 +26,13 @@ The current $J$ in a conductor with an electric field $E$ and with conductivity 
 $$
 J=ME=-M \nabla u.
 $$
-## Bidomain Model
+## Bidomain model
 To avoid modeling the complex geometry of the intracellular and extracellular domain, we assume that both domains are overlapping. Therefore, each point in the domain has an intracellular potential $u_i$ and an extracellular potential $u_e$. The currents are
 $$
 \begin{aligned}
 J_{i}&= -M _{i}\nabla u_{i},\\
-J_{e}&= -M_{e}\nabla u_{e}.
-\end{aligned}
+J_{e}&= -M_{e}\nabla u_{e}. 
+\end{aligned} %label{eq: currents}
 $$
 We denote the ionic current is denoted by $I_\text{ion}$, and the positive direction is defined to by from the intracellular to the extracellular domain. Since $I_\text{ion}$ is measured per unit area of the membrane and the current $J$ is measured per unit volume, we must introduce the cells area to to volume ratio as $\chi$. Then, $\chi I_\text{ion}$ is the ionic current per unit volume.
 
@@ -41,12 +41,12 @@ $$
 \begin{aligned}
 -\nabla \cdot  J_{i}&= \frac{\partial q_{i}}{\partial t}+\chi I_\text{ion},\\
 -\nabla \cdot J_{e}&= \frac{\partial q_{e}}{\partial t}-\chi I_\text{ion}.
-\end{aligned}
+\end{aligned}%label{eq: bidelcurrents}
 $$
 
 Since the cell membrane is thin, accumulation of charge in one domain causes accumulation of the opposite charge in the other domain. Thus, the rate of total charge accumulation must be zero:
 $$
-\frac{\partial }{\partial t}(q_{i}+q_{e} )=0.
+\frac{\partial }{\partial t}(q_{i}+q_{e} )=0. %label{eq: chargeeq}
 $$
 
 The cell membrane can be viewed as a capacitor with capacitance per unit area $C_{m}$ and capacitance per unit volume as $\chi C_{m}$. The transmembrane voltage $v=u_{i}-u_{e}$ and the amount of separated charge $q=\frac{1}{2}(q_{i}-q_{e})$ are related by
@@ -55,15 +55,15 @@ q=\chi C_{m}v,
 $$
 which we can differentiate with respect to time to get
 $$
-\frac{1}{2}\left(\frac{\partial q_{i}}{\partial t}-\frac{\partial q_{e}}{\partial t} \right)= \chi C_{m}\frac{\partial v}{\partial t}.
+\frac{1}{2}\left(\frac{\partial q_{i}}{\partial t}-\frac{\partial q_{e}}{\partial t} \right)= \chi C_{m}\frac{\partial v}{\partial t}.%label{eq: capacitancedt}
 $$
 
-Combining \ref{} and \ref{} gives
+Combining \ref{eq: chargeeq} and \ref{eq: capacitancedt} gives
 $$
 \frac{\partial q_{i}}{\partial t}=-\frac{\partial q_{e}}{\partial t}=\chi C_{m}\frac{\partial v}{\partial t},
 $$
 
-which we can substitute in \ref{} 
+which we can substitute in \ref{eq: bidelcurrents} 
 $$
 \begin{aligned}
 -\nabla \cdot  J_{i}&= \chi C_{m}\frac{\partial v}{\partial t}+\chi I_\text{ion},\\
@@ -73,46 +73,59 @@ $$
 Using \ref{eq: currents}
 $$
 \begin{aligned}
-\nabla \cdot (M_{i}\nabla u_{i})&= \chi C_{m}\frac{\partial v}{\partial t} + \chi I_\text{ion},\\
-\nabla \cdot (M_{e}\nabla u_{e})&= -\chi C_{m}\frac{\partial v}{\partial t} - \chi I_\text{ion}.
+\nabla \cdot (M_{i}\nabla u_{i})&= \chi C_{m}\frac{\partial v}{\partial t} + \chi I_\text{ion},\\ %label{eq: intracell}
+\nabla \cdot (M_{e}\nabla u_{e})&= -\chi C_{m}\frac{\partial v}{\partial t} - \chi I_\text{ion}. %label{eq: extracell}
 \end{aligned}
 $$
 
-We add the two equations and use the relation $u_{i}=v+u_{e}$ to get
+We use the relation $u_{i}=v+u_{e}$ on \ref{eq: intracell}
 $$
-\begin{aligned}
-\nabla \cdot (M_{i}\nabla v+M_{i}\nabla u_{e})+\nabla \cdot (M_{e}\nabla u_{e})&= 0\\
-\nabla \cdot (M_{i}\nabla v)+\nabla \cdot ((M_{i}+M_{e})\nabla u_{e})&= 0
-\end{aligned}
+\nabla \cdot (M_{i}\nabla v)+\nabla \cdot (M_{i}\nabla u_{e})= \chi C_{m}\frac{\partial v}{\partial t}+\chi I_\text{ion},%label{eq: bi1}
 $$
 
-
-Combining \ref{}, \ref{} and \ref{} gives
+where \ref{eq: extracell} can be applied to obtain the equation
 $$
-\nabla \cdot (M_{i}\nabla u_{i})+\nabla \cdot (M_{e}\nabla u_{e})=0.
-$$
-
-
-
-If one assumes that there are no current sources or sinks in a small volume $V$, we can set the net flux out of the surface $\partial V$ to zero:
-$$\int_{\partial V} n \cdot \nabla \cdot (-M \nabla u)\text{ d}S=0,$$
-
-where we can apply the divergence theorem to get
-$$
--\int_V \nabla \cdot (-M \nabla u) \text{ d}V=0.
+\nabla \cdot (M_{i}\nabla v)+\nabla\cdot((M_{i}+M_{e})\nabla u_{e})=0.%label{eq: bi2}
 $$
 
-Since $V$ is an arbitrary volume, the integrand must be zero:
+\ref{eq: bi1} and \ref{eq: bi2} are the standard formulation of the bidomain model. Notice that since the heart tissues are anisotropic, the conductivities $M_{i}$ and $M_{e}$ are tensors. 
+
+To set boundary conditions, we assume that the heart is surrounded by an insulating medium such that we get Neumann conditions for both currents:
 $$
-\nabla \cdot (M \nabla u)=0.
-$$
-Since the heart tissue generates current sources, we must adjust the equation by modeling the sources as dipoles, which yields a source term $f$:
-$$
-\nabla \cdot (M \nabla u)=f.
+\begin{align}
+n\cdot J_{i} & =0, \\ %label{eq: bibc1}
+n\cdot J_{e} & =0. %label{eq: bibc2}
+\end{align}
 $$
 
-We also assume that the body is insulated such that the current flux must be zero on the boundary:
+Substituting \ref{eq: currents} and the relation $u_{i}=v+u_{e}$ gives
 $$
-n \cdot M \nabla u=0.
+\begin{align}
+n\cdot(M_{i}\nabla v+M_{i}\nabla u_{e} ) & =0, \\
+n\cdot(M_{e}\nabla u_{e}) & =0.
+\end{align}
 $$
 
+\ref{eq: bi1} and \ref{eq: bi2} with the boundary conditions \ref{eq: bibc1} and \ref{eq: bibc2} is a system of partial differential equations that are difficult to solve. We will therefore make some assumptions to simplify the model.
+
+## Monodomain model
+The model can be derived from assuming equal anisotropy rates between the intracellular and extracellular conductivity tensors, meaning that the tensors are related by a constant $\lambda$. This is expressed as $M_{e}=\lambda M_{i}$. Now, we rewrite \ref{eq: bi2} as
+$$
+\begin{align}
+\nabla\cdot(M_{i}\nabla v)+\nabla\cdot ((1+\lambda)M_{i}\nabla u_{e}) & =0 \\
+\nabla \cdot(M_{i}\nabla u_{e}) & =-\frac{1}{1+\lambda}\nabla \cdot(M_{i}\nabla v),
+\end{align}
+$$
+
+which can substitute in \ref{eq: bi1}:
+$$
+\begin{align}
+\nabla \cdot(M_{i}\nabla v)-\frac{1}{1+\lambda}\nabla \cdot(M_{i}\nabla v) & =\chi C_{m} \frac{ \partial v }{ \partial t } +\chi I_\text{ion} \\
+\frac{{\lambda}}{1+\lambda}\nabla \cdot(M_{i}\nabla v) & =\chi C_{m} \frac{ \partial v }{ \partial t } +\chi I_\text{ion}.%label{eq: mono}
+\end{align}
+$$
+
+\ref{eq: bibc2} becomes $n\cdot(\lambda M_{i}\nabla u_{e})=0 \implies n\cdot(M_{i}\nabla u_{e})=0$, which simplifies \ref{eq: bibc1} to
+$$
+n\cdot(M_{i}\nabla v)=0. %label{eq: monobc}
+$$
