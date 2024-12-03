@@ -19,7 +19,7 @@ To test our solver, we will use the solution
 $$v(x,y,t)=\cos (2\pi x)\cos (2\pi y)\sin t.$$
 Then,
 $$\nabla v=-2\pi \sin t \begin{bmatrix}\sin (2\pi x)\cos (2\pi y) \\ \cos (2\pi x)\sin (2\pi y)\end{bmatrix},$$
-where the boundary condition $n \cdot \nabla v=0$ is satisfied. Further,
+where we see that the boundary condition $n \cdot \nabla v=0$ is satisfied. Further,
 $$\nabla ^{2}v = -8\pi ^{2}\cos (2\pi x)\cos (2\pi y)\sin t,$$
 and
 $$\frac{\partial v}{\partial t}=\cos (2\pi x)\cos (2\pi y)\cos t.$$
