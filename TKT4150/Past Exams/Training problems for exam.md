@@ -172,19 +172,72 @@ $$
 \begin{align}
 F_{ij} & =\frac{ \partial x_{i} }{ \partial X_{j} }  \\
 H_{ij} & =\frac{ \partial u_{i} }{ \partial X_{j} } \\
-\mathbf{H} & =\mathbf{F}-\mathbf{I} 
+\mathbf{H} & =\mathbf{F}-\mathbf{I}  \\
+\mathbf{C} & =\mathbf{F}^T\mathbf{F} \\
+\mathbf{E} & =\frac{1}{2}(\mathbf{C}-\mathbf{I}) \\
+\mathbf{L} & =\dot{\mathbf{H}} \\
+L_{ij}  & =\frac{ \partial v_{i} }{ \partial x_{j} } =v_{i,j} \\
+\mathbf{D} & =\frac{1}{2}(\mathbf{L}+\mathbf{L}^T)=\dot{\mathbf{E}} \\
+D_{ij} & =\frac{1}{2}(v_{i,j}+v_{j,i})
 \end{align}
 $$
 ![[Pasted image 20241204115811.png]]
+a)
+$$
+\lambda= \frac{ds}{ds_{0}}
+$$
+Let's say $e$ is in direction 1.
+$F_{11}=\lambda\implies C_{11}=\lambda^2$. So $\lambda=\sqrt{ \mathbf{e}\cdot\lambda^2\cdot \mathbf{e} }=\lambda$.
+
+b)
+We have that $E_{11}=\frac{1}{2}(C_{11}-1)=\frac{1}{2}(\lambda^2-1)$, so
+$$
+\begin{align}
+\mathbf{e}\cdot \mathbf{C}\cdot \mathbf{e} & =\frac{1}{2}(\lambda^2-1) \\
+ & =\frac{1}{2}\left( \frac{ds^2}{ds_{0}^2}-1 \right) \\
+ & =\frac{1}{2} \frac{ds^2-ds^{2}_{0}}{ds^{2}_{0}}
+\end{align}
+$$
+
 
 ![[Pasted image 20241204115819.png]]
+**Small strains:** when longitudinal strain $\epsilon<1\%$. 
+**Small deformations**: when all entries in $\mathbf{H}$ are << 1.
 
 ![[Pasted image 20241204115827.png]]
+**Linear elastic material**: When the stresses are functions solely of the deformations: $\mathbf{T}=\mathbf{T}(\mathbf{E})$, where $\mathbf{T}(\mathbf{E})$ is a linear relation. Or $\epsilon_{i}=\frac{\sigma_{1}}{\eta}$.
+**Hyperelastic material**: If the strain power per unit volume $\omega$ may be derived from a scalar valued potential $\phi(\mathbf{E})$ such that
+$$
+\omega=\dot{\phi}=\frac{ \partial \phi }{ \partial E_{ij} } \dot{E_{ij}}
+$$
+**Isotropic material**: when all directions in the material have the same material properties
+**Elasticity modulus**: For a Hookean solid, the elasticity (Youngs) modulus $\eta$ is the relation between the stress and strains: $$\epsilon_{i}=\frac{\sigma_{i}}{\eta}$$
+**Poisson ratio**: For a Hookean solid undergoing uniaxial stress in one direction, there are negative strains in the other direction with ratio $\nu$:
+$$
+\epsilon_{2}=-\nu \epsilon_{1}=-\nu\frac{ (\sigma_{1})}{\eta}
+$$
+**Shear modulus**: 
+$$
+\mu=\frac{\eta}{2(1+\nu)}
+$$
 
 ![[Pasted image 20241204115834.png]]
+First:
+$$
+\mathbf{T}_{0}=J\mathbf{T}\mathbf{F}^{-T} 
+$$
+Second:
+$$
+\mathbf{S}=J\mathbf{F}^{-1}\mathbf{T}\mathbf{F}^{-T}
+$$
+and for hyperelastic material,
+$$
+\mathbf{S}=2\frac{ \partial \phi }{ \partial \mathbf{C} } 
+$$
 
 ## Fluid mechanics
 ![[Pasted image 20241204115911.png]]
+**Fluid.** A fluid is a material that deforms continuously when subjected to anisotropic stress.
 
 ![[Pasted image 20241204115919.png]]
 
