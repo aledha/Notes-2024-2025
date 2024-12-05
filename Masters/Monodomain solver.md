@@ -1,12 +1,6 @@
-We want to solve the monodomain model
-$$
-\begin{aligned}
-\frac{\partial s}{\partial t}&= f(s,v,t),&x\in H,\\
-\frac{\lambda }{1+\lambda }\nabla \cdot (M_{i}\nabla v)+I_{\text{stim}} &= \frac{\partial v}{\partial t}+I_{\text{ion}}(v,s), &x\in H,\\
-n \cdot (M_{i}\nabla v)&= 0, &x\in \partial H.
-\end{aligned}
-$$
-We start off with 2 dimensions. Let $H$ be the unit square $[0,1]\times[0,1]$, and set $M_{i}=1$. Then the model simplifies to
+We want to solve the monodomain model \ref{}.
+
+We start off with 2 dimensions. Let $H$ be the unit square $[0,1]\times[0,1]$,  $C_{m}=1$, $\chi=1$,  and $M_{i}=\mathbf{I}$. Then the model simplifies to
 $$
 \begin{aligned}
 \frac{\partial s}{\partial t}&= f(s,v,t),&x\in H,\\
@@ -15,43 +9,81 @@ n \cdot (\nabla v)&= 0, &x\in \partial H.
 \end{aligned}
 $$
 ## Analytical solution
-To test our solver, we will use the solution
-$$v(x,y,t)=\cos (2\pi x)\cos (2\pi y)\sin t.$$
+To test our solver, we will generate expressions for $\nabla^2v$, $f$, $I_\text{stim}$, and $I_\text{ion}$ with the analytical solution
+$$
+\begin{equation}
+v(x,y,t)=\cos (2\pi x)\cos (2\pi y)\sin t.
+\end{equation}
+$$
 Then,
-$$\nabla v=-2\pi \sin t \begin{bmatrix}\sin (2\pi x)\cos (2\pi y) \\ \cos (2\pi x)\sin (2\pi y)\end{bmatrix},$$
+$$
+\begin{equation*}
+\nabla v=-2\pi \sin t \begin{bmatrix}\sin (2\pi x)\cos (2\pi y) \\ \cos (2\pi x)\sin (2\pi y)\end{bmatrix},
+\end{equation*}
+$$
 where we see that the boundary condition $n \cdot \nabla v=0$ is satisfied. Further,
-$$\nabla ^{2}v = -8\pi ^{2}\cos (2\pi x)\cos (2\pi y)\sin t,$$
+$$
+\begin{equation}
+\nabla ^{2}v = -8\pi ^{2}\cos (2\pi x)\cos (2\pi y)\sin t,%\label{eq:laplacev}
+\end{equation}
+$$
 and
-$$\frac{\partial v}{\partial t}=\cos (2\pi x)\cos (2\pi y)\cos t.$$
+$$
+\begin{equation}
+\frac{\partial v}{\partial t}=\cos (2\pi x)\cos (2\pi y)\cos t. %\label{eq:dvdt}
+\end{equation}
+$$
 
-Let 
-$$\begin{aligned}
-\frac{\partial s}{\partial t}&= f(v)=v\\
-s&= -\cos (2\pi x)\cos (2\pi y)\cos t.
-\end{aligned}$$
+We let
+$$
+\begin{align}
+\frac{\partial s}{\partial t}&=f(s,v,t)=v\\
+s&= -\cos (2\pi x)\cos (2\pi y)\cos t. %\label{eq:anal_s}
+\end{align}
+$$
 Now,
-$$\begin{aligned}
+$$
+\begin{align*}
 \frac{\partial v}{\partial t}&= \frac{\lambda }{1+\lambda }\nabla^{2} v+I_{\text{stim}}-I_{\text{ion}}(v,s)\\
 I_{\text{ion}}-I_\text{stim}&= \frac{\lambda }{1+\lambda }\left(-8\pi ^{2}\cos (2\pi x)\cos (2\pi y)\sin t \right)-\cos (2\pi x)\cos (2\pi y)\cos t\\
 &= -\left(\frac{8\pi ^{2}\lambda }{1+\lambda }\sin t + \cos t\right) \cos (2\pi x)\cos (2\pi y).
-\end{aligned}$$
+\end{align*}
+$$
+
 We can let 
-$$\begin{aligned}
+$$
+\begin{align*}
 I_\text{ion}&= s\\
-&= -\cos (2\pi x)\cos (2\pi y)\cos t
-\end{aligned}$$
+&= -\cos (2\pi x)\cos (2\pi y)\cos t.
+\end{align*}
+$$
+
 such that
-$$\begin{aligned}
-I_\text{stim}&= I_{\text{ion}}+\left(\frac{8\pi ^{2}\lambda }{1+\lambda }\sin t + \cos t\right) \cos (2\pi x)\cos (2\pi y)\\
-&= \frac{8\pi ^{2}\lambda }{1+\lambda }\cos (2\pi x)\cos (2\pi y)\sin t
-\end{aligned}$$
+$$
+\begin{align}
+I_\text{stim}&= I_{\text{ion}}+\left(\frac{8\pi ^{2}\lambda }{1+\lambda }\sin t + \cos t\right) \cos (2\pi x)\cos (2\pi y)\nonumber\\
+I_\text{stim}&= \frac{8\pi ^{2}\lambda }{1+\lambda }\cos (2\pi x)\cos (2\pi y)\sin t. %\label{eq:analistim}
+\end{align}
+$$
 
 With the initial conditions
-$$\begin{aligned}
+$$
+\begin{align}
 v(0)&= 0,\\
 s(0)&= -\cos (2\pi x)\cos (2\pi y),
-\end{aligned}$$
-we can begin solving the system.
+\end{align}
+$$
+we can set up the operator splitting scheme described in \ref{sec:operatorsplitting}.
+
+The ODE system \ref{eq:odesplitv} and \ref{eq:odesplits} becomes
+$$
+\begin{align}
+\frac{ \partial v }{ \partial t }  & =-\frac{1}{C_{m}}I_\text{ion}=-s, \\ %\label{eq:analodesplitv}
+\frac{ \partial s }{ \partial t }  & =f(s,v,t)=v. %\label{eq:analodesplits}
+\end{align}
+$$
+
+
 
 ## Operator splitting
 We will solve this by use of operator splitting. 
