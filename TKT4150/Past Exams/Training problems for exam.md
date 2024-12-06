@@ -240,16 +240,72 @@ $$
 **Fluid.** A fluid is a material that deforms continuously when subjected to anisotropic stress.
 
 ![[Pasted image 20241204115919.png]]
+a)
+$B$ is an extensive property, $b$ is the density of the extensive property, $V(t)$ is the control volume at time $t$, $A$ is the area of the control volume, $\mathbf{v}$ is the speed at a given point, $\mathbf{n}$ is the unit normal vector. So
+$$
+\int_{V(t)}\frac{ \partial b }{ \partial t } \text{ d} V
+$$
+is the change of the density of $B$ in a volume $V$, and
+$$
+\int_{A(t)}b(\mathbf{v}\cdot \mathbf{n})\text{ d}  A
+$$
+is the speed of the moving body relative to the normal vector multiplied by the density of $B$. This term is how much the material moves out of the control volume.
+
+b) 
+For a volume with mass $m$, we can set up Reynolds transport theorem as
+$$
+\dot{m}=\int_{V(t)}\frac{ \partial \rho }{ \partial t } \text{ d} V+\int_{A(t)}\rho(\mathbf{v}\cdot \mathbf{n})\text{ d} A
+$$
+here we assume conservation of mass, $i$.$e$. that $\dot{m}=0$ and use the divergence theorem on the last term:
+$$
+\begin{align}
+0 & =\int_{V(t)}\frac{ \partial \rho }{ \partial t } \text{ d} V+\int_{V(t)}\rho \nabla \mathbf{v} \text{ d} V+\int_{V(t)}\rho \mathbf{v}\cdot(\nabla 1)\text{ d}  V \\
+0 & =\frac{ \partial \rho }{ \partial t } +\rho \nabla \mathbf{v} \\
+0 & =\frac{ \partial \rho }{ \partial t } +\rho(v_{i})_{,i}
+\end{align}
+$$
 
 ![[Pasted image 20241204115928.png]]
+For incompressible flow, we have $\frac{ \partial \rho }{ \partial t }=0$ so the equation above:
+$$
+0=\rho \nabla \mathbf{v}
+$$
+
 
 ![[Pasted image 20241204115937.png]]
+Inner wall is stationary, while outer wall is moving. Torque on the inner wall is measured
+![[IMG_0265.jpg|600]]
+
+Relation between shear stress $\tau$ and shear strain rate $\dot{\gamma}$. Newtonian have a linear relation:
+$$
+\tau=\mu \dot{\gamma}
+$$
+Shear thinning: weaker relation
+Shear thickening: Stronger relation
+Viscoplastic: Undergoes plastic deformations, unrecoverable when a load is reached.
 
 ![[Pasted image 20241204115951.png]]
+$\dot{\gamma}=\frac{\text{d}v}{\text{d}y}$
+a) Newtonian, $\tau=\mu \dot{\gamma}$.
+
+b) viscosity: $[\tau]=\mathrm{Pa}$, $[v]=\mathrm{ms^{-1}}$, $\left[ \frac{\text{d}v}{\text{d}y} \right]=s^{-1}$ so
+$$
+[\mu]=\mathrm{Pa\cdot s}
+$$
+
 
 ![[Pasted image 20241204120002.png]]
+$c=-\frac{\text{d}p}{\text{d}z}$
+
+$$\begin{aligned}
+\tau 2\pi R \cdot \text{ d}z-\frac{\partial p}{\partial z}\text{ d}z \cdot \pi R^{2}&= 0\\
+\left(c=\frac{\partial p}{\partial z} \right)\qquad \implies\qquad  \tau &= -\frac{cR}{2}
+\end{aligned}\tag{*}$$
+$\tau =\tau _{y}\quad\implies\quad r_{P}=2\frac{\tau _{y}}{c}$.
 
 ![[Pasted image 20241204120009.png]]
+
+
 
 ![[Pasted image 20241204120015.png]]
 
