@@ -308,6 +308,19 @@ $\tau =\tau _{y}\quad\implies\quad r_{P}=2\frac{\tau _{y}}{c}$.
 
 
 ![[Pasted image 20241204120015.png]]
+Using
+$$
+\dot{\mathbf{v}}=\frac{ \partial \mathbf{v} }{ \partial t } +(\mathbf{v}\cdot \nabla) \mathbf{v}=\frac{1}{\rho}\nabla \cdot \mathbf{T}+\mathbf{b}
+$$
+Substituting and solving for $\frac{ \partial \mathbf{v} }{ \partial t }$:
+$$
+\begin{align}
+\frac{ \partial \mathbf{v} }{ \partial t }-(\mathbf{v}\cdot \nabla)\mathbf{v} & =\frac{1}{\rho}\nabla \cdot \mathbf{T}+\mathbf{b}-(\mathbf{v}\cdot \nabla)\mathbf{v}  \\
+ & =\frac{1}{\rho}\nabla \cdot\left( -p\mathbf{I}+2\mu \mathbf{D}+\left( \kappa-\frac{2}{3}\mu \right)\mathrm{Tr}\mathbf{D}\cdot\mathbf{I} \right)+\mathbf{b} \\
+ & =\frac{1}{\rho}(-\nabla p)
+\end{align}
+$$
+
 
 ![[Pasted image 20241204120021.png]]
 
