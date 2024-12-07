@@ -1,0 +1,10 @@
+{
+	"nodes":[
+		{"id":"3c06f7fadf5a1dc6","type":"group","x":-401,"y":-85,"width":701,"height":525,"label":"Perturbation theory"},
+		{"id":"66c5cb7e21b46ae3","type":"text","text":"**Matching Condition**\nWhen $Y(\\eta)$ is the inner solution and $y(x)$ is the outer solution:\n$$\\lim_{\\eta  \\to \\infty}Y(\\eta )= \\lim_{x \\to 0}y(x)$$","x":-400,"y":-60,"width":328,"height":164},
+		{"id":"dd5047928731d992","type":"text","text":"**Uniform solution**\nSum up the inner and outer solution and subtract the limit:\n$$y^u= y(x)+Y\\left(\\frac{x}{\\varepsilon }\\right)-\\lim_{x \\to 0}y(x)$$","x":-40,"y":-68,"width":303,"height":180},
+		{"id":"5e7ec0d5d512d6fe","type":"text","text":"**Stability of equilibrium points**\n1. If $\\det J(\\mathbf x_{e})<0\\quad\\implies\\quad$ unstable\n2. If $\\det J(\\mathbf x_{e})>0$\n\t1. $\\text{trace} J(\\mathbf x_{e})>0\\quad\\implies\\quad$ unstable\n\t2. $\\text{trace} J(\\mathbf x_{e})<0\\quad\\implies\\quad$ asymptomatically stable\n\t3. $\\text{trace} J(\\mathbf x_{e})=0\\quad\\implies\\quad$ stable\n\nWhen $n=1$, the equilibrium point is stable if $f'(u)<0$.","x":-361,"y":140,"width":561,"height":269},
+		{"id":"49aaaab100bc102e","x":160,"y":-460,"width":560,"height":300,"type":"text","text":"For a linear system of the form\n$$\n\\frac{\\text{d}}{\\text{d}t} \\vec{x}=\\mathbf{A}\\vec{x},\n$$\nthe solutions are of the form\n$$\n\\vec{x}=C_{1}\\vec{x}_{1}e^{ \\lambda_{1} t }+C_{2}\\vec{x}_{2}e^{ \\lambda_{2}t }\n$$\nwhere $\\vec{x}_{1},\\vec{x}_{2}$ are the eigenvectors and $\\lambda_{1},\\lambda_{2}$ are the eigenvalues.\n"}
+	],
+	"edges":[]
+}
