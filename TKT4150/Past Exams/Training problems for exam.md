@@ -30,7 +30,7 @@ $$
 \dot{f} & = \frac{\text{d}f}{\text{d}t}  \\
  & =\frac{ \partial f }{ \partial t } +\frac{ \partial f }{ \partial x_{1} }\frac{ \partial x_{1} }{ \partial t }  +\frac{ \partial f }{ \partial x_{2} }\frac{ \partial x_{2} }{ \partial t }  +\frac{ \partial f }{ \partial x_{3} }\frac{ \partial x_{3} }{ \partial t }   \\
  & =\frac{ \partial f }{ \partial t } +\left( v_{i} \frac{ \partial  }{ \partial x_{i} } \right)f \\
- & =\frac{ \partial f }{ \partial t }+ (\mathbf{v}\cdot \nabla)f
+ \dot{f}& =\frac{ \partial f }{ \partial t }+ (\mathbf{v}\cdot \nabla)f
 \end{align}
 $$
 An extensive property would be $F(t)=\int_{V}f \rho\text{ d}V$.
@@ -286,7 +286,7 @@ Viscoplastic: Undergoes plastic deformations, unrecoverable when a load is reach
 
 ![[Pasted image 20241204115951.png]]
 $\dot{\gamma}=\frac{\text{d}v}{\text{d}y}$
-a) Newtonian, $\tau=\mu \dot{\gamma}$.
+a) $\mathbf{T}$ and $\mathbf{D}$ are co-axial
 
 b) viscosity: $[\tau]=\mathrm{Pa}$, $[v]=\mathrm{ms^{-1}}$, $\left[ \frac{\text{d}v}{\text{d}y} \right]=s^{-1}$ so
 $$
@@ -323,21 +323,51 @@ $$
 
 
 ![[Pasted image 20241204120021.png]]
-
+mostly plasma
 ![[Pasted image 20241204120026.png]]
-
+$\mu=0$
 ## Muscles
 
 ![[Pasted image 20241204120038.png]]
+Skeletal voluntary.
+Smooth muscles
+Cardiac muscles
+
 ![[Pasted image 20241204120044.png]]
+$$
+(v+b)(F+a)=b(F_{0}+a)
+$$
+![[Pasted image 20241208100950.png|200]]
+
+A contractor and spring in series, in parallel with a spring
+
 
 ![[Pasted image 20241204120051.png]]
+When muscles are stimulated continuously.
 
 ![[Pasted image 20241204120057.png]]
 
 ## Vessel wall mechanics
 ![[Pasted image 20241204120111.png]]
-
+* Pre-stretched with internal pressure load
+* Anisotropic
+* Thick-walled
 ![[Pasted image 20241204120122.png]]
+Innermost: Intima
+Middle: Media
+Outer: Adventia
+1. Components
+	1. intima: single cells
+	2. media: smooth muscle cells and collagen fibres and elastin fibers
+	3. adventia: collagen fibres
+2. Mechanical contributions
+	1. Elastin: Linear stress relation
+	2. Collagen: anisotropic 
+	3. Smooth muscle cells can be activated, also linear, increases $\mu$ when activated
+	4. So intima can be ignored since its single cells. Media is one of the most significant contributers. Adventia also contributes but is much less stiff in the load-free config as the collagen fibres haven't been stretched.
+3. Collagen fibres are organized in helical structures around the vessel but can also be dispersed.
+4. Dispersion can be taken into account by having a parameter $\kappa$ such that $\kappa I_{1}+(1-3\kappa)I_{4}$
+
 
 ![[Pasted image 20241204120132.png]]
+

@@ -1,0 +1,19 @@
+{
+	"nodes":[
+		{"id":"f8f964b069fe9411","type":"group","x":205,"y":-647,"width":995,"height":567,"label":"Stresses and strains"},
+		{"id":"1c05c64c305862a3","x":-700,"y":-240,"width":853,"height":376,"type":"group","label":"Solid mechanics"},
+		{"id":"9ae700d2df5942d0","type":"group","x":-700,"y":-600,"width":780,"height":306,"label":"Fluids"},
+		{"id":"5f11376000f81cd1","type":"text","text":"**Strain measures**\n1. Longitudinal strain  $\\epsilon=\\frac{ \\text{d} s }{ \\text{d} s_{0} }-1=\\lambda-1$\n2. Shear strain: The angular deviation between vectors(given) that were orthogonal in reference configuration\n3. Volumetric strain $\\epsilon_{V}=\\lim_{ \\Delta V_{0} \\to 0 } \\frac{\\Delta V-\\Delta V_{0}}{\\Delta V_{0}}$","x":225,"y":-340,"width":415,"height":240},
+		{"id":"b450229e535a46f4","type":"text","text":"**Fluid** is a material that deforms continuously when subjected to anisotropic stress.","x":-680,"y":-560,"width":282,"height":145},
+		{"id":"b034bb43f7ca0100","type":"text","text":"**Viscosity**\nRelation between shear stress $\\tau$ and shear strain rate $\\dot{\\gamma}$. \n*Newtonian* have a linear relation: $\\tau=\\mu \\dot{\\gamma}$.\n*Shear thinning*: weaker relation\n*Shear thickening*: Stronger relation\n*Viscoplastic*: Undergoes plastic deformations, unrecoverable when a load is reached.","x":-380,"y":-580,"width":440,"height":266},
+		{"id":"0c8783d22f328e10","type":"text","text":"**Strain tensors**\nDeformation tensor $\\mathbf{F}$, $F_{ij}=\\frac{ \\partial x_{i} }{ \\partial X_{j} }$.\nGreens displacement tensor $\\mathbf{C}=\\mathbf{F}^TF$.\nDisplacement gradient tensor $\\mathbf{H}_{ij}=\\frac{ \\partial u_{i} }{ \\partial X_{j} }$, $\\mathbf{H}=\\mathbf{F}-\\mathbf{I}$\nGreens strain tensor $\\mathbf{E}=\\frac{1}{2}(\\mathbf{C}-\\mathbf{I})$.","x":680,"y":-294,"width":500,"height":194},
+		{"id":"c760568aadf1ec1c","type":"text","text":"**Hookean solid**\nThe elasticity (Youngs) modulus $\\eta$ is the relation between the stress and strains: $\\epsilon_{i}=\\frac{\\sigma_{i}}{\\eta}$.\n**Poisson ratio**: For a Hookean solid undergoing uniaxial stress in one direction, there are negative strains in the other direction with ratio $\\nu$: $\\epsilon_{2}=-\\nu \\epsilon_{1}=-\\nu\\frac{ (\\sigma_{1})}{\\eta}$","x":680,"y":-627,"width":400,"height":308},
+		{"id":"de0f3b73cf56cb5d","type":"text","text":"**Eulers axioms**\n1. The rate of change of the *linear momentum* for a continuum volume equals the resultant *force*. \n2. The rate of change of the *angular momentum* for a continuum volume equals the resultant *moment.*","x":-380,"y":-220,"width":513,"height":198},
+		{"id":"6cc40b6321564f6f","type":"text","text":"**Cauchy stress theorem**\n$$\n\\mathbf{t}=\\mathbf{T}\\cdot \\mathbf{n}\n$$","x":-680,"y":20,"width":281,"height":87},
+		{"id":"910d737bdcd97a93","type":"text","text":"**Cauchy eq. of motion**\n$$\n\\mathbf{a}\\rho  =\\nabla \\cdot \\mathbf{T}+\\rho \\mathbf{b}\n$$","x":-340,"y":20,"width":275,"height":96},
+		{"id":"48dd797a9a1aad06","type":"text","text":"**Material derivative**\n$$\n \\dot{f} =\\frac{ \\partial f }{ \\partial t }+ (\\mathbf{v}\\cdot \\nabla)f\n$$","x":-656,"y":-131,"width":233,"height":103},
+		{"id":"aa518714ac287ba0","type":"text","text":"**Max stresses**\n$$\n\\begin{align}\n\\tau _\\text{max} & =\\frac{1}{2}(\\sigma _\\text{max}-\\sigma _\\text{min}) \n\\end{align}\n$$\nmax normal stress is max principle stress","x":225,"y":-533,"width":399,"height":173},
+		{"id":"5402ca9a66e750e1","x":240,"y":-620,"width":250,"height":60,"type":"text","text":"**Principle stresses**\n$\\mathbf{T}\\mathbf{n}=\\sigma \\mathbf{n}$"}
+	],
+	"edges":[]
+}
