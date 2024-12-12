@@ -25,7 +25,7 @@ Set
 $$\begin{aligned}
 x'&= 3t^{2}\quad\implies\quad x(t)= t^3+x_0\\
 z'&= z^{2} \\
-\frac{\text{d}z}{\text{d}z^{2}}&= \text{ d}t\\
+\frac{\text{d}z}{z^{2}}&= \text{ d}t\\
 -\frac{1}{z}&= t-C\\
 z(t)&= \frac{1}{C-t}\\
 z(0)& =\frac{1}{C}=u_{0}(x_{0})\\
