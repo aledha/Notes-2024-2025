@@ -129,3 +129,49 @@ $$
 $$
 n\cdot(M_{i}\nabla v)=0. %label{eq: monobc}
 $$
+
+## Semi-equal anisotropy rates
+Another possible assumption is that the intracellular and extracellular conductivity tensors are related by a diagonal tensor, i.e., $M_{e}=DM_{i}$. Then, \ref{eq: bi2} becomes
+$$
+\begin{align}
+\nabla \cdot(M_{i} \nabla v)+\nabla \cdot((M_{i}+DM_{i})\nabla u_{e}) & =0 \\
+(I+D)\nabla \cdot(M_{i}\nabla u_{e})& =-\nabla \cdot(M_{i} \nabla v)  \\
+\nabla \cdot(M_{i}\nabla u_{e}) & =-(I+D)^{-1}\nabla \cdot(M_{i}\nabla v)
+\end{align}
+$$
+which we can substitute in \ref{eq: bi1}:
+$$
+\begin{align}
+\nabla \cdot(M_{i}\nabla v)-(I+D)^{-1}\nabla \cdot(M_{i}\nabla v) & =\chi C_{m} \frac{ \partial v }{ \partial t } +\chi I_\text{ion}  \\
+(I-(I+D)^{-1})\nabla \cdot(M_{i}\nabla v) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion} \\
+\nabla \cdot(M \nabla v) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion}
+\end{align}
+$$
+where
+$$
+\begin{equation}
+M=(I-(I+D)^{-1})M_{i}=M_{i}-(I+D)^{-1}M_{i}
+\end{equation}
+$$
+$$
+\begin{align}
+(I+D)M & =M_{i}
+\end{align}
+$$
+$$
+\begin{align}
+\sigma & =\sigma_{i}-\frac{1}{1+\lambda}\sigma_{i} \\
+ & =\frac{\lambda}{1+\lambda}\sigma_{i} \\
+ & =\frac{\frac{\sigma_{e}}{\sigma_{i}}}{1+\frac{\sigma_{e}}{\sigma_{i}}}\sigma_{i} \\
+ & =\frac{\sigma_{i}\sigma_{e}}{\sigma_{i}+\sigma_{e}}
+\end{align}
+$$
+
+
+
+$$
+\begin{align}
+\nabla \cdot (Dv) & =\sum_{i}\frac{ \partial  }{ \partial x_{i} }  \sum_{j}D_{ij}v_{j}=\sum_{i}\frac{ \partial  }{ \partial x_{i} } D_{ii}v_{i}=\sum_{i}D_{ii}\frac{ \partial v_{i} }{ \partial x_{i} }=(D\nabla)\cdot v 
+\end{align}
+$$
+
