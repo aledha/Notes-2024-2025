@@ -22,73 +22,56 @@ This implies that the electric field may be represented as the gradient of a sca
 $$
 E=-\nabla u.
 $$
-The current $J$ in a conductor with an electric field $E$ and with conductivity $M$ is given by the relation
+The current $I$ in a conductor with an electric field $E$ and with conductivity $M$ is given by the relation
 $$
 J=ME=-M \nabla u.
 $$
 ## Bidomain model
-To avoid modeling the complex geometry of the intracellular and extracellular domain, we assume that both domains are overlapping. Therefore, each point in the domain has an intracellular potential $u_i$ and an extracellular potential $u_e$. The currents are
+To avoid modeling the complex geometry of the intracellular and extracellular domain, we assume that both domains are overlapping. Therefore, each point in the domain has an intracellular potential $u_i$ and an extracellular potential $u_e$. The intracellular current $J_{i}$ and extracellular current $J_{e}$ are given by
 $$
 \begin{aligned}
 J_{i}&= -M _{i}\nabla u_{i},\\
-J_{e}&= -M_{e}\nabla u_{e}. 
+J_{e}&= -M_{e}\nabla u_{e}, 
 \end{aligned} %label{eq: currents}
 $$
-We denote the ionic current is denoted by $I_\text{ion}$, and the positive direction is defined to by from the intracellular to the extracellular domain. Since $I_\text{ion}$ is measured per unit area of the membrane and the current $J$ is measured per unit volume, we must introduce the cells area to to volume ratio as $\chi$. Then, $\chi I_\text{ion}$ is the ionic current per unit volume.
+where $M_{i}$ and $M_{e}$ are the conductivity tensors for the intracellular domain and extracellular domain, respectively. 
 
-The cell membrane separating the intracellular and extracellular domain acts as an insulator, which allows accumulation of charge in each domain. Denoting the charge in the intracellular and extracellular domain as $q_i$ and $q_e$, respectively, the net current in a point must equal the rate of charge plus the ionic current exiting the domain:
-$$
-\begin{aligned}
--\nabla \cdot  J_{i}&= \frac{\partial q_{i}}{\partial t}+\chi I_\text{ion},\\
--\nabla \cdot J_{e}&= \frac{\partial q_{e}}{\partial t}-\chi I_\text{ion}.
-\end{aligned}%label{eq: bidelcurrents}
-$$
+The ionic current is denoted by $I_\text{ion}$, and the positive direction is defined to by from the intracellular to the extracellular domain. Since $I_\text{ion}$ is measured per unit area of the membrane and the currents $J_{i}$ and $J_{e}$ are measured per unit volume, we must introduce the cells area to volume ratio as $\chi$. Then, $\chi I_\text{ion}$ is the ionic current per unit volume.
 
-Since the cell membrane is thin, accumulation of charge in one domain causes accumulation of the opposite charge in the other domain. Thus, the rate of total charge accumulation must be zero:
+The cell membrane can be viewed as a capacitor with capacitance per unit area $C_{m}$ and capacitance per unit volume as $\chi C_{m}$. Then, the transmembrane voltage $v=u_{i}-u_{e}$ and current are related by
 $$
-\frac{\partial }{\partial t}(q_{i}+q_{e} )=0. %label{eq: chargeeq}
+\begin{equation}
+I_{c}=\chi C_{m}\frac{ \partial v }{ \partial t } .
+\end{equation}
 $$
-
-The cell membrane can be viewed as a capacitor with capacitance per unit area $C_{m}$ and capacitance per unit volume as $\chi C_{m}$. The transmembrane voltage $v=u_{i}-u_{e}$ and the amount of separated charge $q=\frac{1}{2}(q_{i}-q_{e})$ are related by
+The total transmembrane current $I_{t}$ must be the sum of the ionic current and the capacative current \cite{mathphys, p.567}:
 $$
-q=\chi C_{m}v,
+\begin{equation}
+I_{t}=\chi C_{m}\frac{ \partial v }{ \partial t } +I_{\text{ion}},%\label{eq:totalcurrent1}
+\end{equation}
 $$
-which we can differentiate with respect to time to get
+as well as the current exiting the intracellular domain and the current entering the extracellular domain:
 $$
-\frac{1}{2}\left(\frac{\partial q_{i}}{\partial t}-\frac{\partial q_{e}}{\partial t} \right)= \chi C_{m}\frac{\partial v}{\partial t}.%label{eq: capacitancedt}
+\begin{align}
+I_{t} & =-\nabla \cdot J_{i}=\nabla \cdot J_{e},\nonumber \\
+ I_{t}& =\nabla \cdot(M_{i}\nabla u_{i})=-\nabla \cdot(M_{e}\nabla u_{e}). %\label{eq:totalcurrent2}
+\end{align}
 $$
-
-Combining \ref{eq: chargeeq} and \ref{eq: capacitancedt} gives
+We use the relation $u_{i}=v+u_{e}$ 
 $$
-\frac{\partial q_{i}}{\partial t}=-\frac{\partial q_{e}}{\partial t}=\chi C_{m}\frac{\partial v}{\partial t},
+\begin{equation}
+\nabla \cdot(M_{i}\nabla(v+u_{e}))=-\nabla \cdot(M_{e}\nabla u_{e})=I_{t},
+\end{equation}
 $$
-
-which we can substitute in \ref{eq: bidelcurrents} 
+which gives us the standard formulation of the bidomain model
 $$
-\begin{aligned}
--\nabla \cdot  J_{i}&= \chi C_{m}\frac{\partial v}{\partial t}+\chi I_\text{ion},\\
--\nabla \cdot J_{e}&= -\chi C_{m}\frac{\partial v}{\partial t}-\chi I_\text{ion}.
-\end{aligned}
+\begin{align}
+%\label{eq:bi1} 
+\nabla \cdot(M_{i}\nabla v)+\nabla \cdot(M_{i}\nabla u_{e}) & =\chi C_{m}\frac{ \partial v }{ \partial t } +I_\text{ion}, \\ 
+%\label{eq:bi2} 
+\nabla \cdot(M_{i}\nabla v)+\nabla \cdot((M_{i}+M_{e})\nabla u_{e}) & =0 .
+\end{align}
 $$
-Using \ref{eq: currents}
-$$
-\begin{aligned}
-\nabla \cdot (M_{i}\nabla u_{i})&= \chi C_{m}\frac{\partial v}{\partial t} + \chi I_\text{ion},\\ %label{eq: intracell}
-\nabla \cdot (M_{e}\nabla u_{e})&= -\chi C_{m}\frac{\partial v}{\partial t} - \chi I_\text{ion}. %label{eq: extracell}
-\end{aligned}
-$$
-
-We use the relation $u_{i}=v+u_{e}$ on \ref{eq: intracell}
-$$
-\nabla \cdot (M_{i}\nabla v)+\nabla \cdot (M_{i}\nabla u_{e})= \chi C_{m}\frac{\partial v}{\partial t}+\chi I_\text{ion},%label{eq: bi1}
-$$
-
-where \ref{eq: extracell} can be applied to obtain the equation
-$$
-\nabla \cdot (M_{i}\nabla v)+\nabla\cdot((M_{i}+M_{e})\nabla u_{e})=0.%label{eq: bi2}
-$$
-
-\ref{eq: bi1} and \ref{eq: bi2} are the standard formulation of the bidomain model. Notice that since the heart tissues are anisotropic, the conductivities $M_{i}$ and $M_{e}$ are tensors. 
 
 To set boundary conditions, we assume that the heart is surrounded by an insulating medium such that we get Neumann conditions for both currents:
 $$
@@ -106,7 +89,7 @@ n\cdot(M_{e}\nabla u_{e}) & =0.
 \end{align}
 $$
 
-\ref{eq: bi1} and \ref{eq: bi2} with the boundary conditions \ref{eq: bibc1} and \ref{eq: bibc2} is a system of partial differential equations that are difficult to solve. We will therefore make some assumptions to simplify the model.
+\ref{eq:bi1} and \ref{eq:bi2} with the boundary conditions \ref{eq: bibc1} and \ref{eq: bibc2} is a system of partial differential equations that are difficult to solve. We will therefore make some assumptions to simplify the model.
 
 ## Monodomain model
 The model can be derived from assuming equal anisotropy rates between the intracellular and extracellular conductivity tensors, meaning that the tensors are related by a constant $\lambda$. This is expressed as $M_{e}=\lambda M_{i}$. Now, we rewrite \ref{eq: bi2} as
@@ -131,12 +114,12 @@ n\cdot(M_{i}\nabla v)=0. %label{eq: monobc}
 $$
 
 ## Semi-equal anisotropy rates
-Another possible assumption is that the intracellular and extracellular conductivity tensors are related by a diagonal tensor, i.e., $M_{e}=DM_{i}$. Then, \ref{eq: bi2} becomes
+Another possible assumption is that the intracellular and extracellular conductivity tensors are related by a diagonal tensor, i.e., $M_{e}=\Lambda M_{i}$. Then, \ref{eq:bi2} becomes
 $$
 \begin{align}
-\nabla \cdot(M_{i} \nabla v)+\nabla \cdot((M_{i}+DM_{i})\nabla u_{e}) & =0 \\
-(I+D)\nabla \cdot(M_{i}\nabla u_{e})& =-\nabla \cdot(M_{i} \nabla v)  \\
-\nabla \cdot(M_{i}\nabla u_{e}) & =-(I+D)^{-1}\nabla \cdot(M_{i}\nabla v)
+\nabla \cdot(M_{i} \nabla v)+\nabla \cdot((M_{i}+\Lambda M_{i})\nabla u_{e}) & =0 \\
+(I+\Lambda)\nabla \cdot(M_{i}\nabla u_{e})& =-\nabla \cdot(M_{i} \nabla v)  \\
+\nabla \cdot(M_{i}\nabla u_{e}) & =-(I+\Lambda)^{-1}\nabla \cdot(M_{i}\nabla v)
 \end{align}
 $$
 which we can substitute in \ref{eq: bi1}:
@@ -150,28 +133,20 @@ $$
 where
 $$
 \begin{equation}
-M=(I-(I+D)^{-1})M_{i}=M_{i}-(I+D)^{-1}M_{i}
+M=(I-(I+\Lambda)^{-1})M_{i}=M_{i}-(I+\Lambda)^{-1}M_{i},
 \end{equation}
 $$
+which can be manipulated to
 $$
 \begin{align}
-(I+D)M & =M_{i}
+(I+\Lambda)M & =(I+\Lambda)M_{i}-M_{i}=\Lambda M_{i} \\
+M & =(I+\Lambda)^{-1}M_{e}.
 \end{align}
 $$
+If $M_{i}$ and $M_{e}$ happen to be diagonal with $\sigma_{i,j}$ and $\sigma_{e,j}$ as entries number $j$, then entry $j$ in $\Lambda$ will simply be the proportion $\lambda_{j}=\frac{\sigma_{e,j}}{\sigma_{i,j}}$. Then, entry $j$ in $M$ can be found as 
 $$
 \begin{align}
-\sigma & =\sigma_{i}-\frac{1}{1+\lambda}\sigma_{i} \\
- & =\frac{\lambda}{1+\lambda}\sigma_{i} \\
- & =\frac{\frac{\sigma_{e}}{\sigma_{i}}}{1+\frac{\sigma_{e}}{\sigma_{i}}}\sigma_{i} \\
- & =\frac{\sigma_{i}\sigma_{e}}{\sigma_{i}+\sigma_{e}}
+\sigma_{j}  & =\frac{1}{1+\frac{\sigma_{e,j}}{\sigma_{i,j}}}\sigma_{e,j} \\
+ & =\frac{\sigma_{i,j}\sigma_{e,j}}{\sigma_{i,j}+\sigma_{e,j}}.
 \end{align}
 $$
-
-
-
-$$
-\begin{align}
-\nabla \cdot (Dv) & =\sum_{i}\frac{ \partial  }{ \partial x_{i} }  \sum_{j}D_{ij}v_{j}=\sum_{i}\frac{ \partial  }{ \partial x_{i} } D_{ii}v_{i}=\sum_{i}D_{ii}\frac{ \partial v_{i} }{ \partial x_{i} }=(D\nabla)\cdot v 
-\end{align}
-$$
-
