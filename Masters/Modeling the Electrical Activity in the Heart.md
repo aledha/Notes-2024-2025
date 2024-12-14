@@ -27,7 +27,7 @@ $$
 J=ME=-M \nabla u.
 $$
 ## Bidomain model
-TTo avoid modeling the complex geometry of the intra- and extra-cellular domains, we assume that both domains overlap. Therefore, each point in the domain has an intracellular potential $u_i$ and an extracellular potential $u_e$. The currents for the intracellular and extracellular domains are respectively
+To avoid modeling the complex geometry of the intra- and extra-cellular domains, we assume that both domains overlap. Therefore, each point in the domain has an intracellular potential $u_i$ and an extracellular potential $u_e$. The currents for the intracellular and extracellular domains are respectively
 \begin{equation}
 	\begin{aligned}
 		J_{i} & = -M _{i}\nabla u_{i}, \\
@@ -83,6 +83,17 @@ Substituting \ref{eq: currents} and the relation $u_{i}=v+u_{e}$ gives
 \end{align}
 
 \ref{eq:bi1} and \ref{eq:bi2} with the boundary conditions \ref{eq:bibc1} and \ref{eq:bibc2} is a system of partial differential equations that is difficult to solve. We will therefore make some assumptions to simplify the model. 
+
+## Monodomain new
+Rearrangement of \ref{eq:bi2}
+$$
+\begin{align}
+v & =u_{i}-u_{e} \\
+\nabla v & =\nabla u_{i}-\nabla u_{e}
+\end{align}
+$$
+
+
 ## Monodomain, old
 The monodomain model can be derived from assuming equal anisotropy rates between the intracellular and extracellular conductivity tensors, meaning that the tensors are related by a constant $\lambda$. This is expressed as $M_{e}=\lambda M_{i}$. Now, we rewrite \ref{eq: bi2} as
 $$
