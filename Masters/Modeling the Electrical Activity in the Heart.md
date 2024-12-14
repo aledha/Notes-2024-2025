@@ -95,15 +95,26 @@ $$
 which can substitute in \ref{eq: bi1}:
 $$
 \begin{align}
-\nabla \cdot(M_{i}\nabla v)-\frac{1}{1+\lambda}\nabla \cdot(M_{i}\nabla v) & =\chi C_{m} \frac{ \partial v }{ \partial t } +\chi I_\text{ion} \\
-\frac{{\lambda}}{1+\lambda}\nabla \cdot(M_{i}\nabla v) & =\chi C_{m} \frac{ \partial v }{ \partial t } +\chi I_\text{ion}.%label{eq: mono}
+\nabla \cdot(M_{i}\nabla v)-\frac{1}{1+\lambda}\nabla \cdot(M_{i}\nabla v) & =\chi C_{m} \frac{ \partial v }{ \partial t } +\chi I_\text{ion}-\chi I_\text{stim} \\
+\frac{{\lambda}}{1+\lambda}\nabla \cdot(M_{i}\nabla v) & =\chi C_{m} \frac{ \partial v }{ \partial t } +\chi I_\text{ion}-\chi I_\text{stim} \\
+%label{eq: mono} 
+\nabla \cdot(M\nabla v) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion}-\chi I_\text{stim},
 \end{align}
+$$
+where
+$$
+\begin{equation}
+M=\frac{\lambda}{1+\lambda}M_{i}.%\label{eq:Mtensor}
+\end{equation}
 $$
 
 \ref{eq: bibc2} becomes $n\cdot(\lambda M_{i}\nabla u_{e})=0 \implies n\cdot(M_{i}\nabla u_{e})=0$, which simplifies \ref{eq: bibc1} to
 $$
-n\cdot(M_{i}\nabla v)=0. %label{eq: monobc}
+\begin{equation}
+n\cdot(M_{i}\nabla v)=0. %\label{eq: monobc}
+\end{equation}
 $$
+
 
 ## Monodomain
 To arrive at the monodomain model, we make the assumption that the intracellular and extracellular conductivity tensors are related by a diagonal tensor $\Lambda$ such that $M_{e}=\Lambda M_{i}$. Then, \ref{eq:bi2} becomes
@@ -144,7 +155,7 @@ $$
 \begin{align} 
     n\cdot(M_{i}\nabla v+M_{i}\nabla u_{e} ) & =0, \\
     n\cdot(M_{e}\nabla u_{e}) & =0.  \\
-    n\cdot(\Lambda^{-1}(1+\Lambda)M\nabla v+\Lambda^{-1}(1+\Lambda)M\nabla u_{e} ) & =0, \\
-    n\cdot((I+\Lambda)M\nabla u_{e}) & =0.
+    n\cdot(\Lambda^{-1}(I+\Lambda)M\nabla v+\Lambda^{-1}(1+\Lambda)M\nabla u_{e} ) & =0, \\
+    n\cdot((I+\Lambda)M\nabla u_{e}) & =0. \\
 \end{align}
 $$
