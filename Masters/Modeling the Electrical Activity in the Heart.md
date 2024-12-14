@@ -27,72 +27,64 @@ $$
 J=ME=-M \nabla u.
 $$
 ## Bidomain model
-To avoid modeling the complex geometry of the intracellular and extracellular domain, we assume that both domains are overlapping. Therefore, each point in the domain has an intracellular potential $u_i$ and an extracellular potential $u_e$. The intracellular current $J_{i}$ and extracellular current $J_{e}$ are given by
-$$
-\begin{aligned}
-J_{i}&= -M _{i}\nabla u_{i},\\
-J_{e}&= -M_{e}\nabla u_{e}, 
-\end{aligned} %label{eq: currents}
-$$
+TTo avoid modeling the complex geometry of the intra- and extra-cellular domains, we assume that both domains overlap. Therefore, each point in the domain has an intracellular potential $u_i$ and an extracellular potential $u_e$. The currents for the intracellular and extracellular domains are respectively
+\begin{equation}
+	\begin{aligned}
+		J_{i} & = -M _{i}\nabla u_{i}, \\
+		J_{e} & = -M_{e}\nabla u_{e}.  
+	\end{aligned} \label{eq: currents}
+\end{equation}
 where $M_{i}$ and $M_{e}$ are the conductivity tensors for the intracellular domain and extracellular domain, respectively. 
 
 The ionic current is denoted by $I_\text{ion}$, and the positive direction is defined to by from the intracellular to the extracellular domain. Since $I_\text{ion}$ is measured per unit area of the membrane and the currents $J_{i}$ and $J_{e}$ are measured per unit volume, we must introduce the cells area to volume ratio as $\chi$. Then, $\chi I_\text{ion}$ is the ionic current per unit volume.
 
 The cell membrane can be viewed as a capacitor with capacitance per unit area $C_{m}$ and capacitance per unit volume as $\chi C_{m}$. Then, the transmembrane voltage $v=u_{i}-u_{e}$ and current are related by
-$$
 \begin{equation}
 I_{c}=\chi C_{m}\frac{ \partial v }{ \partial t } .
 \end{equation}
-$$
-The total transmembrane current $I_{t}$ must be the sum of the ionic current and the capacative current \cite{mathphys, p.567}:
-$$
+
+If we assume that there also is a stimulating current $I_\text{stim}$, the total transmembrane current $I_{t}$ must be the sum of the ionic current, the capacitive current, and the stimulating current \cite{mathphys, p.567}:
 \begin{equation}
-I_{t}=\chi C_{m}\frac{ \partial v }{ \partial t } +I_{\text{ion}},%\label{eq:totalcurrent1}
+I_{t}=\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_{\text{ion}}-\chi I_\text{stim},\label{eq:totalcurrent1}
 \end{equation}
-$$
-as well as the current exiting the intracellular domain and the current entering the extracellular domain:
-$$
+
+where the stimulating current is negative because it travels from the extracellular to the intracellular domain. The total current must also equal the current exiting the intracellular domain and the current entering the extracellular domain:
 \begin{align}
 I_{t} & =-\nabla \cdot J_{i}=\nabla \cdot J_{e},\nonumber \\
- I_{t}& =\nabla \cdot(M_{i}\nabla u_{i})=-\nabla \cdot(M_{e}\nabla u_{e}). %\label{eq:totalcurrent2}
+ I_{t}& =\nabla \cdot(M_{i}\nabla u_{i})=-\nabla \cdot(M_{e}\nabla u_{e}). \label{eq:totalcurrent2}
 \end{align}
-$$
-We use the relation $u_{i}=v+u_{e}$ 
-$$
+
+We use the relation $u_{i}=v+u_{e}$
 \begin{equation}
 \nabla \cdot(M_{i}\nabla(v+u_{e}))=-\nabla \cdot(M_{e}\nabla u_{e})=I_{t},
 \end{equation}
-$$
+
 which gives us the standard formulation of the bidomain model
-$$
 \begin{align}
-%\label{eq:bi1} 
-\nabla \cdot(M_{i}\nabla v)+\nabla \cdot(M_{i}\nabla u_{e}) & =\chi C_{m}\frac{ \partial v }{ \partial t } +I_\text{ion}, \\ 
-%\label{eq:bi2} 
+\label{eq:bi1} 
+\nabla \cdot(M_{i}\nabla v)+\nabla \cdot(M_{i}\nabla u_{e}) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion}-\chi I_\text{stim}, \\ 
+\label{eq:bi2} 
 \nabla \cdot(M_{i}\nabla v)+\nabla \cdot((M_{i}+M_{e})\nabla u_{e}) & =0 .
 \end{align}
-$$
 
 To set boundary conditions, we assume that the heart is surrounded by an insulating medium such that we get Neumann conditions for both currents:
-$$
 \begin{align}
 n\cdot J_{i} & =0, \\ %label{eq: bibc1}
 n\cdot J_{e} & =0. %label{eq: bibc2}
 \end{align}
-$$
+
 
 Substituting \ref{eq: currents} and the relation $u_{i}=v+u_{e}$ gives
-$$
 \begin{align}
-n\cdot(M_{i}\nabla v+M_{i}\nabla u_{e} ) & =0, \\
-n\cdot(M_{e}\nabla u_{e}) & =0.
+    \label{eq:bibc1}
+    n\cdot(M_{i}\nabla v+M_{i}\nabla u_{e} ) & =0, \\
+    \label{eq:bibc2}
+    n\cdot(M_{e}\nabla u_{e}) & =0.
 \end{align}
-$$
 
-\ref{eq:bi1} and \ref{eq:bi2} with the boundary conditions \ref{eq: bibc1} and \ref{eq: bibc2} is a system of partial differential equations that are difficult to solve. We will therefore make some assumptions to simplify the model.
-
-## Monodomain model
-The model can be derived from assuming equal anisotropy rates between the intracellular and extracellular conductivity tensors, meaning that the tensors are related by a constant $\lambda$. This is expressed as $M_{e}=\lambda M_{i}$. Now, we rewrite \ref{eq: bi2} as
+\ref{eq:bi1} and \ref{eq:bi2} with the boundary conditions \ref{eq:bibc1} and \ref{eq:bibc2} is a system of partial differential equations that is difficult to solve. We will therefore make some assumptions to simplify the model. 
+## Monodomain, old
+The monodomain model can be derived from assuming equal anisotropy rates between the intracellular and extracellular conductivity tensors, meaning that the tensors are related by a constant $\lambda$. This is expressed as $M_{e}=\lambda M_{i}$. Now, we rewrite \ref{eq: bi2} as
 $$
 \begin{align}
 \nabla\cdot(M_{i}\nabla v)+\nabla\cdot ((1+\lambda)M_{i}\nabla u_{e}) & =0 \\
@@ -113,40 +105,46 @@ $$
 n\cdot(M_{i}\nabla v)=0. %label{eq: monobc}
 $$
 
-## Semi-equal anisotropy rates
-Another possible assumption is that the intracellular and extracellular conductivity tensors are related by a diagonal tensor, i.e., $M_{e}=\Lambda M_{i}$. Then, \ref{eq:bi2} becomes
+## Monodomain
+To arrive at the monodomain model, we make the assumption that the intracellular and extracellular conductivity tensors are related by a diagonal tensor $\Lambda$ such that $M_{e}=\Lambda M_{i}$. Then, \ref{eq:bi2} becomes
 $$
-\begin{align}
+\begin{align*}
 \nabla \cdot(M_{i} \nabla v)+\nabla \cdot((M_{i}+\Lambda M_{i})\nabla u_{e}) & =0 \\
 (I+\Lambda)\nabla \cdot(M_{i}\nabla u_{e})& =-\nabla \cdot(M_{i} \nabla v)  \\
 \nabla \cdot(M_{i}\nabla u_{e}) & =-(I+\Lambda)^{-1}\nabla \cdot(M_{i}\nabla v)
-\end{align}
+\end{align*}
 $$
-which we can substitute in \ref{eq: bi1}:
+which we can substitute in \ref{eq:bi1}:
 $$
 \begin{align}
-\nabla \cdot(M_{i}\nabla v)-(I+D)^{-1}\nabla \cdot(M_{i}\nabla v) & =\chi C_{m} \frac{ \partial v }{ \partial t } +\chi I_\text{ion}  \\
-(I-(I+D)^{-1})\nabla \cdot(M_{i}\nabla v) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion} \\
-\nabla \cdot(M \nabla v) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion}
+\nabla \cdot(M_{i}\nabla v)-(I+D)^{-1}\nabla \cdot(M_{i}\nabla v) & =\chi C_{m} \frac{ \partial v }{ \partial t } +\chi I_\text{ion}  -\chi I_\text{stim}\nonumber\\
+(I-(I+D)^{-1})\nabla \cdot(M_{i}\nabla v) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion} -\chi I_\text{stim}\nonumber\\
+%\label{eq:mono} 
+\nabla \cdot(M \nabla v) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion}-\chi I_\text{stim},
 \end{align}
 $$
 where
 $$
-\begin{equation}
-M=(I-(I+\Lambda)^{-1})M_{i}=M_{i}-(I+\Lambda)^{-1}M_{i},
-\end{equation}
-$$
-which can be manipulated to
-$$
-\begin{align}
+\begin{align*}
+M & =(I-(I+\Lambda)^{-1})M_{i} \\
+ & =M_{i}-(I+\Lambda)^{-1}M_{i}, \\
 (I+\Lambda)M & =(I+\Lambda)M_{i}-M_{i}=\Lambda M_{i} \\
 M & =(I+\Lambda)^{-1}M_{e}.
-\end{align}
+\end{align*}
 $$
 If $M_{i}$ and $M_{e}$ happen to be diagonal with $\sigma_{i,j}$ and $\sigma_{e,j}$ as entries number $j$, then entry $j$ in $\Lambda$ will simply be the proportion $\lambda_{j}=\frac{\sigma_{e,j}}{\sigma_{i,j}}$. Then, entry $j$ in $M$ can be found as 
 $$
 \begin{align}
-\sigma_{j}  & =\frac{1}{1+\frac{\sigma_{e,j}}{\sigma_{i,j}}}\sigma_{e,j} \\
- & =\frac{\sigma_{i,j}\sigma_{e,j}}{\sigma_{i,j}+\sigma_{e,j}}.
+\sigma_{j}  & =\frac{1}{1+\frac{\sigma_{e,j}}{\sigma_{i,j}}}\sigma_{e,j} \nonumber \\
+%\label{eq:harmoniccond}
+ \sigma_{j}& =\frac{\sigma_{i,j}\sigma_{e,j}}{\sigma_{i,j}+\sigma_{e,j}}.
+\end{align}
+$$
+$$
+\begin{align} 
+    n\cdot(M_{i}\nabla v+M_{i}\nabla u_{e} ) & =0, \\
+    n\cdot(M_{e}\nabla u_{e}) & =0.  \\
+    n\cdot(\Lambda^{-1}(1+\Lambda)M\nabla v+\Lambda^{-1}(1+\Lambda)M\nabla u_{e} ) & =0, \\
+    n\cdot((I+\Lambda)M\nabla u_{e}) & =0.
 \end{align}
 $$
