@@ -1,4 +1,4 @@
-The benchmark found in \cite{niederer}, which will be referred to as the Niederer benchmark, is the first cardiac tissue electrophysiology simulation benchmark with the goal to generate a consensus gold-standard converged solution. 
+The benchmark found in \cite{niederer}, which will be referred to as the Niederer benchmark, is the first cardiac tissue electrophysiology simulation benchmark with the goal to generate a consensus gold-standard converged solution. 11 groups submitted codes solving the benchmark problem.
 
 ## Problem description
 The benchmark aims to be unambiguously defined with minimal definition. Therefore, the simpler monodomain equations \ref{} were used. The domain was defined to a 3-dimensional rectangular slab with dimensions $3\times7\times20 \text{ mm}$ and transversely isotropic. 
