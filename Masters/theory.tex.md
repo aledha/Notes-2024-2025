@@ -51,9 +51,9 @@ The cell membrane can be viewed as a capacitor with capacitance per unit area $C
 I_{c}=\chi C_{m}\frac{ \partial v }{ \partial t } .
 \end{equation}
 
-If we assume that there also is a stimulating current $I_\text{stim}$, the total transmembrane current $I_{t}$ must be the sum of the ionic current, the capacitive current, and the stimulating current \cite{mathphys, p.567}:
+If we assume that there also is a stimulating current $I_\text{stim}$ (which is per cell volume), the total transmembrane current $I_{t}$ must be the sum of the ionic current, the capacitive current, and the stimulating current \cite{mathphys, p.567}:
 \begin{equation}
-I_{t}=\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_{\text{ion}}-\chi I_\text{stim},\label{eq:totalcurrent1}
+I_{t}=\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_{\text{ion}}- I_\text{stim},\label{eq:totalcurrent1}
 \end{equation}
 
 where the stimulating current is negative because it travels from the extracellular to the intracellular domain. The total current must also equal the current exiting the intracellular domain and the current entering the extracellular domain:
@@ -70,7 +70,7 @@ We use the relation $u_{i}=v+u_{e}$
 which gives us the standard formulation of the bidomain model
 \begin{align}
 \label{eq:bi1} 
-\nabla \cdot(M_{i}\nabla v)+\nabla \cdot(M_{i}\nabla u_{e}) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion}-\chi I_\text{stim}, \\ 
+\nabla \cdot(M_{i}\nabla v)+\nabla \cdot(M_{i}\nabla u_{e}) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion}-I_\text{stim}, \\ 
 \label{eq:bi2} 
 \nabla \cdot(M_{i}\nabla v)+\nabla \cdot((M_{i}+M_{e})\nabla u_{e}) & =0 .
 \end{align}
@@ -94,50 +94,81 @@ Substituting \ref{eq: currents} and the relation $u_{i}=v+u_{e}$ gives
 
 \section{Monodomain model}
 \label{sec:monodomain}
-To arrive at the monodomain model, we make the assumption that the intracellular and extracellular conductivity tensors are related by a diagonal tensor $\Lambda$ such that $M_{e}=\Lambda M_{i}$. Then, \ref{eq:bi2} becomes
+The model can be derived from assuming equal anisotropy rates between the intracellular and extracellular conductivity tensors, meaning that the tensors are related by a constant $\lambda$. This is expressed as $M_{e}=\lambda M_{i}$. Now, we rewrite \ref{eq:bi2} as
 \begin{align*}
-\nabla \cdot(M_{i} \nabla v)+\nabla \cdot((M_{i}+\Lambda M_{i})\nabla u_{e}) & =0 \\
-(I+\Lambda)\nabla \cdot(M_{i}\nabla u_{e})& =-\nabla \cdot(M_{i} \nabla v)  \\
-\nabla \cdot(M_{i}\nabla u_{e}) & =-(I+\Lambda)^{-1}\nabla \cdot(M_{i}\nabla v)
+	\nabla\cdot(M_{i}\nabla v)+\nabla\cdot ((1+\lambda)M_{i}\nabla u_{e}) & =0                                                \\
+	\nabla \cdot(M_{i}\nabla u_{e})                                       & =-\frac{1}{1+\lambda}\nabla \cdot(M_{i}\nabla v), 
 \end{align*}
 
-which we can substitute in \ref{eq:bi1}:
+which can be substituted into \ref{eq:bi1}:
 \begin{align}
-\nabla \cdot(M_{i}\nabla v)-(I+D)^{-1}\nabla \cdot(M_{i}\nabla v) & =\chi C_{m} \frac{ \partial v }{ \partial t } +\chi I_\text{ion}  -\chi I_\text{stim}\nonumber\\
-(I-(I+D)^{-1})\nabla \cdot(M_{i}\nabla v) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion} -\chi I_\text{stim}\nonumber\\
-%\label{eq:mono} 
-\nabla \cdot(M \nabla v) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion}-\chi I_\text{stim},
+	\nabla \cdot(M_{i}\nabla v)-\frac{1}{1+\lambda}\nabla \cdot(M_{i}\nabla v) & =\chi C_{m} \frac{ \partial v }{ \partial t } +\chi I_\text{ion} -I_\text{stim} \nonumber\\
+	\frac{{\lambda}}{1+\lambda}\nabla \cdot(M_{i}\nabla v)                     & =\chi C_{m} \frac{ \partial v }{ \partial t } +\chi I_\text{ion}-I_\text{stim} \nonumber\\
+   \nabla \cdot(M\nabla v)                     & = \frac{ \partial v }{ \partial t } +\frac{1}{C_m}I_\text{ion}-\frac{1}{\chi C_m} I_\text{stim}, 
+	\label{eq: mono}
 \end{align}
 
-where
-\begin{align*}
-M & =(I-(I+\Lambda)^{-1})M_{i} \\
- & =M_{i}-(I+\Lambda)^{-1}M_{i}, \\
-(I+\Lambda)M & =(I+\Lambda)M_{i}-M_{i}=\Lambda M_{i} \\
-M & =(I+\Lambda)^{-1}M_{e}.
-\end{align*}
+where $M=\frac{1}{\chi C_{m}}\frac{\lambda}{1+\lambda}M_i$.
 
-If $M_{i}$ and $M_{e}$ happen to be diagonal\todo{describe local conductivity tensors?} with $\sigma_{i,j}$ and $\sigma_{e,j}$ as entries number $j$, then entry $j$ in $\Lambda$ will simply be the proportion $\lambda_{j}=\frac{\sigma_{e,j}}{\sigma_{i,j}}$. Then, entry $j$ in $M$ can be found as 
-\begin{align}
-\sigma_{j}  & =\frac{1}{1+\frac{\sigma_{e,j}}{\sigma_{i,j}}}\sigma_{e,j} \nonumber \\
-\label{eq:harmoniccond}
- \sigma_{j}& =\frac{\sigma_{i,j}\sigma_{e,j}}{\sigma_{i,j}+\sigma_{e,j}}.
-\end{align}
-
-The boundary condition \ref{eq:bibc2} becomes $n\cdot(\Lambda M_{i}\nabla u_{e})=0 \implies n\cdot(M_{i}\nabla u_{e})=0$, which simplifies \ref{eq:bibc1} to\todo{This seems dubious}
+The boundary condition \ref{eq:bibc2} becomes $n\cdot(\lambda M_{i}\nabla u_{e})=0 \implies n\cdot(M_{i}\nabla u_{e})=0$, which simplifies \ref{eq:bibc1} to
 \begin{equation}
-	n\cdot(M_{i}\nabla v)=0.
+    n\cdot(M_{i}\nabla v)=0 \implies n \cdot(M\nabla v)=0.
 \end{equation}
-\begin{align} 
-    n\cdot(M_{i}\nabla v+M_{i}\nabla u_{e} ) & =0, \\
-    n\cdot(M_{e}\nabla u_{e}) & =0.  \\
-    n\cdot(\Lambda^{-1}(1+\Lambda)M\nabla v+\Lambda^{-1}(1+\Lambda)M\nabla u_{e} ) & =0, \\
-    n\cdot((I+\Lambda)M\nabla u_{e}) & =0.
-\end{align}
+
+Notice that if the tensors $M_i$ and $M_e$ are diagonal, then 
 
 \section{Ionic current models}
 \label{sec:ionic currents}
-\todo{Describe Tentusccher model}
+For a given ion, two driving forces contribute to the flux across the membrane: diffusion and electric force. For an ion $S$ and intracellular and extracellular concentrations $[S]_{i},[S]_{e}$, the chemical potential inside the membrane is \cite{mathphys, p. 81}
+\begin{equation}
+G_{S,i}=G^0_{S}+RT\ln([S]_{i})+zFu_{i},
+\end{equation}
+
+while the potential outside is
+\begin{equation}
+G_{S,e}=G^0_{S}+RT\ln([S]_{e})+zFu_{e}.
+\end{equation}
+
+At equilibrium, the potentials are equal:
+\begin{align}
+G^0_{S}+RT\ln([S]_{i})+zFu_{i} & =G^0_{S}+RT\ln([S]_{e})+zFu_{e} \nonumber \\
+zFv_S & =RT\ln\left( \frac{[S]_{e}}{[S]_{i}} \right) \nonumber \\
+v_S & = \frac{RT}{zF}\ln\left( \frac{[S]_{e}}{[S]_{i}} \right) \nonumber  \\
+v_S & =\frac{kT}{zq}\ln\left( \frac{[S]_{e}}{[S]_{i}} \right), \label{eq:nernst}
+\end{align}
+
+where $k$ is Boltzmann's constant, $q$ is the ion charge, and $T$ is the temperature. \ref{eq:nernst} is called the Nernst equilibrium potential \cite{mathphys, p. 81}. If the ion $S$ is free to travel across the membrane and the transmembrane potential is different to $v_S$, there will be a current $I_S$ to restore the potential to $v_S$. A simple model is a linear relationship between the current of $S$ and the transmembrane potential \cite{mathphys}
+\begin{equation}
+I_{S}=g_{S}(v-v_S), \label{eq:Is}
+\end{equation}
+
+where $g_{S}$ is the membrane conductance.
+
+\ref{eq:Is} holds only when the channels for ion $S$ are open, which is generally not the case. The channels are controlled by channel gates that may open or close depending on the voltage. We must adjust \ref{eq:Is} to 
+\begin{equation}
+I_{S}=p_{S}\overline{g_{S}}(v-v_{S}),
+\end{equation}
+
+where $p_{S}$ is the proportion of open channels for $S$ and $\overline{g_{S}}$ is the maximum conductance. 
+
+Let $\alpha_{S}$ be the rate of opening and $\beta_{S}$ be the rate of closing, where both rates may depend on the potential. Then, by the law of mass action, the proportion of open channels is governed by the differential equation \cite{computing}
+\begin{equation}
+\frac{\text{d}p_{S}}{\text{d}t} =\alpha_{S}(v)(1-p_{S})-\beta_{S}(v)p_{S}.
+\end{equation}
+
+Most ion channels consist of several subunits such that the channel is open only if all of the subunits are open. For example, the Hodgkin-Huxley model \cite{HH} assumes that the potassium channel consists of four identical subunits:
+\begin{align}
+g_{K} & =\bar{g}_{K}n^4, \\
+\frac{\text{d}n}{\text{d}t}  & =\alpha_{n}(1-n)-\beta_{n}n,
+\end{align}
+
+while the sodium channel consists of two different subunits:
+\begin{align*}
+g_\text{Na} & =\bar{g}_\text{Na}m^3h, \\
+\frac{\text{d}m}{\text{d}t}  & =\alpha_{m}(1-m)-\beta_{m}m, \\
+\frac{\text{d}h}{\text{d}t}  & =\alpha_{h}(1-h)-\beta_{h}h.
+\end{align*}
+
 
 \begin{align}
     \nabla \cdot (M\nabla v)+\chi I_{\text{stim}} &= \chi C_{m}\frac{\partial v}{\partial t}+\chi I_{\text{ion}}(v,s), &x\in H, \label{eq:monomain}\\
@@ -159,18 +190,18 @@ where $L_{1}$ and $L_{2}$ are two operators on $y$. For a parameter $\theta \in 
     \item With the initial condition $y(t_{n}+\theta\Delta t)=y^{n+1}_{\theta}$, solve $\frac{ \partial y }{ \partial t } =L_{1}(y)$ for $t\in [t_n+\theta\Delta t, t_n+\Delta t]$. Denote this solution as $y^{n+1}$.
 \end{enumerate}
 
-It can be shown that if $\theta=0.5$, operator splitting is second-order accurate. Otherwise, it is first order accurate\cite{computing}.
+It can be shown that if $\theta=0.5$, operator splitting is second-order accurate. Otherwise, it is first-order accurate\cite{computing}.
 
 We want to apply operator splitting on the system \ref{eq:monomain}-\ref{eq:monobc}. \ref{eq:monomain} can be written as
 
 \begin{equation}
-    \frac{ \partial v }{ \partial t } =- \frac{1}{C_{m}}I_\text{ion}(v,s)+ \frac{1}{\chi C_{m}} \frac{\lambda}{1+\lambda}\nabla \cdot(M_{i}\nabla v)+ \frac{1}{C_{m}}I_\text{stim}.
+    \frac{ \partial v }{ \partial t } =- \frac{1}{C_{m}}I_\text{ion}(v,s)+ \nabla \cdot(M\nabla v)+ \frac{1}{\chi C_{m}}I_\text{stim}.
 \end{equation}
 
 We now choose the operators for $v$ as 
 \begin{align*}
     L_{1,v}(v,s) & =- \frac{1}{C_{m}}I_\text{ion}(v,s), \\
-    L_{2,v}(v,s) & = \frac{1}{\chi C_{m}} \frac{\lambda}{1+\lambda}\nabla \cdot(M_{i}\nabla v)+ \frac{1}{C_{m}}I_\text{stim},
+    L_{2,v}(v,s) & = \nabla \cdot(M\nabla v)+ \frac{1}{\chi C_{m}}I_\text{stim},
 \end{align*}
 
 while the operators for $s$ are simply chosen as $L_{1,s}(v,s)=f(s,v,t)$ and $L_{2,s}(v,s)=0$. Now we apply the scheme described above.
@@ -188,7 +219,7 @@ while the operators for $s$ are simply chosen as $L_{1,s}(v,s)=f(s,v,t)$ and $L_
     \item Then, with the initial condition $v(t_{n})=v_{\theta }^{n}$, solve
     \begin{equation}
         \label{eq:pdesplit}
-        \frac{\partial v}{\partial t}=\frac{1}{\chi C_{m}}\frac{\lambda }{1+\lambda }\nabla \cdot(M_{i}\nabla v)+\frac{1}{C_{m}}I_\text{stim},
+        \frac{\partial v}{\partial t}=\nabla \cdot(M\nabla v)+\frac{1}{\chi C_{m}}I_\text{stim},
     \end{equation}
     
     for $t\in [t_n, t_n+\Delta t]$. The solution is denoted as $v_{\theta }^{n+1}$.
@@ -196,51 +227,46 @@ while the operators for $s$ are simply chosen as $L_{1,s}(v,s)=f(s,v,t)$ and $L_
     \item Finally, with the initial conditions $v(t_{n}+\theta \Delta t)=v_{\theta }^{n+1}$ and $s(t_{n}+\theta \Delta t)=s^{n}_{\theta }$, solve the system \ref{eq:odesplitv}-\ref{eq:odesplits} again for $t\in [t_n+\theta\Delta t, t_n+\Delta t]$. The solutions are denoted $v^{n+1}$ and $s ^{n+1}$. 
 \end{enumerate}
 
-Notice that since $L_{2,s}(v,s)=0$, we omit it in step 2, and we use the solution $s_{\theta}^n$ from step 1 as the initial condition for step 3.
+Notice that since $L_{2,s}(v,s)=0$, we omit it in step 2 and use the solution $s_{\theta}^n$ from step 1 as the initial condition for step 3.
 
 \section{Galerkin formulation}
 To to solve the PDE \ref{eq:pdesplit}, we will utilize a $\theta$-method to discretize in time:
 \begin{equation}
 \label{eq:thetarule}
-    \frac{v^{n+1}-v^{n}}{\Delta t}= \frac{1}{\chi C_{m}}\frac{\lambda }{1+\lambda }\left(\theta \nabla \cdot(M_{i}\nabla v^{n+1})+(1-\theta )\nabla \cdot(M_{i}\nabla v^{n}) \right)+\frac{1}{C_{m}}I_\text{stim}. 
+    \frac{v^{n+1}-v^{n}}{\Delta t}= \theta \nabla \cdot(M\nabla v^{n+1})+(1-\theta )\nabla \cdot(M\nabla v^{n}) +\frac{1}{\chi C_{m}}I_\text{stim}. 
 \end{equation}
 
-Notice that this $\theta$ differs from the parameter $\theta$ used in section \ref{sec:opsplit}. However, a parameter choice of $\theta =\frac{1}{2}$ gives the second-order Crank-Nicholson scheme, and the same choice for $\theta$ gives second-order accuracy for the operator splitting. Similarly, $\theta\neq \frac{1}{2}$ gives a first order scheme for both the $\theta$-method and the operator splitting. Hence, we treat the parameter as the same. 
+Notice that this $\theta$ differs from the parameter $\theta$ used in section \ref{sec:opsplit}. However, a parameter choice of $\theta =\frac{1}{2}$ gives the second-order Crank-Nicholson scheme, and the same choice for $\theta$ gives second-order accuracy for the operator splitting. Similarly, $\theta\neq \frac{1}{2}$ gives a first-order scheme for both the $\theta$-method and the operator splitting. Hence, we treat the parameter as the same. 
 
-Let $\alpha= \frac{\Delta t}{\chi C_{m}} \frac{\lambda}{1+\lambda}$ and $\beta= \frac{\Delta t}{C_{m}}$, then \ref{eq:thetarule} becomes
-\begin{equation}
-    \label{eq:timediscrete}
-    v^{n+1}-v^n =\alpha\theta \nabla \cdot(M_{i}\nabla v^{n+1})+\alpha(1-\theta)\nabla \cdot(M_{i}\nabla v^n)+\beta I_\text{stim}. 
-\end{equation}
-
-Now, we can reformulate \ref{eq:timediscrete} into a Galerkin formulation: 
+Now, we can reformulate \ref{eq:thetarule} into a Galerkin formulation: 
 For some suitable function space $V$, find $v^{n+1}\in V$, given $v^n\in V$, such that for every $\phi \in V$,
 \begin{equation*}
-    \int_{H}(v^{n+1}-v^n)\phi \text{ d} \mathbf{x} =\int_{H}(\alpha\theta \nabla \cdot(M_{i}\nabla v^{n+1})+\alpha(1-\theta)\nabla \cdot(M_{i}\nabla v^n)+\beta I_\text{stim})\phi \text{ d} \mathbf{x}
+    \int_{H}(v^{n+1}-v^n)\phi \text{ d} \mathbf{x} =\int_{H}\left(\Delta t\theta \nabla \cdot(M\nabla v^{n+1})+\Delta t(1-\theta)\nabla \cdot(M\nabla v^n)+\frac{\Delta t}{\chi C_m}  I_\text{stim}\right)\phi \text{ d} \mathbf{x},
 \end{equation*}
 
+which we rewrite as
 \begin{equation*}
-    \int_{H}v^{n+1}\phi -\alpha\theta\nabla \cdot(M_{i}\nabla v^{n+1})\phi \text{ d} \mathbf{x} =\int_{H}(\beta I_\text{stim}+v^n)\phi + \alpha(1-\theta)\nabla \cdot(M_{i}\nabla v^n)\phi \text{ d} \mathbf{x} 
+    \int_{H}v^{n+1}\phi -\Delta t\theta\nabla \cdot(M\nabla v^{n+1})\phi \text{ d} \mathbf{x} =\int_{H}\left(\frac{\Delta t}{\chi C_m} I_\text{stim}+v^n\right)\phi + \Delta t(1-\theta)\nabla \cdot(M\nabla v^n)\phi \text{ d} \mathbf{x}.
 \end{equation*}
 
 Using the divergence theorem, we can rewrite the last term of both sides as
 \begin{align*}
-    \int_{H}\nabla \cdot(M_{i}\nabla v^{n+1})\phi \text{ d} \mathbf{x} & =  \int_{\partial H}\mathbf{n}\cdot(M_{i}\nabla v^{n+1})\phi \text{ d} \mathbf{x}-\int_{H}(M_{i}\nabla v^{n+1})\cdot \nabla \phi \text{ d} \mathbf{x}, \\
-    \int_{H}\nabla \cdot(M_{i}\nabla v^{n})\phi \text{ d} \mathbf{x} & =  \int_{\partial H}\mathbf{n}\cdot(M_{i}\nabla v^{n})\phi \text{ d} \mathbf{x}-\int_{H}(M_{i}\nabla v^{n+1})\cdot \nabla \phi \text{ d} \mathbf{x},
+    \int_{H}\nabla \cdot(M\nabla v^{n+1})\phi \text{ d} \mathbf{x} & =  \int_{\partial H}\mathbf{n}\cdot(M\nabla v^{n+1})\phi \text{ d} \mathbf{x}-\int_{H}(M\nabla v^{n+1})\cdot \nabla \phi \text{ d} \mathbf{x}, \\
+    \int_{H}\nabla \cdot(M\nabla v^{n})\phi \text{ d} \mathbf{x} & =  \int_{\partial H}\mathbf{n}\cdot(M\nabla v^{n})\phi \text{ d} \mathbf{x}-\int_{H}(M\nabla v^{n+1})\cdot \nabla \phi \text{ d} \mathbf{x},
 \end{align*}
 
 where the boundary integrals vanish due to the boundary condition \ref{eq:monobc}. Substituting the terms back gives
 \begin{equation}
     \label{eq:galerkin}
-    \int_{H}v^{n+1}\phi  +\alpha\theta(M_{i}\nabla v^{n+1})\cdot\nabla\phi \text{ d} \mathbf{x}  =\int_{H}(\beta I_\text{stim}+v^n)\phi - \alpha(1-\theta)(M_{i}\nabla v^n)\cdot \nabla\phi \text{ d} \mathbf{x} .
+    \int_{H}v^{n+1}\phi  +\Delta t\theta(M\nabla v^{n+1})\cdot\nabla\phi \text{ d} \mathbf{x}  =\int_{H}\left(\frac{\Delta t}{\chi C_m}  I_\text{stim}+v^n\right)\phi - \Delta t(1-\theta)(M\nabla v^n)\cdot \nabla\phi \text{ d} \mathbf{x} .
 \end{equation}
 
 The bilinear and linear forms are
 \begin{align}
     \label{eq:bilinearform}
-    a(v^{n+1},\phi )&= \int_{H}v^{n+1}\phi  +\alpha\theta(M_{i}\nabla v^{n+1})\cdot\nabla\phi\text{ d}\mathbf x,\\ 
+    a(v^{n+1},\phi )&= \int_{H}v^{n+1}\phi  +\Delta t\theta(M\nabla v^{n+1})\cdot\nabla\phi\text{ d}\mathbf x,\\ 
     \label{eq:linearform}
-    L(\phi )&= \int_{H} (\beta I_\text{stim}+v^n)\phi - \alpha(1-\theta)(M_{i}\nabla v^n)\cdot \nabla\phi \text{ d} \mathbf{x}.
+    L(\phi )&= \int_{H} \left(\frac{\Delta t}{\chi C_m}  I_\text{stim}+v^n\right)\phi - \Delta t(1-\theta)(M\nabla v^n)\cdot \nabla\phi \text{ d} \mathbf{x}.
 \end{align}
 
 
