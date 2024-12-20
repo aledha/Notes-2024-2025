@@ -93,3 +93,9 @@ $$
 $$
 
 
+$$
+\begin{align*}
+\frac{\text{d}x}{\text{d}t}  & =ay \\
+\frac{\text{d}y}{\text{d}t}  & =-x
+\end{align*}
+$$
