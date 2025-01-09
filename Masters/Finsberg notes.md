@@ -14,3 +14,4 @@ The process from the start of isovolumic relaxation until the closing of the mit
 
 ![[Pasted image 20250108141045.png|600]]
 
+If the blood coming into the heart (i.e., preload) increases, then the end-diastolic () volume increases.
