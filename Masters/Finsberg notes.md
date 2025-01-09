@@ -104,3 +104,26 @@ $$
 J=\det \mathbf{F}=1.
 \end{equation}
 $$
+
+## Constitutive equations for living tissue
+
+### Passive myocardium
+With a local orthonormal coordinate system with fiber axis $\mathbf{f}_{0}$, sheet axis $\mathbf{s}_{0}$, and sheet-normal axis $\mathbf{n}_{0}$. The invariants are defined as
+$$
+\begin{align}
+I_{1} & =  \mathrm{Tr}\mathbf{C} \\
+I_{4\mathbf{f}_{0}} & =\mathbf{f}_{0}\cdot(\mathbf{C}\mathbf{f}_{0}), \\
+I_{4\mathbf{s}_{0}} & =\mathbf{s}_{0}\cdot(\mathbf{C}s_{0}), \\
+I_{8\mathbf{f}_{0}\mathbf{s}_{0}} & =\mathbf{s}_{0}\cdot(\mathbf{C}\mathbf{f}_{0}).
+\end{align}
+$$
+$I_{4\mathbf{f}_{0}}$ can be interpreted as the stretch along the fibers, $I_{4\mathbf{s}_{0}}$ can be interpreted as the stretch along the sheet. \eqref{} can be rewritten as
+$$
+\begin{equation}
+I_{8\mathbf{f}_{0}\mathbf{s}_{0}}=\mathbf{s}_{0}\cdot(\mathbf{C}\mathbf{f}_{0})=\mathbf{s}_{0}\cdot(\mathbf{F}^T\mathbf{F}\mathbf{f}_{0})=(\mathbf{F}\mathbf{s}_{0})\cdot(\mathbf{F}\mathbf{f}_{0}),
+\end{equation}
+$$
+which indicates that $I_{8\mathbf{f}_{0}\mathbf{s}_{0}}$ can be interpreted as a measure on the angle between the deformed sheet axis and the deformed fiber axis. The sheet axis and the fiber axis were orthonormal in the reference configuration.
+
+![[Pasted image 20250109153550.png]]
+#ask why $(x)_{+}$?
