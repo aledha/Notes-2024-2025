@@ -137,9 +137,18 @@ $$
 \sigma=\sigma_{p}+\sigma_{a}.
 \end{equation}
 $$
-The passive depends on the material model:
+The passive stress depends on the material model:
 $$
 \begin{equation}
-\sigma_{p}=\frac{1}{J}\mathbf{F}\frac{ \partial \Psi(\mathbf{C}) }{ \partial \mathbf{C} } \mathbf{F}^T=\frac{1}{J}\mathbf{F}\frac{ \partial \Psi }{ \partial \mathbf{F} }\frac{ \partial \mathbf{F} }{ \partial \mathbf{C} } \mathbf{F}^T 
+\sigma_{p}=\frac{1}{J}\frac{ \partial \Psi(\mathbf{F}) }{ \partial \mathbf{F} } \mathbf{F}^T,
 \end{equation}
 $$
+while the active stress is
+$$
+\begin{equation}
+\sigma_{a}=\sigma_{ff}\mathbf{f}\otimes \mathbf{f}+\sigma_{ss}\mathbf{s}\otimes \mathbf{s}+\sigma_{nn}\mathbf{n}\otimes \mathbf{n},
+\end{equation}
+$$
+where $\sigma_{ff},\sigma_{ss},$ and $\sigma_{nn}$ are the components of the active stress in the fiber, sheet, and normal direction, respectively. 
+
+
