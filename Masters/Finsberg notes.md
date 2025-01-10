@@ -127,3 +127,19 @@ which indicates that $I_{8\mathbf{f}_{0}\mathbf{s}_{0}}$ can be interpreted as a
 
 ![[Pasted image 20250109153550.png]]
 #ask why $(x)_{+}$?
+
+### Active myocardium
+The classical three element Hill muscle model will be used
+![[Pasted image 20250110104738.png|400]]
+Assume that the Cauchy stress can be written as a sum of a passive contribution and an active contribution:
+$$
+\begin{equation}
+\sigma=\sigma_{p}+\sigma_{a}.
+\end{equation}
+$$
+The passive depends on the material model:
+$$
+\begin{equation}
+\sigma_{p}=\frac{1}{J}\mathbf{F}\frac{ \partial \Psi(\mathbf{C}) }{ \partial \mathbf{C} } \mathbf{F}^T=\frac{1}{J}\mathbf{F}\frac{ \partial \Psi }{ \partial \mathbf{F} }\frac{ \partial \mathbf{F} }{ \partial \mathbf{C} } \mathbf{F}^T 
+\end{equation}
+$$
