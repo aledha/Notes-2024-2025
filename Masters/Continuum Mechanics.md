@@ -108,3 +108,24 @@ $$
 where $\mathbf{v}$ is the spatial velocity vector
 
 Applying the *balance equation* to the mass density $\rho$ gives
+
+### Dissipation inequality
+(Rossi p.19)
+Denoting $\eta$ as the entropy per mass, the entropy $\mathcal{S}$ is an extensive property:
+$$
+\begin{equation}
+\mathcal{S}=\int_{\Omega}\rho\eta \,\text{d} v.
+\end{equation}
+$$
+Conservation of entropy states that 
+$$
+\begin{equation}
+\frac{\text{d}\mathcal{S}}{\text{d}t} =\mathcal{H}+\mathcal{J},
+\end{equation}
+$$
+where $\mathcal{H}$ is the entropy production in $\Omega$ and $\mathcal{J}$ is the entropy flux. The second law of thermodynamics states that the entropy production $\mathcal{H}$ must be nonnegative. This gives us the *dissipation inequality*
+$$
+\begin{equation}
+\mathcal{H}=\frac{\text{d}\mathcal{S}}{\text{d}t} -\mathcal{J}\geq0
+\end{equation}
+$$
