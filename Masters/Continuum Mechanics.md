@@ -89,3 +89,22 @@ J=\det \mathbf{F}=1.
 \end{equation}
 $$
 
+### Extensive property 
+(Rossi $p$.13)
+For an extensive property $B$ in a domain $\omega$, the conservation law reads
+$$
+\begin{equation}
+\frac{\text{d}}{\text{d}t} \int_{\omega}B(\mathbf{x},t)\,\text{d} v=\int_{\omega}S(\mathbf{x},t)\,\text{d} v+\int_{\partial\omega}\mathbf{q}\cdot \mathbf{n} \,\text{d} s,
+\end{equation}
+$$
+where $S(\mathbf{x},t)$ is the source term, $\mathbf{q}$ is the flux density, and $\mathbf{n}$ is the outward surface normal of $\omega$.
+$\vdots$
+*Balance equation*
+$$
+\begin{equation}
+\int_{\Omega}J\left[ \frac{\text{d}B}{\text{d}t} +B\nabla \cdot \mathbf{v} \right]\,\text{d} V=\int_{\omega}\left[ \frac{\text{d}B}{\text{d}t} +B\nabla \cdot \mathbf{v} \right]\,\text{d} v,
+\end{equation}
+$$
+where $\mathbf{v}$ is the spatial velocity vector
+
+Applying the *balance equation* to the mass density $\rho$ gives
