@@ -4,7 +4,8 @@ $$
 \begin{align}
 I_{1} & =  \mathrm{Tr}\mathbf{C} \\
 I_{4\mathbf{f}_{0}} & =\mathbf{f}_{0}\cdot(\mathbf{C}\mathbf{f}_{0}), \\
-I_{4\mathbf{s}_{0}} & =\mathbf{s}_{0}\cdot(\mathbf{C}s_{0}), \\
+I_{4\mathbf{s}_{0}} & =\mathbf{s}_{0}\cdot(\mathbf{C}\mathbf{s}_{0}), \\
+I_{4\mathbf{n}_{0}} & =\mathbf{n}_{0}\cdot(\mathbf{C}\mathbf{n}_{0}), \\ 
 I_{8\mathbf{f}_{0}\mathbf{s}_{0}} & =\mathbf{s}_{0}\cdot(\mathbf{C}\mathbf{f}_{0}).
 \end{align}
 $$
@@ -16,8 +17,21 @@ I_{8\mathbf{f}_{0}\mathbf{s}_{0}}=\mathbf{s}_{0}\cdot(\mathbf{C}\mathbf{f}_{0})=
 $$
 which indicates that $I_{8\mathbf{f}_{0}\mathbf{s}_{0}}$ can be interpreted as a measure on the angle between the deformed sheet axis and the deformed fiber axis. The sheet axis and the fiber axis were orthonormal in the reference configuration.
 
+$$
+\begin{align}
+\Psi_{p}(I_{1},I_{4\mathbf{f}_{0}},I_{4\mathbf{s}_{0}},I_{8\mathbf{f}_{0}\mathbf{s}_{0}}) = & \frac{a}{2b}\bigg(e^{ b(I_{1}-3) }-1\bigg) \\
+ & + \frac{a_{f}}{2b_{f}}\bigg(e^{ b_{f}(I_{4\mathbf{f}_{0}}-1)^2_{+}}-1\bigg)  \\
+ & + \frac{a_{s}}{2b_{s}}\bigg(e^{ b_{s}(I_{4\mathbf{s}_{0}}-1)_{+}^2}-1\bigg)  \\
+ & + \frac{a_{fs}}{2b_{fs}}\bigg(e^{ b_{fs}I_{8\mathbf{f}_{0}\mathbf{s}_{0}}^2}-1\bigg).  \\
+\end{align}
+$$
+If the material is transversely isotropic, we may set $a_{fs}=b_{fs}=a_{s}=b_{s}=0$ ( #todo: show this), simplifying \eqref{} to
+$$
+\begin{equation}
+\Psi_{p}(I_{1},I_{4\mathbf{f}_{0}})= \frac{a}{2b}\bigg(e^{ b(I_{1}-3) }-1\bigg)  + \frac{a_{f}}{2b_{f}}\bigg(e^{ b_{f}(I_{4\mathbf{f}_{0}}-1)^2_{+}}-1\bigg)
+\end{equation}
+$$
 
-![[Pasted image 20250109153550.png]]
 ### Active myocardium
 #### Active stress formulation
 The classical three element Hill muscle model will be used
@@ -77,16 +91,6 @@ $$
 where the invariants are subtracted to fulfill the requirement that $\Psi_{a}(\mathbf{I})=0$.
 
 
-$$
-\begin{align}
-\Psi_{p}(I_{1},I_{4\mathbf{f}_{0}},I_{4\mathbf{s}_{0}},I_{8\mathbf{f}_{0}\mathbf{s}_{0}}) = & \frac{a}{2b}\bigg(e^{ b(I_{1}-3) }-1\bigg) \\
- & + \frac{a_{f}}{2b_{f}}\bigg(e^{ b_{f}(I_{4\mathbf{f}_{0}}-1)}-1\bigg)  \\
- & + \frac{a_{s}}{2b_{s}}\bigg(e^{ b_{s}(I_{4\mathbf{s}_{0}}-1)}-1\bigg)  \\
- & + \frac{a_{fs}}{2b_{fs}}\bigg(e^{ b_{fs}I_{8\mathbf{f}_{0}\mathbf{s}_{0}}^2}-1\bigg)  \\
-\end{align}
-$$
-
-![[Pasted image 20250109153550.png]]
 
 The active stress formulation is not sufficient to describe tissue deformations (Rossi, p.5).
 #### Active strain reformulation (don't include?)
