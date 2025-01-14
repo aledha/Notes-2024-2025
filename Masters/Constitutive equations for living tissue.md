@@ -16,9 +16,8 @@ I_{8\mathbf{f}_{0}\mathbf{s}_{0}}=\mathbf{s}_{0}\cdot(\mathbf{C}\mathbf{f}_{0})=
 $$
 which indicates that $I_{8\mathbf{f}_{0}\mathbf{s}_{0}}$ can be interpreted as a measure on the angle between the deformed sheet axis and the deformed fiber axis. The sheet axis and the fiber axis were orthonormal in the reference configuration.
 
-![[Pasted image 20250109153550.png]]
-#ask why $(x)_{+}$, only contribute to the stored energy during elongation?
 
+![[Pasted image 20250109153550.png]]
 ### Active myocardium
 #### Active stress formulation
 The classical three element Hill muscle model will be used
@@ -32,7 +31,7 @@ $$
 The passive stress depends on the material model:
 $$
 \begin{equation}
-\boldsymbol{\sigma}_{p}=\frac{1}{J}\frac{ \partial \Psi(\mathbf{F}) }{ \partial \mathbf{F} } \mathbf{F}^T,
+\boldsymbol{\sigma}_{p}=\frac{1}{J}\frac{ \partial \Psi_{p}(\mathbf{F}) }{ \partial \mathbf{F} } \mathbf{F}^T,
 \end{equation}
 $$
 while the active stress is
@@ -43,15 +42,13 @@ $$
 $$
 where $\sigma_{ff},\sigma_{ss},$ and $\sigma_{nn}$ are the components of the active stress in the fiber, sheet, and normal direction, respectively. 
 
-$\sigma_{ff},\sigma_{ss},$ and $\sigma_{nn}$ are the avenues for coupling the electrophysiology with the mechanics.
-
 Although the sheet and normal active stresses are non-negligible, a common simplification is to collect these to one variable:
 $$
 \begin{equation}
 \boldsymbol{\sigma}_{a}=T_{a}(\mathbf{f}\otimes \mathbf{f}+\eta(\mathbf{s}\otimes \mathbf{s}+\mathbf{n}\otimes \mathbf{n})),
 \end{equation}
 $$
-where $T_{a}$ represent the total active stress and $\eta$ represents the active stress in the transverse direction.
+where $T_{a}$ represent the total active stress and $\eta$ represents the active stress in the transverse direction. As will be discussed in section \ref{sec:}, $T_{a}$ and $\eta$ will be used as the coupling from the electrophysiology to the mechanics.
 
 Using
 $$
@@ -74,13 +71,25 @@ $$
 To find a strain-energy function that satisfies $\boldsymbol{\sigma}_{a}=\frac{1}{J}\frac{ \partial \Psi(\mathbf{F}) }{ \partial \mathbf{F} }\mathbf{F}^T$, 
 $$
 \begin{equation}
-\Psi(\mathbf{F})=\frac{T_{a}}{2J}[ (I_{4\mathbf{f}_{0}}-1)+\eta((I_{1}-3)-(I_{4\mathbf{f}_{0}}-1)) ],
+\Psi_{a}(\mathbf{F})=\frac{JT_{a}}{2}[ (I_{4\mathbf{f}_{0}}-1)+\eta((I_{1}-3)-(I_{4\mathbf{f}_{0}}-1)) ],
 \end{equation}
 $$
-where the invariants are subtracted to fulfill the requirement that $\Psi(\mathbf{I})=0$.
+where the invariants are subtracted to fulfill the requirement that $\Psi_{a}(\mathbf{I})=0$.
+
+
+$$
+\begin{align}
+\Psi_{p}(I_{1},I_{4\mathbf{f}_{0}},I_{4\mathbf{s}_{0}},I_{8\mathbf{f}_{0}\mathbf{s}_{0}}) = & \frac{a}{2b}\bigg(e^{ b(I_{1}-3) }-1\bigg) \\
+ & + \frac{a_{f}}{2b_{f}}\bigg(e^{ b_{f}(I_{4\mathbf{f}_{0}}-1)}-1\bigg)  \\
+ & + \frac{a_{s}}{2b_{s}}\bigg(e^{ b_{s}(I_{4\mathbf{s}_{0}}-1)}-1\bigg)  \\
+ & + \frac{a_{fs}}{2b_{fs}}\bigg(e^{ b_{fs}I_{8\mathbf{f}_{0}\mathbf{s}_{0}}^2}-1\bigg)  \\
+\end{align}
+$$
+
+![[Pasted image 20250109153550.png]]
 
 The active stress formulation is not sufficient to describe tissue deformations (Rossi, p.5).
-#### Active strain reformulation
+#### Active strain reformulation (don't include?)
 Decompose the deformation gradient multiplicatively into an active part $\mathbf{F}_{a}$ and an elastic part $\mathbf{F}_{e}$:
 $$
 \begin{equation}
