@@ -91,7 +91,6 @@ $$
 where the invariants are subtracted to fulfill the requirement that $\Psi_{a}(\mathbf{I})=0$.
 
 
-
 The active stress formulation is not sufficient to describe tissue deformations (Rossi, p.5).
 #### Active strain reformulation (don't include?)
 Decompose the deformation gradient multiplicatively into an active part $\mathbf{F}_{a}$ and an elastic part $\mathbf{F}_{e}$:
@@ -99,4 +98,20 @@ $$
 \begin{equation}
 \mathbf{F}=\mathbf{F}_{e}\mathbf{F}_{a}.
 \end{equation}
+$$
+
+## Force-balance equation
+$$
+\begin{align}
+\nabla \cdot \mathbf{P} & =0 \\
+J-1 & =0
+\end{align}
+$$
+
+Variational form:
+$$
+\begin{align}
+\int_{\Omega}(\nabla \cdot \mathbf{P})\cdot v\,\text{d} \mathbf{X} & =0 \\
+\int_{\Omega}\mathbf{P}\cdot \nabla v\,\text{d} \mathbf{X}
+\end{align}
 $$
