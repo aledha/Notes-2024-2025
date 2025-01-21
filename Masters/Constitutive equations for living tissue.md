@@ -108,10 +108,3 @@ J-1 & =0
 \end{align}
 $$
 
-Variational form:
-$$
-\begin{align}
-\int_{\Omega}(\nabla \cdot \mathbf{P})\cdot v\,\text{d} \mathbf{X} & =0 \\
-\int_{\Omega}\mathbf{P}\cdot \nabla v\,\text{d} \mathbf{X}
-\end{align}
-$$
