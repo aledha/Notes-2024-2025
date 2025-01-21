@@ -80,14 +80,7 @@ $$
 \Psi(\mathbf{C})=\Psi(I_{1},I_{2},I_{3}).
 \end{equation}
 $$
-### Incompressibility
-During the contraction of the myocardium, blood is squeezed out, resulting in a volume loss of 2-4%. Hence, the myocardium is a compressible material. 
-A common simplification for numerical ease is to assume that the myocardium is incompressible, such that
-$$
-\begin{equation}
-J=\det \mathbf{F}=1.
-\end{equation}
-$$
+
 
 ### Extensive property 
 (Rossi $p$.13)

@@ -15,8 +15,16 @@ $$
 I_{8\mathbf{f}_{0}\mathbf{s}_{0}}=\mathbf{s}_{0}\cdot(\mathbf{C}\mathbf{f}_{0})=\mathbf{s}_{0}\cdot(\mathbf{F}^T\mathbf{F}\mathbf{f}_{0})=(\mathbf{F}\mathbf{s}_{0})\cdot(\mathbf{F}\mathbf{f}_{0}),
 \end{equation}
 $$
-which indicates that $I_{8\mathbf{f}_{0}\mathbf{s}_{0}}$ can be interpreted as a measure on the angle between the deformed sheet axis and the deformed fiber axis. The sheet axis and the fiber axis were orthonormal in the reference configuration.
+which indicates that $I_{8\mathbf{f}_{0}\mathbf{s}_{0}}$ can be interpreted as a measure on the angle between the deformed sheet axis and the deformed fiber axis. The sheet axis and the fiber axis are orthonormal in the reference configuration.
 
+$$
+\begin{align}
+I_{4\mathbf{f}_{0}}+I_{4\mathbf{s}_{0}}+I_{4\mathbf{n}_{0}} & =\mathbf{f}_{0}\cdot(\mathbf{C}\mathbf{f}_{0})+\mathbf{s}_{0}\cdot(\mathbf{C}\mathbf{s}_{0})+\mathbf{n}_{0}\cdot(\mathbf{C}\mathbf{n}_{0}) \\
+ & =(\mathbf{f}_{0}+\mathbf{s}_{0}+\mathbf{n}_{0})\cdot \mathbf{C}(\mathbf{f}_{0}+\mathbf{s}_{0}+\mathbf{n}_{0})
+\end{align}
+$$
+
+The orthotropic Holzapfel-Ogden model is
 $$
 \begin{align}
 \Psi_{p}(I_{1},I_{4\mathbf{f}_{0}},I_{4\mathbf{s}_{0}},I_{8\mathbf{f}_{0}\mathbf{s}_{0}}) = & \frac{a}{2b}\bigg(e^{ b(I_{1}-3) }-1\bigg) \\
@@ -89,18 +97,28 @@ $$
 \end{equation}
 $$
 where the invariants are subtracted to fulfill the requirement that $\Psi_{a}(\mathbf{I})=0$.
-
-
-The active stress formulation is not sufficient to describe tissue deformations (Rossi, p.5).
-#### Active strain reformulation (don't include?)
-Decompose the deformation gradient multiplicatively into an active part $\mathbf{F}_{a}$ and an elastic part $\mathbf{F}_{e}$:
+(The active stress formulation is not sufficient to describe tissue deformations (Rossi, p.5).)
+### Incompressibility
+During the contraction of the myocardium, blood is squeezed out, resulting in a volume loss of 2-4%. Hence, the myocardium is a compressible material. However, it is common to assume that the myocardium is incompressible for numerical ease, such that
 $$
 \begin{equation}
-\mathbf{F}=\mathbf{F}_{e}\mathbf{F}_{a}.
+J=\det \mathbf{F}=1.
 \end{equation}
 $$
+In order to impose the incompressibility condition, we modify the strain-energy function to
+$$
+\begin{equation}
+\Psi=\Psi_{p}+\Psi_{a}+p(J-1),
+\end{equation}
+$$
+where $p$ is a Lagrange multiplier.
+
 
 ## Force-balance equation
+
+
+
+
 $$
 \begin{align}
 \nabla \cdot \mathbf{P} & =0 \\
