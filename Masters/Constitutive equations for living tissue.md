@@ -115,14 +115,9 @@ where $p$ is a Lagrange multiplier.
 
 
 ## Force-balance equation
-
-
-
-
 $$
 \begin{align}
 \nabla \cdot \mathbf{P} & =0 \\
 J-1 & =0
 \end{align}
 $$
-
