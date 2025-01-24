@@ -69,7 +69,7 @@ $$
 
 The strain-energy density function relates the deformation $\mathbf{F}$ to the stored energy in the material. An important distinction for hyperelastic materials is that the stored energy is only related to the deformation and not the path of deformation.
 
-Some conditions for $\Psi$ are
+We impose the following conditions for $\Psi$:
 * The energy stored in the reference configuration must be zero: $\Psi(\mathbf{I})=0$
 * The material cannot store negative energy: $\Psi(\mathbf{F})\geq0$.
 * Compression the material to zero volume, or expansion to infinite volume demands infinite energy: $\Psi(\mathbf{F})\to \infty$ as $\det \mathbf{F}\to0$ or $\det \mathbf{F}\to \infty$.

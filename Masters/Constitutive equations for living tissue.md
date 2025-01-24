@@ -23,6 +23,7 @@ I_{4\mathbf{f}_{0}}+I_{4\mathbf{s}_{0}}+I_{4\mathbf{n}_{0}} & =\mathbf{f}_{0}\cd
  & =(\mathbf{f}_{0}+\mathbf{s}_{0}+\mathbf{n}_{0})\cdot \mathbf{C}(\mathbf{f}_{0}+\mathbf{s}_{0}+\mathbf{n}_{0})
 \end{align}
 $$
+#todo show that $I_{1}=I_{4\mathbf{f}_{0}}+I_{4\mathbf{s}_{0}}+I_{4\mathbf{n}_{0}}$.
 
 The orthotropic Holzapfel-Ogden model is
 $$
@@ -70,7 +71,7 @@ $$
 \boldsymbol{\sigma}_{a}=T_{a}(\mathbf{f}\otimes \mathbf{f}+\eta(\mathbf{s}\otimes \mathbf{s}+\mathbf{n}\otimes \mathbf{n})),
 \end{equation}
 $$
-where $T_{a}$ represent the total active stress and $\eta$ represents the active stress in the transverse direction. As will be discussed in section \ref{sec:}, $T_{a}$ and $\eta$ will be used as the coupling from the electrophysiology to the mechanics.
+where $T_{a}$ represent the total active stress and $\eta$ represents the active stress in the transverse direction. 
 
 Using
 $$
@@ -113,11 +114,58 @@ $$
 $$
 where $p$ is a Lagrange multiplier.
 
+We can differentiate \eqref{} with respect to $\mathbf{F}$ to get an expression the first Piola-Kirchoff stress tensor:
+$$
+\begin{equation}
+\mathbf{P}=\frac{ \partial \Psi_{p} (\mathbf{F})}{ \partial \mathbf{F} } +\frac{ \partial \Psi_{a}(\mathbf{F}) }{ \partial \mathbf{F} } + Jp\mathbf{F}^{-T}.
+\end{equation}
+$$
+Let's denote
+$$
+\begin{equation}
+\mathbf{P}=\mathbf{P}_{p}+\mathbf{P}_{a},
+\end{equation}
+$$
+where $\mathbf{P}_{p}=\frac{ \partial \Psi(\mathbf{F}) }{ \partial \mathbf{F} }+Jp\mathbf{F}^{-T}$ and $\mathbf{P}_{a}=$
 
 ## Force-balance equation
+#todo derive
 $$
-\begin{align}
-\nabla \cdot \mathbf{P} & =0 \\
-J-1 & =0
-\end{align}
+\begin{equation}
+\nabla \cdot \mathbf{P}=\boldsymbol{0},\qquad \mathbf{X}\in\Omega.
+\end{equation}
 $$
+
+### Boundary conditions
+Let the surface of the domain be decomposed as $\partial\Omega=\partial\Omega_{D} \cup \partial\Omega_{N}$, where $\partial\Omega_{D}$ denotes the boundary where we will apply a Dirichlet condition to the displacement $\mathbf{u}$, and $\partial\Omega_{N}$ denotes the boundary where we will apply a Neumann condition on the flux of the first Piola-Kirchhoff stress tensor.
+
+We will consider two types of Dirichlet conditions, the first being
+$$
+\begin{equation}
+\mathbf{u}=\boldsymbol{0}, \qquad  \mathbf{X} \in \partial\Omega_{D},
+\end{equation}
+$$
+where all coordinates of $\mathbf{u}$ are fixed. This will be referred to as a type 1 Dirichlet condition. Type 2 Dirichlet conditions are of the form
+$$
+\begin{equation}
+u_{i}=0,\qquad \mathbf{X}\in \partial\Omega_{D},
+\end{equation}
+$$
+where $u_{i}$ is one of the coordinates of $\mathbf{u}=(u_{1},u_{2},u_{3})$. Notice that three type 2 Dirichlet conditions must be enforced to fix the geometry.
+
+Both types of Dirichlet conditions may be described by
+
+$$
+\begin{equation}
+\mathbf{u}=\mathbf{u}_{D}, \qquad  \mathbf{X} \in \partial\Omega_{D}.
+\end{equation}
+$$
+The Neumann conditions are
+$$
+\begin{equation}
+\mathbf{P}\mathbf{N}=\mathbf{T},\qquad \mathbf{X}\in \partial\Omega_{N},
+\end{equation}
+$$
+where $\mathbf{N}$ is the outward normal vector in the reference domain, and $\mathbf{T}$ is the desired traction.
+
+---
