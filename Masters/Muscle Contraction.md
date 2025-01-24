@@ -1,5 +1,5 @@
 There are three types of muscle cells; skeletal muscle, cardiac muscle, and smooth muscle. 
-Each muscle cell consists of several cylindrical structures called *myofibrils*, which consists of individual contractile units call *sarcomeres*. The sarcomeres, depicted in figure \ref{}, are composed of thin filaments made by the protein *actin* and thick filaments made by the protein *myosin*. There are three main stages in muscle activation: the action potential (which will be discussed in Section \ref{sec:}), the calcium ion release, and the contraction \cite{mathphys}.
+Each muscle cell consists of several cylindrical structures called *myofibrils*, which consists of individual contractile units call *sarcomeres*. The sarcomeres, depicted in figure \ref{}, are composed of thin filaments made by the protein *actin* and thick filaments made by the protein *myosin*. There are three main stages in muscle activation: the action potential (which will be discussed in Section \ref{sec:}), the calcium ion transient, and the contraction \cite{mathphys}.
 
 ![[Pasted image 20250123154453.png]]
 (figure ref Finsberg)

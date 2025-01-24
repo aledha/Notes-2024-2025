@@ -71,34 +71,43 @@ $$
 \boldsymbol{\sigma}_{a}=T_{a}(\mathbf{f}\otimes \mathbf{f}+\eta(\mathbf{s}\otimes \mathbf{s}+\mathbf{n}\otimes \mathbf{n})),
 \end{equation}
 $$
-where $T_{a}$ represent the total active stress and $\eta$ represents the active stress in the transverse direction. 
+where $T_{a}$ represent the total active stress and $\eta$ represents the active stress in the transverse direction. We will assume that $\eta=0$ ( #todo  reason) such that
+$$
+\begin{equation}
+\boldsymbol{\sigma}_{a}=T_{a}\mathbf{f}\otimes \mathbf{f}.
+\end{equation}
+$$
 
 Using
 $$
 \begin{equation}
-\frac{ \partial I_{4\mathbf{s}_{0}} }{ \partial \mathbf{F} } =\frac{ \partial (\mathbf{s}_{0}\cdot \mathbf{C}\mathbf{s}_{0}) }{ \partial \mathbf{F} } =2\mathbf{s}\otimes \mathbf{s}_{0}\implies \mathbf{s}\otimes \mathbf{s}=\frac{1}{2}\frac{ \partial I_{4\mathbf{s}_{0}} }{ \partial \mathbf{F} } \mathbf{F}^T,
+\frac{ \partial I_{4\mathbf{f}_{0}} }{ \partial \mathbf{F} } =\frac{ \partial (\mathbf{f}_{0}\cdot \mathbf{C}\mathbf{f}_{0}) }{ \partial \mathbf{F} } =2\mathbf{f}\otimes \mathbf{f}_{0}\implies \mathbf{f}\otimes \mathbf{f}=\frac{1}{2}\frac{ \partial I_{4\mathbf{f}_{0}} }{ \partial \mathbf{F} } \mathbf{F}^T,
 \end{equation}
 $$
-and the analogous expressions for $\mathbf{f}\otimes \mathbf{f}$ and $\mathbf{n}\otimes \mathbf{n}$ on \eqref{} gives
+on \eqref{} gives
 $$
 \begin{equation}
-\boldsymbol{\sigma}_{a}=\frac{T_{a}}{2}\left(\frac{ \partial I_{4\mathbf{f}_{0}} }{ \partial \mathbf{F} }  + \eta \left(\frac{ \partial I_{4\mathbf{s}_{0}} }{ \partial \mathbf{F} }  +\frac{ \partial I_{4\mathbf{n}_{0}} }{ \partial \mathbf{F} } \right) \right)\mathbf{F}^T.
+\boldsymbol{\sigma}_{a}=\frac{T_{a}}{2}\frac{ \partial I_{4\mathbf{f}_{0}} }{ \partial \mathbf{F}}\mathbf{F}^T.
 \end{equation}
 $$
+To find a strain-energy function that satisfies $\boldsymbol{\sigma}_{a}=\frac{1}{J}\frac{ \partial \Psi(\mathbf{F}) }{ \partial \mathbf{F} }\mathbf{F}^T$, we set
+$$
+\begin{equation}
+\Psi_{a}(\mathbf{F})=\Psi_{a}(I_{4\mathbf{f}_{0}})=\frac{JT_{a}}{2} (I_{4\mathbf{f}_{0}}-1),
+\end{equation}
+$$
+where the invariant $I_{4\mathbf{f}_{0}}$ is subtracted by 1 to fulfill the requirement that $\Psi_{a}(\mathbf{I})=0$.
+
+(The active stress formulation is not sufficient to describe tissue deformations (Rossi, p.5).)
+
+#### for eta≠0
 The relation $I_{1}=I_{4\mathbf{f}_{0}}+I_{4\mathbf{s}_{0}}+I_{4\mathbf{n}_{0}}$ allows \eqref{} to be rewritten to
 $$
 \begin{equation}
 \boldsymbol{\sigma}_{a}=\frac{T_{a}}{2}\left( \frac{ \partial I_{4\mathbf{f}_{0}} }{ \partial \mathbf{F} }+\eta \left( \frac{ \partial I_{1} }{ \partial \mathbf{F} } -\frac{ \partial I_{4\mathbf{f}_{0}} }{ \partial \mathbf{F} } \right)  \right) \mathbf{F}^T.
 \end{equation}
 $$
-To find a strain-energy function that satisfies $\boldsymbol{\sigma}_{a}=\frac{1}{J}\frac{ \partial \Psi(\mathbf{F}) }{ \partial \mathbf{F} }\mathbf{F}^T$, 
-$$
-\begin{equation}
-\Psi_{a}(\mathbf{F})=\frac{JT_{a}}{2}[ (I_{4\mathbf{f}_{0}}-1)+\eta((I_{1}-3)-(I_{4\mathbf{f}_{0}}-1)) ],
-\end{equation}
-$$
-where the invariants are subtracted to fulfill the requirement that $\Psi_{a}(\mathbf{I})=0$.
-(The active stress formulation is not sufficient to describe tissue deformations (Rossi, p.5).)
+
 ### Incompressibility
 During the contraction of the myocardium, blood is squeezed out, resulting in a volume loss of 2-4%. Hence, the myocardium is a compressible material. However, it is common to assume that the myocardium is incompressible for numerical ease, such that
 $$
@@ -126,7 +135,7 @@ $$
 \mathbf{P}=\mathbf{P}_{p}+\mathbf{P}_{a},
 \end{equation}
 $$
-where $\mathbf{P}_{p}=\frac{ \partial \Psi(\mathbf{F}) }{ \partial \mathbf{F} }+Jp\mathbf{F}^{-T}$ and $\mathbf{P}_{a}=$
+where $\mathbf{P}_{p}=\frac{ \partial \Psi_{p}(\mathbf{F}) }{ \partial \mathbf{F} }+Jp\mathbf{F}^{-T}$ and $\mathbf{P}_{a}=\frac{ \partial \Psi_{a}(\mathbf{F}) }{ \partial \mathbf{F} }$.
 
 ## Force-balance equation
 #todo derive
@@ -167,5 +176,26 @@ $$
 \end{equation}
 $$
 where $\mathbf{N}$ is the outward normal vector in the reference domain, and $\mathbf{T}$ is the desired traction.
+
+## Summary of Mechanical Model
+The hyperelastic, incompressible model can be summarized as
+$$
+\begin{align}
+\nabla \cdot \mathbf{P} & =0,\qquad & \mathbf{X}\in\Omega, \\
+\mathbf{u} & =\mathbf{u}_{D}, & \mathbf{X}\in \partial\Omega_{D}, \\
+\mathbf{P}\mathbf{N} & =\mathbf{T}, & \mathbf{X}\in \partial\Omega_{N}, \\
+\mathbf{P} & =\mathbf{P}_{p}+\mathbf{P}_{a} \\
+\mathbf{P}_{p} & =\frac{ \partial \Psi_{p}(\mathbf{F}) }{ \partial \mathbf{F} }+Jp\mathbf{F}^{-T}, \\
+\mathbf{P}_{a} & =\frac{ \partial \Psi_{a}(\mathbf{F}) }{ \partial \mathbf{F} },
+\end{align}
+$$
+where the active and passive strain-energy functions are defined as
+$$
+\begin{align}
+\Psi_{a}(I_{4\mathbf{f}_{0}}) & =\frac{JT_{a}}{2} (I_{4\mathbf{f}_{0}}-1), \\
+\Psi_{p}(I_{1},I_{4\mathbf{f}_{0}}) & = \frac{a}{2b}\bigg(e^{ b(I_{1}-3) }-1\bigg)  + \frac{a_{f}}{2b_{f}}\bigg(e^{ b_{f}(I_{4\mathbf{f}_{0}}-1)^2_{+}}-1\bigg).
+\end{align}
+$$
+
 
 ---

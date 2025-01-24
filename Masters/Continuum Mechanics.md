@@ -81,7 +81,6 @@ $$
 \end{equation}
 $$
 
-
 ### Extensive property 
 (Rossi $p$.13)
 For an extensive property $B$ in a domain $\omega$, the conservation law reads
