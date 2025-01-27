@@ -19,4 +19,13 @@ h(\lambda) & =\max(0,h'(\min(\lambda,1.2))), \\
 h'(\lambda) & =1+\beta_{0}(\lambda+\min(\lambda,0.87)-1.87),
 \end{align}
 $$
-where $\beta_{0}$ is also a constant. $W$ and $S$ represent the fraction of myosin binding sites pre- and post-powerstroke, respectively.
+where $\beta_{0}$ is also a constant.  $W$ and $S$ represent the fraction of myosin binding sites pre- and post-powerstroke, respectively. $\zeta_{s}$ and $\zeta_{w}$ represent the distortion of crossbridges in the $S$ and $W$ states, respectively.
+
+The distortions are modeled as
+$$
+\begin{align}
+\frac{\text{d}\zeta_{s}}{\text{d}t}  & =A_{s}\frac{\text{d}\lambda}{\text{d}t} -c_{s}\zeta_{s}, \\
+\frac{\text{d}\zeta_{w}}{\text{d}t}  & =A_{w}\frac{\text{d}\lambda}{\text{d}t} -c_{w}\zeta_{w},
+\end{align}
+$$
+where $A_{s}$, $c_{s}$, $A_{w}$, and $c_{w}$ are constants.
