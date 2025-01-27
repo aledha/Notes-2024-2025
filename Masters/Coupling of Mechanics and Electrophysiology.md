@@ -6,6 +6,10 @@ T_{a}=T_{a}\left( \mathbf{s},\lambda ,\frac{ \partial \lambda }{ \partial t }  \
 $$
 where $\mathbf{s}$ are state variables defined in each cell (and in each point in the intracellular domain) and $\lambda$ is the stretch. Notice that $\mathbf{s}$ here differs from the deformed sheet axis $\mathbf{s}$.
 
+## Land model
+After the intracellular calcium is released
+
+
 The Land model details the active tension as
 $$
 \begin{equation}
@@ -29,3 +33,13 @@ $$
 \end{align}
 $$
 where $A_{s}$, $c_{s}$, $A_{w}$, and $c_{w}$ are constants.
+
+For myosin to bind to actin, the binding site must be in an unblocked state. 
+The transition between the fraction of myosin binding sites pre- and post-powerstroke are modeled by
+$$
+\begin{align}
+\frac{\text{d}W}{\text{d}t}  & =k_\text{uw}U-k_\text{wu}W-k_\text{ws}W-\gamma _\text{wu}W, \\
+\frac{\text{d}S}{\text{d}t}  & =k_\text{ws}W-k_\text{su}S-\gamma _\text{su}S,
+\end{align}
+$$
+where 
