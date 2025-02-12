@@ -55,3 +55,27 @@ I_{4\mathbf{f}_{0}} & =\mathbf{f}_{0}\cdot(\mathbf{C}\mathbf{f}_{0})=\lambda^2.
 \end{align}
 $$
 
+Substitution into the passive and active strain-energy functions gives
+$$
+\begin{align}
+\Psi_{a}(I_{4\mathbf{f}_{0}}) & =\frac{JT_{a}}{2} (\lambda^2-1), \\
+\Psi_{p}(I_{1},I_{4\mathbf{f}_{0}}) & = \frac{a}{2b}\bigg(e^{ b(\lambda^2 +\frac{2}{\lambda^2}-3) }-1\bigg)  + \frac{a_{f}}{2b_{f}}\bigg(e^{ b_{f}(\lambda^2-1)^2_{+}}-1\bigg).
+\end{align}
+$$
+The active first Piola-Kirchoff stress components are
+$$
+\begin{align}
+(\mathbf{S}_{a})_{11} & = \frac{ \partial \Psi_{a} }{ \partial \lambda } =JT_{a}\lambda, \\
+(\mathbf{S}_{a})_{22}=(\mathbf{S}_{a})_{33} & = \frac{ \partial \Psi_{a} }{ \partial \left( \frac{1}{\lambda} \right) }  \\
+ & = \frac{ \partial  }{ \partial \gamma } \left( \frac{JT_{a}}{2}\left( \frac{1}{\gamma^2}-1 \right) \right)  \\
+ & =-JT_{a}\gamma^{-3} \\
+ & =-JT_{a}\lambda^3,
+\end{align}
+$$
+while the off-diagonal components are zero. The passive stress components are
+$$
+\begin{align}
+(\mathbf{S}_{p})_{11} & =\frac{ \partial \Psi_{p} }{ \partial \lambda } +Jp(\mathbf{F}^{-T})_{11} \\
+ & = \frac{a}{2}(2\lambda -4\lambda^{-3})e^{ b\left( \lambda^2 +\frac{2}{\lambda^2}-3 \right) }+ a_{f}(\lambda^2-1)_{+}2\lambda e^{ b_{f}(\lambda^2-1)^2_{+} }+\frac{Jp}{\lambda}
+\end{align}
+$$
