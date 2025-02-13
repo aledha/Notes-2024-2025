@@ -94,4 +94,15 @@ $$
  & =a(-\lambda^3+4\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-2}-3) }-2a_{f}\lambda^3(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)^2_{+} }-JT_{a}\lambda^3.
 \end{align}
 $$
-
+We assume that the slab is unloaded, and we ignore body and inertia forces, such that the active and passive stresses must balance at all points:
+$$
+\begin{equation}
+\mathbf{P}=\mathbf{P}_{p}+\mathbf{P}_{a}=0.
+\end{equation}
+$$
+Substitution of the components gives
+$$
+\begin{align}
+\mathbf{P}_{11} & =
+\end{align}
+$$
