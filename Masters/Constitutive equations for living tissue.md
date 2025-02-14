@@ -2,7 +2,7 @@
 With a local orthonormal coordinate system with fiber axis $\mathbf{f}_{0}$, sheet axis $\mathbf{s}_{0}$, and sheet-normal axis $\mathbf{n}_{0}$. The invariants are defined as
 $$
 \begin{align}
-I_{1} & =  \mathrm{Tr}\mathbf{C} \\
+I_{1} & =  \mathrm{Tr}\mathbf{C}, \\
 I_{4\mathbf{f}_{0}} & =\mathbf{f}_{0}\cdot(\mathbf{C}\mathbf{f}_{0}), \\
 I_{4\mathbf{s}_{0}} & =\mathbf{s}_{0}\cdot(\mathbf{C}\mathbf{s}_{0}), \\
 I_{4\mathbf{n}_{0}} & =\mathbf{n}_{0}\cdot(\mathbf{C}\mathbf{n}_{0}), \\ 

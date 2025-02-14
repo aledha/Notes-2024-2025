@@ -62,47 +62,42 @@ $$
 \Psi_{p}(I_{1},I_{4\mathbf{f}_{0}}) & = \frac{a}{2b}\bigg(e^{ b(\lambda^2 +\frac{2}{\lambda}-3) }-1\bigg)  + \frac{a_{f}}{2b_{f}}\bigg(e^{ b_{f}(\lambda^2-1)^2_{+}}-1\bigg).
 \end{align}
 $$
-The active first Piola-Kirchoff stress components are (could have used chain rule instead of $\gamma=\frac{1}{\lambda}$)
+The active first Piola-Kirchoff stress components are 
 $$
 \begin{align}
 (\mathbf{P}_{a})_{11} & = \frac{ \partial \Psi_{a} }{ \partial \lambda } =JT_{a}\lambda, \\
-(\mathbf{P}_{a})_{22}=(\mathbf{P}_{a})_{33} & = \frac{ \partial \Psi_{a} }{ \partial \left( \frac{1}{\lambda} \right) }  \\
- & =\frac{ \partial \lambda }{ \partial \frac{1}{\lambda} }  \frac{ \partial \Psi_{a} }{ \partial \lambda }  \\
- & = -\lambda^{2}JT_{a}\lambda\\
- & =-JT_{a}\lambda^3,
+(\mathbf{P}_{a})_{22}=(\mathbf{P}_{a})_{33} & = \frac{ \partial \Psi_{a} }{ \partial \left( \frac{1}{\sqrt{ \lambda }} \right) }  \\
+ & =\frac{ \partial \lambda }{ \partial \left( \frac{1}{\sqrt{ \lambda }} \right) }  \frac{ \partial \Psi_{a} }{ \partial \lambda }  \\
+ & = -\lambda^{3/2}JT_{a}\lambda\\
+ & =-JT_{a}\lambda^{5/2},
 \end{align}
 $$
 $$
-\begin{align}
-\frac{ \partial \lambda }{ \partial \frac{1}{\lambda} } =\frac{ \partial \gamma^{-1} }{ \partial \gamma } =-\gamma^{-2}=-\lambda^2
-\end{align}
+\begin{equation}
+\frac{ \partial \lambda }{ \partial\left(  \frac{1}{\sqrt{ \lambda }} \right) } =\frac{ \partial \gamma^{-2} }{ \partial \gamma } =-2\gamma^{-3}=-\lambda^{3/2}.
+\end{equation}
 $$
+
 while the off-diagonal components are zero. The passive stress components are
 $$
 \begin{align}
 (\mathbf{P}_{p})_{11} & =\frac{ \partial \Psi_{p} }{ \partial \lambda } +Jp(\mathbf{F}^{-T})_{11} \\
  & = \frac{a}{2}(2\lambda -2\lambda^{-2})e^{ b\left( \lambda^2 +2\lambda^{-1}-3 \right) }+ a_{f}(\lambda^2-1)_{+}2\lambda e^{ b_{f}(\lambda^2-1)^2_{+} }+\frac{Jp}{\lambda} \\
   & =a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }+Jp\lambda^{-1},\\
-(\mathbf{P}_{p})_{22}=(\mathbf{P}_{p})_{33} & =\frac{ \partial \Psi_{p} }{ \partial \left( \frac{1}{\lambda} \right) }  + Jp(\mathbf{F}^{-T})_{22}\\
- & =\frac{ \partial \lambda }{ \partial \frac{1}{\lambda} } \frac{ \partial \Psi_{p} }{ \partial \lambda } +Jp(\mathbf{F}^{-T})_{22} \\
- & = (-\lambda^{2})\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 } \right] +Jp\sqrt{ \lambda }
+(\mathbf{P}_{p})_{22}=(\mathbf{P}_{p})_{33} & =\frac{ \partial \Psi_{p} }{ \partial \left( \frac{1}{\sqrt{ \lambda }} \right) }  + Jp(\mathbf{F}^{-T})_{22}\\
+ & =\frac{ \partial \lambda }{ \partial \left( \frac{1}{\sqrt{ \lambda }} \right) } \frac{ \partial \Psi_{p} }{ \partial \lambda } +Jp(\mathbf{F}^{-T})_{22} \\
+ & = (-\lambda^{3/2})\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 } \right] +Jp\sqrt{ \lambda }
 \end{align}
 $$
-$$
-\begin{align}
- & =\frac{ \partial  }{ \partial \gamma } \left[ \frac{a}{2b}\bigg(e^{ b(\gamma^{-2} +2\gamma-3) }-1\bigg)  + \frac{a_{f}}{2b_{f}}\bigg(e^{ b_{f}(\gamma^{-2}-1)^2_{+}}-1\bigg) \right] +Jp\lambda \\
- & =\frac{a}{2}(-2\gamma^{-3}+2)e^{ b(\gamma^{-2} +2\gamma-3) }+a_{f}(\gamma^{-2}-1)_{+}(-2\gamma^{-3})e^{ b_{f}(\gamma^{-2}-1)^2_{+}} +Jp\lambda\\
- & =a(-\lambda^3+1)e^{ b(\lambda^2+2\lambda^{-1}-3) }-2a_{f}\lambda^3(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)^2_{+} } + Jp\lambda.
-\end{align}
-$$
+
 Summing up the stresses gives the total stress components,
 $$
 \begin{align}
 \mathbf{P}_{11} & =(\mathbf{P}_{p})_{11}+(\mathbf{P}_{a})_{11} \\
  & =a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }+Jp\lambda^{-1}+JT_{a}\lambda, \\
 \mathbf{P}_{33}=\mathbf{P}_{22} & =(\mathbf{P}_{p})_{22}+(\mathbf{P}_{a})_{22} \\
- & =(-\lambda^{2})\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 } \right] +Jp\sqrt{ \lambda }-JT_{a}\lambda^3 \\
- & =(-\lambda^{2})\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 } +JT_{a}\lambda\right] +Jp\sqrt{ \lambda }.
+ & =(-\lambda^{3/2})\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 } \right] +Jp\sqrt{ \lambda }-JT_{a}\lambda^{5/2} \\
+ & =(-\lambda^{3/2})\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }-Jp\lambda^{-1} +JT_{a}\lambda\right] .
 \end{align}
 $$
 We assume that the slab is unloaded, and we ignore body and inertia forces, such that the active and passive stresses must balance at all points:
@@ -111,17 +106,106 @@ $$
 \mathbf{P}=\mathbf{P}_{p}+\mathbf{P}_{a}=0.
 \end{equation}
 $$
-Substitution of the components gives
+Setting the first component to zero gives
 $$
 \begin{align}
-\mathbf{P}_{11} & =a(\lambda-2\lambda^{-3})e^{ b(\lambda^2+2\lambda^{-2}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }+Jp\lambda^{-1}+JT_{a}\lambda=0 \\
-T_{a} & =-\frac{1}{J}\left[ a(1-2\lambda^{-4})e^{ b(\lambda^2+2\lambda^{-2}-3) }+2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }+Jp\lambda^{-2} \right],
+0 & =\mathbf{P}_{11} =a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }+Jp\lambda^{-1}+JT_{a}\lambda \\
+T_{a}& =-\frac{a}{J}(1-\lambda^{-3})e^{ b(\lambda^2+2\lambda^{-1}-3) }-\frac{2 a_{f}}{J}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }-p\lambda^{-2}
+\end{align}
+$$
+and setting the second to zero gives
+$$
+\begin{align}
+ 0 & = \mathbf{P}_{22} =(-\lambda^{3/2})\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }-Jp\lambda^{-1} +JT_{a}\lambda\right]  \\
+0 &  = a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }-Jp\lambda^{-1} +JT_{a}\lambda \\
+T_{a} & =-\frac{a}{J}(1-\lambda^{-3})e^{ b(\lambda^2+2\lambda^{-1}-3) }-\frac{2 a_{f}}{J}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 } +p\lambda^{-2}
+\end{align}
+$$
+---
+### new approach
+We assume that the fibre direction is $\mathbf{f}_{0}=\begin{bmatrix}1&0&0\end{bmatrix}^T$ in the slab, and that there is a uniform electrical activation across the slab. We further assume that the slab is transversely isotropic and incompressible, which leads to a diagonal deformation matrix of the form
+$$
+\begin{equation}
+\mathbf{F}=\begin{bmatrix}
+\lambda & 0 & 0 \\
+0 & \frac{1}{\sqrt{ \lambda }} & 0 \\
+0 & 0 & \frac{1}{\sqrt{ \lambda }} 
+\end{bmatrix},
+\end{equation}
+$$
+and $J=\det \mathbf{F}=1$. The right Cauchy-Green deformation tensor becomes
+$$
+\begin{equation}
+\mathbf{C}=\begin{bmatrix}
+\lambda^2 & 0 & 0 \\
+0 & \frac{1}{\lambda} & 0 \\
+0 & 0 & \frac{1}{\lambda} 
+\end{bmatrix}.
+\end{equation}
+$$
+Then, the invariants simplify to
+$$
+\begin{align}
+I_{1} & =\mathrm{Tr}\mathbf{C}=\lambda^2+2\lambda^{-1}, \\
+I_{4\mathbf{f}_{0}} & =\mathbf{f}_{0}\cdot(\mathbf{C}\mathbf{f}_{0})=\lambda^2.
 \end{align}
 $$
 
+Substitution into the passive and active strain-energy functions gives
+$$
+\begin{equation}
+\Psi_{p}(I_{1},I_{4\mathbf{f}_{0}})  = \frac{a}{2b}\bigg(e^{ b(\lambda^2 +2\lambda^{-1}-3) }-1\bigg)  + \frac{a_{f}}{2b_{f}}\bigg(e^{ b_{f}(\lambda^2-1)^2_{+}}-1\bigg).
+\end{equation}
+$$
+The passive stress components are
 $$
 \begin{align}
-\mathbf{P}_{22}  & =a(-\lambda^3+2\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-2}-3) }-2a_{f}\lambda^3(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)^2_{+} }-JT_{a}\lambda^3=0 \\
-T_{a} & =\frac{1}{J}\left[ a(-1+2\lambda^{-4})e^{ b(\lambda^2+2\lambda^{-2}-3) }-2a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)^2_{+} } \right] 
+(\mathbf{P}_{p})_{11} & =\frac{ \partial \Psi_{p} }{ \partial \lambda } +Jp(\mathbf{F}^{-T})_{11} \\
+ & = \frac{a}{2}(2\lambda -2\lambda^{-2})e^{ b\left( \lambda^2 +2\lambda^{-1}-3 \right) }+ a_{f}(\lambda^2-1)_{+}2\lambda e^{ b_{f}(\lambda^2-1)^2_{+} }+\frac{Jp}{\lambda} \\
+  & =a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }+p\lambda^{-1},\\
+(\mathbf{P}_{p})_{22}=(\mathbf{P}_{p})_{33} & =\frac{ \partial \Psi_{p} }{ \partial \left( \frac{1}{\sqrt{ \lambda }} \right) }  + Jp(\mathbf{F}^{-T})_{22}\\
+ & =\frac{ \partial \lambda }{ \partial \left( \frac{1}{\sqrt{ \lambda }} \right) } \frac{ \partial \Psi_{p} }{ \partial \lambda } +Jp(\mathbf{F}^{-T})_{22} \\
+ & = (-\lambda^{3/2})\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 } \right] +p\sqrt{ \lambda }
+\end{align}
+$$
+
+
+We have that the active Cauchy stress tensor is given by
+$$
+\begin{equation}
+\boldsymbol{\sigma}_{a}=\text{diag}\{T_{a}, \eta T_{a},\eta T_{a}\},
+\end{equation}
+$$
+and is also related to the first Piola-Kirchoff stress by
+$$
+\begin{equation}
+\mathbf{P}_{a}=J\boldsymbol{\sigma}_{a}\mathbf{F}^{-T}\implies \boldsymbol{\sigma}_{a}=\mathbf{P}_{a}\mathbf{F}^T.
+\end{equation}
+$$
+
+We assume that the slab is unloaded, and we ignore body and inertia forces, such that the active and passive stresses must balance at all points:
+$$
+\begin{equation}
+\mathbf{P}=\mathbf{P}_{p}+\mathbf{P}_{a}=0.
+\end{equation}
+$$
+Combination of \eqref{} gives
+$$
+\begin{equation}
+\text{diag}\{T_{a},\eta T_{a},\eta T_{a}\}=-\frac{1}{J}\mathbf{P}_{p}\mathbf{F}^T
+\end{equation}
+$$
+Taking the above equation for the first component gives 
+$$
+\begin{align}
+T_{a} & =-\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }+p\lambda^{-1} \right] \lambda \\
+ & =-a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-1}-3) }-2\lambda^2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }-p,
+\end{align}
+$$
+and the second (and third) component is
+$$
+\begin{align}
+\eta T_{a} & = - \left[ (-\lambda^{3/2})\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 } \right] +p\sqrt{ \lambda } \right] \frac{1}{\sqrt{ \lambda }} \\
+ & =a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda^2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }-p
 \end{align}
 $$
