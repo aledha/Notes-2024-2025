@@ -20,7 +20,7 @@ $$
 $$
 which also is constant across $\Omega$. Since $\frac{ \partial s }{ \partial t }$ and $\frac{ \partial v }{ \partial t }$ are spatially constant at $t=0$, they will remain constant at all times $t$. Further, \eqref{eq:} holds for all times $t$, and since $\nabla v=\boldsymbol{0}$ for all $t$, the boundary condition \eqref{eq:} is always satisfied. 
 
-The numerical benefits from these assumptions are major. The nonlinear partial differential equation \eqref{eq:} is reduced to one ordinary differential equation \eqref{eq:}, and the system of ordinary differential equations \eqref{eq:} needs only to be solved at one point rather than every point/node in the domain.
+The numerical benefits from these assumptions are major. The nonlinear partial differential equation \eqref{eq:} is reduced to one ordinary differential equation \eqref{eq:}, and the system of ordinary differential equations \eqref{eq:} needs only to be solved at one point rather than every point/node in the domain. This is useful in analyzing stability properties of the full three-dimensional model. 
 
 ---
 Using the simplified model described above, we can solve for an active tension $T_{a}$. Now, we wish to derive a scheme to solve for the stretch ratio $\lambda$.
@@ -127,11 +127,14 @@ $$
 \frac{ \partial s }{ \partial t }  & =f(s,v,\lambda,t), \\
 \frac{ \partial v }{ \partial t }  & =-\frac{1}{C_{m}}I_\text{ion}(v,s), \\
 L_{1}(\lambda,p;T_{a}) & =0, \\
-L_{2}(\lambda,p)  & =0,
+L_{2}(\lambda,p)  & =0.
 \end{align}
 $$
 
 ### One way coupling
-One simple implementation is to assume that the right-hand sides of the cell model ODEs are independent of $\lambda$: $f(v,s,\lambda)=f(v,s)$. Then, the values computed from the cell model affect the mechanics equations, but the values computed from mechanics equations do not affect the cell model.
-This can be implemented by setting the 
+One simple implementation is to assume that the right-hand sides of the cell model ODEs are independent of $\lambda$: $f(v,s,\lambda)=f(v,s)$. Then, the values computed from the cell model affect the mechanics equations, but the values computed from mechanics equations do not affect the cell model. This can be implemented by setting $\lambda=1$ and $\frac{\text{d}\lambda}{\text{d}t}=0$ for all $t$.
+
+The algorithm for solving this can be described as
+1. Solve 
+
 The roots of $L_{1}$ and $L_{2}$ will be found by a Newton solver.
