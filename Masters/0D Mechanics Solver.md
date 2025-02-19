@@ -71,17 +71,16 @@ $$
   & =a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }+p\lambda^{-1},\\
 (\mathbf{P}_{p})_{22}=(\mathbf{P}_{p})_{33} & =\frac{ \partial \Psi_{p} }{ \partial \left( \frac{1}{\sqrt{ \lambda }} \right) }  + Jp(\mathbf{F}^{-T})_{22}\\
  & =\frac{ \partial \lambda }{ \partial \left( \frac{1}{\sqrt{ \lambda }} \right) } \frac{ \partial \Psi_{p} }{ \partial \lambda } +Jp(\mathbf{F}^{-T})_{22} \\
- & = (-\lambda^{3/2})\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 } \right] +p\sqrt{ \lambda }
+ & = (-\lambda^{3/2})\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 } \right] +p\sqrt{ \lambda },
 \end{align}
 $$
-
+where we have used
 $$
 \begin{equation}
 \frac{ \partial \lambda }{ \partial\left(  \frac{1}{\sqrt{ \lambda }} \right) } =\frac{ \partial \gamma^{-2} }{ \partial \gamma } =-2\gamma^{-3}=-\lambda^{3/2}.
 \end{equation}
 $$
-
-We have that the active Cauchy stress tensor is given by
+The active Cauchy stress tensor is given by
 $$
 \begin{equation}
 \boldsymbol{\sigma}_{a}=\text{diag}\{T_{a}, \eta T_{a},\eta T_{a}\},
@@ -117,6 +116,34 @@ and the second (and third) component is
 $$
 \begin{align}
 \eta T_{a} & = - \left[ (-\lambda^{3/2})\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 } \right] +p\sqrt{ \lambda } \right] \frac{1}{\sqrt{ \lambda }} \\
- & =a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda^2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }-p
+ & =a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda^2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }-p.
 \end{align}
 $$
+We will further assume that the tension is only activated in the fiber direction such that $\eta=0$. Given an active tension $T_{a}$, we can now calculate the corresponding values for $\lambda$ and $p$ by finding the roots of the expressions
+$$
+\begin{align}
+L_{1}(\lambda,p;T_{a}) & =T_{a}+a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda^2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }+p, \\
+L_{2}(\lambda,p) & =a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda^2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }-p.
+\end{align}
+$$
+ We use the Ten Tusscher \cite{} cell model in combination with the Land model \cite{} described by \eqref{eq:}, which can be summarized by the system of ordinary differential equations
+ $$
+\begin{equation}
+\frac{ \partial s }{ \partial t }  =f(s,v,\lambda),
+\end{equation}
+$$
+where $s$ is a collection of cell states and $v$ is the transmembrane potential. \eqref{eq:} must in principle be solved for every point in the domain, since $v$ is not spatially constant in general. However, since the stimulation current $I_\text{stim}$ is constant across the domain, $\frac{ \partial s }{ \partial t }$ will be constant across the domain. If we initialize $s$ and $v$ as spatially constant as well 
+
+
+
+
+To find the active tension $T_{a}$, we use the in combination
+Since the activation across the slab 
+
+Let us use 
+
+and the 
+### One way coupling
+One simple implementation is to assume that the right-hand sides of the cell model ODEs are independent of $\lambda$: $f(v,s,\lambda)=f(v,s)$. Then, the values computed from the cell model affect the mechanics equations, but the values computed from mechanics equations do not affect the cell model.
+This can be implemented by setting the 
+The roots of $L_{1}$ and $L_{2}$ will be found by a Newton solver.
