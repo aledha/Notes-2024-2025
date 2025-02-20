@@ -20,7 +20,7 @@ $$
 $$
 which also is constant across $\Omega$. Since $\frac{ \partial s }{ \partial t }$ and $\frac{ \partial v }{ \partial t }$ are spatially constant at $t=0$, they will remain constant at all times $t$. Further, \eqref{eq:} holds for all times $t$, and since $\nabla v=\boldsymbol{0}$ for all $t$, the boundary condition \eqref{eq:} is always satisfied. 
 
-The numerical benefits from these assumptions are major. The nonlinear partial differential equation \eqref{eq:} is reduced to one ordinary differential equation \eqref{eq:}, and the system of ordinary differential equations \eqref{eq:} needs only to be solved at one point rather than every point/node in the domain. This is useful in analyzing stability properties of the full three-dimensional model. 
+The numerical benefits from these assumptions are major. The nonlinear partial differential equation \eqref{eq:} is reduced to one ordinary differential equation \eqref{eq:}, and the system of ordinary differential equations \eqref{eq:} needs only to be solved at one point rather than every point/node in the domain. The fact that we can describe the state of the system with only one set of cell states $s$, one value of the transmembrane potential $v$, and one value for the stretch ratio $\lambda$, is why we refer to this type of model as a *0D-model*. These assumptions will be useful in analyzing stability properties, from which we can infer on the stability properties of the full three-dimensional model. 
 
 ---
 Using the simplified model described above, we can solve for an active tension $T_{a}$. Now, we wish to derive a scheme to solve for the stretch ratio $\lambda$.
@@ -64,7 +64,7 @@ $$
 (\mathbf{P}_{p})_{11} & =\frac{ \partial \Psi_{p} }{ \partial \lambda } +Jp(\mathbf{F}^{-T})_{11} \\
  & = \frac{a}{2}(2\lambda -2\lambda^{-2})e^{ b\left( \lambda^2 +2\lambda^{-1}-3 \right) }+ a_{f}(\lambda^2-1)_{+}2\lambda e^{ b_{f}(\lambda^2-1)^2_{+} }+\frac{Jp}{\lambda} \\
   & =a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }+p\lambda^{-1},\\
-(\mathbf{P}_{p})_{22}=(\mathbf{P}_{p})_{33} & =\frac{ \partial \Psi_{p} }{ \partial \left( \frac{1}{\sqrt{ \lambda }} \right) }  + Jp(\mathbf{F}^{-T})_{22}\\
+(\mathbf{P}_{p})_{33}=(\mathbf{P}_{p})_{22} & =\frac{ \partial \Psi_{p} }{ \partial \left( \frac{1}{\sqrt{ \lambda }} \right) }  + Jp(\mathbf{F}^{-T})_{22}\\
  & =\frac{ \partial \lambda }{ \partial \left( \frac{1}{\sqrt{ \lambda }} \right) } \frac{ \partial \Psi_{p} }{ \partial \lambda } +Jp(\mathbf{F}^{-T})_{22} \\
  & = (-2\lambda^{3/2})\left[ a(\lambda-\lambda^{-2})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 } \right] +p\sqrt{ \lambda },
 \end{align}
@@ -121,7 +121,7 @@ L_{1}(\lambda,p;T_{a}) & =T_{a}+a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambd
 L_{2}(\lambda,p) & =2a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-1}-3) }+4\lambda^2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }-p.
 \end{align}
 $$
-With these assumptions, we can describe the electrophysiological and mechanical activity in $\Omega$ with the equations
+With these assumptions, we can describe the electrophysiological and mechanical activity in the cuboidal slab with the equations
 $$
 \begin{align}
 \frac{ \partial s }{ \partial t }  & =f(s,v,\lambda,t), \\
@@ -131,10 +131,19 @@ L_{2}(\lambda,p)  & =0.
 \end{align}
 $$
 
-### One way coupling
-One simple implementation is to assume that the right-hand sides of the cell model ODEs are independent of $\lambda$: $f(v,s,\lambda)=f(v,s)$. Then, the values computed from the cell model affect the mechanics equations, but the values computed from mechanics equations do not affect the cell model. This can be implemented by setting $\lambda=1$ and $\frac{\text{d}\lambda}{\text{d}t}=0$ for all $t$.
+## 0D coupling without feedback
+One simple implementation is to assume that the right-hand sides of the cell model ODEs are independent of $\lambda$: $f(v,s,\lambda,t)=f(v,s,t)$. Then, the values computed from the cell model affect the mechanics equations, but the values computed from mechanics equations do not affect the cell model. This can be implemented by setting $\lambda=1$ and $\frac{\text{d}\lambda}{\text{d}t}=0$ in the cell model for all $t$.
 
 The algorithm for solving this can be described as
-1. Solve 
+1. With an initial $s_{n}$ and $v_{n}$, compute $s_{n+1}$ and $v_{n+1}$ using a forward generalized Rush-Larsen scheme on \eqref{eq:} and \eqref{eq:}.
+2. From $s_{n+1}$, compute $T_{a,n+1}$.
+3. Find $\lambda_{n+1}$ and $p_{n+1}$ by applying a root finding algorithm such as Newton's method on \eqref{eq:}-\eqref{eq:}.
 
-The roots of $L_{1}$ and $L_{2}$ will be found by a Newton solver.
+## 0D coupling with feedback
+
+The algorithm for solving this can be described as
+1. With an initial $s_{n}$ and $v_{n}$, compute $s_{n+1}$ and $v_{n+1}$ using a forward generalized Rush-Larsen scheme on \eqref{eq:} and \eqref{eq:}.
+2. From $s_{n+1}$, compute $T_{a,n+1}$.
+3. Find $\lambda_{n+1}$ and $p_{n+1}$ by applying a root finding algorithm such as Newton's method on \eqref{eq:}-\eqref{eq:}.
+4. Set $\dot{\lambda}_{n+1}=\frac{\lambda_{n+1}-\lambda_{n}}{\Delta t}$, and 
+ 
