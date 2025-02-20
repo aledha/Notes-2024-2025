@@ -4,7 +4,7 @@ We use the Ten Tusscher \cite{} cell model, the monodomain equations, and the La
 $$
 \begin{align}
 \nabla \cdot(\mathbf{M}\nabla v) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion}(v,s), & \mathbf{x}\in \Omega , \\
-\frac{ \partial s }{ \partial t } & =f(s,v,\lambda,t), & \mathbf{x}\in \Omega, \\
+\frac{ \partial s }{ \partial t } & =f(s,v,\lambda,\dot{\lambda},t), & \mathbf{x}\in \Omega, \\
 \mathbf{n}\cdot(\mathbf{M}\nabla v) & =0, &\mathbf{x}\in \partial\Omega ,
 \end{align}
 $$
@@ -20,7 +20,14 @@ $$
 $$
 which also is constant across $\Omega$. Since $\frac{ \partial s }{ \partial t }$ and $\frac{ \partial v }{ \partial t }$ are spatially constant at $t=0$, they will remain constant at all times $t$. Further, \eqref{eq:} holds for all times $t$, and since $\nabla v=\boldsymbol{0}$ for all $t$, the boundary condition \eqref{eq:} is always satisfied. 
 
-The numerical benefits from these assumptions are major. The nonlinear partial differential equation \eqref{eq:} is reduced to one ordinary differential equation \eqref{eq:}, and the system of ordinary differential equations \eqref{eq:} needs only to be solved at one point rather than every point/node in the domain. The fact that we can describe the state of the system with only one set of cell states $s$, one value of the transmembrane potential $v$, and one value for the stretch ratio $\lambda$, is why we refer to this type of model as a *0D-model*. These assumptions will be useful in analyzing stability properties, from which we can infer on the stability properties of the full three-dimensional model. 
+The numerical benefits from these assumptions are major. The nonlinear partial differential equation \eqref{eq:} is reduced to one ordinary differential equation \eqref{eq:}, and the system of ordinary differential equations \eqref{eq:} needs only to be solved at one point rather than every point/node in the domain. The fact that we can describe the state of the system with only one set of cell states $s$, one value of the transmembrane potential $v$, and one value for the stretch ratio $\lambda$, is why we refer to this type of model as a *zero-dimensional model*. These assumptions will be useful in analyzing stability properties, from which we can infer on the stability properties of the full three-dimensional model. 
+
+Since $v$ is now controlled by a single ODE, we can include it in the collection of cell states $s$, such that the zero-dimensional model simply reads
+$$
+\begin{equation}
+\frac{ \partial s }{ \partial t } =f(s,\lambda,\dot{\lambda},t).
+\end{equation}
+$$
 
 ---
 Using the simplified model described above, we can solve for an active tension $T_{a}$. Now, we wish to derive a scheme to solve for the stretch ratio $\lambda$.
@@ -124,8 +131,7 @@ $$
 With these assumptions, we can describe the electrophysiological and mechanical activity in the cuboidal slab with the equations
 $$
 \begin{align}
-\frac{ \partial s }{ \partial t }  & =f(s,v,\lambda,t), \\
-\frac{ \partial v }{ \partial t }  & =-\frac{1}{C_{m}}I_\text{ion}(v,s), \\
+\frac{ \partial s }{ \partial t }  & =f(s,\lambda,\dot{\lambda},t), \\
 L_{1}(\lambda,p;T_{a}) & =0, \\
 L_{2}(\lambda,p)  & =0.
 \end{align}
@@ -135,15 +141,18 @@ $$
 One simple implementation is to assume that the right-hand sides of the cell model ODEs are independent of $\lambda$: $f(v,s,\lambda,t)=f(v,s,t)$. Then, the values computed from the cell model affect the mechanics equations, but the values computed from mechanics equations do not affect the cell model. This can be implemented by setting $\lambda=1$ and $\frac{\text{d}\lambda}{\text{d}t}=0$ in the cell model for all $t$.
 
 The algorithm for solving this can be described as
-1. With an initial $s_{n}$ and $v_{n}$, compute $s_{n+1}$ and $v_{n+1}$ using a forward generalized Rush-Larsen scheme on \eqref{eq:} and \eqref{eq:}.
+1. With an initial $s_{n}$, compute $s_{n+1}$ using a forward generalized Rush-Larsen scheme on the system $\frac{ \partial s }{ \partial t }=f(s_{n},1,0,t)$.
 2. From $s_{n+1}$, compute $T_{a,n+1}$.
 3. Find $\lambda_{n+1}$ and $p_{n+1}$ by applying a root finding algorithm such as Newton's method on \eqref{eq:}-\eqref{eq:}.
+4. Set $\dot{\lambda}_{n+1}=\frac{\lambda_{n+1}-\lambda_{n}}{\Delta t}$.
 
 ## 0D coupling with feedback
-
-The algorithm for solving this can be described as
-1. With an initial $s_{n}$ and $v_{n}$, compute $s_{n+1}$ and $v_{n+1}$ using a forward generalized Rush-Larsen scheme on \eqref{eq:} and \eqref{eq:}.
+Now we include $\lambda$ and $\dot{\lambda}$ on the right-hand side of the system of ODEs.
+1. With an initial $s_{n}$ and $v_{n}$, compute $s_{n+1}$ and $v_{n+1}$ using a forward generalized Rush-Larsen scheme on $\frac{ \partial s }{ \partial t }=f(s_{n},\lambda_{n},\dot{\lambda}_{n},t_{n})$.
 2. From $s_{n+1}$, compute $T_{a,n+1}$.
 3. Find $\lambda_{n+1}$ and $p_{n+1}$ by applying a root finding algorithm such as Newton's method on \eqref{eq:}-\eqref{eq:}.
-4. Set $\dot{\lambda}_{n+1}=\frac{\lambda_{n+1}-\lambda_{n}}{\Delta t}$, and 
+4. Set $\dot{\lambda}_{n+1}=\frac{\lambda_{n+1}-\lambda_{n}}{\Delta t}$.
+
+## 0D monolithic coupling
+
  
