@@ -16,14 +16,12 @@ I_{8\mathbf{f}_{0}\mathbf{s}_{0}}=\mathbf{s}_{0}\cdot(\mathbf{C}\mathbf{f}_{0})=
 \end{equation}
 $$
 which indicates that $I_{8\mathbf{f}_{0}\mathbf{s}_{0}}$ can be interpreted as a measure on the angle between the deformed sheet axis and the deformed fiber axis. The sheet axis and the fiber axis are orthonormal in the reference configuration.
-
 $$
 \begin{align}
 I_{4\mathbf{f}_{0}}+I_{4\mathbf{s}_{0}}+I_{4\mathbf{n}_{0}} & =\mathbf{f}_{0}\cdot(\mathbf{C}\mathbf{f}_{0})+\mathbf{s}_{0}\cdot(\mathbf{C}\mathbf{s}_{0})+\mathbf{n}_{0}\cdot(\mathbf{C}\mathbf{n}_{0}) \\
  & =(\mathbf{f}_{0}+\mathbf{s}_{0}+\mathbf{n}_{0})\cdot \mathbf{C}(\mathbf{f}_{0}+\mathbf{s}_{0}+\mathbf{n}_{0})
 \end{align}
 $$
-#todo show that $I_{1}=I_{4\mathbf{f}_{0}}+I_{4\mathbf{s}_{0}}+I_{4\mathbf{n}_{0}}$.
 
 The orthotropic Holzapfel-Ogden model is
 $$
