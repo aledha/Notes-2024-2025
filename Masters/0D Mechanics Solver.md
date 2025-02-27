@@ -131,28 +131,95 @@ $$
 With these assumptions, we can describe the electrophysiological and mechanical activity in the cuboidal slab with the equations
 $$
 \begin{align}
+%\label{eq:0dODE}
 \frac{ \partial s }{ \partial t }  & =f(s,\lambda,\dot{\lambda},t), \\
+%\label{eq:L1}
 L_{1}(\lambda,p;T_{a}) & =0, \\
+%\label{eq:L2}
 L_{2}(\lambda,p)  & =0.
 \end{align}
 $$
 
 ## 0D coupling without feedback
-One simple implementation is to assume that the right-hand sides of the cell model ODEs are independent of $\lambda$: $f(v,s,\lambda,t)=f(v,s,t)$. Then, the values computed from the cell model affect the mechanics equations, but the values computed from mechanics equations do not affect the cell model. This can be implemented by setting $\lambda=1$ and $\frac{\text{d}\lambda}{\text{d}t}=0$ in the cell model for all $t$.
+One simple implementation is to assume that the right-hand sides of the cell model ODEs are independent of $\lambda$ and $\dot{\lambda}$: $f(v,s,\lambda,\dot{\lambda},t)=f(v,s,t)$. Then, the values computed from the cell model affect the mechanics equations, but the values computed from mechanics equations do not affect the cell model. This can be implemented by setting $\lambda=1$ and $\frac{\text{d}\lambda}{\text{d}t}=0$ in the cell model for all $t$.
 
 The algorithm for solving this can be described as
-1. With an initial $s_{n}$, compute $s_{n+1}$ using a forward generalized Rush-Larsen scheme on the system $\frac{ \partial s }{ \partial t }=f(s_{n},1,0,t)$.
-2. From $s_{n+1}$, compute $T_{a,n+1}$.
-3. Find $\lambda_{n+1}$ and $p_{n+1}$ by applying a root finding algorithm such as Newton's method on \eqref{eq:}-\eqref{eq:}.
-4. Set $\dot{\lambda}_{n+1}=\frac{\lambda_{n+1}-\lambda_{n}}{\Delta t}$.
+0D_weakcoupling($T$, $\Delta t$)
+1. $n=0$ 
+2. while $t<T$
+	1. $n+=1$
+	2. $t=n\cdot \Delta t$
+	3. With an initial $s_{n}$, compute $s_{n+1}$ using a forward generalized Rush-Larsen scheme on the system $\frac{ \partial s }{ \partial t }=f(s_{n},1,0,t)$.
+	4. From $s_{n+1}$, compute $T_{a,n+1}$.
+	5. Find $\lambda_{n+1}$ and $p_{n+1}$ by applying a root finding algorithm on \eqref{eq:L1}-\eqref{eq:L2}.
+	6. Set $\dot{\lambda}_{n+1}=\frac{\lambda_{n+1}-\lambda_{n}}{\Delta t}$.
+\begin{algorithm}
+\caption{$0D\_weakcoupling(T, \Delta t)$}
+\begin{algorithmic}[1]
+    \State $n \gets 0$
+    \While{$t < T$}
+        \State $n \gets n + 1$
+        \State $t \gets n \cdot \Delta t$
+        \State With an initial $s_{n}$, compute $s_{n+1}$ using a forward generalized Rush-Larsen scheme on $\frac{ \partial s }{ \partial t }=f(s_{n},1,0,t)$.
+        \State From $s_{n+1}$, compute $T_{a,n+1}$.
+        \State Find $\lambda_{n+1}$ and $p_{n+1}$ by applying a root finding algorithm on \eqref{eq:L1}-\eqref{eq:L2}.
+        \State $\dot{\lambda}_{n+1} \gets \frac{\lambda_{n+1}-\lambda_{n}}{\Delta t}$.
+    \EndWhile
+\end{algorithmic}
+\end{algorithm}
 
 ## 0D coupling with feedback
-Now we include $\lambda$ and $\dot{\lambda}$ on the right-hand side of the system of ODEs.
-1. With an initial $s_{n}$ and $v_{n}$, compute $s_{n+1}$ and $v_{n+1}$ using a forward generalized Rush-Larsen scheme on $\frac{ \partial s }{ \partial t }=f(s_{n},\lambda_{n},\dot{\lambda}_{n},t_{n})$.
-2. From $s_{n+1}$, compute $T_{a,n+1}$.
-3. Find $\lambda_{n+1}$ and $p_{n+1}$ by applying a root finding algorithm such as Newton's method on \eqref{eq:}-\eqref{eq:}.
-4. Set $\dot{\lambda}_{n+1}=\frac{\lambda_{n+1}-\lambda_{n}}{\Delta t}$.
+Now we include $\lambda$ and $\dot{\lambda}$ on the right-hand side of the system of ODEs. Notice that $\lambda$ relies on $T_{a}$ through the active strain-energy function \eqref{eq:activepsi}, and $T_{a}$ relies on $\lambda$ through the active tension model \eqref{eq:activetension}. 
 
+0D_strongcoupling($T$, $\Delta t$)
+1. $n=0$ 
+2. while $t<T$
+	1. $n+=1$
+	2. $t=n\cdot \Delta t$
+	3. With an initial $s_{n}$, compute $s_{n+1}$ using a forward generalized Rush-Larsen scheme on $\frac{ \partial s }{ \partial t }=f(s_{n},\lambda_{n},\dot{\lambda}_{n},t)$.
+	4. From $s_{n+1}$, compute $T_{a,n+1}$.
+	5. Find $\lambda_{n+1}$ and $p_{n+1}$ by applying a root finding algorithm on \eqref{eq:L1}-\eqref{eq:L2}.
+	6. Set $\dot{\lambda}_{n+1}=\frac{\lambda_{n+1}-\lambda_{n}}{\Delta t}$.
+
+\begin{algorithm}
+\caption{$0D\_strongcoupling(T, \Delta t)$}
+\begin{algorithmic}[1]
+    \State $n \gets 0$
+    \While{$t < T$}
+        \State $n \gets n + 1$
+        \State $t \gets n \cdot \Delta t$
+        \State With an initial $s_{n}$, compute $s_{n+1}$ using a forward generalized Rush-Larsen scheme on $\frac{ \partial s }{ \partial t }=f(s_{n},\lambda_{n},\dot{\lambda}_{n},t)$.
+        \State From $s_{n+1}$, compute $T_{a,n+1}$.
+        \State Find $\lambda_{n+1}$ and $p_{n+1}$ by applying a root finding algorithm on \eqref{eq:L1}-\eqref{eq:L2}.
+        \State $\dot{\lambda}_{n+1} \gets \frac{\lambda_{n+1}-\lambda_{n}}{\Delta t}$.
+    \EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+We see that the solutions for $\lambda,\dot{\lambda},T_{a},$ and $p$ starts oscillating rapidly. The reason for this oscillation can be explained with the following example: Let's say that we find an increase in $T_{a}$ from the ODE system. This leads to a decrease of $\lambda$ through contraction. In Figure \ref{fig:land_hlambda}, we see that $h(\lambda)$ in \eqref{eq:activetension} has a positive correlation to $\lambda$. Then, in the next timestep, the decrease of $\lambda$ will lead to a decrease of $T_{a}$.
+
+The problem is that after $T_{a,n+1}$ is computed from the ODE system, it is held at that value for each iteration of root finding algorithm. 
 ## 0D monolithic coupling
+We can fix this issue by solving the ODE system and updating $T_{a}$ for every iteration of the root finding algorithm.
 
+0D_monolithic($T$, $\Delta t$)
+1. $n=0$ 
+2. while $t<T$
+	1. $n+=1$
+	2. $t=n\cdot \Delta t$
+	3. Find $\lambda_{n+1}$ and $p_{n+1}$ by applying a root finding algorithm on \eqref{eq:L1}-\eqref{eq:L2}, solving the ODE system $\frac{ \partial s }{ \partial t }=f(s_{n},\lambda_{n},\dot{\lambda}_{n},t)$ in every iteration.
+	4. Set $\dot{\lambda}_{n+1}=\frac{\lambda_{n+1}-\lambda_{n}}{\Delta t}$.
  
+\begin{algorithm}
+\caption{$0D\_monolithic(T, \Delta t)$}
+\begin{algorithmic}[1]
+    \State $n \gets 0$
+    \While{$t < T$}
+        \State $n \gets n + 1$
+        \State $t \gets n \cdot \Delta t$
+        \State Find $\lambda_{n+1}$ and $p_{n+1}$ by applying a root finding algorithm on \eqref{eq:L1}-\eqref{eq:L2}, solving the ODE system $\frac{ \partial s }{ \partial t }=f(s_{n},\lambda_{n},\dot{\lambda}_{n},t)$ in every iteration.
+        \State $\dot{\lambda}_{n+1} \gets \frac{\lambda_{n+1}-\lambda_{n}}{\Delta t}$.
+    \EndWhile
+\end{algorithmic}
+\end{algorithm}
+

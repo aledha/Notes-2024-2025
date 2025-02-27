@@ -68,13 +68,16 @@ where $A_{s}$, $c_{s}$, $A_{w}$, and $c_{w}$ are also constants.
 The Land model models the active tension as
 $$
 \begin{equation}
+%\label{eq:activetension}
 T_{a}=h(\lambda)\frac{T_{ref}}{rs}((1+\zeta_{s})S+\zeta_{w}W),
 \end{equation}
 $$
 where $T_\text{ref}$ and $rs$ are constants and
 $$
 \begin{align}
+%\label{eq:hlambda}
 h(\lambda) & =\max(0,h'(\min(\lambda,1.2))), \\
+%\label{eq:hmarklambda} 
 h'(\lambda) & =1+\beta_{0}(\lambda+\min(\lambda,0.87)-1.87),
 \end{align}
 $$

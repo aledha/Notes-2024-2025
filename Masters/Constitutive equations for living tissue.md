@@ -149,28 +149,27 @@ Let the surface of the domain be decomposed as $\partial\Omega=\partial\Omega_{D
 We will consider two types of Dirichlet conditions, the first being
 $$
 \begin{equation}
-\mathbf{u}=\boldsymbol{0}, \qquad  \mathbf{X} \in \partial\Omega_{D},
+\mathbf{u}=\boldsymbol{0}, \qquad  \mathbf{X} \in \partial\Omega_{D},%\label{eq:type1dir}
 \end{equation}
 $$
 where all coordinates of $\mathbf{u}$ are fixed. This will be referred to as a type 1 Dirichlet condition. Type 2 Dirichlet conditions are of the form
 $$
 \begin{equation}
-u_{i}=0,\qquad \mathbf{X}\in \partial\Omega_{D},
+u_{i}=0,\qquad \mathbf{X}\in \partial\Omega_{D},%\label{eq:type2dir}
 \end{equation}
 $$
 where $u_{i}$ is one of the coordinates of $\mathbf{u}=(u_{1},u_{2},u_{3})$. Notice that three type 2 Dirichlet conditions must be enforced to fix the geometry.
 
 Both types of Dirichlet conditions may be described by
-
 $$
 \begin{equation}
-\mathbf{u}=\mathbf{u}_{D}, \qquad  \mathbf{X} \in \partial\Omega_{D}.
+\mathbf{u}=\mathbf{u}_{D}, \qquad  \mathbf{X} \in \partial\Omega_{D}.%\label{eq:udir}
 \end{equation}
 $$
 The Neumann conditions are
 $$
 \begin{equation}
-\mathbf{P}\mathbf{N}=\mathbf{T},\qquad \mathbf{X}\in \partial\Omega_{N},
+\mathbf{P}\mathbf{N}=\mathbf{T},\qquad \mathbf{X}\in \partial\Omega_{N},%\label{eq:mechneumann}
 \end{equation}
 $$
 where $\mathbf{N}$ is the outward normal vector in the reference domain, and $\mathbf{T}$ is the desired traction.
@@ -190,9 +189,9 @@ $$
 where the active and passive strain-energy functions are defined as
 $$
 \begin{align}
+%\label{eq:activepsi}
 \Psi_{a}(I_{4\mathbf{f}_{0}}) & =\frac{JT_{a}}{2} (I_{4\mathbf{f}_{0}}-1), \\
+%\label{eq:passivepsi}
 \Psi_{p}(I_{1},I_{4\mathbf{f}_{0}}) & = \frac{a}{2b}\bigg(e^{ b(I_{1}-3) }-1\bigg)  + \frac{a_{f}}{2b_{f}}\bigg(e^{ b_{f}(I_{4\mathbf{f}_{0}}-1)^2_{+}}-1\bigg).
 \end{align}
 $$
-
----
