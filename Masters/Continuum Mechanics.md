@@ -21,14 +21,6 @@ We further define the following quantities:
 * Determinant of deformation gradient $J=\det \mathbf{F}$.
 ![[Pasted image 20250109130411.png]]
 
-In this paper, we will use the Cauchy stress tensor $\boldsymbol{\sigma}$ and the First Piola-Kirchoff stress tensor $\mathbf{P}$. The Cauchy stress tensor relates forces in the current configuration with areas in the current configuration, while the first Piola-Kirchoff stress tensor relates forces in the current configuration with areas in the reference configuration. The tensors $\boldsymbol{\sigma}$ and $\mathbf{P}$ are related with \cite{rossi}
-$$
-\begin{equation}
-\mathbf{P}=J\boldsymbol{\sigma}\mathbf{F}^{-T}.
-\end{equation}
-$$
-
-
 A vector $\text{d}\mathbf{X}$ in the reference configuration will be deformed to the vector $\text{d}\mathbf{x}$ in the current configuration such that $\text{d}\mathbf{x}=\mathbf{F}\text{ d}\mathbf{X}$. Thus, an infinitesimal volume $\,\text{d}v$ in the current configuration deformed from the reference volume $\,\text{d}V$ has the relation 
 $$
 \begin{equation}
@@ -46,20 +38,46 @@ $$
 $$
 which is *Nanson's formula*.
 
-**Cauchy's momentum equation:**
+In this paper, we will use the Cauchy stress tensor $\boldsymbol{\sigma}$ and the First Piola-Kirchoff stress tensor $\mathbf{P}$. The Cauchy stress tensor relates forces in the current configuration with areas in the current configuration, while the first Piola-Kirchoff stress tensor relates forces in the current configuration with areas in the reference configuration. The tensors $\boldsymbol{\sigma}$ and $\mathbf{P}$ are related with \cite{rossi}
 $$
 \begin{equation}
-\nabla \cdot\sigma+\mathbf{b}=\rho \mathbf{\dot{v}}.
+\mathbf{P}=J\boldsymbol{\sigma}\mathbf{F}^{-T}.
 \end{equation}
-$$Often the contribution from $\mathbf{b}$ and $\rho \mathbf{\dot{v}}$ are considered negligible compared to $\nabla \cdot\sigma$ such that the force balance equations can be stated as
+$$
+
+$\textbf{Cauchy's momentum equation}$ can be derived by considering the balance equation for the momentum density $\rho_{0} \mathbf{v}$ in the reference configuration $\Omega$. Here, $\rho_{0}$ is the mass density in the reference configuration, and $\mathbf{v}$ is the spacial velocity vector. The rate of change of the momentum density is due to source terms, which is the body force $\mathbf{B}$, and the fluxes through $\partial \Omega$, which is the traction force $\mathbf{T}$. Then, the balance equation for the momentum density reads \cite{rossi}
 $$
 \begin{equation}
-\nabla \cdot\sigma=0.
+%\label{eq:balanceeq}
+\frac{ \partial  }{ \partial t } \int_{\Omega}\rho_{0}\mathbf{v}\,\text{d} V=\int_{\Omega}\mathbf{B}\,\text{d} V+\int_{\partial\Omega}\mathbf{T}\,\text{d} A.
+\end{equation}
+$$
+Denote the normal vector in the reference configuration as $\mathbf{N}$. Then, the traction can be rewritten as $\mathbf{P}\mathbf{N}$ \todo{Do I need to mention/derive/cite Cauchy's theorem?}, and application of the divergence theorem gives \cite{rossi}
+$$
+\begin{align}
+\nonumber
+\frac{ \partial  }{ \partial t } \int_{\Omega}\rho_{0}\mathbf{v}\,\text{d} V=\int_{\Omega}\mathbf{B}\,\text{d} V+\int_{\partial\Omega}\mathbf{P}\mathbf{N}\,\text{d} A \\
+%\label{eq:balance2}
+\frac{ \partial  }{ \partial t } \int_{\Omega}\rho_{0}\mathbf{v}\,\text{d} V=\int_{\Omega}\mathbf{B}\,\text{d} V+\int_{\Omega}\nabla \cdot \mathbf{P}\,\text{d} V,
+\end{align}
+$$
+where $\nabla \cdot$ refers to divergence with respect to the reference coordinates $\mathbf{X}$. Since $\Omega$ is arbitrary, \eqref{eq:balance2} can be rewritten \cite{rossi} in local form as 
+$$
+\begin{equation}
+%\label{eq:cauchymomentum}
+\nabla \cdot \mathbf{P}+\mathbf{B}=\rho_{0} \mathbf{\dot{v}}.
+\end{equation}
+$$
+\eqref{eq:cauchymomentum} is $\textit{Cauchy's momentum equation}$. If one considers the contribution from $\mathbf{B}$ and $\rho_{0} \mathbf{\dot{v}}$ as negligible compared to $\nabla \cdot \mathbf{P}$, we get the $\textit{force balance}$ equation
+$$
+\begin{equation}
+%\label{eq:forcebalance}
+\nabla \cdot \mathbf{P}=0.
 \end{equation}
 $$
 
 ## Hyperelastic material
-There exists a strain-energy density function $\Psi:\text{Lin}^+\to \mathbb{R}^+$ and the first Piola-Kirchoff stress tensor is 
+There exists a strain-energy density function $\Psi:\text{Lin}^+\to \mathbb{R}^+$ and the first Piola-Kirchoff stress tensor can be written as 
 $$
 \begin{equation}
 \mathbf{P}=\frac{ \partial \Psi(\mathbf{F}) }{ \partial \mathbf{F} },
