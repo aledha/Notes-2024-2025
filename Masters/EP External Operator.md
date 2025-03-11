@@ -5,6 +5,17 @@ $$
 \frac{ \partial v }{ \partial t } & =\nabla^2 v -I_\text{ion}+I_\text{stim}
 \end{align}
 $$
+### Verificiation
+$$
+\begin{align}
+v(x,y,t) & =\cos(2\pi x)\cos(2\pi y)\sin (t) \\
+I_\text{ion}=s(x,y,t) & =-\cos(2\pi x)\cos(2\pi y)\cos (t) \\
+I_\text{stim} & =8\pi^2 \cos(2\pi x)\cos(2\pi y)\sin (t) 
+\end{align}
+$$
+
+
+
 $\theta$-method to discretize in time:
 $$
 \begin{align}
