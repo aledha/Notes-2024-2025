@@ -5,28 +5,18 @@ $$
 \frac{ \partial v }{ \partial t } & =\nabla^2 v -I_\text{ion}+I_\text{stim}
 \end{align}
 $$
-### Verificiation
+## Backward Euler
+We have the system
 $$
 \begin{align}
-v(x,y,t) & =\cos(2\pi x)\cos(2\pi y)\sin (t) \\
-I_\text{ion}=s(x,y,t) & =-\cos(2\pi x)\cos(2\pi y)\cos (t) \\
-I_\text{stim} & =8\pi^2 \cos(2\pi x)\cos(2\pi y)\sin (t) 
+\frac{\text{d}s}{\text{d}t}  & =v, \\
+\frac{\text{d}v}{\text{d}t}  & =-s.
 \end{align}
 $$
-
-
-
-$\theta$-method to discretize in time:
+The backwards Euler method on the system yields
 $$
 \begin{align}
-\frac{v^{n+1}-v^n }{\Delta t} & =\theta \nabla ^2v^{n+1}+(1-\theta)\nabla^2v^n-I_\text{ion}+I_{\text{stim}} \\
-v^{n+1}-\theta \Delta t \nabla^2v^{n+1} & =v^n +(1-\theta)\Delta t\nabla^2v^n-\Delta tI_\text{ion}+\Delta tI_\text{stim}
-\end{align}
-$$
-Find $\phi \in V$ such that
-$$
-\begin{align}
-\int_{\Omega }\phi (v^{n+1}-\theta \Delta t \nabla^2v^{n+1})\,\text{d} \mathbf{x} & =\int_{\Omega }\phi(v^n +(1-\theta)\Delta t\nabla^2v^n-\Delta tI_\text{ion}+\Delta tI_\text{stim})\,\text{d} \mathbf{x} \\
-\int_{\Omega}(\phi v^{n+1}+\theta \Delta t(\nabla \phi \cdot \nabla v^{n+1}))\,\text{d} \mathbf{x} & =\int_{\Omega }(\phi v^n -(1-\theta)\Delta t(\nabla \phi \cdot\nabla v^n)-\Delta tI_\text{ion}\phi+\Delta tI_\text{stim}\phi)\,\text{d} \mathbf{x}
+s ^{n+1}-s^n  & =\Delta tv^{n+1}, \\
+v^{n+1}-v^n & =\Delta ts ^{n+1}.
 \end{align}
 $$
