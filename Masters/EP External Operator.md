@@ -17,6 +17,6 @@ The backwards Euler method on the system yields
 $$
 \begin{align}
 s ^{n+1}-s^n  & =\Delta tv^{n+1}, \\
-v^{n+1}-v^n & =\Delta ts ^{n+1}.
+v^{n+1}-v^n & =-\Delta ts ^{n+1}.
 \end{align}
 $$
