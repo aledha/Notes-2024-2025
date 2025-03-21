@@ -27,4 +27,23 @@ v_{S} & = \frac{kT}{zq}\ln\left( \frac{[S]_{e}}{[S]_{i}} \right),
 $$
 where $v_{S}$ is the equilibrium potential, $k$ is Boltzmann's constant with $k=\frac{R}{N_{a}}=\frac{Rq}{F}$, and $N_{a}$ is Avogadro's number. \eqref{eq:} is the $\textit{Nernst-potential}$.
 
-When $v\neq v_{S}$ and the channels for $S$ are open, there will be a flux of $S$ across the membrane, inducing an ionic current $I_{S}$ that restores the transmembrane potential to $v_{S}$. If one assumes that the channel is ohmic, the potential drop due to the ionic current will be $rI_{S}$, where $r$ is the resistance.
+When $v\neq v_{S}$ and the channels for $S$ are open, there will be a flux of $S$ across the membrane, inducing an ionic current $I_{S}$ that restores the transmembrane potential to $v_{S}$. If one assumes that the channel is ohmic, the potential drop due to the ionic current will be $rI_{S}$, where $r$ is the resistance. Then, we can set up a linear relationship between the ionic current and the transmembrane voltage \cite{mathphys}:
+$$
+\begin{align}
+\nonumber
+v & =rI_{S}+v_{S} \\
+\nonumber 
+I_{S} & =\frac{1}{r}(v-v_{S}) \\
+%\label{eq:ionic_linear} \\
+I_{S} & =g_{S}(v-v_{S}),
+\end{align}
+$$
+where $g_{S}$ is the membrane conductance for the ion $S$.
+
+We must adjust \eqref{eq:ionic_linear} to account for closed channels, which can be achieved by setting $g_{S}=p_{S}\overline{g_{S}}$, where $p_{S}$ is the proportion of open channels and $\overline {g_{S}}$ is the membrane conductance when all channels are open. Then \eqref{eq:ionic_linear} becomes
+$$
+\begin{equation}
+%\label{eq:ionic_adj}
+I_{S}=p_{S}\overline{g_{S}}(v-v_{S}).
+\end{equation}
+$$
