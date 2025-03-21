@@ -10,4 +10,21 @@ $$
 (figure https://uen.pressbooks.pub/introneuro/chapter/voltage-gated-ion-channels/)
 
 
-First, consider a situation where the extracellular and intracellular domains have a differing concentrations of $\text{Na}^+$ and $\text{Cl}^-$, and that both domains start as electrically neutral. So we have $[\text{Na}^+]_{i}=[\text{Cl}^-]_{i}\neq[\text{Na}^+]_{e}=[\text{Cl}^-]_{e}$. Say that the membrane is permeable to $\text{Na}^+$ but not to $\text{Cl}^-$.  
+Consider a situation where the membrane is fully permeable to an ion $S$. The chemical potential of the ion inside and outside of the cell is given by cite{mathphys}
+$$
+\begin{align}
+G_{S,i} & =G^0_{S}+RT\ln([S]_{i})+zFv_{i}, \\
+G_{S,e} & =G^0_{S}+RT\ln([S]_{e})+zFv_{e},
+\end{align}
+$$
+where $G^0_{S}$ is the standard free energy of $S$, $R$ is the gas constant, $T$ is the temperature, $z$ is the charge of the ion, and $F$ is the Helmholtz free energy. At equilibrium, the chemical potentials must be equal:
+$$
+\begin{align}
+G^0_{S}+RT\ln([S]_{i})+zFv_{i} & =G^0_{S}+RT\ln([S]_{e})+zFv_{e} \\
+v_{i}-v_{e} & =\frac{RT}{zF}\ln\left( \frac{[S]_{e}}{[S]_{i}} \right) \\
+v_{S} & = \frac{kT}{zq}\ln\left( \frac{[S]_{e}}{[S]_{i}} \right),
+\end{align}
+$$
+where $v_{S}$ is the equilibrium potential, $k$ is Boltzmann's constant with $k=\frac{R}{N_{a}}=\frac{Rq}{F}$, and $N_{a}$ is Avogadro's number. \eqref{eq:} is the $\textit{Nernst-potential}$.
+
+When $v\neq v_{S}$ and the channels for $S$ are open, there will be a flux of $S$ across the membrane, inducing an ionic current $I_{S}$ that restores the transmembrane potential to $v_{S}$. If one assumes that the channel is ohmic, the potential drop due to the ionic current will be $rI_{S}$, where $r$ is the resistance.
