@@ -10,4 +10,4 @@ $$
 (figure https://uen.pressbooks.pub/introneuro/chapter/voltage-gated-ion-channels/)
 
 
-First, consider a situation where the 
+First, consider a situation where the extracellular and intracellular domains have a differing concentrations of $\text{Na}^+$ and $\text{Cl}^-$, and that both domains start as electrically neutral. So we have $[\text{Na}^+]_{i}=[\text{Cl}^-]_{i}\neq[\text{Na}^+]_{e}=[\text{Cl}^-]_{e}$. Say that the membrane is permeable to $\text{Na}^+$ but not to $\text{Cl}^-$.  
