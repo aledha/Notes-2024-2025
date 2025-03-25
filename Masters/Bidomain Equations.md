@@ -105,14 +105,15 @@ $$
 
 $$
 \begin{equation}
-\implies \qquad \frac{ \partial \mathbf{s} }{ \partial t } =f(\mathbf{s},t, \lambda, \dot{\lambda})
+\implies \qquad \frac{ \partial \mathbf{s} }{ \partial t } =\mathbf{f}(\mathbf{s},t, \lambda, \dot{\lambda})
 \end{equation}
 $$
 
 $$
 \begin{align}
-  F_{1}(\lambda,p;T_{a}) & =T_{a}+a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda^2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }+p, \\
-    F_{2}(\lambda,p) & =2a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-1}-3) }+4\lambda^2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }-p.
+  P_{1}(\lambda,p;T_{a}) & =T_{a}+a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda^2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }+p=0, \\
+    P_{2}(\lambda,p) & =2a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-1}-3) }+4\lambda^2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }-p=0.
 \end{align}
 $$
 
+$v$, $\mathbf{s}$, and $\lambda$  
