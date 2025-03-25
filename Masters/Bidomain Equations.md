@@ -95,3 +95,24 @@ $$
 \mathbf{P}\mathbf{N} & =\mathbf{T}, & \mathbf{x}\in \partial \Omega_{N}.
 \end{align}
 $$
+$\implies\nabla v=\boldsymbol{0}\quad\forall t$
+
+$$
+\begin{equation}
+\implies \qquad \frac{ \partial v }{ \partial t } =\frac{1}{C_{m}}I_\text{stim}-\frac{1}{C_{m}}I_\text{ion}(v,\mathbf{s})
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\implies \qquad \frac{ \partial \mathbf{s} }{ \partial t } =f(\mathbf{s},t, \lambda, \dot{\lambda})
+\end{equation}
+$$
+
+$$
+\begin{align}
+  F_{1}(\lambda,p;T_{a}) & =T_{a}+a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-1}-3) }+2\lambda^2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }+p, \\
+    F_{2}(\lambda,p) & =2a(\lambda^2-\lambda^{-1})e^{ b(\lambda^2+2\lambda^{-1}-3) }+4\lambda^2 a_{f}(\lambda^2-1)_{+}e^{ b_{f}(\lambda^2-1)_{+}^2 }-p.
+\end{align}
+$$
+
