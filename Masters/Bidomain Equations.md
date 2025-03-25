@@ -116,4 +116,32 @@ $$
 \end{align}
 $$
 
-$v$, $\mathbf{s}$, and $\lambda$  
+$v$, $\mathbf{s}$, and $\lambda$ 
+
+$$
+\begin{align}
+ & \mathbf{s}_{n+1} =\mathbf{s}_{n}+\Delta t \cdot\mathbf{f}(\mathbf{s}_{n},t_{n},1,0) \\
+ & T_{a,n+1}  =T_{a}(\mathbf{s}_{n+1}) \\
+ & \text{Find }\lambda,p \text{ such that} \begin{cases}
+P_{1}(\lambda,p;T_{a,n+1}) =0 \\
+P_{2}(\lambda,p)=0
+\end{cases} \\
+ & \lambda_{n+1}=\lambda
+\end{align}
+$$
+
+$$
+\begin{align}
+ & \mathbf{s}_{n+1} =\mathbf{s}_{n}+\Delta t \cdot\mathbf{f}(\mathbf{s}_{n},t_{n},\lambda_{n+1},\dot\lambda_{n+1}) \\
+ & T_{a,n+1}  =T_{a}(\mathbf{s}_{n+1}) \\
+ & \text{Find }\lambda,p \text{ such that} \begin{cases}
+P_{1}(\lambda,p;T_{a,n+1}) =0 \\
+P_{2}(\lambda,p)=0
+\end{cases} \\
+ & \dot\lambda_{n+1}=\frac{\lambda_{n+1}-\lambda_{n}}{\Delta t}
+\end{align}
+$$
+
+
+ 
+
