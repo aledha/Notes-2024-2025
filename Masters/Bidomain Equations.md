@@ -164,7 +164,30 @@ P_{2}(\lambda_{n+1},p_{n+1})=0
 $$
 
 
+To solve (1), the general ODE translator gotranx is used.
 
+To solve (2), first discretize in time with a $\theta$-method: 
+$$
+\begin{equation}
+\frac{v_{n+1}-v_{n}}{\Delta t}=\frac{\theta}{\chi C_{m}}\nabla \cdot(\mathbf{M}\nabla v_{n+1})+ \frac{1-\theta}{\chi C_{m}}\nabla \cdot(\mathbf{M}\nabla v_{n})+\frac{1}{C_{m}}I_\text{stim}
+\end{equation}
+$$
+Galerkin formulation: Given $v_{n}\in V_{h}$, find $v_{n+1}\in V_{h}$ such that
+$$
+\begin{equation}
+\int_{\Omega}\left( v_{n+1}\phi+ \frac{\Delta t \theta}{\chi C_{m}}(\mathbf{M}\nabla v_{n+1})\cdot \nabla \phi \right)\,\text{d} \mathbf{X}=\int_{\Omega}\left( \frac{\Delta t}{C_{m}}I_\text{stim}+v^n \right)\phi-\frac{\Delta t(1-\theta)}{\chi C_{m}}(\mathbf{M}\nabla v_{n})\cdot \nabla \phi \,\text{d} \mathbf{X}
+\end{equation}
+$$
+for every $\phi \in V_{h}$.
 
- 
+Total potential energy:
+$$\Pi(\mathbf{u},p)=\int_{\Omega}\Psi \,\text{d}V-\int_{\partial \Omega_{N}}\mathbf{T}\cdot \mathbf{u}\,\text{d}S$$
+Find $(\mathbf{u},p)\in U_{h}\times P_{h}$ such that
+$$
+\begin{align}
+D_{\delta\mathbf{u}}\Pi(\mathbf{u},p) & =0 \\
+D_{\delta p}\Pi(\mathbf{u},p) & =0
+\end{align}
+$$
+for every $(\delta \mathbf{u},\delta p)\in U_{h}\times P_{h}$.
 
