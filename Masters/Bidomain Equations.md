@@ -191,3 +191,8 @@ D_{\delta p}\Pi(\mathbf{u},p) & =0
 $$
 for every $(\delta \mathbf{u},\delta p)\in U_{h}\times P_{h}$.
 
+## Meeting notes 27.03
+* Operatorsplitting, Niederer, sammenligne aktiveringstider mellom $Q$ og $P$. (og grader av kvadraturrom)
+* Monolithic med samme rom
+* Monolithic med mixed
+* 
