@@ -195,4 +195,3 @@ for every $(\delta \mathbf{u},\delta p)\in U_{h}\times P_{h}$.
 * Operatorsplitting, Niederer, sammenligne aktiveringstider mellom $Q$ og $P$. (og grader av kvadraturrom)
 * Monolithic med samme rom
 * Monolithic med mixed
-* 
