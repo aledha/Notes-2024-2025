@@ -40,10 +40,17 @@ I_{S} & =g_{S}(v-v_{S}),
 $$
 where $g_{S}$ is the membrane conductance for the ion $S$.
 
-We must adjust \eqref{eq:ionic_linear} to account for closed channels, which can be achieved by setting $g_{S}=p_{S}\overline{g_{S}}$, where $p_{S}$ is the proportion of open channels and $\overline {g_{S}}$ is the membrane conductance when all channels are open. Then \eqref{eq:ionic_linear} becomes
+\eqref{eq:ionic_linear} only holds for open channels, so we must adjust it to account for voltage-gated channels. This can be done by setting $g_{S}=p_{S}\overline{g_{S}}$, where $p_{S}\in[0,1]$ is the proportion of open channels and $\overline {g_{S}}$ is the membrane conductance when all channels are open. Then \eqref{eq:ionic_linear} becomes
 $$
 \begin{equation}
 %\label{eq:ionic_adj}
 I_{S}=p_{S}\overline{g_{S}}(v-v_{S}).
 \end{equation}
 $$
+The proportion of open channels $p_{S}$ can be modeled by the ODE
+$$
+\begin{equation}
+\frac{\text{d}p_{S}}{\text{d}t} =\alpha_{S}(v)(1-p_{S})-\beta_{S}(v)p_{S},
+\end{equation}
+$$
+where $\alpha_{S}$ is the rate of opening of channels and $\beta_{S}$ is the rate of closing of channels, and both depend and the transmembrane voltage $v$.
