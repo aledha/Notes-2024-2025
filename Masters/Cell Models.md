@@ -54,3 +54,12 @@ $$
 \end{equation}
 $$
 where $\alpha_{S}$ is the rate of opening of channels and $\beta_{S}$ is the rate of closing of channels, and both depend and the transmembrane voltage $v$.
+
+
+
+$$
+\begin{align}
+\frac{ \partial \mathbf{s} }{ \partial t }  & =\mathbf{f}(\mathbf{s},v,t) \\
+I_\text{ion} & =I_\text{ion}(v,\mathbf{s})
+\end{align}
+$$
