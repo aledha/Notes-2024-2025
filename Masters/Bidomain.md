@@ -29,5 +29,55 @@ $$
 \mathbf{J}_{e}=-\mathbf{M}_{e}\nabla v_{e}.
 \end{align}
 $$
+We assume that our domain is electrically isolated, leading t
 
-Conservation of 
+Let $I_{t}$ $\mathrm{(Am^{-3})}$ be the total transmembrane current per unit volume, with positive direction from the extracellular domain to the intracellular domain. Then, since no current is lost and there are no other sources
+$$
+\begin{equation}
+%\label{eq:transcurrent}
+\nabla \cdot \mathbf{J}_{e}=I_{t}=-\nabla \cdot \mathbf{J}_{i}.
+\end{equation}
+$$
+\eqref{eq:} can be rewritten as the system of equations
+$$
+\begin{align}
+-\nabla \cdot \mathbf{J}_{i} & =I_{t}, \\
+\nabla \cdot \mathbf{J}_{e}+\nabla \cdot \mathbf{J}_{i} & =0.
+\end{align}
+$$
+Substitution with \eqref{eq:}-\eqref{eq:} gives
+$$
+\begin{align}
+\nabla \cdot (\mathbf{M}_{i}\nabla v_{i}) & =I_{t}, \\
+\nabla \cdot (\mathbf{M}_{e}\nabla v_{e})+\nabla \cdot (\mathbf{M}_{i}\nabla v_{i}) & =0.
+\end{align}
+$$
+
+The transmembrane current $I_{t}$ is composed of a capacitive current $I_{c}$ and the ionic current $I_\text{ion}$ described in \autoref{}. The capacitive current can be found by viewing the considering the cell membrane as a capacitor with the general capacitor equation
+$$
+\begin{equation}
+%\label{eq:capacitor}
+Q=C_{m}v,
+\end{equation}
+$$
+where $Q$ $(\mathrm{C})$ is the charge, $C_{m}$ $(\mathrm{F})$ is the membrane capacitance, and $v=v_{i}-v_{e}$ is the transmembrane potential. Differentiation of \eqref{eq:} with respect to time gives
+$$
+\begin{equation}
+I_{c}=C_{m}\frac{ \partial v }{ \partial t } .
+\end{equation}
+$$
+Since $I_{c}$ and $I_\text{ion}$ are measured per unit area, while $I_{t}$ is measured per unit volume, we must include the cells surface to volume ratio $\chi$ to relate the currents:
+$$
+\begin{align}
+I_{t} & =\chi(I_{c}+I_\text{ion}) \\
+I_{t} & =\chi\left( C_{m}\frac{ \partial v }{ \partial t } +I_\text{ion} \right).
+\end{align}
+$$
+
+Substitution of \eqref{eq:} and $v_{i}=v+v_{e}$ in \eqref{eq:} gives
+$$
+\begin{align}
+\nabla \cdot(\mathbf{M}_{i}(\nabla v+\nabla v_{e})) & =\chi\left( C_{m}\frac{ \partial v }{ \partial t } +I_\text{ion} \right), \\
+\nabla \cdot(\mathbf{M}_{e}+\mathbf{M}_{i})v_{e}+\nabla \cdot(\mathbf{M}_{i}\nabla v) & =0
+\end{align}
+$$
