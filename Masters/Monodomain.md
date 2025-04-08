@@ -32,3 +32,11 @@ $$
 \mathbf{n}\cdot(\mathbf{M}\nabla v)=0,\quad\mathbf{X}\in \partial \Omega.
 \end{equation}
 $$
+The electrophysiological problem is summarized as
+$$
+\begin{align}
+\nabla \cdot(\mathbf{M}\nabla v)  & =\chi\left( C_{m}\frac{ \partial v }{ \partial t } +I_\text{ion}(v,\mathbf{s}) \right) , & \quad \mathbf{X}\in \Omega, \\
+\frac{ \partial \mathbf{s} }{ \partial t }  & =\mathbf{f}(\mathbf{s},v,t)  & \mathbf{X}\in \Omega, \\
+\mathbf{n}\cdot(\mathbf{M}\nabla v) & =0,\quad & \mathbf{X}\in \partial \Omega.
+\end{align}
+$$
