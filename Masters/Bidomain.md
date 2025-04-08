@@ -29,7 +29,13 @@ $$
 \mathbf{J}_{e}=-\mathbf{M}_{e}\nabla v_{e}.
 \end{align}
 $$
-We assume that our domain is electrically isolated, leading t
+We assume that our domain is electrically isolated, leading to the Neumann boundary conditions
+$$
+\begin{align}
+\mathbf{n}\cdot \mathbf{J}_{i} & =0, \\
+\mathbf{n}\cdot \mathbf{J}_{e} & =0
+\end{align}
+$$
 
 Let $I_{t}$ $\mathrm{(Am^{-3})}$ be the total transmembrane current per unit volume, with positive direction from the extracellular domain to the intracellular domain. Then, since no current is lost and there are no other sources
 $$
@@ -77,7 +83,17 @@ $$
 Substitution of \eqref{eq:} and $v_{i}=v+v_{e}$ in \eqref{eq:} gives
 $$
 \begin{align}
-\nabla \cdot(\mathbf{M}_{i}(\nabla v+\nabla v_{e})) & =\chi\left( C_{m}\frac{ \partial v }{ \partial t } +I_\text{ion} \right), \\
-\nabla \cdot(\mathbf{M}_{e}+\mathbf{M}_{i})v_{e}+\nabla \cdot(\mathbf{M}_{i}\nabla v) & =0
+\nabla \cdot(\mathbf{M}_{i}(\nabla v+\nabla v_{e})) & =\chi\left( C_{m}\frac{ \partial v }{ \partial t } +I_\text{ion} \right), &  \quad \mathbf{X}\in \Omega,\\
+\nabla \cdot(\mathbf{M}_{e}+\mathbf{M}_{i})\nabla v_{e}+\nabla \cdot(\mathbf{M}_{i}\nabla v) & =0, & \mathbf{X}\in \Omega.
 \end{align}
 $$
+\eqref{eq:}-\eqref{eq:} with the boundary conditions
+$$
+\begin{align}
+\mathbf{n}\cdot(\mathbf{M}_{i}\nabla (v_{e}+v)) & =0, & \quad \mathbf{X} \in \partial \Omega, \\
+\mathbf{n}\cdot(\mathbf{M}_{e}\nabla v_{e}) & =0, & \mathbf{X} \in \partial \Omega,
+\end{align}
+$$
+are the $\textit{bidomain equations}$. This is a system of partial differential equations with two unknowns, $v$ and $v_{e}$.
+
+
