@@ -48,3 +48,32 @@ v \\
 \end{bmatrix}.
 \end{align}
 $$
+Now we have reduced the problem of solving the monodomain equation into the subproblems
+$$
+\begin{align}
+\frac{ \partial v }{ \partial t }  & =-\frac{1}{C_{m}}I_\text{ion}(v,\mathbf{s}), \\
+\frac{ \partial \mathbf{s} }{ \partial t }  & =\mathbf{f}(\mathbf{s},v,t), \\
+\frac{ \partial v }{ \partial t }  & =\frac{1}{\chi C_{m}}\nabla \cdot(\mathbf{M}\nabla v).
+\end{align}
+$$
+
+\eqref{eq:}-\eqref{eq:} is a system of ODEs, which can be solved with, for example, the forward Euler or generalized Rush-Larsen scheme. \eqref{eq:} is a PDE, which we will solve with the finite element method.
+
+## Variational formulation
+Firstly, we need to discretize \eqref{eq:} in time, which we will do with a $\theta$-method. For a given time step $\Delta t$, let $v^n \in V_{h}$ be an approximation to $v(n \Delta t)$ for some suitable function space $V_{h}$. The $\theta$-method then reads $$
+\begin{equation}
+\frac{v^{n+1}-v^n }{\Delta t}   =\frac{\theta}{\chi C_{m}}\nabla \cdot(\mathbf{M}\nabla v^{n+1})+\frac{1-\theta}{\chi C_{m}}\nabla \cdot(\mathbf{M}\nabla v^{n}).
+\end{equation}
+$$
+To obtain a variational formulation, we multiply \eqref{eq:} by a test function $\phi \in V_{h}$ and integrate over our domain $\Omega$. The variational problem currently reads: Given $v^n$, find $v^{n+1}\in V_{h}$ such that $$
+\begin{equation}
+\int_{\Omega}\phi(v^{n+1}-v^n )\,\text{d} \mathbf{X} =\int_{\Omega}\phi\left( \frac{\Delta t\theta}{\chi C_{m}}\nabla \cdot(\mathbf{M}\nabla v^{n+1})+\frac{\Delta t(1-\theta)}{\chi C_{m}}\nabla \cdot(\mathbf{M}\nabla v^{n}) \right)\,\text{d} \mathbf{X},
+\end{equation}
+$$
+for all $\phi \in V_{h}$. Rewriting \eqref{eq:} gives
+$$
+\begin{equation}
+\int_{\Omega}\left( \phi v^{n+1}-\frac{\Delta t\theta}{\chi C_{m}}\phi\nabla \cdot(\mathbf{M}\nabla v^{n+1}) \right) \,\text{d} \mathbf{X}=\int_{\Omega}\left( \phi v^{n}+\frac{\Delta t(1-\theta)}{\chi C_{m}}\phi\nabla \cdot(\mathbf{M}\nabla v^{n}) \right) \,\text{d} \mathbf{X}.
+\end{equation}
+$$
+
