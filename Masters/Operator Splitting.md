@@ -73,10 +73,26 @@ $$
 for all $\phi \in V_{h}$. Rewriting \eqref{eq:} gives
 $$
 \begin{equation}
-\int_{\Omega}\left( \phi v^{n+1}-\frac{\Delta t\theta}{\chi C_{m}}\phi\nabla \cdot(\mathbf{M}\nabla v^{n+1}) \right) \,\text{d} \mathbf{X}=\int_{\Omega}\left( \phi v^{n}+\frac{\Delta t(1-\theta)}{\chi C_{m}}\phi\nabla \cdot(\mathbf{M}\nabla v^{n}) \right) \,\text{d} \mathbf{X}.
+\int_{\Omega}\phi v^{n+1}\,\text{d} \mathbf{X}-\frac{\Delta t\theta}{\chi C_{m}}\int_{\Omega} \phi\nabla \cdot(\mathbf{M}\nabla v^{n+1}) \,\text{d} \mathbf{X}=\int_{\Omega}\phi\left(  v^{n}+\frac{1}{C_{m}}I_\text{stim} \right) \,\text{d} \mathbf{X}+\frac{\Delta t(1-\theta)}{\chi C_{m}}\int_{\Omega}\phi\nabla \cdot(\mathbf{M}\nabla v^{n})\,\text{d} \mathbf{X}.
 \end{equation}
 $$
 
+We can apply the divergence theorem on the integral in the second term of the left hand side of \eqref{eq:}: $$
+\begin{equation}
+\int_{\Omega}\phi\nabla \cdot(\mathbf{M}\nabla v^{n+1}) \,\text{d} \mathbf{X}   =\int_{\partial \Omega}\phi \mathbf{n}\cdot(\mathbf{M}\nabla v^{n+1})\,\text{d} \mathbf{X}-\int_{\Omega}\nabla \phi \cdot(\mathbf{M}\nabla v^{n+1})\,\text{d} \mathbf{X},
+\end{equation}
+$$
+where the boundary integral vanishes because of the boundary condition \eqref{eq:monobc}, such that$$
+\begin{equation}
+\int_{\Omega}\phi\nabla \cdot(\mathbf{M}\nabla v^{n+1}) \,\text{d} \mathbf{X}   =-\int_{\Omega}\nabla \phi \cdot(\mathbf{M}\nabla v^{n+1})\,\text{d} \mathbf{X}.
+\end{equation}
+$$
+We get a similar result on the integral in the second term of the right hand side of \eqref{eq:}. Our variational problem then reads: Given $v^n\in V_{h}$, find $v^{n+1}\in V_{h}$ such that $$
+\begin{equation}
+\int_{\Omega}\phi v^{n+1}\,\text{d} \mathbf{X}+\frac{\Delta t\theta}{\chi C_{m}}\int_{\Omega} \nabla\phi \cdot(\mathbf{M}\nabla v^{n+1}) \,\text{d} \mathbf{X}=\int_{\Omega}\phi\left(  v^{n}+\frac{1}{C_{m}}I_\text{stim} \right) \,\text{d} \mathbf{X}-\frac{\Delta t(1-\theta)}{\chi C_{m}}\int_{\Omega}\nabla\phi \cdot(\mathbf{M}\nabla v^{n})\,\text{d} \mathbf{X},
+\end{equation}
+$$
+for every $\phi \in V_{h}$.
 
 ## Monolithic Variational Formulation
 Firstly, we need to discretize \eqref{eq:} in time, which we will do with a $\theta$-method. For a given time step $\Delta t$, let $v^n \in V_{h}$ be an approximation to $v(n \Delta t)$ and $\mathbf{s}^n\in S_{h}$ be an approximation for $\mathbf{s}(n\Delta t)$ for some suitable function spaces $V_{h}$ and $S_{h}$. Applying the $\theta$-method to \eqref{eq:} gives
@@ -96,8 +112,7 @@ $$
 \int_{\Omega}\boldsymbol{\psi}\cdot(\mathbf{s}^{n+1}-\mathbf{s}^n) \,\text{d} \mathbf{X}& = \int_{\Omega} \theta \boldsymbol{\psi}\cdot \mathbf{f}(\mathbf{s}^{n+1},v^{n+1},t_{n+1})+(1-\theta)\boldsymbol{\psi} \cdot\mathbf{f}(\mathbf{s}^n,v^n,t_{n}),
 \end{align}
 $$
-for every 
-Rewriting \eqref{eq:} to collect like terms yields $$
+for every $\phi \in V_{h}$ and $\boldsymbol{\psi}\in S_{h}$. Rewriting \eqref{eq:} to collect like terms yields $$
 \begin{equation}
 \int_{\Omega}\boldsymbol{\psi}\cdot(\mathbf{s}^{n+1}- \theta\mathbf{f}(\mathbf{s}^{n+1},v^{n+1},t_{n+1})) \,\text{d} \mathbf{X} = \int_{\Omega}  \boldsymbol{\psi}\cdot (\mathbf{s}^n+(1-\theta)\mathbf{f}(\mathbf{s}^n,v^n,t_{n}))\,\text{d} \mathbf{X},
 \end{equation}
@@ -118,5 +133,10 @@ where the boundary integral vanishes because of the boundary condition \eqref{eq
 \int_{\Omega}\phi\nabla \cdot(\mathbf{M}\nabla v^{n+1}) \,\text{d} \mathbf{X}   =-\int_{\Omega}\nabla \phi \cdot(\mathbf{M}\nabla v^{n+1})\,\text{d} \mathbf{X}.
 \end{equation}
 $$
-We get a similar result on the integral in the second term of the right hand side of \eqref{eq:}. Then
- 
+We get a similar result on the integral in the second term of the right hand side of \eqref{eq:}. Then, the monolithic variational reads: Given $v^n,\mathbf{s}^n$, find $v^{n+1}\in V_{h}$ and $\mathbf{s}^{n+1}\in S_{h}$ such that $$
+\begin{align}
+ & \int_{\Omega}\left( \phi v^{n+1} +\frac{\Delta t\theta }{C_{m}}(\phi I_\text{ion}(v^{n+1},\mathbf{s}^{n+1})  +\nabla\phi \cdot(\mathbf{M}\nabla v^{n+1})) \right)  \,\text{d} \mathbf{X}  \\
+& =\int_{\Omega} \left( \phi v^n-\frac{\Delta t(1-\theta)}{C_{m}}\left( \phi I_\text{ion}(v^n,\mathbf{s}^n)  +\nabla\phi \cdot(\mathbf{M}\nabla v^{n}) \right) \right)  \,\text{d} \mathbf{X},  & \forall \phi \in V_{h}, \\
+ & \int_{\Omega}\boldsymbol{\psi}\cdot(\mathbf{s}^{n+1}- \theta\mathbf{f}(\mathbf{s}^{n+1},v^{n+1},t_{n+1})) \,\text{d} \mathbf{X} = \int_{\Omega}  \boldsymbol{\psi}\cdot (\mathbf{s}^n+(1-\theta)\mathbf{f}(\mathbf{s}^n,v^n,t_{n}))\,\text{d} \mathbf{X}  , & \forall \boldsymbol{\psi}\in S_{h}.
+\end{align}
+$$
