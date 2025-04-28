@@ -14,14 +14,16 @@ $\mathbf{M}_{e}=\gamma \mathbf{M}_{i}$
 
 $\mathbf{M}=\frac{\gamma}{1+\gamma}\mathbf{M}_{i}$
 $$
-\begin{equation}
-\nabla \cdot(\mathbf{M}\nabla v)=\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion}-\chi I_\text{stim}
-\end{equation}
+\begin{align}
+\nabla \cdot(\mathbf{M}\nabla v) & =\chi C_{m}\frac{ \partial v }{ \partial t } +\chi I_\text{ion}(v,\mathbf{s})-\chi I_\text{stim}, \quad &   \mathbf{X}\in \Omega, \\
+\frac{ \partial \mathbf{s} }{ \partial t }  & =\mathbf{f}(\mathbf{s},v,t) & \mathbf{X}\in \Omega, \\
+\mathbf{n}\cdot(\mathbf{M}\nabla v) & =0 & \mathbf{X}\in \partial \Omega.
+\end{align}
 $$
 
 $$
 \begin{equation}
-\mathbf{n}\cdot(\mathbf{M}\nabla v)=0
+
 \end{equation}
 $$
 opsplit:
@@ -34,8 +36,17 @@ $$
 
 $$
 \begin{align}
-\frac{ \partial v }{ \partial t }  & = \frac{1}{\chi C_{m}}\nabla \cdot(\mathbf{M}\nabla v)-\frac{1}{C_{m}}I_\text{ion}(v,\mathbf{s})+\frac{1}{C_{m}}I_\text{stim} \\
-\frac{ \partial \mathbf{s} }{ \partial t }  & =f(\mathbf{s},v,t)
+\frac{ \partial v }{ \partial t }  & = \frac{1}{\chi C_{m}}\nabla \cdot(\mathbf{M}\nabla v)-\boxed{ \frac{1}{C_{m}}I_\text{ion}(v,\mathbf{s}) }^{  }+\frac{1}{C_{m}}I_\text{stim} \\
+\frac{ \partial \mathbf{s} }{ \partial t }  & =\boxed{ f(\mathbf{s},v,t) }_{  }
+\end{align}
+$$
+
+$$
+\begin{align}
+\frac{ \partial v }{ \partial t }  & =-\frac{1}{C_{m}}I_\text{ion}(v,\mathbf{s}) \\
+\frac{ \partial \mathbf{s} }{ \partial t }  & =\mathbf{f}(\mathbf{s},v,t) \\
+\frac{ \partial v }{ \partial t }   & =\frac{1}{\chi C_{m}}\nabla \cdot(\mathbf{M}\nabla v)+\frac{1}{C_{m}}I_\text{stim} \\
+\frac{ \partial \mathbf{s} }{ \partial t }   & =\boldsymbol{0}
 \end{align}
 $$
 $$
@@ -55,7 +66,11 @@ $$
 $$
 
 
-
+$$
+\begin{equation}
+a()
+\end{equation}
+$$
 
 
 
@@ -180,6 +195,24 @@ $$
 $$
 for every $\phi \in V_{h}$.
 
+
+Given $v^n, \mathbf{s}^n$, 
+$$
+\implies \quad\begin{align}
+v^* & =v^n-\Delta t I_\text{ion}(v^n,\mathbf{s}^n), \\
+\mathbf{s}^{n+1} & =\mathbf{s}^n+\Delta t\mathbf{f}(\mathbf{s}^n,v^n,t_{n}).
+\end{align}
+$$
+
+Given $v^n\in V_{h}$, find $v^{n+1}\in V_{h}$ such that
+   $a(v^{n+1},\phi)=b(v^n,\phi)$
+for every $\phi \in V_{h}$.
+
+$$
+\begin{equation}
+\mathbf{A}\mathbf{v}^{n+1}=\mathbf{b}(v^*)
+\end{equation}
+$$
 Total potential energy:
 $$\Pi(\mathbf{u},p)=\int_{\Omega}\Psi \,\text{d}V-\int_{\partial \Omega_{N}}\mathbf{T}\cdot \mathbf{u}\,\text{d}S$$
 Find $(\mathbf{u},p)\in U_{h}\times P_{h}$ such that
