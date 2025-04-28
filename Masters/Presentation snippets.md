@@ -171,7 +171,6 @@ $$
 P_{1}(\lambda_{n+1},p_{n+1};T_{a,n+1}) =0 \\
 P_{2}(\lambda_{n+1},p_{n+1})=0
 \end{cases} \\
-  &\qquad \dot\lambda_{n+1}=\frac{\lambda_{n+1}-\lambda_{n}}{\Delta t} \\
 &\qquad\mathbf{s}_{n+1} =\mathbf{s}_{n}+\Delta t \cdot\mathbf{f}(\mathbf{s}_{n},t_{n},\lambda_{n+1},\dot\lambda_{n+1}) \\
  &\qquad T_{a,n+1}  =T_{a}(\mathbf{s}_{n+1},\lambda_{n+1}) \\ 
  & \text{End while}
