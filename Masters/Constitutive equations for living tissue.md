@@ -1,4 +1,4 @@
-### Passive myocardium
+d### Passive myocardium
 With a local orthonormal coordinate system with fiber axis $\mathbf{f}_{0}$, sheet axis $\mathbf{s}_{0}$, and sheet-normal axis $\mathbf{n}_{0}$. The invariants are defined as
 $$
 \begin{align}
@@ -194,4 +194,11 @@ $$
 %\label{eq:passivepsi}
 \Psi_{p}(I_{1},I_{4\mathbf{f}_{0}}) & = \frac{a}{2b}\bigg(e^{ b(I_{1}-3) }-1\bigg)  + \frac{a_{f}}{2b_{f}}\bigg(e^{ b_{f}(I_{4\mathbf{f}_{0}}-1)^2_{+}}-1\bigg).
 \end{align}
+$$
+## Variational formulation
+To obtain a variational formulation, we multiply \eqref{eq:} by the test functions $\delta \mathbf{u}$ and $\delta p$
+$$
+\begin{equation}
+\delta \mathbf{u} \nabla \cdot \mathbf{P}=0
+\end{equation}
 $$
