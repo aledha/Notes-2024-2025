@@ -23,7 +23,7 @@ $$
 
 $$
 \begin{equation}
-
+\boldsymbol{\eta}
 \end{equation}
 $$
 opsplit:

@@ -138,3 +138,26 @@ $$
 \mathcal{H}=\frac{\text{d}\mathcal{S}}{\text{d}t} -\mathcal{J}\geq0
 \end{equation}
 $$
+
+
+The force-balance equation \eqref{eq:forcebalance} does not have an analytical solution, in general. We must therefore turn to the finite element method (FEM) to approximate solutions of the displacement $\mathbf{u}$. Firstly, we will need to derive a variational formulation. We do this by using the \emph{principle of stationary potential energy}. The total potential energy in the system is \cite{holzapfel_mech}:$$
+\begin{equation}
+    \label{eq:potential energy}
+    \Pi(\mathbf{u},p)=\int_{\Omega}(\Psi(\mathbf{F}(\mathbf{u})) +p(J(\mathbf{u})-1)) \,\text{d}V-\int_{\partial \Omega_{N}}\mathbf{T}\cdot \mathbf{u}\,\text{d}S.
+\end{equation}
+$$
+Recall that both $\Psi$ and $J$ depend on the unknown $\mathbf{u}$, as explicitly stated in \eqref{eq:potential energy}. The principle of stationary potential energy states that for a solution of the force-balance equation, the potential energy must be stationary. That is, the direction derivative of \eqref{eq:potential energy} with respect to both the displacements $\mathbf{u}$ and the Lagrange multiplier $p$ must vanish in all directions $\delta \mathbf{u}$ and $\delta p$ \cite{holzapfel_mech}. We use the Gâteaux operator defined as \cite{holzapfel_mech}$$
+\begin{align}
+D_{\delta \mathbf{u}}\Pi(\mathbf{u},p) & =\frac{ \text{d}  }{ \text{d} \epsilon } \Pi(\mathbf{u} +\epsilon\delta \mathbf{u},p)\Big\vert_{\epsilon=0}, \\
+D_{\delta p}\Pi(\mathbf{u},p) & =\frac{ \text{d}  }{ \text{d} \epsilon } \Pi(\mathbf{u},p+\epsilon\delta p)\Big\vert_{\epsilon=0}.
+\end{align}
+$$
+The variation problem then reads: Find $(\mathbf{u},p)\in U\times P$ such that
+\begin{align}
+    \label{eq:mech variational 1}
+    D_{\delta\mathbf{u}}\Pi(\mathbf{u},p) & =0, \\
+    \label{eq:mech variational 2}
+    D_{\delta p}\Pi(\mathbf{u},p) & =0.
+\end{align}
+
+It is possible to derive analytical expressions for the directional derivatives in \eqref{eq:mech variational 1}-\eqref{eq:mech variational 2}, see, e.g., \cite{holzapfel_mech}. In this paper, we rather use automatic differentiation of the 
