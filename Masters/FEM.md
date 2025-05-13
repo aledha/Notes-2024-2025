@@ -71,4 +71,13 @@ A_{ij} & =\int_{0}^1\frac{ \partial \phi_{i} }{ \partial x } \frac{ \partial \ph
 b_{j} & =\int_{0}^1f\phi_{j}\,\text{d} x.
 \end{align}
 $$
-After solving \eqref{eq:} for $\mathbf{u}$, it is easy to construct $u_{h}(x)$ from \eqref{eq:}.
+After solving \eqref{eq:} for $\mathbf{u}$, it is easy to construct $u_{h}(x)$ from \eqref{eq:}. 
+
+Let $\mathcal{T}_{h}=\{K_{j}\}_{j=0}^{M-1}$ be a triangulation of the domain $\Omega$ in the sense that $\bigcup_{j=0}^{M-1}K_{j}=\overline{\Omega}$, and that the elements $K_{j}$ are non-overlapping. $M$ is the number of elements. 
+
+This allows \eqref{eq:} to be rewritten to $$
+\begin{align}
+A_{ij} & =\sum _{j=0}\int_{0}^1\frac{ \partial \phi_{i} }{ \partial x } \frac{ \partial \phi_{j} }{ \partial x } \,\text{d} x, \\
+b_{j} & =\int_{0}^1f\phi_{j}\,\text{d} x.
+\end{align}
+$$
