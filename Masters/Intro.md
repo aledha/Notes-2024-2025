@@ -113,25 +113,46 @@ for $i=1,\dots M-1$, and $$
 \end{cases}
 \end{align}
 $$
-These basis functions are often called \emph{hat functions}, and have the property that $$
+These piecewise linear basis functions are often called \emph{hat functions}, and have the property that $$
 \begin{equation}
 \phi _{j}(x_{i})=\begin{cases} 1, & i,=j \\ 0, & i≠j,\end{cases}
 \end{equation}
 $$
-and $\phi_{i}$ has compact support on the interval $[x_{i-1},x_{i+1}]$. 
+and $\phi_{i}$ has compact support on the interval $[x_{i-1},x_{i+1}]$. We could now construct $\mathbf{A}$ and $\mathbf{b}$ and solve the linear system, but it is easy to see that this will become increasingly hard for a higher-dimensional problem or a more complex choice of basis functions. Instead, we will attempt to generalize the construction of $\mathbf{A}$ and $\mathbf{b}$.
 
-Let $\mathcal{T}_{h}=\{K_{j}\}_{j=0}^{M-1}$ be a triangulation of the domain $\Omega$ in the sense that $\bigcup_{j=0}^{M-1}K_{j}=\overline{\Omega}$, and that the elements $K_{j}$ are non-overlapping. $M$ is the number of elements.
+Let $\mathcal{T}_{h}=\{K_{j}\}_{j=0}^{M-1}$ be a triangulation of the domain $\Omega$ in the sense that $\bigcup_{j=0}^{M-1}K_{j}=\overline{\Omega}$, and that the elements $K_{j}$ are non-overlapping. $M$ is the number of elements. Let $K_{ref}$ be the $\textit{reference element}$, which can be mapped to any element $K_{j}$ using the mapping $\mathcal{F}_{j}:K_{ref}\to K_{j}$. We define the Jacobian of this mapping as $\mathbf{J}_{j}$.
+
+In our one-dimensional problem, the elements $K_{j}$ and the reference element $K_{ref}$ are line segments. Let the elements be $K_{j}=(x_{j-1},x_{j})$. We can now rewrite \eqref{eq:}-\eqref{eq:} to $$
+\begin{align}
+A_{ij} & =\sum_{k=0}^{M-1}\int_{K_{k}}\frac{ \partial \phi_{i} }{ \partial x } \frac{ \partial \phi_{j} }{ \partial x } \,\text{d} x, \\
+b_{j} & =\int_{0}^1f\phi_{j}\,\text{d} x.
+\end{align}
+$$
 
 
-Let $K_{ref}$ be the $\textit{reference element}$, which can be mapped to any element $K_{j}$ using the mapping $\mathcal{F}_{j}:K_{ref}\to K_{j}$. We define the Jacobian of this mapping as $\mathbf{J}_{j}$.
-
-In our one-dimensional problem, the elements $K_{j}$ and the reference element $K_{ref}$ are line segments. Let $0=x_{0},\dots,x_{M}=1$ be a partitioning of the domain, and define the elements as $K_{j}=(x_{j-1},x_{j})$. Let $K_{ref}=[0,1]$. The mapping from $K_{ref}$ to $K_{j}$ is $$
+and let the reference element be $K_{ref}=[0,1]$. The mapping from $K_{ref}$ to $K_{j}$ is $$
 \begin{equation}
-\mathcal{F}_{j}(x)=x(x_{j}-x_{j-1}).
+\mathcal{F}_{j}(\bar{x})=x_{j-1}+\bar{x}(x_{j}-x_{j-1}).
+\end{equation}
+$$
+Next we define the basis vectors on the reference element as $$
+\begin{align}
+\psi_{0}(\bar{x}) & =1-\bar{x}, \\
+\psi_{1} (\bar{x})& =\bar{x},
+\end{align}
+$$
+such that 
+$$
+\begin{equation}
+\int_{K_{j}}\phi_{i}(x)\,\text{d} x=\int_{K_{ref}}\phi_{i}(\mathcal{F}_{j}(\bar{x}))\cdot\lvert \det  J_{j}(\bar{x}) \rvert \,\text{d} \bar{x}
 \end{equation}
 $$
 
-The function space $V_{h}$ is spanned by the basis functions $\phi_{i}$ 
 
 
-After solving \eqref{eq:} for $\mathbf{u}$, it is easy to construct $u_{h}(x)$ from \eqref{eq:}. 
+Then we can rewrite \eqref{eq:} to $$
+\begin{align}
+A_{ij} & =\int_{0}^1\frac{ \partial \phi(\mathcal{F}_{j}(\bar{x})) }{ \partial x } \frac{ \partial \phi_{j} }{ \partial x } \,\text{d} x, \\
+b_{j} & =\int_{0}^1f\phi_{j}\,\text{d} x.
+\end{align}
+$$
