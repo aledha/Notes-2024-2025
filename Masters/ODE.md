@@ -49,9 +49,21 @@ Both the FE method and the BE method are special cases of what is known as the \
 $$
 When $\theta=1$ we get the FE method, when $\theta=0$ we get the BE method, and when $\theta=\frac{1}{2}$ we get the \emph{Crank-Nicolson scheme} (CN). The CN scheme is second order accurate in time \cite{}, in contrast to the Euler methods. It is also implicit, making it equally hard to implement and numerically costly as the BE method. 
 
-To avoid the instability of the FE method and the numerical cost of the BE (and CN) method, we will use the \emph{Rush-Larsen} (RL) method. This method takes advantage of the \emph{quasi-linearity} of a subset of 
+To avoid the instability of the FE method and the numerical cost of the BE (and CN) method, we will use the \emph{Rush-Larsen} (RL) method. This method takes advantage of the \emph{quasi-linearity} of a subset of the variables in $\mathbf{s}$. These are the gating variables, which are controlled by ODEs of the form
 $$
 \begin{equation} 
-    \frac{\text{d}m_i}{\text{d}t} =\alpha_{i}(v)(1-m_i)-\beta_{i}(v)m_i, \quad i=1,2,\dots,l,
+%\label{eq:intro gating}
+    \frac{\text{d}y}{\text{d}t} =\alpha_{y}(v)(1-y)-\beta_{y}(v)y,
+\end{equation}
+$$
+where $y$ are the gating variables, $\alpha_{y}(v)$ is the rate of opening of ion channels, $\beta_{y}(v)$ is the rate of closing of ion channels, and $v$ is the transmembrane voltage (which is also one of the variables in $\mathbf{s}$). As mentioned, this equation will be explained in more detail in \autoref{sec:cell models}. The importance for the discussion in this chapter is that while $\alpha_{y}(v)$ and $\beta_{y}(v)$ are nonlinear functions of $v$, \eqref{eq:intro gating} is linear in $y$. We call this property quasi-linearity. We rewrite \eqref{eq:intro gating} to \cite{marsh2012}$$
+\begin{equation}
+%\label{eq:quasilinear}
+	\frac{\text{d}y}{\text{d}t} =\frac{y_{\infty}-y}{\tau_{i}},
+\end{equation}
+$$
+where $y_{\infty}=\frac{\alpha_{y}(v)}{\alpha_{y}(v)+\beta_{y}(v)}$ and $\tau_{y}=\frac{1}{\alpha_{y}(v)+\beta_{y}(v)}$. The idea of the RL method is to assume that the transmembrane voltage $v$ is constant over each time step, such that $y_{\infty}$ and $\tau_{y}$ are constants and we can treat \eqref{eq:quasilinear} as a linear ODE with the exact solution \cite{marsh2012} $$
+\begin{equation}
+	y_{n+1}=y_{\infty}+(y_{n}-y_{\infty})e^{ -\Delta t/\tau_{y} }.
 \end{equation}
 $$
