@@ -1,4 +1,4 @@
-In this paper, two main classes of problems will arise: $\textit{ordinary differential equations}$ (ODEs) and $\textit{partial differential equations}$ (PDEs). The following is a list of the main equations we will consider throughout this paper:
+In this thesis, two main classes of problems will arise: $\textit{ordinary differential equations}$ (ODEs) and $\textit{partial differential equations}$ (PDEs). The following is a list of the main equations we will consider throughout this thesis:
 $$
 \begin{align}
 \nabla \cdot \mathbf{P} & =\boldsymbol{0},\qquad & \mathbf{X}\in\Omega, \\
@@ -122,14 +122,12 @@ and $\phi_{i}$ has compact support on the interval $[x_{i-1},x_{i+1}]$. We could
 
 Let $\mathcal{T}_{h}=\{K_{j}\}_{j=0}^{M-1}$ be a triangulation of the domain $\Omega$ in the sense that $\bigcup_{j=0}^{M-1}K_{j}=\overline{\Omega}$, and that the elements $K_{j}$ are non-overlapping. $M$ is the number of elements. Let $K_{ref}$ be the $\textit{reference element}$, which can be mapped to any element $K_{j}$ using the mapping $\mathcal{F}_{j}:K_{ref}\to K_{j}$. We define the Jacobian of this mapping as $\mathbf{J}_{j}$.
 
-In our one-dimensional problem, the elements $K_{j}$ and the reference element $K_{ref}$ are line segments. Let the elements be $K_{j}=(x_{j-1},x_{j})$. We can now rewrite \eqref{eq:}-\eqref{eq:} to $$
+In our one-dimensional problem, the elements $K_{j}$ and the reference element $K_{ref}$ are line segments. Let the elements be $K_{j}=(x_{j-1},x_{j})$. We rewrite \eqref{eq:}-\eqref{eq:} to $$
 \begin{align}
 A_{ij} & =\sum_{k=0}^{M-1}\int_{K_{k}}\frac{ \partial \phi_{i} }{ \partial x } \frac{ \partial \phi_{j} }{ \partial x } \,\text{d} x, \\
-b_{j} & =\int_{0}^1f\phi_{j}\,\text{d} x.
+b_{j} & =\sum_{k=0}^{M-1}\int_{K_{k}}f\phi_{j}\,\text{d} x.
 \end{align}
 $$
-
-
 and let the reference element be $K_{ref}=[0,1]$. The mapping from $K_{ref}$ to $K_{j}$ is $$
 \begin{equation}
 \mathcal{F}_{j}(\bar{x})=x_{j-1}+\bar{x}(x_{j}-x_{j-1}).
@@ -144,15 +142,16 @@ $$
 such that 
 $$
 \begin{equation}
-\int_{K_{j}}\phi_{i}(x)\,\text{d} x=\int_{K_{ref}}\phi_{i}(\mathcal{F}_{j}(\bar{x}))\cdot\lvert \det  J_{j}(\bar{x}) \rvert \,\text{d} \bar{x}
+\int_{K_{k}}f\phi_{j}(x)\,\text{d} x=\int_{K_{ref}}f\phi_{j}(\mathcal{F}_{k}(\bar{x}))\cdot\lvert \det  J_{k}(\bar{x}) \rvert \,\text{d} \bar{x}
 \end{equation}
 $$
-
-
-
-Then we can rewrite \eqref{eq:} to $$
+$$
 \begin{align}
-A_{ij} & =\int_{0}^1\frac{ \partial \phi(\mathcal{F}_{j}(\bar{x})) }{ \partial x } \frac{ \partial \phi_{j} }{ \partial x } \,\text{d} x, \\
-b_{j} & =\int_{0}^1f\phi_{j}\,\text{d} x.
+\int_{K_{k}}\frac{ \partial \phi_{i} }{ \partial x } \frac{ \partial \phi_{j} }{ \partial x } \,\text{d} x=\int_{K_{ref}}
 \end{align}
 $$
+
+
+A finite element is often defined as a triplet $(K_{ref},\mathcal{V},\mathcal{L})$ where $K_{ref}\subset \mathbb{R}^d$ is a reference element, $\mathcal{V}=\mathbb P_{n}$ is the function space of polynomials of degree $n$ defined on $K_{ref}$, and $\mathcal{L}=\{l_{0},\dots,l_{n-1}\}$  is the basis of the dual space $\mathcal{V}^*=\{\}$
+
+(a line segment for $d=1$, polygon for $d=2$, )
