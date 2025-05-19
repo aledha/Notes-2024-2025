@@ -1,4 +1,4 @@
-d### Passive myocardium
+### Passive myocardium
 With a local orthonormal coordinate system with fiber axis $\mathbf{f}_{0}$, sheet axis $\mathbf{s}_{0}$, and sheet-normal axis $\mathbf{n}_{0}$. The invariants are defined as
 $$
 \begin{align}
