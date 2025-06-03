@@ -140,6 +140,5 @@ We get a similar result on the integral in the second term of the right hand sid
  & \int_{\Omega}\boldsymbol{\psi}\cdot(\mathbf{s}^{n+1}- \theta\mathbf{f}(\mathbf{s}^{n+1},v^{n+1},t_{n+1})) \,\text{d} \mathbf{X} = \int_{\Omega}  \boldsymbol{\psi}\cdot (\mathbf{s}^n+(1-\theta)\mathbf{f}(\mathbf{s}^n,v^n,t_{n}))\,\text{d} \mathbf{X}  , & \forall \boldsymbol{\psi}\in S_{h}.
 \end{align}
 $$
-$$
-\mathbf{s}^{n+1}-GRL(\mathbf{s}^n)=0
-$$
+## Monolithic
+The final coupling scheme we consider is a \emph{monolithic} scheme. 
