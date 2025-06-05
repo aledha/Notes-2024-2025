@@ -60,39 +60,56 @@ For a given $\Delta x$, we discretize the domain with the nodes $x_{i}=i\Delta x
 
 Let $\Delta t$ be the time step. By interpolating the initial conditions $v(x,y,0)$ and $\mathbf{s}(x,y,0)$ into $V_{h}$ and $S_{h}$, respectively, we can repeatedly solve the nonlinear monolithic system \eqref{eq:ep mono galerkin} for the next iterations of $v$ and $\mathbf{s}$.
 ## Backward Euler
-We have the system
+
 $$
 \begin{align}
-\frac{\text{d}v}{\text{d}t}  & =-s, \\
-\frac{\text{d}s}{\text{d}t}  & =v. \\
+%\label{eq:results GRL v}
+	v^{n+1} & =v^{n}+g(\mathbf{s}^{n},v^{n}), \\
+%\label{eq:results GRL s}
+	\mathbf{s}^{n+1} & =\mathbf{s}^{n}+\mathbf{h}(\mathbf{s}^{n},v^{n}),
 \end{align}
 $$
-Applying the BE scheme on the system yields
-$$
-\begin{align}
-v^{n+1}-v^n & =-\Delta ts ^{n+1} ,\\
-s ^{n+1}-s^n  & =\Delta tv^{n+1}.
-\end{align}
-$$
-We can set up the variational formulation by multiplying with test functions $v_{t}$ and $s_{t}$ and integrating over the domain. The variational problem reads: Given $v^n$ and $s^n$, find $v^{n+1},s ^{n+1}\in V_{h}$ such that 
-$$
-\begin{align}
-\int_{\Omega}(v^{n+1}-v^n +\Delta t s ^{n+1}) v_{t} \,\text{d} \mathbf{x}& =0 \qquad\forall v_{t}\in V_{h}, \\
-\int_{\Omega}(s^{n+1}-s^n -\Delta t v ^{n+1}) s_{t}\,\text{d} \mathbf{x} & =0 \qquad\forall s_{t}\in V_{h}.
-\end{align}
-$$
-We can rewrite this into the following formulation: Given $\mathbf{y}^n=\begin{bmatrix}v^n \\ s^n\end{bmatrix}$, find $\mathbf{y}^{n+1}=\begin{bmatrix}v^{n+1} \\ s ^{n+1}\end{bmatrix}$ such that
-$$
+where $g(\mathbf{s}^n,v^n)=\frac{a_{v}}{b_{v}}(e^{ b_{v}\Delta t }-1)$ with $a_{v}=-\frac{1}{C_{m}}I_\text{ion}(v^n,\mathbf{s}^n)$ and $b_{v}=-\frac{1}{C_{m}} \frac{ \text d I_\text{ion}(\mathbf{s}^n,v^n) }{ \text d v }$, and $\mathbf{h}(\mathbf{s}^{n},v^{n})=\frac{a_{s}}{b_{s}}(e^{ b_{s}\Delta t }-1)$ with $a_{s}=f(\mathbf{s}^n,v^{n})$ and $b_{s}=\frac{ \text d \mathbf{f}(\mathbf{s}^n,v^n) }{ \text d \mathbf{s} }$. Notice that $$
 \begin{equation}
-\int_{\Omega}F(\mathbf{y}^{n+1},\mathbf{y}_{t})\,\text{d} \mathbf{x}=0 \qquad \forall \mathbf{y}_{t}\in V_{h}\times V_{h},
+%\label{eq:}
+	b_{v}=-\frac{1}{C_{m}} \frac{ \text d s }{ \text d v }=0=\frac{ \text d v }{ \text d \mathbf{s} }=b_{s},
 \end{equation}
 $$
-where $\mathbf{y}_{t}=\begin{bmatrix}v_{t} \\ s_{t}\end{bmatrix}$ and
+such that $$
+\begin{align*}
+	g(s^n,v^n) & =a_{v} \Delta t, \\
+\mathbf{h} (s^n,v^n) & =a_{s}\Delta t.
+\end{align*}
 $$
+This leads to the simple forward Euler (FE) scheme. 
+
+We consider the backward Euler (BE) scheme applied to the system \eqref{eq:anal v ode}-\eqref{eq:anal s ode} gives
+$$
+\begin{align}
+v^{n+1}-v^n & =-\Delta t\mathbf{s} ^{n+1} ,\\
+\mathbf{s} ^{n+1}-\mathbf{s}^n  & =\Delta tv^{n+1}.
+\end{align}
+$$
+We can set up the variational formulation by multiplying with test functions $\phi$ and $\boldsymbol \psi$ and integrating over the domain. The Galerkin formulation for the ODE scheme reads: Given $v^n$ and $s^n$, find $v^{n+1}\in V_{h}$ and $\mathbf{s} ^{n+1}\in S_{h}$ such that 
+$$
+\begin{align}
+%\label{eq:anal Rv} 
+R_{v}(v^{n+1},\mathbf{s}^{n+1},\phi;v^n)=\int_{\Omega}(v^{n+1}-v^n +\Delta t s ^{n+1}) \phi \,\text{d} \mathbf{x}& =0 \qquad\forall \phi\in V_{h}, \\
+%\label{eq:anal Rs}
+R_{\mathbf{s}}(v^{n+1},\mathbf{s}^{n+1},\boldsymbol{\psi};\mathbf{s}^n)=\int_{\Omega}(\mathbf{s}^{n+1}-\mathbf{s}^n -\Delta t v ^{n+1}) \boldsymbol \psi\,\text{d} \mathbf{x} & =0 \qquad\forall \boldsymbol \psi\in S_{h}.
+\end{align}
+$$
+Combining the residuals \eqref{eq:anal Rv}-\eqref{eq:anal Rs} with the residual for the monodomain equation \eqref{eq:R_m} gives us the monolithic nonlinear Galerkin formulation for this problem: Given $(\mathbf{s}^n,v^n)\in[S_{h}]^d\times V_{h}$, find $(\mathbf{s}^{n+1},v^{n+1})\in S_{h}\times V_{h}$ such that$$
 \begin{equation}
-F\left( \begin{bmatrix}v^{n+1} \\ s ^{n+1}\end{bmatrix}, \begin{bmatrix}v_{t} \\ s_{t}\end{bmatrix} \right) =(v^{n+1}-v^n +\Delta t s ^{n+1}) v_{t}+(s^{n+1}-s^n -\Delta t v ^{n+1}) s_{t}.
+%\label{eq:anal mono galerkin}
+	\begin{pmatrix}
+R_{m}(v^{n+1},\phi;v^n) \\
+R_{v}(v^{n+1},\phi;\mathbf{s}^n,v^n) \\
+R_{\mathbf{s}}(\mathbf{s}^{n+1},\boldsymbol{\psi};\mathbf{s}^n,v^n) 
+\end{pmatrix}=\boldsymbol{0},\qquad \forall(\boldsymbol{\psi}^n,\phi^n)\in[S_{h}]^d\times V_{h}.
 \end{equation}
 $$
+
 
 \section{Monolithic Solution Methods}
 
