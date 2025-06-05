@@ -1,3 +1,64 @@
+## Known solution
+We wish to generate an analytical solution for the electrophysiological problem described by $$
+\begin{align}
+    %\label{eq:anal mono} 
+\nabla \cdot(\mathbf{M}\nabla v)  & =\chi\left( C_{m}\frac{ \text d v }{ \text d t } +I_\text{ion}(\mathbf{s},v) -I_\text{stim}\right) , & \quad \mathbf{X}\in \Omega, \\
+    %\label{eq:anal ode} 
+\frac{ \text d \mathbf{s} }{ \text d t }  & =\mathbf{f}(\mathbf{s},v,t)  & \mathbf{X}\in \Omega, \\
+    %\label{eq:anal monobc} 
+\mathbf{n}\cdot(\mathbf{M}\nabla v) & =0,\quad & \mathbf{X}\in \text d \Omega.
+\end{align}
+$$
+Let $\Omega$ be the unit square, and set $\mathbf{M}=\mathbf{I}$ and $\chi=C_{m}=1$. The monodomain equation \eqref{eq:anal mono} reduces to $$
+\begin{equation}
+%\label{eq:anal mono reduced}
+	\nabla^2v=\frac{ \text d v }{ \text d t } +I_\text{ion}(\mathbf{s},v)-I_\text{stim}.
+\end{equation}
+$$
+We let $v$ be analytically defined as $$
+\begin{equation}
+%\label{eq:anal v}
+	v(x,y,t)=\cos(2\pi x)\cos(2\pi y)\sin t.
+\end{equation}
+$$
+The simplest form of the state vector $\mathbf{s}$ is for it to contain one element, so we set $$
+\begin{equation}
+%\label{eq:anal s}
+	\mathbf{s}(x,y,t)=-\cos(2\pi x)\cos(2\pi y)\cos t.
+\end{equation}
+$$
+Notice that $$
+\begin{align}
+	\frac{ \text d v }{ \text d t }  & = -\mathbf{s}, \\
+\frac{ \text d \mathbf{s} }{ \text d t }  & =v.
+\end{align}
+$$
+If we set $I_\text{ion}(\mathbf{s},v)=\mathbf{s}$, the first two terms on the right hand side in equation \eqref{eq:anal mono reduced} cancel such that $$
+\begin{equation}
+%\label{eq:anal istim deldel v}
+	I_\text{stim}=-\nabla^2v.
+\end{equation}
+$$
+The spatial derivatives of $v$ are $$
+\begin{align} 
+%\label{eq:anal del v}
+	\nabla v & =-2\pi\begin{bmatrix}
+\sin(2\pi x)\cos(2\pi y)\sin t \\
+\cos(2\pi x)\sin(2\pi y)\sin t
+\end{bmatrix}, \\
+%\label{eq:anal deldel v} 
+\nabla^2v & =-8\pi^2\cos(2\pi x)\cos(2\pi y)\sin t.
+\end{align}
+$$
+Notice from equation \eqref{eq:anal del v} that the boundary condition \eqref{eq:anal monobc} is always satisfied. Substituting \eqref{eq:anal deldel v} into \eqref{eq:anal istim deldel v} gives us the expression $$
+\begin{equation}
+%\label{eq:anal istim}
+	I_\text{stim}=8\pi^2\cos(2\pi x)\cos(2\pi y)\sin t.
+\end{equation}
+$$
+For a given $\Delta x$, we discretize the domain with the nodes $x_{i}=i\Delta x$ and $y_{i}=i\Delta x$ for $i=0,\dots,N$, where $N=\frac{1}{\Delta x}$. The domain can then be divided into $N^2$ non-overlapping squares with the nodes as the corners. Fitting two triangles in each square gives us triangulation $\mathcal{T}_{h}$ of the domain. We set the function spaces as $V_{h}=\mathcal{L}_{1}(\mathcal{T}_{h})$ and $S_{h}=Q_{4}(\mathcal{T}_{h})$. 
+
+Let $\Delta t$ be the time step. By interpolating the initial conditions $v(x,y,0)$ and $\mathbf{s}(x,y,0)$ into $V_{h}$ and $S_{h}$, respectively, we can repeatedly solve the nonlinear monolithic system \eqref{eq:ep mono galerkin} for the next iterations of $v$ and $\mathbf{s}$.
 ## Backward Euler
 We have the system
 $$
@@ -6,7 +67,7 @@ $$
 \frac{\text{d}s}{\text{d}t}  & =v. \\
 \end{align}
 $$
-The backwards Euler method on the system yields
+Applying the BE scheme on the system yields
 $$
 \begin{align}
 v^{n+1}-v^n & =-\Delta ts ^{n+1} ,\\
@@ -53,7 +114,7 @@ Applying the GRL scheme as described in \autoref{sec:solving odes} to \eqref{eq:
 	v^{n+1}=v^{n}+g(\mathbf{s}^{n},v^{n}),
 \end{equation}
 $$
-where $g(\mathbf{s}^n,v^n)=\frac{a}{b}(e^{ b\Delta t }-1)$ with $a=-\frac{1}{C_{m}}I_\text{ion}(v^n,\mathbf{s}^n)$ and $b=-\frac{1}{C_{m}} \frac{ \partial I_\text{ion}(\mathbf{s}^n,v^n) }{ \partial v }$. 
+where $g(\mathbf{s}^n,v^n)=\frac{a}{b}(e^{ b\Delta t }-1)$ with $a=-\frac{1}{C_{m}}I_\text{ion}(v^n,\mathbf{s}^n)$ and $b=-\frac{1}{C_{m}} \frac{ \text d I_\text{ion}(\mathbf{s}^n,v^n) }{ \text d v }$. 
 
 Applying the GRL scheme to \eqref{eq:mono s ode} gives the similar expression$$
 \begin{equation}
@@ -61,7 +122,7 @@ Applying the GRL scheme to \eqref{eq:mono s ode} gives the similar expression$$
 	\mathbf{s}^{n+1}=\mathbf{s}^{n}+\mathbf{h}(\mathbf{s}^{n},v^{n}),
 \end{equation}
 $$
-where $h_{i}(\mathbf{s}^{n},v^{n})=\frac{a_{i}}{b_{i}}(e^{ b_{i}\Delta t }-1)$ with $a_{i}=f_{i}(\mathbf{s}^n,v^{n})$ and $b_{i}=\frac{ \partial f_{i}(\mathbf{s}^n,v^n) }{ \partial s_{i} }$.
+where $h_{i}(\mathbf{s}^{n},v^{n})=\frac{a_{i}}{b_{i}}(e^{ b_{i}\Delta t }-1)$ with $a_{i}=f_{i}(\mathbf{s}^n,v^{n})$ and $b_{i}=\frac{ \text d f_{i}(\mathbf{s}^n,v^n) }{ \text d s_{i} }$.
 
 To obtain a mixed Galerkin formulation of \eqref{eq:GRL v} and \eqref{eq:GRL s}, we multiply by the test functions $\phi \in V_{h}$, $\boldsymbol{\psi}\in[S_{h}]^d$ and integrate over the domain. The Galerkin formulation is: Given $v^n\in V_{h}$ and $\mathbf{s}^n\in [S_{h}]^d$, find  $v^{n+1}\in V_{h}$ and $\mathbf{s}^{n+1}\in [S_{h}]^d$ such that $$
 \begin{align}
@@ -113,7 +174,7 @@ The residuals $R_{m}$ and $R_{v}$ remain unaffected from the coupling, but $R_{s
 	R_{s}(\mathbf{s}^{n+1},\boldsymbol{\psi};\mathbf{s}^n,v^n,\mathbf{u}^n) =\int_{\Omega}\mathbf{s}^{n+1}\cdot \boldsymbol{\psi}\,\text{d} \mathbf{X} -\int_{\Omega}(\mathbf{s}^{n}+\mathbf{h}(\mathbf{s}^{n},v^{n},\mathbf{u}^n))\cdot \boldsymbol{\psi} \,\text{d} \mathbf{X},
 \end{equation}
 $$
-where $h_{i}(\mathbf{s}^{n},v^{n},\mathbf{u}^n)=\frac{a_{i}}{b_{i}}(e^{ b_{i}\Delta t }-1)$, with $a_{i}=f_{i}(\mathbf{s}^n,v^{n},\mathbf{u}^n)$ and $b_{i}=\frac{ \partial f_{i}(\mathbf{s}^n,v^n,\mathbf{u}^n) }{ \partial s_{i} }$.
+where $h_{i}(\mathbf{s}^{n},v^{n},\mathbf{u}^n)=\frac{a_{i}}{b_{i}}(e^{ b_{i}\Delta t }-1)$, with $a_{i}=f_{i}(\mathbf{s}^n,v^{n},\mathbf{u}^n)$ and $b_{i}=\frac{ \text d f_{i}(\mathbf{s}^n,v^n,\mathbf{u}^n) }{ \text d s_{i} }$.
 
 The residuals describing the displacement are the same as the formulations \eqref{eq:mech galerkin 1}-\eqref{eq:mech galerkin 2}: $$
 \begin{align}
