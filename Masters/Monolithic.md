@@ -215,3 +215,11 @@ R_{p}(\mathbf{u}^{n+1},p^{n+1},\mathbf{s}^{n+1}, \delta p)
 \end{pmatrix}=\boldsymbol{0},\qquad \forall(\boldsymbol{\psi}^n,\phi^n,\delta \mathbf{u}, \delta p)\in[S_{h}]^d\times V_{h}\times U_{h}\times P_{h}.
 \end{equation}
 $$
+
+O
+$$
+\begin{align}
+	\frac{ \partial \mathbf{s}_\text{ep} }{ \partial t }  & =\mathbf{f}_\text{ep}(\mathbf{s}_\text{ep},\mathbf{s}_\text{mech},t), \\
+ \frac{ \partial \mathbf{s}_\text{mech} }{ \partial t }  & =\mathbf{f}_\text{mech}(\mathbf{s}_\text{ep},\mathbf{s}_\text{mech},t)
+\end{align}
+$$
