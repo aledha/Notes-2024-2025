@@ -216,7 +216,7 @@ R_{p}(\mathbf{u}^{n+1},p^{n+1},\mathbf{s}^{n+1}, \delta p)
 \end{equation}
 $$
 
-O
+$\mathbf{s}_\text{ep}$ and $\mathbf{s}_\text{mech}$
 $$
 \begin{align}
 	\frac{ \partial \mathbf{s}_\text{ep} }{ \partial t }  & =\mathbf{f}_\text{ep}(\mathbf{s}_\text{ep},\mathbf{s}_\text{mech},t), \\
