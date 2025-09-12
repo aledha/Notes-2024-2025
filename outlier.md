@@ -1,32 +1,29 @@
-Let $\pi_{0},\pi_{C},\pi_{H},$ and $\pi_{CH}$ denote the long-term probabilities for each state. They can be determined by setting the long-term states in and out of each state equal to each other:
-$$
-\begin{align}
-	10\pi_{0} & =2\pi_{C}+5\pi_{H}, \\
-(5+2)\pi_{C} & =5\pi_{CH}+10\pi_{0}, \\
-5\pi_{H} & =2\pi_{CH}, \\
-(5+2)\pi_{CH} & =5\pi_{C}, \\
-1 & =\pi_{0}+\pi_{C}+\pi_{H}+\pi_{CH}
-\end{align}
-$$
+**Steps:**
 
-From equations 3 and 4 we have $\pi_{H}=\frac{2}{5}\pi_{CH}$ and $\pi_{C}=\frac{7}{5}\pi_{CH}$. Substituting these into equations 1 and 5 reduces the system to
+**Step 1:** Identify the ellipses. The larger ellipses cross the x-axis at $x=2$ and the y-axis at $y=4$, so the formula for this ellipse is $\left( \frac{x}{2} \right)^2+\left( \frac{y}{4} \right)^2=1$, which is $4x^2+y^2+16$. Similarly, the formula for the smaller ellipse is $4x^2+y^2+1$.
+
+**Step 2:** Perform the change of variables $x=r\cos \theta$ and $y=2r \sin\theta$, where $\frac{1}{2}\leq r \leq 2$ and $0\leq \theta\leq \frac{\pi}{2}$. Then, the Jacobian determinant is
 
 $$
-\begin{align*}
-	10\pi_{0} & =2\left( \frac{7}{5}\pi_{CH} \right) +5 \left( \frac{2}{5} \pi_{CH}\right), \\
-1 & =\pi_{0}+\frac{7}{5}\pi_{CH}+\frac{2}{5}\pi_{CH}+\pi_{CH},
-\end{align*}
+\begin{vmatrix}
+\frac{ \partial x }{ \partial u }  & \frac{ \partial x }{ \partial \theta }  \\
+\frac{ \partial y }{ \partial r }  & \frac{ \partial y }{ \partial \theta } 
+\end{vmatrix} =\begin{vmatrix}
+\cos \theta & -r \sin\theta \\
+2\sin\theta & 2r\cos\theta
+\end{vmatrix} =2r.
 $$
 
-Simplify and solve:
+**Step 3:** Using $dA = \begin{vmatrix} \frac{ \partial x }{ \partial u }  & \frac{ \partial x }{ \partial \theta }  \\ \frac{ \partial y }{ \partial r }  & \frac{ \partial y }{ \partial \theta } \end{vmatrix}  drd\theta$,
 
 $$
 \begin{align*}
-	10\pi_{0} & =\frac{24}{5}\pi_{CH}, \\
-1 & =\pi_{0}+\frac{14}{5}\pi_{CH}.
+	\int \int_{S} \frac{x}{4x^2+y^2}dA & =\int_{0}^{\pi/2}\int_{1/2}^2 \frac{r\cos \theta}{4r^2} \cdot 2r \, \,d r d \theta \\
+ & =\int_{0}^{\pi/2}\int_{1/2}^2 \frac{1}{2} \cos \theta \, drd\theta \\
+ & =\left( 2- \frac{1}{2} \right)\cdot \frac{1}{2} = \frac{3}{4}.
 \end{align*}
 $$
 
-$$
-1=\frac{24}{50}\pi _{CH}+\frac{140}{50}\pi_{CH}=\frac{164}{50}\pi_{CH}
-$$
+....
+
+**Final Answer:** 3/4
