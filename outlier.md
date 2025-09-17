@@ -1,1 +1,20 @@
-**Steps:** **Step 1:** Identify the constraints. From the figure, we see that the domain is defined by the following constraints: $$ \begin{aligned} c_{1}(x,y) & =x^2+y^2-16 \geq 0 \\ c_{2}(x,y) & =-y+x\geq0, \\ c_{3}(x,y) & =64-4y^2-x^2\geq0. \end{aligned} $$ **Step 2:** Find the gradients of the constraints: $$ \begin{aligned} \nabla c_{1} & =\begin{bmatrix} 2x \\ 2y \end{bmatrix}, \\ \nabla c_{2} & =\begin{bmatrix} 1 \\ -1 \end{bmatrix}, \\ \nabla c_{3} & =\begin{bmatrix} -2x \\ -8y \end{bmatrix}. \end{aligned} $$ **Step 3:** The points where the LICQ fails are the points where the gradients of the active constraints are linearly dependent. The LICQ is trivially fulfilled at all interior points since no constraints are active. In the case of only one active constraint, the LICQ is also fulfilled since none of the constraint gradients is the zero vector for any points in $\Omega$. Therefore, we need to check points where there are $2$ active constraints. **Step 4:** Check intersection of $c_{1}$ and $c_{2}$. The points where $c_{1}$ and $c_{2}$ are active are $(\sqrt{ 8 },\sqrt{ 8 })$ and $(-\sqrt{ 8 },-\sqrt{ 8 })$. The gradients for $c_{1}$ in these points are $$ \begin{aligned} \nabla c_{1}(\sqrt{ 8 },\sqrt{ 8 }) & =\begin{bmatrix} 2\sqrt{ 8 } \\ 2\sqrt{ 8 } \end{bmatrix}, \\ \nabla c_{1}(-\sqrt{ 8 },-\sqrt{ 8 }) & =\begin{bmatrix} -2\sqrt{ 8 } \\ -2\sqrt{ 8 } \end{bmatrix}, \end{aligned} $$ which both are linearly independent from $\nabla c_{2}$. **Step 5:** Check intersection of $c_{2}$ and $c_{3}$. The points where $c_{2}$ and $c_{3}$ are active are $\left( \sqrt{ \frac{64}{5} }, \sqrt{ \frac{64}{5} } \right)$ and $\left(- \sqrt{ \frac{64}{5} }, - \sqrt{ \frac{64}{5} } \right)$. The gradients for $c_{3}$ in these points are $$ \begin{aligned} \nabla c_{3}\left( \sqrt{ \frac{64}{5} }, \sqrt{ \frac{64}{5} } \right) & =\sqrt{ \frac{64}{5} }\begin{bmatrix} -2 \\ -8 \end{bmatrix}, \\ \nabla c_{3}\left( -\sqrt{ \frac{64}{5} }, -\sqrt{ \frac{64}{5} } \right) & =\sqrt{ \frac{64}{5} }\begin{bmatrix} 2 \\ 8 \end{bmatrix}, \end{aligned} $$ which both are linearly independent from $\nabla c_{2}$. **Step 6:** Check intersection of $c_{1}$ and $c_{3}$. The only point in $\Omega$ where $c_{1}$ and $c_{3}$ are active is $(0,-4)$, where the gradients are $$ \begin{aligned} \nabla c_{1}(0,-4) & =\begin{bmatrix} 0 \\ -8 \end{bmatrix}, \\ \nabla c_{3}(0,-4) & =\begin{bmatrix} 0 \\ 32 \end{bmatrix}, \end{aligned} $$ which are linearly dependent. Therefore, $(0,-4)$ is the only point where the LICQ fails. .... **Final Answer:** (0.000, -4.000)
+$$
+\begin{aligned}
+	c_{1}=y \geq0,\\
+	c_{2}=f(x)-y \geq0.
+\end{aligned}
+$$
+
+$$
+\begin{align}
+	\nabla c_{1} & =\begin{bmatrix}
+0  \\
+1
+\end{bmatrix}, \\
+\nabla c_{2} & =\begin{bmatrix}
+f'(x) \\
+-1
+\end{bmatrix}.
+\end{align}
+$$
+
