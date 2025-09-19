@@ -1,14 +1,33 @@
-We see that $\Omega$ is outside the unit circle, below the $y=x$ and to the left of the line $x=1$.
-
-The line $y=x$ corresponds to $\theta=\frac{\pi}{4}$, so $0\leq \theta\leq \frac{\pi}{4}$. 
-
-The unit circle gives the lower limit $r=1$ while the line $x=1$ gives $r\cos \theta=1$, so $1\leq r\leq \frac{1}{\cos \theta}$.
+$\Omega$ is the area inside the circle $x^2+y^2=4$ but outside the unit square $[0,1]\times[0,1]$. Therefore, we divide the integral into
+$$
+\int \int_{\Omega}x+y^2 \,dA = \int \int_{C}x+y^2 \, dA -  \int \int_{S}x+y^2 \, dA,
+$$
+where $C$ denotes the circle and $S$ denotes the square.
 
 $$
 \begin{align}
-	\int_{0}^{\pi/4} \int_{1}^{1/\cos \theta} \frac{r\cos \theta}{r^2} r \,drd\theta  & = \int_{0}^{\pi/4} \cos \theta \left( \frac{1}{\cos \theta}-1 \right) \, d\theta \\
- & =[\theta-\sin \theta]_{0}^{\pi/4} \\
- & =\frac{\pi}{4}-\frac{\sqrt{ 2 }}{2} \\
- & \approx 0.08
+	\int \int_{C}x+y^2 \, dA & =\int_{0}^{\pi/2}\int_{0}^2 (r\cos \theta+r^2\sin^2 \theta)r \,drd\theta, \\
+ & =\int_{0}^{\pi/2} \left( \frac{2^3}{3}\cos \theta + \frac{2^4}{4}\sin^2 \theta \right)\,d\theta \\
+ & =\int_{0}^{\pi/2}\left(  \frac{8}{3} \cos \theta + 4 \cdot \frac{1}{2}(1-\cos (2\theta))\right) \,d\theta \\
+ & =\left[ \frac{8}{3}\sin \theta  +2\theta - \sin(2\theta)\right]_{0}^{\pi/2} \\
+ & =\frac{8}{3}+\pi
+\end{align}
+$$
+
+$$
+\begin{align}
+	\int \int_{S}x+y^2 \, dA & =\int_{0}^1 \int_{0}^1 (x+y^2) \,dxdy \\
+ & =\int_{0}^1 \left( \frac{1}{2}+y^2 \right) \,dy \\
+ & =\frac{1}{2}+\frac{1}{3} \\
+ & =\frac{5}{6}
+\end{align}
+$$
+
+
+$$
+\begin{align}
+	\int \int_{\Omega}x+y^2 \,dA  & =\frac{8}{3}+\pi - \frac{5}{6} \\
+ & =\frac{11}{6}+\pi  \\
+ & \approx 4.97
 \end{align}
 $$
