@@ -1,1 +1,1 @@
-$A_{K}(t)=K\cdot a(t)$
+$$Pr(A|B)=\frac{Pr(B|A)}{P(B)}$$
