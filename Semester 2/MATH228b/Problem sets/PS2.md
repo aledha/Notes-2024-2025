@@ -3,6 +3,10 @@ By Alexander Hatle
 ## Problem 1
 ![[Pasted image 20240210102209.png|800]]
 ![[Pasted image 20240210102216.png|800]]
+$$
+U^{n+1}_{j}=U_{j}^n +\frac{k \kappa}{2h^2}[U_{j-1}^n-2U_{j}^n+U_{j+1}^n+U^{n+1}_{j-1}-2U_{j}^{n+1}+U^{n+1}_{j+1}]-k \gamma [(1-\theta)U_{j}^n+\theta U_{j}^{n+1}]
+$$
+
 Substituting in $U_{j}^{n}=e^{ijh \xi }$ and $U_{j}^{n+1}=g(\xi )U_{j}^{n}=g(\xi )e^{ijh \xi}$,
 $$\begin{align*}
 g(\xi )e^{ijh \xi}&= e^{ijh \xi} + \frac{k \kappa }{2h^{2}}e^{ijh \xi}\left(e^{-ih \xi}-2+e^{ih \xi} + g(\xi) (e^{-ih \xi}-2+e^{ih \xi}) \right)-k \gamma e^{ijh \xi } \left[(1-\theta ) +\theta g(\xi )\right]\\
